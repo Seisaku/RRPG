@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-			<flowLayout width="400" autoHeight="true">
+			<flowLayout width="300" autoHeight="true">
 
 		    <label  text="Atributos" width="300" horzTextAlign="center" margins="{top = 5}"/>
 		    <flowLineBreak/>

@@ -30,10 +30,12 @@
 	</template>
 
 	<template name="personalidade">
-		<flowLayout width="300" height="320" margins="{left=10, top=5}">
+		<scrollBox align="client">
+		<flowLayout width="400" height="1000" margins="{left=10, top=5}">
 			<label text="$(nome)" autoSize="true" width="300" height="20" horzTextAlign="center"/>
-	 		<textEditor width="300" height="300" field="$(campo)" margins="{top=5}"/>
+	 		<textEditor width="600" height="1000" field="$(campo)" margins="{top=5}"/>
  		</flowLayout>
+ 		</scrollBox>
 	</template>
 
 	<template name="caracteristica">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout width="200" autoHeight="true" align="right">
+<flowLayout width="200" autoHeight="true">
 
 	<rectangle width="400" height="200" margins="{top = 5}">
 	<label align="client" text="Imagem" horzTextAlign="center"

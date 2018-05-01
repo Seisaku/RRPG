@@ -2,11 +2,11 @@
 <form name="frmArma" height="20" margins="{top=2}">      
 	<flowLayout align="client">
 		<checkBox 	width="20" field="equipado"/>
-		<edit 		width="150" height="20" field="nome"/>
+		<edit 		width="80" height="20" field="nome"/>
 		<checkBox 	width="20"  height="20" field="proficiente"/>
-		<edit 		width="30"  height="20" field="bonus" type="number" min="0" max="100" horzTextAlign="center"/>
-		<button 	width="60"  height="20" text="Ataque" onClick="ataqueComArma(sheet)" margins="{left=2}"/>
-		<button 	width="20"  height="20" text="X" onClick="deleteEquip(sheet)" margins="{left=2}"/>	
+		<edit 		width="20"  height="20" field="bonus" type="number" min="0" max="100" horzTextAlign="center"/>
+		<button 	width="20"  height="20" text="A" onClick="ataqueComArma(sheet)" margins="{left=2}" hint="Atacar com arma"/>
+		<button 	width="20"  height="20" text="X" onClick="deleteEquip(sheet)" margins="{left=2}" hint="Remover arma"/>	
 	</flowLayout>
 
     <dataLink fields="{'equipado','bonus','proficiente'}">
