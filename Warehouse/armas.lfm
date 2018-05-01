@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form formType="sheetTemplate" dataType="br.com.sigma.kitsune.tabelaArmas" 
+	 title="Tabela de Armas" name="tabelaArmas">
+	 	<flowLayout align="client">
+			<label text="imagem" width="70"/>
+			<label text="nome" width="100"/>
+			<label text="tipo" width="150"/>
+			<label text="classe" width="150"/>
+			<label text="preço" width="50"/>
+			<label text="mod Dano" width="50"/>
+			<label text="tipo Dano" width = "70"/>
+			<label text="propriedades" width="200"/>
+			<button width="20" text="+" onClick="self.rclTabelaArmas:append();"/>
+			<recordList top="58" autoHeight="true" width="1000" name="rclTabelaArmas" field="tabelaArmas.armas" templateForm="itemArma"/>
+		</flowLayout>
+</form>

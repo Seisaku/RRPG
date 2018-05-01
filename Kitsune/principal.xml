@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<flowLayout width="400" autoHeight="true">
+
+			<label text="Nome" height="20"/>
+ 			<edit field="nome" width="200" height="20" type="text"/>
+ 			<flowLineBreak/>
+
+ 			<label text="Jogador" height="20" />
+ 			<edit  field="jogador" height="20" type="text"/>
+ 			<flowLineBreak/>
+
+			<label text="Raça"/>
+ 			<comboBox  width="100" field="raca" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros'}"
+                  values="{'A', 'D', 'E', 'G', 'Ha','Hu','ME','MO','T','N','K','O'}"/>
+
+            <flowLineBreak/>
+			<label text="Classe"/>
+ 			<comboBox width="100" field="classe" items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
+                  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"/>
+
+            <flowLineBreak/>
+
+            <label text="Tendencia"/>
+ 			<comboBox width="100" field="tendencia" items="{'Bom Leal', 'Bom Neutro', 'Bom Caótico', 'Neutro Leal', 'Neutro','Neutro Caótico','Mal Leal','Mal Neutro','Mal Caótico'}"
+                  values="{'BL', 'BN', 'BC', 'NL', 'N','NC','ML','MN','MC'}"/>
+
+            <flowLineBreak/>
+            
+            <label  text="Experiência"/>
+			<progressBar align="client" width="200" height="13" color="Gold " field="experienciaAtual" fieldMax="proximoNivel"
+				onDblClick="self.setExperienciaPopup:setNodeObject(sheet); self.setExperienciaPopup:show(); setExpPopup(sheet); self.experienciaOp:setFocus();" hitTest="true">
+				<label field="experienciaAtualxProx" align="client" horzTextAlign="center" fontColor="Black"/>
+        		<popup name="setExperienciaPopup" width="150" height="80" scopeNode="sheet" onClose="expChange(sheet);" >
+    				<flowLayout align="client">
+        				<label text="Experiência" autoSize="true"/>
+        				<flowLineBreak/>             			
+						<edit name="experienciaOp" field="experienciaOp" horzTextAlign="center" width="100" 
+							onKeyDown="
+							if(event.keyCode==13) then
+								self.endExpOp:setFocus();
+								self.setExperienciaPopup:closePopup();
+							end;"/>
+						<button name="endExpOp" text="X" width="30" onClick="self.setExperienciaPopup:closePopup();"  />
+    				</flowLayout>
+    			</popup>
+			</progressBar>
+
+			<flowLineBreak/>
+			
+			<label text="Nível"/>
+ 			<edit field="nivel" min="1" max="20" height="20" type="number" horzTextAlign="center"/>
+ 			<flowLineBreak/>
+						
+			<label text="Proficiência" />
+			<label field="proficiencia" width="15" horzTextAlign="center"/>
+			
+			<flowLineBreak/>
+			
+			<label text="Percepção Passiva"/>
+			<edit field="PercepcaoPassiva" height="20" horzTextAlign="center"/>
+			
+			<flowLineBreak/>
+			
+			<label text="Deslocamento"  />
+			<edit  field="Deslocamento" height="20" horzTextAlign="center"/>
+			<button text="Iniciativa" height="20"
+        	onClick="rolarIniciativa(sheet);"/>
+</flowLayout>

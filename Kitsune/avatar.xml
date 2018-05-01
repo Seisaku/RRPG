@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout width="200" autoHeight="true" align="right">
+
+	<rectangle width="400" height="200" margins="{top = 5}">
+	<label align="client" text="Imagem" horzTextAlign="center"
+					vertTextAlign="center"/>
+	<image field="imagemDoPersonagem" editable="true" style="stretch" 
+	       width="200" height="200" center="false" />
+	</rectangle>
+
+	<label  text="Vida"/>
+	<progressBar width="200" height="15" color="Green" field="atributos.vidaAtual" fieldMax="atributos.vidaMax"
+			onDblClick="self.setVidaPopup:setNodeObject(sheet); self.setVidaPopup:show(); setVidaPopup(sheet); self.vidaOp:setFocus();" hitTest="true"><label field="atributos.vidaAtualxTotal" align="client" horzTextAlign="center"/>
+			<popup name="setVidaPopup" width="150" height="80" scopeNode="sheet" onClose="changeBarraVida(sheet);" >
+				<flowLayout align="client">
+    				<label text="Vida" autoSize="true"/>
+    				<flowLineBreak/>             			
+					<edit name="vidaOp" field="vidaOp" horzTextAlign="center" width="100" 
+						onKeyDown="
+						if(event.keyCode==13) then
+							self.endVidaOp:setFocus();
+							self.setVidaPopup:closePopup();
+						end;"/>
+					<button name="endVidaOp" text="X" width="30" onClick="self.setVidaPopup:closePopup();"  margins="{left = 5}"/>
+				</flowLayout>
+			</popup>
+	</progressBar>
+
+	<label  text="Recurso" />
+	<progressBar width="200" height="15" color="DodgerBlue" field="atributos.recursoAtual" fieldMax="atributos.recursoMax"
+			onDblClick="self.setRecursoPopup:setNodeObject(sheet); self.setRecursoPopup:show(); setRecursoPopup(sheet); self.recursoOp:setFocus();" hitTest="true"><label field="atributos.recursoAtualxTotal" align="client" horzTextAlign="center"/>
+			<popup name="setRecursoPopup" width="150" height="80" scopeNode="sheet" onClose="changeBarraRecurso(sheet);" >
+				<flowLayout align="client">
+    				<label text="Recurso" autoSize="true"/>
+    				<flowLineBreak/>             			
+					<edit name="recursoOp" field="recursoOp" horzTextAlign="center" width="100" 
+						onKeyDown="
+						if(event.keyCode==13) then
+							self.endRecursoOp:setFocus();
+							self.setRecursoPopup:closePopup();
+						end;"/>
+					<button name="endRecursoOp" text="X" width="30" onClick="self.setRecursoPopup:closePopup();"  margins="{left = 5}"/>
+				</flowLayout>
+			</popup>
+	</progressBar>
+
+	<label  text="Desejo"/>
+	<progressBar width="200" height="15" color="darkorchid" field="desejo" fieldMax="desejoMax"
+			onDblClick="self.setDesejoPopup:setNodeObject(sheet); self.setDesejoPopup:show(); setDesejoPopup(sheet); self.desejoOp:setFocus();" hitTest="true"><label field="desejoxTotal" align="client" horzTextAlign="center"/>
+			<popup name="setDesejoPopup" width="150" height="80" scopeNode="sheet" onClose="changeBarraDesejo(sheet);" >
+				<flowLayout align="client">
+    				<label text="Desejo" autoSize="true"/>
+    				<flowLineBreak/>             			
+					<edit name="desejoOp" field="desejoOp" horzTextAlign="center" width="100" 
+						onKeyDown="
+						if(event.keyCode==13) then
+							self.endDesejoOp:setFocus();
+							self.setDesejoPopup:closePopup();
+						end;"/>
+					<button name="endDesejoOp" text="X" width="30" onClick="self.setDesejoPopup:closePopup();"  margins="{left = 5}"/>
+				</flowLayout>
+			</popup>
+	</progressBar>			
+
+	<label text="Dinheiro"/>
+	<flowLineBreak/>
+	<image url="/images/goldCoin.png" height="16" width="16"/><edit field="ouro"  type="number" min="0" horzTextAlign="center" height="20" width="30" />
+	<image url="/images/silverCoin.png" height="16" width="16"/><edit field="prata" type="number" min="0" horzTextAlign="center" height="20" width="30" />
+	<image url="/images/copperCoin.png" height="16" width="16"/><edit field="cobre" type="number" min="0" horzTextAlign="center" height="20" width="30" />
+</flowLayout>

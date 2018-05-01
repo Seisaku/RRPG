@@ -1,0 +1,19 @@
+			<comboBox width="150" field="novoTipoProficiencia" 
+items	= "{'Adaga','Azagaia','Bordão','Clava Grande','Foice Curta','Lança','Maça','Machadinha','Martelo Leve','Porrete','Arco Curto','Besta Leve','Dardo','Funda','Alabarda','Cimitarra','Chicote','Espada Curta','Espada Grande','Espada Longa','Glaive','Lança de Montaria','Lança Longa','Maça Estrela','Machado Grande','Machado de Batalha','Malho','Mangual','Martelo de Guerra','Picareta de Guerra','Rapieira','Tridente','Arco Longo','Besta de Mão','Besta Pesada','Rede','Zarabatana'}"
+values	="{'Adaga','Azagaia','Bordão','ClavaGrande','FoiceCurta','Lanca','Maca','Machadinha','MarteloLeve','Porrete','ArcoCurto','BestaLeve','Dardo','Funda','Alabarda','Cimitarra','Chicote','EspadaCurta','EspadaGrande','EspadaLonga','Glaive','LancadeMontaria','LancaLonga','MacaEstrela','MachadoGrande','MachadodeBatalha','Malho','Mangual','MartelodeGuerra','PicaretadeGuerra','Rapieira','Tridente','ArcoLongo','BestadeMao','BestaPesada','Rede','Zarabatana'}"
+value="Adaga"/>
+
+
+<flowLayout left="360" width="300" height="500">
+	<button text="+" width="30" left="30"
+			onClick="self.proficienciaArma:show();"/>
+	<popup name="proficienciaArma" width="400" height="400" backOpacity="0.5">
+		<flowLayout align="client">
+			<label text="Nova proficiencia" autoSize="true"/>
+
+	<edit type="number" min="1" horzTextAlign="center" width="50"/>
+			<button text="X" width="30"
+				onClick="self.proficienciaArma:closePopup();"/>                				
+		</flowLayout>
+	</popup>
+</flowLayout>

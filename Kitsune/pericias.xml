@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout width="300" autoHeight="true">
+	<label text="Perícias" horzTextAlign="center" width="300"/>
+	<flowLineBreak/>
+	<pericia nome="Atletismo" campo="Atletismo"/>
+	<pericia nome="Acrobacia" campo="Acrobacia"/>
+	<pericia nome="Arcanismo" campo="Arcanismo"/>
+	<pericia nome="História" campo="Historia"/>
+	<pericia nome="Investigação" campo="Investigacao"/>
+	<pericia nome="Natureza" campo="Natureza"/>
+	<pericia nome="Religião" campo="Religiao"/>
+	<pericia nome="Adestrar Animais" campo="AdestrarAnimais"/>
+	<pericia nome="Medicina" campo="Medicina"/>
+	<pericia nome="Atuação" campo="Atuacao"/>
+	<pericia nome="Sobrevivência" campo="Sobrevivencia"/>
+	<pericia nome="Percepção" campo="Percepcao"/>
+	<pericia nome="Furtividade" campo="Furtividade"/>
+	<pericia nome="Prestidigitação" campo="Prestidigitacao"/>
+	<pericia nome="Intuição" campo="Intuicao"/>
+	<pericia nome="Intimidação" campo="Intimidacao"/>
+	<pericia nome="Persuasão" campo="Persuasao"/>
+	<pericia nome="Enganação" campo="Enganacao"/>
+
+	<flowLayout autoHeight="true" width="250" margins="{top=15}">
+		<label horzTextAlign="center" width="250" text="Perícias adicionais"/>
+	<flowLineBreak/>
+		<button width="20" height="20" text="+" onClick="self.frmPericia:append();"/>
+		<label horzTextAlign="center" width="130" text="Nome"/>
+		<label horzTextAlign="center" width="30"  text="Valor"/>
+	<flowLineBreak/>
+		<recordList width="250" autoHeight="true" name="frmPericia" field="pericias" templateForm="frmPericia"/>
+	</flowLayout>
+</flowLayout>
