@@ -81,7 +81,7 @@ function getNodeFromPath(path, sheet)
 			field = listaC["nodeIndex"];
 		end
 		atributos = ndb.getAttributes(activeNode)
-		mesa.chat:enviarMensagem(field.."="..atributos["field"]);
+		mesa.activeChat:enviarMensagem(field.."="..atributos["field"]);
 		atributos["field"] = "testFind";
 	else
 		return nil;

@@ -3,7 +3,7 @@ function lerBiblioteca(sheet)
 		local mesa = rrpg.getMesaDe(sheet);
 		biblioteca = mesa.biblioteca;
 		for key,item in pairs(biblioteca.filhos) do
-			mesa.chat:enviarMensagem(item.nome);
+			mesa.activeChat:enviarMensagem(item.nome);
 		end
 	end
 end
@@ -39,7 +39,7 @@ end
 
 function testChat(sheet)
 	local mesa = rrpg.getMesaDe(sheet);
-	mesa.chat:enviarMensagem("Testing chat send message");
+	mesa.activeChat:enviarMensagem("Testing chat send message");
 end
 
 
@@ -47,37 +47,37 @@ end
 function testNodes(database)
 	require("ndb.lua");
 	local mesa = rrpg.getMesaDe(database);
-	mesa.chat:enviarMensagem("START TEST");
-	mesa.chat:enviarMensagem("Database " .. ndb.getNodeName(database));
+	mesa.activeChat:enviarMensagem("START TEST");
+	mesa.activeChat:enviarMensagem("Database " .. ndb.getNodeName(database));
 		
 	local childs = ndb.getChildNodes(database);
-	mesa.chat:enviarMensagem("Database Children " );
+	mesa.activeChat:enviarMensagem("Database Children " );
 	for key, node in pairs(childs) do
-		mesa.chat:enviarMensagem(ndb.getNodeName(node));
+		mesa.activeChat:enviarMensagem(ndb.getNodeName(node));
 	end
-	mesa.chat:enviarMensagem("Sheet Children " );
+	mesa.activeChat:enviarMensagem("Sheet Children " );
 	local childs2 = ndb.getChildNodes(childs["1"]);
 	for key, node in pairs(childs2) do
-		mesa.chat:enviarMensagem(ndb.getNodeName(node));
+		mesa.activeChat:enviarMensagem(ndb.getNodeName(node));
 	end
-	mesa.chat:enviarMensagem("Attributes Children" );
+	mesa.activeChat:enviarMensagem("Attributes Children" );
 	local childs3 = ndb.getChildNodes(childs2["1"]);
 	for key, node in pairs(childs3) do
-		mesa.chat:enviarMensagem(ndb.getNodeName(node));
+		mesa.activeChat:enviarMensagem(ndb.getNodeName(node));
 	end
-	mesa.chat:enviarMensagem("Attributes Attributes" );
+	mesa.activeChat:enviarMensagem("Attributes Attributes" );
 	local attrs3 = ndb.getAttributes(childs2["1"]);
 	for key, value in pairs(attrs3) do
-		mesa.chat:enviarMensagem(value);
+		mesa.activeChat:enviarMensagem(value);
 	end
-	mesa.chat:enviarMensagem("test1 Attributes" );
+	mesa.activeChat:enviarMensagem("test1 Attributes" );
 	local attrs3 = ndb.getAttributes(childs2["2"]);
 	for key, value in pairs(attrs3) do
-		mesa.chat:enviarMensagem(value);
+		mesa.activeChat:enviarMensagem(value);
 	end
-	mesa.chat:enviarMensagem(database.sheet.atributos.nome);
+	mesa.activeChat:enviarMensagem(database.sheet.atributos.nome);
 	database.sheet.atributos.nome = database.sheet.atributos.nome .. "A"
-	mesa.chat:enviarMensagem("END TEST");
+	mesa.activeChat:enviarMensagem("END TEST");
 end
 
 function testSetDatabase(masakiform)
@@ -190,7 +190,7 @@ end
 function rollTeste2(sheet, roll, sor, msg)
         local mesa = rrpg.getMesaDe(sheet);     
         local rolagem = rrpg.interpretarRolagem(roll);   
-        mesa.chat:rolarDados(rolagem,msg, 
+        mesa.activeChat:rolarDados(rolagem,msg, 
                 function ( rolagem )
                         local dados = {};
                         local f;
@@ -220,10 +220,10 @@ function rollTeste2(sheet, roll, sor, msg)
                         end;
                         if crit > 0 then
                                 critroll = rrpg.interpretarRolagem(crit .. "d" .. f ..  "+" .. resultR);                                
-                                mesa.chat:rolarDados(critroll,"Critico!!!");                           
+                                mesa.activeChat:rolarDados(critroll,"Critico!!!");                           
                         end
                         if fail > 0 then
-                                mesa.chat:enviarMensagem("Critical Fail!!! " .. fail);
+                                mesa.activeChat:enviarMensagem("Critical Fail!!! " .. fail);
                         end     
                 end);       
 end
