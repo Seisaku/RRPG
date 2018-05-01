@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="br.com.sigma.kitsune.fichaTest" 
+	 title="Masaki's DEV tests" name="masakiform">
+
+	<import file="templates.xml"/>
+
+	<flowLayout align="client" autoHeight="true">
+		<button height="30" width="150" text="TEST: Chat"
+				onClick="testChat(sheet);"/>
+		<button height="30" width="150" text="TEST: Node Sheet"
+				onClick="testNodes(sheet);"/>
+		<button height="30" width="150" text="TEST: Node Self"
+				onClick="testNodes(self);"/>
+		<button height="30" width="150" text="TEST: set Node"
+				onClick="testSetDatabase(self);"/>
+		<button height="30" width="150" text="TEST: set Node"
+				onClick="testMsg();"/>
+		<button height="30" width="150" text="TEST: find"
+				onClick="getNodeFromPath('sheet.atributos.nivel', sheet);"/>
+		<button height="30" width="150" text="TEST: change node"
+				onClick="updateAtributoA(sheet, sheet.test2.A.formula);"/>
+		<button height="30" width="150" text="TEST: ler biblioteca"
+				onClick="lerBiblioteca(sheet);"/>
+		<button height="30" width="150" text="TEST: init Table"
+				onClick="initTipoClasse(sheet);"/>
+
+		<button height="30" width="150" text="TEST: test Table"
+				onClick="testTable2(sheet);"/>
+
+		<button height="30" width="150" text="TEST: init Races"
+				onClick="initRaces(sheet);"/>
+		<button height="30" width="150" text="TEST: check Races"
+				onClick="testaRaces();"/>
+		<edit field="sheet.atributos.nome" width="800" type="text"/>
+		<edit field="sheet.atributos.jogador" width="800" type="text"/>
+		<edit field="sheet.atributos.nivel" width="800" type="text"/>
+		<edit field="sheet.atributos.raca" width="800" type="text"/>
+		<edit field="sheet.test1.A" width="800" type="text"/>
+		<edit field="sheet.test1.B" width="800" type="text"/>
+		<edit field="sheet.test1.C" width="800" type="text"/>
+		<flowLineBreak/>
+
+		<LayoutAtributo campo="test2.A" atributo="A" align="client"/>
+		<flowLineBreak/>
+		<LayoutAtributo campo="test2.B" atributo="B"/>
+		<flowLineBreak/>
+		<LayoutAtributo campo="test2.C" atributo="C"/>
+		 
+
+	</flowLayout>
+
+	<event name="onScopeNodeChanged">
+		if sheet ~= nil then
+			setInterval(
+				function()
+				if sheet ~= nil then
+				local state = ndb.getState(sheet) ;
+					if state == "open" then
+						-- showMessage("TEST HERE");	
+					end;
+					if state ~= "opening" then
+						return false; -- parar de chamar o timer. 
+					end;
+				else
+					return false; -- Isso vai fazer a função timer parar de ser chamada
+				end;
+			end, 500);
+		end;
+</event>
+
+</form>		

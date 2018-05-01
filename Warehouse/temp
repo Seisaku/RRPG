@@ -1,0 +1,137 @@
+for key,value in attrTable do
+		mesa.chat:enviarMensagem("key = " .. key .. " value = " .. value);	    
+	end
+
+
+	<event name="onScopeNodeChanged">
+
+if sheet ~= nil then
+setInterval(
+function()
+if sheet ~= nil then
+local state = ndb.getState(sheet) ;
+
+if state == "open" then
+-- EXECUTE SEU CODIGO AQUI
+---
+----
+end;
+
+if state ~= "opening" then
+return false; -- parar de chamar o timer. 
+end;
+else
+return false; -- Isso vai fazer a função timer parar de ser chamada
+end;
+end, 500 );
+end;
+
+</event>
+
+
+
+===========================
+
+	mesa.chat:enviarMensagem(path .. " " .. ndb.getNodeName(sheet));
+		countC = 0;
+		listaC = {}
+		local campoP = string.gmatch(path ,"[%a,%d]+");
+		for c in campoP do
+			countC = countC +1;
+			table.insert(listaC,countC,c);
+		end
+		searchNode = sheet;
+		for i=1,countC do
+			if(searchNode ~= nil) then
+				searchNode = nodeContainsField()
+			end
+		end
+
+
+		==========================
+
+		childrenNodes = ndb.getChildNodes(database);
+		local nextNode
+		for key, child in pairs(childrenNodes) do
+			if (nodeIndex < countC) then
+				if(ndb.getNodeName(child) == nodeSearch) then
+					nodeIndex = nodeIndex+1;
+					nodeSearch = listaC[nodeIndex];
+					nextNode = child;
+				end
+			else
+				attributes = ndb.getAttributes(child)
+				for key, attr in pairs(attributes) do
+
+				end
+			end
+		end
+
+========================================================================================
+<!-- classe -->
+	<comboBox width="150" field="classe" 
+			items	= "{'Simples Corpo-a-Corpo', 'Simples à Distância','Marciais Corpo-a-Corpo','Marciais à Distância'}"
+			values	= "{'simplesC', 'simplesD','marciaisC','marciaisD'}"
+			value="simplesC"/>
+
+====================================================================================
+
+Atletismo 
+Acrobacia 
+Arcanismo 
+História 
+Investigação 
+Natureza 
+Religião 
+Adestrar Animais 
+Medicina 
+Atuação 
+Sobrevivência 
+Percepção 		
+Furtividade	
+Prestidigitação
+Intuição 		
+Intimidação	
+Persuasão	
+Enganação 
+
+===================================================================================
+
+<pericia nome="Espada"/>
+<pericia nome="Adaga"/>
+<pericia nome="Azagaia"/>
+<pericia nome="Bordao"/>
+<pericia nome="ClavaGrande"/>
+<pericia nome="FoiceCurta"/>
+<pericia nome="Lanca"/>
+<pericia nome="Maca"/>
+<pericia nome="Machadinha"/>
+<pericia nome="MarteloLeve"/>
+<pericia nome="Porrete"/>
+<pericia nome="ArcoCurto"/>;
+<pericia nome="BestaLeve"/>;
+<pericia nome="Dardo"/>;
+<pericia nome="Funda"/>;
+<pericia nome="Alabarda"/>;
+<pericia nome="Cimitarra"/>;
+<pericia nome="Chicote"/>;
+<pericia nome="EspadaCurta"/>;
+<pericia nome="EspadaGrande"/>;
+<pericia nome="EspadaLonga"/>;
+<pericia nome="Glaive"/>;
+<pericia nome="LancadeMontaria"/>;
+<pericia nome="LancaLonga"/>;
+<pericia nome="MacaEstrela"/>;
+<pericia nome="MachadoGrande"/>;
+<pericia nome="MachadodeBatalha"/>;
+<pericia nome="Malho"/>;
+<pericia nome="Mangual"/>;
+<pericia nome="MartelodeGuerra"/>;
+<pericia nome="PicaretadeGuerra"/>;
+<pericia nome="Rapieira"/>;
+<pericia nome="Tridente"/>;
+<pericia nome="ArcoLongo"/>;
+<pericia nome="BestadeMao"/>;
+<pericia nome="BestaPesada"/>;
+<pericia nome="Rede"/>;
+<pericia nome="Zarabatana"/>;

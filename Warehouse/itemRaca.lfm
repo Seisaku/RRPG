@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form name="itemRaca">
+
+	<flowLayout align="client">
+	<!-- imagem -->
+	<rectangle width="200" height="200" color="Gray">
+		<label align="client" text="Imagem" horzTextAlign="center"
+						vertTextAlign="center"/>
+		<image field="imagemDaRaca" editable="true" style="autoFit" 
+               width="200" height="200" center="false" />
+    </rectangle>
+	<!-- nome -->
+	<edit width="100" field="nome"/>
+	
+
+	<!-- bonusAtributos -->
+	<edit width="50" field="bonusAtaque"/>
+	<edit width="50" field="bonusDefesa"/>
+	<edit width="50" field="bonusAgilidade"/>
+	<edit width="50" field="bonusSorte"/>
+	<edit width="50" field="bonusResistenciaMagica"/>
+	<edit width="50" field="bonusRecurso"/>
+	<edit width="50" field="bonusVida"/>
+	
+	
+	<!-- Deslocamento -->
+	<edit width="100" field="deslocamento"/>
+
+	<!-- Altura -->
+	<edit width="100" field="altura"/>		
+
+	<!-- subracas -->
+	<edit width="100" field="subracas"/>	
+
+	
+	<!-- Idiomas -->
+	<edit width="100" field="idiomas.comum"/>	
+	<edit width="100" field="idiomas.sivestre"/>	
+	<edit width="100" field="idiomas.anao"/>	
+	<edit width="100" field="idiomas.elfico"/>	
+	<edit width="100" field="idiomas.abissal"/>
+
+	<button width="30" text="X" onClick="ndb.deleteNode(sheet);" margins="{left=2, right=5}"/>
+	</flowLayout>
+
+</form>

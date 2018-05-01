@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<form name="templates">
+	<template name="LayoutUmCampo">
+		<layout width="$(tamanho)" margins="{left=2, right=2}">
+			   <edit field="$(campo)" height="30" horzTextAlign="center" fontSize="20" align="top"/> 
+			   <label text="$(titulo)" align="top" horzTextAlign="center" 
+					  vertTextAlign="leading" autoSize="true"/>
+	   </layout>
+	</template>
+
+	<template name="LayoutAtributo" >		
+		<layout align="client" height="30" width="500" margins="{top = 2,left=2, right=2}">
+			<label align="left"  text="$(atributo)" width="50" horzTextAlign="center"
+			vertTextAlign="center"/>
+			<edit align="left" left="50" field="$(campo).valor" type="number" horzTextAlign="center" width="50"
+					onChange="updateAtributo(sheet, '$(atributo)', '$(campo)');"/>
+			<label align="left" left="100" width="100" field="$(campo).formula" horzTextAlign="center"/>
+			<label align="left" field="$(campo).bonustotal" visible="false"/>			
+		</layout>	
+	</template>
+
+	<template name="pericia">
+		<flowLayout width="140" height="20">					
+			<label text="$(nome)" height="20" width="100" horzTextAlign="center"
+				vertTextAlign="center"/>			 
+			<edit width="20" height="20" field="pericias.$(campo)" horzTextAlign="center" type="number" min="0" max="20"/>
+			<button text="*" width="20" height="20"
+		            onClick="rolarPericia(sheet, '$(nome)');"/>			
+		</flowLayout>
+	</template>
+
+	<template name="personalidade">
+		<flowLayout width="300" height="320" margins="{left=10, top=5}">
+			<label text="$(nome)" autoSize="true" width="300" height="20" horzTextAlign="center"/>
+	 		<textEditor width="300" height="300" field="$(campo)" margins="{top=5}"/>
+ 		</flowLayout>
+	</template>
+
+	<template name="caracteristica">
+		<flowLayout width="200" height="20" >
+			<label text="$(nome)" autoSize="true" width="95" height="20" horzTextAlign="center"/>
+			<edit width="100" height="20" field="$(campo)" horzTextAlign="center" margins="{left=5}"/>
+		</flowLayout>
+	</template>
+
+	<template name="habilidade">
+		<flowLayout width="200" height="20" >
+			<edit width="100" height="20" field="$(nome)" horzTextAlign="center" margins="{left=5}"/>
+			<edit width="100" height="20" field="$(nome).formula" horzTextAlign="center" margins="{left=5}"/>
+			<edit width="100" height="20" field="$(nome).custo" horzTextAlign="center" margins="{left=5}"/>
+		</flowLayout>
+	</template>
+
+</form>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout width="310" autoHeight="true">
+<button width="20" height="20" text="+" onClick="self.frmHabilidade:append();"/>
+<label 	width="310" height="20" text="Habilidades" horzTextAlign="center"/>
+<flowLineBreak/>
+<label 	width="70" height="20" text="Nome" 	horzTextAlign="center" margins="{left=5}"/>
+<label 	width="70" height="20" text="Dado" horzTextAlign="center" margins="{left=5}"/>
+<label 	width="30" height="20" text="Mod" horzTextAlign="center" margins="{left=5}"/>
+<label 	width="30" height="20" text="Custo"   horzTextAlign="center" margins="{left=5}"/>
+<flowLineBreak/>
+<recordList width="500" autoHeight="true" name="frmHabilidade" field="habilidades" templateForm="frmHabilidade"/>
+</flowLayout>
