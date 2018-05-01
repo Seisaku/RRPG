@@ -24,13 +24,13 @@ function rollTeste(sheet, roll, sor, msg)
             critMsg = "Critico!!! " .. limit;
             critroll = rollCritical(crit, sorte);
             resultC = printRolagem(sheet, critroll, critMsg, sorte);
-            mesa.chat:enviarMensagem(" [§K7]" .. resultR .. " + [§K8]" .. resultC .. "[§K1] = [§K12]" .. resultR+resultC);
+            mesa.activeChat:enviarMensagem(" [§K7]" .. resultR .. " + [§K8]" .. resultC .. "[§K1] = [§K12]" .. resultR+resultC);
             crit, fail = checkCriticalnFail(critroll, fail, sorte);
             resultR=resultR+resultC;
         end
 
         if fail > 0 then
-            mesa.chat:enviarMensagem("Critical Fail!!! " .. fail);       
+            mesa.activeChat:enviarMensagem("Critical Fail!!! " .. fail);       
         end
 end
 
@@ -102,7 +102,7 @@ function printRolagem(sheet, rolagem, msg, sor)
                 end;                
         end
         outputRoll = outputRoll .. "[§K1]} = [§K9]" .. r .. "[§K14]<< " .. msg .. " >>";        
-        mesa.chat:enviarMensagem(outputRoll);
+        mesa.activeChat:enviarMensagem(outputRoll);
         return r;
 end
 
