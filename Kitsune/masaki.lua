@@ -81,7 +81,7 @@ function getNodeFromPath(path, sheet)
 			field = listaC["nodeIndex"];
 		end
 		atributos = ndb.getAttributes(activeNode)
-		mesa.chat:enviarMensagem(field.."="..atributos["field"]);
+		mesa.activeChat:enviarMensagem(field.."="..atributos["field"]);
 		atributos["field"] = "testFind";
 	else
 		return nil;
@@ -203,11 +203,17 @@ function rolarSorte(sheet)
 	end
 end
 
-
 function rolarMagia(sheet)
 	local mesa = rrpg.getMesaDe(sheet);	
 	if (sheet.atributos.ataqueFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.magiaFormula, sheet.atributos.sorte, "Magia");
+	end
+end
+
+function rolarVida(sheet)
+	local mesa = rrpg.getMesaDe(sheet);	
+	if (sheet.atributos.ataqueFormula ~= nil) then
+		rollTeste(sheet, sheet.atributos.vidaFormula, sheet.atributos.sorte, "Vida");
 	end
 end
 

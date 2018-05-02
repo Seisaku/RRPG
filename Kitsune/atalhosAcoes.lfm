@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form name="frmAtalhosAcoes" formType="tablesDock" 
+	 dataType="RRPG.DataTypeUnico.atalhosAcoes"
+	  title="Atalhos"
+	  onNodeReady="initializeActions(sheet)">
+
+	  <flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
+		  <button text="ATQ" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoAtaque(sheet);"/>
+		  
+		  <button text="DEF" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoDefesa(sheet);"/>
+
+		  <button text="AGI" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoAgilidade(sheet);"/>
+		  
+		  <button text="SOR" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoSorte(sheet);"/>
+		  
+		  <button text="MAG" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoMagia(sheet);"/>
+		  
+		  <button text="RMAG" width="50" height="20" margins="{left = 5, top = 5" onClick="atalhoRMagia(sheet);"/>
+		  
+		  <button text="VID" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoVida(sheet);"/>
+
+		  <button text="INI" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoIniciativa(sheet);"/>
+	  </flowLayout>
+</form>
