@@ -675,7 +675,8 @@ function deleteEquip(sheet)
 end
 
 function rolarPericia2(pericia)
-	local mesa = rrpg.getMesaDe(pericia);
+	local mesa = rrpg.getMesaDe(pericia);	
+
 	if(pericia.nome == nil) then
 		pericia.nome = "pericia"
 	end
@@ -687,7 +688,9 @@ function rolarPericia2(pericia)
 	valor = pericia.valor;
 
 	pericias = ndb.getParent(pericia);
+	database = ndb.getParent(pericias);
 	personagem = ndb.getParent(pericias);
+	atributos = getChildNodeByName(personagem, "atributos");
  
 	proficiencia = getProficiencia(personagem);
 
@@ -697,7 +700,12 @@ function rolarPericia2(pericia)
 		jogada = "1D100";
 	end
 	
-	sorte = personagem.atributos.sorte
+	if(atributos ~= nil) then
+		sorte = atributos.sorte;
+	else
+		sorte = 1;
+	end
+
 	rollTeste(personagem, jogada, sorte, nome);
 
 end
