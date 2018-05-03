@@ -3,7 +3,9 @@ local meuPersonagem
 
 function initializeActions(sheet)
 	local personagemItem = getMyChar(sheet);
-	personagemItem:loadSheetNDB(setLocalPersonagem)
+	if(personagemItem ~= nil) then
+		personagemItem:loadSheetNDB(setLocalPersonagem)
+	end
 end
 
 function setLocalPersonagem( node )

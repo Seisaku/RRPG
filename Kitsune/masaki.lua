@@ -480,6 +480,7 @@ function updateVida(sheet)
 			sheet.atributos.vidaAtual=sheet.atributos.vidaMax;
 		end
 		sheet.atributos.vidaAtualxTotal=sheet.atributos.vidaAtual .. "|" .. sheet.atributos.vidaMax;
+		sheet.atributos.vidaFormula = sheet.atributos.vida .. "D100";
 		syncVida(sheet);
 	end
 end
