@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout align="client" autoHeight="true">
+	
+	<label horzTextAlign="center" text="Idiomas Conhecidos" align="top" margins="{top=15}"/>
+	<flowLineBreak/>
+	<idioma campo="anao" nome="Anão"/>
+	<idioma campo="comum" nome="Comum"/>
+	<idioma campo="elfico" nome="Elfico"/>
+	<idioma campo="gigante" nome="Gigante"/>
+	<idioma campo="gnomico" nome="Gnômico"/>
+	<idioma campo="goblin" nome="Goblin"/>
+	<idioma campo="halfling" nome="Halfling"/>
+	<idioma campo="orc" nome="Orc"/>
+	<flowLineBreak/>
+	 
+	<label horzTextAlign="center" text="Idiomas Exóticos" align="top" margins="{top=15}"/>
+	<flowLineBreak/>
+	<idioma campo="abissal" nome="Abissal"/>
+	<idioma campo="Celestial" nome="Celestial"/>
+	<idioma campo="draconico" nome="Dracônico"/>
+	<idioma campo="infernal" nome="Infernal"/>
+	<idioma campo="primordial" nome="Primordial"/>
+	<idioma campo="silvestre" nome="Silvestre"/>
+	<idioma campo="subcomum" nome="Subcomum"/>
+	<idioma campo="subterrâneo" nome="Subterrâneo"/>
+	<flowLineBreak/>
+	
+	<label horzTextAlign="center" text="Idiomas Adicionais" align="top" margins="{top=15}"/>
+	<button height="20" onClick="self.rclIdiomasAdicionais:append();" text="+" width="20"/>
+	<flowLineBreak/>
+	<recordList autoHeight="true" field="idomas.adicionais" name="rclIdiomasAdicionais" templateForm="frmIdioma" width="500"/>
+</flowLayout>

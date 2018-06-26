@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<form formType="sheetTemplate" dataType="br.com.sigma.kitsune.ficha1" 
-	 title="Kitsune's System" name="Kitsune"
-	 onNodeReady="initialize(sheet)">
-	 
-	 <import file="templates.xml"/>
-
+<form dataType="br.com.sigma.kitsune.ficha1" formType="sheetTemplate" name="Kitsune" onNodeReady="initialize(sheet)" title="Kitsune's System">
+	<import file="templates.xml"/>
 	<tabControl align="client">
 		<tab title="Principal">
 			<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
@@ -28,41 +23,30 @@
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="magias"/>
 		</tab>
 		<tab title="Habilidades">
-			<flowLayout align="client">
-			<import file="habilidades.xml"/>
-			<flowLineBreak/>
-			<import file="pericias.xml"/>
-		</flowLayout>
+			<tabControl align="client">
+				<tab title="Habilidades">
+					<import file="habilidades.xml"/>
+				</tab>
+				<tab title="Pericias">
+					<import file="pericias.xml"/>
+				</tab>
+				<tab title="Idiomas">
+					<import file="idiomas.xml"/>
+				</tab>
+			</tabControl>
 		</tab>
 		<tab title="Profissão">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="profissao"/>
 		</tab>
 		<tab title="Raça">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="racaTxt"/>
-		</tab>		
-		<tab title="Caracteristicas">
-
-			<flowLayout align="client" margins="{left=10, top=15}">
-
-				<image field="imagemDoPersonagemCorpo" editable="true" style="stretch" 
-	       		width="400" height="800" center="false" />
-
-				<flowLayout width="400" height="800">
-					<caracteristica nome="Idade" campo="idade"/>
-					<caracteristica nome="Altura" campo="altura"/>
-					<caracteristica nome="Cor dos Olhos" campo="corOlhos"/>
-					<caracteristica nome="Cor da Pele" campo="CorPele"/>
-					<caracteristica nome="Cor dos Cabelos" campo="corCabelos"/>				
-					<caracteristica nome="Peso" campo="peso"/>
-					<flowLineBreak/>
-					<textoCurto campo="descricao" nome="Descrição" tamanho="400"/>
-				</flowLayout>
-			</flowLayout>
 		</tab>
-		
-		<tab title="Personalidade">			
+		<tab title="Caracteristicas">
+			<import file="caracteristicas.xml"/>
+		</tab>
+		<tab title="Personalidade">
 			<tabControl align="client">
-				<tab title="Antecedente">					
+				<tab title="Antecedente">
 					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="antecedente"/>
 				</tab>
 				<tab title="Personalidade">
@@ -82,62 +66,44 @@
 				</tab>
 			</tabControl>
 		</tab>
-	<tab title="Classe">
-		<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="classeTxt"/>
-	</tab>
-</tabControl>
-
+		<tab title="Classe">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="classeTxt"/>
+		</tab>
+	</tabControl>
 	<dataLink fields="{'nivel', 'experienciaAtual','desejo'}">
-		<event name="onChange">
-			updateBase(sheet);
+		<event name="onChange">updateBase(sheet);
 		</event>
 	</dataLink>
-
 	<dataLink fields="{'atributos.ataque', 'atributos.ataqueMod'}">
-		<event name="onChange">
-			updateAtaque(sheet);    
+		<event name="onChange">updateAtaque(sheet);    
 		</event>
 	</dataLink>
-
 	<dataLink fields="{'atributos.defesa', 'atributos.defesaMod'}">
-		<event name="onChange">
-			updateDefesa(sheet);	
+		<event name="onChange">updateDefesa(sheet);	
 		</event>
 	</dataLink>
-
 	<dataLink fields="{'atributos.magia', 'atributos.magiaMod'}">
-		<event name="onChange">
-			updateMagia(sheet);    
+		<event name="onChange">updateMagia(sheet);    
 		</event>
 	</dataLink>
-
 	<dataLink fields="{'atributos.resistenciaMagica', 'atributos.resistenciaMagicaMod'}">
-		<event name="onChange">
-			updateResistenciaMagica(sheet);	
+		<event name="onChange">updateResistenciaMagica(sheet);	
 		</event>
 	</dataLink>
-
-	 <dataLink field="atributos.sorte">
-		<event name="onChange">
-			updateSorte(sheet);	
+	<dataLink field="atributos.sorte">
+		<event name="onChange">updateSorte(sheet);	
 		</event>
 	</dataLink>
-
 	<dataLink fields="{'atributos.agilidade', 'atributos.agilidadeMod'}">
-		<event name="onChange">
-			updateAgilidade(sheet);
+		<event name="onChange">updateAgilidade(sheet);
 		</event>
 	</dataLink>
-
 	<dataLink field="atributos.vida">
-		<event name="onChange">
-			updateVida(sheet);
+		<event name="onChange">updateVida(sheet);
 		</event>
 	</dataLink>
 	<dataLink field="atributos.recurso">
-		<event name="onChange">
-			updateRecurso(sheet);
+		<event name="onChange">updateRecurso(sheet);
 		</event>
 	</dataLink>
-
 </form>

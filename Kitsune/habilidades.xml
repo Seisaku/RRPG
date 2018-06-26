@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout width="310" autoHeight="true">
+<flowLayout align="client" autoHeight="true">
 <button width="20" height="20" text="+" onClick="self.frmHabilidade:append();"/>
 <label 	width="310" height="20" text="Habilidades" horzTextAlign="center"/>
 <flowLineBreak/>
