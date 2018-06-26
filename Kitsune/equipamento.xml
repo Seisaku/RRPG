@@ -21,8 +21,7 @@
 	    <label field="equipamento.defesaTotal" align="right"/>
 	<flowLineBreak/> 
 		<button width="20" height="20" text="+" onClick="self.rclArmaduras:append();"/>
-		<label horzTextAlign="center" width="150" text="Nome"/>
-		<label horzTextAlign="center" width="30"  text="P"/>
+		<label horzTextAlign="center" width="150" text="Nome"/>		
 		<label horzTextAlign="center" width="30"  text="Bônus"/>
 	<flowLineBreak/>
 		<recordList width="320" autoHeight="true" name="rclArmaduras" field="equipamento.armaduras" templateForm="frmArmadura"/>

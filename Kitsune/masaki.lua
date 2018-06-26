@@ -670,7 +670,11 @@ end
 
 
 function deleteEquip(sheet)
-	
+	ndb.deleteNode(sheet);
+	updateBonus(sheet);
+end
+
+function deleteIdioma(sheet)
 	ndb.deleteNode(sheet);
 	updateBonus(sheet);
 end
