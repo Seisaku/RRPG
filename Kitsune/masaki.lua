@@ -81,7 +81,7 @@ function getNodeFromPath(path, sheet)
 			field = listaC["nodeIndex"];
 		end
 		atributos = ndb.getAttributes(activeNode)
-		mesa.chat:enviarMensagem(field.."="..atributos["field"]);
+		mesa.activeChat:enviarMensagem(field.."="..atributos["field"]);
 		atributos["field"] = "testFind";
 	else
 		return nil;
@@ -203,11 +203,17 @@ function rolarSorte(sheet)
 	end
 end
 
-
 function rolarMagia(sheet)
 	local mesa = rrpg.getMesaDe(sheet);	
 	if (sheet.atributos.ataqueFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.magiaFormula, sheet.atributos.sorte, "Magia");
+	end
+end
+
+function rolarVida(sheet)
+	local mesa = rrpg.getMesaDe(sheet);	
+	if (sheet.atributos.ataqueFormula ~= nil) then
+		rollTeste(sheet, sheet.atributos.vidaFormula, sheet.atributos.sorte, "Vida");
 	end
 end
 
@@ -474,6 +480,7 @@ function updateVida(sheet)
 			sheet.atributos.vidaAtual=sheet.atributos.vidaMax;
 		end
 		sheet.atributos.vidaAtualxTotal=sheet.atributos.vidaAtual .. "|" .. sheet.atributos.vidaMax;
+		sheet.atributos.vidaFormula = sheet.atributos.vida .. "D100";
 		syncVida(sheet);
 	end
 end
@@ -663,13 +670,18 @@ end
 
 
 function deleteEquip(sheet)
-	
+	ndb.deleteNode(sheet);
+	updateBonus(sheet);
+end
+
+function deleteIdioma(sheet)
 	ndb.deleteNode(sheet);
 	updateBonus(sheet);
 end
 
 function rolarPericia2(pericia)
-	local mesa = rrpg.getMesaDe(pericia);
+	local mesa = rrpg.getMesaDe(pericia);	
+
 	if(pericia.nome == nil) then
 		pericia.nome = "pericia"
 	end
@@ -681,7 +693,9 @@ function rolarPericia2(pericia)
 	valor = pericia.valor;
 
 	pericias = ndb.getParent(pericia);
+	database = ndb.getParent(pericias);
 	personagem = ndb.getParent(pericias);
+	atributos = getChildNodeByName(personagem, "atributos");
  
 	proficiencia = getProficiencia(personagem);
 
@@ -691,7 +705,12 @@ function rolarPericia2(pericia)
 		jogada = "1D100";
 	end
 	
-	sorte = personagem.atributos.sorte
+	if(atributos ~= nil) then
+		sorte = atributos.sorte;
+	else
+		sorte = 1;
+	end
+
 	rollTeste(personagem, jogada, sorte, nome);
 
 end
