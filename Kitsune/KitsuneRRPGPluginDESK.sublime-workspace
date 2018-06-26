@@ -128,23 +128,30 @@
 	},
 	"expanded_folders":
 	[
-		"/C/RRPG/RRPG/projetos/Kitsune"
+		"/C/RRPG/RRPG/projetos/Kitsune",
+		"/C/RRPG/RRPG/projetos/Kitsune/sdk"
 	],
 	"file_history":
 	[
-		"/C/RRPG/RRPG/projetos/Warehouse/tests.lua",
-		"/C/RRPG/RRPG/projetos/Kitsune/masaki.lua",
-		"/C/RRPG/RRPG/projetos/Kitsune/macros.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/equipamento.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/kitsuneNPC.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/arma.lfm",
+		"/E/Cloud/OneDrive/Pessoal/temp/docker-compose.yaml",
+		"/C/RRPG/RRPG/projetos/Kitsune/npc.lfm",
 		"/C/RRPG/RRPG/projetos/Kitsune/atributos.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/kitsune1.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/tools.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/acoes.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/masaki.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/module.xml",
+		"/C/RRPG/RRPG/projetos/Warehouse/tests.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/macros.lua",
 		"/C/RRPG/RRPG/projetos/Kitsune/principal.xml",
 		"/C/RRPG/RRPG/projetos/Kitsune/armadura.lfm",
-		"/C/RRPG/RRPG/projetos/Kitsune/arma.lfm",
 		"/C/RRPG/RRPG/projetos/Kitsune/templates.xml",
-		"/C/RRPG/RRPG/projetos/Kitsune/equipamento.xml",
 		"/C/RRPG/RRPG/projetos/Kitsune/avatar.xml",
 		"/C/RRPG/RRPG/projetos/.gitignore",
 		"/C/RRPG/RRPG/projetos/Kitsune/kitsuneTests.lfm",
-		"/C/RRPG/RRPG/projetos/Kitsune/kitsune1.lfm",
 		"/C/RRPG/RRPG/projetos/Kitsune/KitsuneRRPGPlugin.sublime-project",
 		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/formulas.lua",
 		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/tests.lfm",
@@ -192,13 +199,14 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 60.0
 	},
 	"find_in_files":
 	{
 		"height": 104.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -206,6 +214,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\n\t\t<edit field=\"atributos.ataque\" height=\"20\" width=\"30\" type=\"number\" min=\"1\" max=\"20\" textPrompt=\"1\" horzTextAlign=\"center\" />\n\t\t\t",
+			"\n\t\t",
+			"tab",
+			"updateVida",
+			"formula",
+			"personagem = ndb.getParent(pericias);"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -230,7 +244,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 21.0
+		"height": 22.0
 	},
 	"input":
 	{
@@ -313,7 +327,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 279.0,
+	"side_bar_width": 319.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -29,10 +29,18 @@
 		</flowLayout>
 	</template>
 
-	<template name="personalidade">
-		<flowLayout width="300" height="320" margins="{left=10, top=5}">
-			<label text="$(nome)" autoSize="true" width="300" height="20" horzTextAlign="center"/>
-	 		<textEditor width="300" height="300" field="$(campo)" margins="{top=5}"/>
+	<template name="idioma">
+		<flowLayout width="140" height="20">
+			<checkBox 	width="20" field="$(campo)"/>					
+			<label text="$(nome)" height="20" width="100" horzTextAlign="center"
+				vertTextAlign="center"/>			 
+		</flowLayout>
+	</template>
+
+	<template name="textoCurto">
+		<flowLayout width="$(tamanho)" height="320" margins="{left=10, top=5}">
+			<label text="$(nome)" autoSize="true" width="$(tamanho)" height="20" horzTextAlign="center"/>
+	 		<textEditor width="$(tamanho)" height="300" field="$(campo)" margins="{top=5}"/>
  		</flowLayout>
 	</template>
 

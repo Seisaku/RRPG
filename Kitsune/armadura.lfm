@@ -3,7 +3,6 @@
 	<flowLayout align="client">
 		<checkBox   width="20"  height="20" field="equipado"/>
         <edit       width="150" height="20" field="nome"/>
-        <checkBox   width="20"  height="20" field="proficiente"/>
 		<edit       width="30"  height="20" field="bonus" type="number" min="1" max="100"/>
 		<button     width="20"  height="20" text="X" onClick="deleteEquip(sheet)" margins="{left=2, right=5}"/>	
 	</flowLayout>

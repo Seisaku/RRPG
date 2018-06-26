@@ -11,8 +11,8 @@
  			<flowLineBreak/>
 
 			<label text="Raça"/>
- 			<comboBox  width="100" field="raca" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros'}"
-                  values="{'A', 'D', 'E', 'G', 'Ha','Hu','ME','MO','T','N','K','O'}"/>
+ 			<comboBox  width="100" field="raca" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros','Nephilim'}"
+                  values="{'A', 'D', 'E', 'G', 'Ha','Hu','ME','MO','T','Ne','K','ON','Np'}"/>
 
             <flowLineBreak/>
 			<label text="Classe"/>

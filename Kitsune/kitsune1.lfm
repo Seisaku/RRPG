@@ -6,64 +6,82 @@
 	 
 	 <import file="templates.xml"/>
 
-<tabControl align="client">
-	<tab title="Principal">
-		<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
-			<import file="principal.xml"/>
-			<import file="avatar.xml"/>
-			<import file="atributos.xml"/>
-			<import file="equipamento.xml"/>
-		</flowLayout>
-	</tab>
-	<tab title="Inventário">
-		<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="inventario"/>
-	</tab>
-	<tab title="História">
-		<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="historia"/>
-	</tab>
-	<tab title="Anotações">
-		<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="anotacoes"/>
-	</tab>
-	<tab title="Magias">
-		<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="magias"/>
-	</tab>
-	<tab title="Habilidades">
-		<import file="habilidades.xml"/>
-	</tab>
-	<tab title="Pericias">
-		<import file="pericias.xml"/>
-	</tab>
-	<tab title="Profissão">
-		<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="profissao"/>
-	</tab>
-	<tab title="Raça">
-		<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="racaTxt"/>
-	</tab>
-	<tab title="Personalidade">
-		<flowLayout align="client">
-		<label text="Antecedente" width="75" height="20" margins="{top = 5}"/>
-		<edit field="antecedente" width="100" height="20" type="text"/>
-		<flowLineBreak/>
-
-		<flowLayout width="200" height="100">
-			<label text="caracteristicas" width="200" height="20" horzTextAlign="center"/>
+	<tabControl align="client">
+		<tab title="Principal">
+			<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
+				<import file="principal.xml"/>
+				<import file="avatar.xml"/>
+				<import file="atributos.xml"/>
+				<import file="equipamento.xml"/>
+			</flowLayout>
+		</tab>
+		<tab title="Inventário">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="inventario"/>
+		</tab>
+		<tab title="História">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="historia"/>
+		</tab>
+		<tab title="Anotações">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="anotacoes"/>
+		</tab>
+		<tab title="Magias">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="magias"/>
+		</tab>
+		<tab title="Habilidades">
+			<flowLayout align="client">
+			<import file="habilidades.xml"/>
 			<flowLineBreak/>
-			<caracteristica nome="Idade" campo="idade"/>
-			<caracteristica nome="Altura" campo="altura"/>
-			<caracteristica nome="Cor dos Olhos" campo="corOlhos"/>
-			<caracteristica nome="Cor da Pele" campo="CorPele"/>
-			<caracteristica nome="Cor dos Cabelos" campo="corCabelos"/>
+			<import file="pericias.xml"/>
 		</flowLayout>
-		<flowLineBreak/>
+		</tab>
+		<tab title="Profissão">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="profissao"/>
+		</tab>
+		<tab title="Raça">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="racaTxt"/>
+		</tab>		
+		<tab title="Caracteristicas">
 
-		<personalidade nome="Personalidade" campo="personalidades"/>
-		<personalidade nome="Ideais" campo="ideais"/>
-		<flowLineBreak/>
-		<personalidade nome="Fraquezas" campo="fraquezas"/>
-		<personalidade nome="Vínculos" campo="vinculos"/>
+			<flowLayout align="client" margins="{left=10, top=15}">
 
-		</flowLayout>
-	</tab>
+				<image field="imagemDoPersonagemCorpo" editable="true" style="stretch" 
+	       		width="400" height="800" center="false" />
+
+				<flowLayout width="400" height="800">
+					<caracteristica nome="Idade" campo="idade"/>
+					<caracteristica nome="Altura" campo="altura"/>
+					<caracteristica nome="Cor dos Olhos" campo="corOlhos"/>
+					<caracteristica nome="Cor da Pele" campo="CorPele"/>
+					<caracteristica nome="Cor dos Cabelos" campo="corCabelos"/>				
+					<caracteristica nome="Peso" campo="peso"/>
+					<flowLineBreak/>
+					<textoCurto campo="descricao" nome="Descrição" tamanho="400"/>
+				</flowLayout>
+			</flowLayout>
+		</tab>
+		
+		<tab title="Personalidade">			
+			<tabControl align="client">
+				<tab title="Antecedente">					
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="antecedente"/>
+				</tab>
+				<tab title="Personalidade">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="personalidades"/>
+				</tab>
+				<tab title="Ideais">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="ideais"/>
+				</tab>
+				<tab title="Fraquezas">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="fraquezas"/>
+				</tab>
+				<tab title="Vínculos">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="vinculos"/>
+				</tab>
+				<tab title="Divindade">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="divindade"/>
+				</tab>
+			</tabControl>
+		</tab>
 	<tab title="Classe">
 		<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="classeTxt"/>
 	</tab>
