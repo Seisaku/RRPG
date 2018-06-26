@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.4b">
 	<id>KITSUNE_SYSTEM_PLUGIN</id>
-	<version>1.5</version>
+	<version>2.0</version>
 	<name>Kitsune's System</name>
 	<description>Plugin adiciona suporte para o sistema desenvolvido por Kitsune</description>
 	<author>Masaki</author>
-	<site>http://www.seusite.com.br</site>
+	<site>https://github.com/Seisaku/RRPG</site>
 	<contact>rafkawa@gmail.com</contact>
 </module>

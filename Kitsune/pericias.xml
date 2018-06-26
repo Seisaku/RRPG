@@ -1,33 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout width="300" autoHeight="true">
-	<label text="Perícias" horzTextAlign="center" width="300"/>
+<flowLayout autoHeight="true" width="300">
+	<label horzTextAlign="center" text="Perícias" width="300"/>
 	<flowLineBreak/>
-	<pericia nome="Atletismo" campo="Atletismo"/>
-	<pericia nome="Acrobacia" campo="Acrobacia"/>
-	<pericia nome="Arcanismo" campo="Arcanismo"/>
-	<pericia nome="História" campo="Historia"/>
-	<pericia nome="Investigação" campo="Investigacao"/>
-	<pericia nome="Natureza" campo="Natureza"/>
-	<pericia nome="Religião" campo="Religiao"/>
-	<pericia nome="Adestrar Animais" campo="AdestrarAnimais"/>
-	<pericia nome="Medicina" campo="Medicina"/>
-	<pericia nome="Atuação" campo="Atuacao"/>
-	<pericia nome="Sobrevivência" campo="Sobrevivencia"/>
-	<pericia nome="Percepção" campo="Percepcao"/>
-	<pericia nome="Furtividade" campo="Furtividade"/>
-	<pericia nome="Prestidigitação" campo="Prestidigitacao"/>
-	<pericia nome="Intuição" campo="Intuicao"/>
-	<pericia nome="Intimidação" campo="Intimidacao"/>
-	<pericia nome="Persuasão" campo="Persuasao"/>
-	<pericia nome="Enganação" campo="Enganacao"/>
+	<pericia campo="Atletismo" nome="Atletismo"/>
+	<pericia campo="Acrobacia" nome="Acrobacia"/>
+	<pericia campo="Arcanismo" nome="Arcanismo"/>
+	<pericia campo="Historia" nome="História"/>
+	<pericia campo="Investigacao" nome="Investigação"/>
+	<pericia campo="Natureza" nome="Natureza"/>
+	<pericia campo="Religiao" nome="Religião"/>
+	<pericia campo="AdestrarAnimais" nome="Adestrar Animais"/>
+	<pericia campo="Medicina" nome="Medicina"/>
+	<pericia campo="Atuacao" nome="Atuação"/>
+	<pericia campo="Sobrevivencia" nome="Sobrevivência"/>
+	<pericia campo="Percepcao" nome="Percepção"/>
+	<pericia campo="Furtividade" nome="Furtividade"/>
+	<pericia campo="Prestidigitacao" nome="Prestidigitação"/>
+	<pericia campo="Intuicao" nome="Intuição"/>
+	<pericia campo="Intimidacao" nome="Intimidação"/>
+	<pericia campo="Persuasao" nome="Persuasão"/>
+	<pericia campo="Enganacao" nome="Enganação"/>
+	<flowLayout autoHeight="true" margins="{top=15}" width="250">
+		<label horzTextAlign="center" text="Perícias adicionais" width="250"/>
+		<flowLineBreak/>
+		<button height="20" onClick="self.frmPericia:append();" text="+" width="20"/>
+		<label horzTextAlign="center" text="Nome" width="130"/>
+		<label horzTextAlign="center" text="Valor" width="30"/>
+		<flowLineBreak/>
+		<recordList autoHeight="true" field="pericias" name="frmPericia" templateForm="frmPericia" width="250"/>
+	</flowLayout>
+	<flowLineBreak/>
+	<flowLayout align="client" width="300" autoHeight="true">
+		<label horzTextAlign="center" text="Idiomas Conhecidos" width="300"/>
+		<flowLineBreak/>
+		<idioma campo="anao" nome="Anão"/>
+		<idioma campo="comum" nome="Comum"/>
+		<idioma campo="elfico" nome="Elfico"/>
+		<idioma campo="gigante" nome="Gigante"/>
+		<idioma campo="gnomico" nome="Gnômico"/>
+		<idioma campo="goblin" nome="Goblin"/>
+		<idioma campo="halfling" nome="Halfling"/>
+		<idioma campo="orc" nome="Orc"/>
 
-	<flowLayout autoHeight="true" width="250" margins="{top=15}">
-		<label horzTextAlign="center" width="250" text="Perícias adicionais"/>
-	<flowLineBreak/>
-		<button width="20" height="20" text="+" onClick="self.frmPericia:append();"/>
-		<label horzTextAlign="center" width="130" text="Nome"/>
-		<label horzTextAlign="center" width="30"  text="Valor"/>
-	<flowLineBreak/>
-		<recordList width="250" autoHeight="true" name="frmPericia" field="pericias" templateForm="frmPericia"/>
+		
+		<label horzTextAlign="center" text="Idiomas Exóticos" width="300"/>
+		<idioma campo="abissal" nome="Abissal"/>
+		<idioma campo="Celestial" nome="Celestial"/>
+		<idioma campo="draconico" nome="Dracônico"/>
+		<idioma campo="infernal" nome="Infernal"/>
+		<idioma campo="primordial" nome="Primordial"/>
+		<idioma campo="silvestre" nome="Silvestre"/>
+		<idioma campo="subcomum" nome="Subcomum"/>		
+		<idioma campo="subterrâneo" nome="Subterrâneo"/>
+
+		<flowLineBreak/>
+		<label horzTextAlign="center" text="Idiomas Adicionais" width="300"/>
+		<button width="20" height="20" text="+" onClick="self.rclIdiomasAdicionais:append();"/>
+		<flowLineBreak/>
+		<recordList autoHeight="true" field="idomas.adicionais" name="rclIdiomasAdicionais" templateForm="frmIdioma" width="500"/>
 	</flowLayout>
 </flowLayout>

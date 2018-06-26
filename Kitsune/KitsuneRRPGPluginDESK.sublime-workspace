@@ -1,0 +1,335 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"get",
+				"getMyChar"
+			],
+			[
+				"A",
+				"frmAtalhosAcoes"
+			],
+			[
+				"auto",
+				"autoHeight"
+			],
+			[
+				"up",
+				"updateDefesaFormula"
+			],
+			[
+				"sh",
+				"sheet"
+			],
+			[
+				"pri",
+				"printAllChildren"
+			],
+			[
+				"bonus",
+				"totalBonus"
+			],
+			[
+				"fun",
+				"function\tfunction"
+			],
+			[
+				"la",
+				"layout"
+			],
+			[
+				"n",
+				"ndb"
+			],
+			[
+				"par",
+				"pairs"
+			],
+			[
+				"ca",
+				"campoP"
+			],
+			[
+				"chi",
+				"childrenNodes"
+			],
+			[
+				"s",
+				"sheet"
+			],
+			[
+				"a",
+				"atributos"
+			],
+			[
+				"getNo",
+				"getNodeName"
+			],
+			[
+				"pa",
+				"Parent"
+			],
+			[
+				"fu",
+				"function\tfunction"
+			],
+			[
+				"e",
+				"edit"
+			],
+			[
+				"ar",
+				"Armadura"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pac",
+		"selected_items":
+		[
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pack\t",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/RRPG/RRPG/projetos/Kitsune",
+		"/C/RRPG/RRPG/projetos/Kitsune/sdk"
+	],
+	"file_history":
+	[
+		"/C/RRPG/RRPG/projetos/Kitsune/equipamento.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/kitsuneNPC.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/arma.lfm",
+		"/E/Cloud/OneDrive/Pessoal/temp/docker-compose.yaml",
+		"/C/RRPG/RRPG/projetos/Kitsune/npc.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/atributos.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/kitsune1.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/tools.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/acoes.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/masaki.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/module.xml",
+		"/C/RRPG/RRPG/projetos/Warehouse/tests.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/macros.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/principal.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/armadura.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/templates.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/avatar.xml",
+		"/C/RRPG/RRPG/projetos/.gitignore",
+		"/C/RRPG/RRPG/projetos/Kitsune/kitsuneTests.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/KitsuneRRPGPlugin.sublime-project",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/formulas.lua",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/tests.lfm",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/kitsune1.lfm",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/templates.xml",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/masaki.lua",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/pericia.lfm",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/armas.lfm",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/itemArma.lfm",
+		"/E/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/equipamento.lfm",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/temp",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/itemRaca.lfm",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/proficienciaArma.lfm",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/module.xml",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/templates.xml",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/kitsune1.lfm",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/equipamento.lfm",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/output/rdkObjs/tests.lfm.lua",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/output/rdkObjs/kitsune1.lfm.lua",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/sdk/rrpgGUI.lua",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/output/rdkObjs/equipamento.lfm.lua",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/orion.xml",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/sdk/rrpg.lua",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/temp.xml",
+		"/D/Cloud/Dropbox/RPG/RRPG/projetos/Kitsune/output/projetos.rpk",
+		"/D/Games/RRPG/projetos/kitsune1.lfm",
+		"/D/Games/RRPG/projetos/module.xml",
+		"/D/Cloud/Dropbox/Projetos/Docker/compose/docker-compose.yml",
+		"/C/Users/seisa/Documents/My games/XCOM2 War of the Chosen/XComGame/Config/XComRulerReactionsRevised_Settings.ini",
+		"/C/Users/seisa/Documents/My games/Fallout4/Fallout4.ini",
+		"/C/Users/seisa/Documents/My games/Fallout4/Fallout4Custom.ini",
+		"/C/Users/seisa/Documents/My games/Fallout4/Fallout4Prefs.ini",
+		"/C/Users/seisa/AppData/Roaming/Sublime Text 3/Packages/SublimePapyrus/SublimePapyrus.sublime-settings",
+		"/C/Users/seisa/AppData/Roaming/Sublime Text 3/Packages/User/SublimePapyrus.sublime-settings",
+		"/C/Users/seisa/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/seisa/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/D/docker/hybris/chef.rb",
+		"/D/docker/hybris/Dockerfile",
+		"/C/Users/seisa/AppData/Roaming/Sublime Text 3/Packages/RegexExplainTip/RegexExplainTip.sublime-settings",
+		"/D/docker/hybris/hello.rb",
+		"/C/Users/seisa/AppData/Roaming/Sublime Text 3/Packages/User/RegexExplainTip.sublime-settings",
+		"/D/Games/SteamLibrary/SteamApps/common/Fallout 4/Data/Scripts/Source/Base/CastSpellOnEffectScript.psc",
+		"/D/Games/SteamLibrary/SteamApps/common/Fallout 4/Data/Scripts/Source/Base/LegendaryCreatureItemEffectScript.psc",
+		"/D/Games/SteamLibrary/SteamApps/common/Fallout 4/Data/Scripts/Source/Base/WorkshopAttackScript.psc"
+	],
+	"find":
+	{
+		"height": 60.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"\n\t\t<edit field=\"atributos.ataque\" height=\"20\" width=\"30\" type=\"number\" min=\"1\" max=\"20\" textPrompt=\"1\" horzTextAlign=\"center\" />\n\t\t\t",
+			"\n\t\t",
+			"tab",
+			"updateVida",
+			"formula",
+			"personagem = ndb.getParent(pericias);"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 82.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "KitsuneRRPGPluginDESK.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"workshop",
+				"Source\\Base\\WorkshopAttackScript.psc"
+			],
+			[
+				"legendary",
+				"Source\\Base\\LegendaryCreatureItemEffectScript.psc"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 319.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
