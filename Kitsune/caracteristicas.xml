@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flowLayout align="client" margins="{left=10, top=15}">
-	<image center="false" editable="true" field="imagemDoPersonagemCorpo" height="800" style="stretch" width="400"/>
+	<avatar campo="imagemDoPersonagemCorpo" nome="Personagem Completo" altura="800" largura="400"/>
+
 	<flowLayout height="800" width="400">
 		<caracteristica campo="idade" nome="Idade"/>
 		<caracteristica campo="altura" nome="Altura"/>
