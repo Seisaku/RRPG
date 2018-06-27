@@ -1,62 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<form name="templates">
+<form name="templates">
 	<template name="LayoutUmCampo">
-		<layout width="$(tamanho)" margins="{left=2, right=2}">
-			   <edit field="$(campo)" height="30" horzTextAlign="center" fontSize="20" align="top"/> 
-			   <label text="$(titulo)" align="top" horzTextAlign="center" 
-					  vertTextAlign="leading" autoSize="true"/>
-	   </layout>
+		<layout margins="{left=2, right=2}" width="$(tamanho)">
+			<edit align="top" field="$(campo)" fontSize="20" height="30" horzTextAlign="center"/>
+			<label align="top" autoSize="true" horzTextAlign="center" text="$(titulo)" vertTextAlign="leading"/>
+		</layout>
 	</template>
-
-	<template name="LayoutAtributo" >		
-		<layout align="client" height="30" width="500" margins="{top = 2,left=2, right=2}">
-			<label align="left"  text="$(atributo)" width="50" horzTextAlign="center"
-			vertTextAlign="center"/>
-			<edit align="left" left="50" field="$(campo).valor" type="number" horzTextAlign="center" width="50"
-					onChange="updateAtributo(sheet, '$(atributo)', '$(campo)');"/>
-			<label align="left" left="100" width="100" field="$(campo).formula" horzTextAlign="center"/>
-			<label align="left" field="$(campo).bonustotal" visible="false"/>			
-		</layout>	
+	<template name="LayoutAtributo">
+		<layout align="client" height="30" margins="{top = 2,left=2, right=2}" width="500">
+			<label align="left" horzTextAlign="center" text="$(atributo)" vertTextAlign="center" width="50"/>
+			<edit align="left" field="$(campo).valor" horzTextAlign="center" left="50" onChange="updateAtributo(sheet, '$(atributo)', '$(campo)');" type="number" width="50"/>
+			<label align="left" field="$(campo).formula" horzTextAlign="center" left="100" width="100"/>
+			<label align="left" field="$(campo).bonustotal" visible="false"/>
+		</layout>
 	</template>
-
 	<template name="pericia">
-		<flowLayout width="140" height="20">					
-			<label text="$(nome)" height="20" width="100" horzTextAlign="center"
-				vertTextAlign="center"/>			 
-			<edit width="20" height="20" field="pericias.$(campo)" horzTextAlign="center" type="number" min="0" max="20"/>
-			<button text="*" width="20" height="20"
-		            onClick="rolarPericia(sheet, '$(nome)');"/>			
+		<flowLayout height="20" width="140">
+			<label height="20" horzTextAlign="center" text="$(nome)" vertTextAlign="center" width="100"/>
+			<edit field="pericias.$(campo)" height="20" horzTextAlign="center" max="20" min="0" type="number" width="20"/>
+			<button height="20" onClick="rolarPericia(sheet, '$(nome)');" text="*" width="20"/>
 		</flowLayout>
 	</template>
-
 	<template name="idioma">
-		<flowLayout width="140" height="20">
-			<checkBox 	width="20" field="$(campo)"/>					
-			<label text="$(nome)" height="20" width="100" horzTextAlign="center"
-				vertTextAlign="center"/>			 
+		<flowLayout height="20" width="140">
+			<checkBox field="$(campo)" width="20"/>
+			<label height="20" horzTextAlign="center" text="$(nome)" vertTextAlign="center" width="100"/>
 		</flowLayout>
 	</template>
-
 	<template name="textoCurto">
-		<flowLayout width="$(tamanho)" height="320" margins="{left=10, top=5}">
-			<label text="$(nome)" autoSize="true" width="$(tamanho)" height="20" horzTextAlign="center"/>
-	 		<textEditor width="$(tamanho)" height="300" field="$(campo)" margins="{top=5}"/>
- 		</flowLayout>
+		<flowLayout height="320" margins="{left=10, top=5}" width="$(tamanho)">
+			<label autoSize="true" height="20" horzTextAlign="center" text="$(nome)" width="$(tamanho)"/>
+			<textEditor field="$(campo)" height="300" margins="{top=5}" width="$(tamanho)"/>
+		</flowLayout>
 	</template>
-
 	<template name="caracteristica">
-		<flowLayout width="200" height="20" >
-			<label text="$(nome)" autoSize="true" width="95" height="20" horzTextAlign="center"/>
-			<edit width="100" height="20" field="$(campo)" horzTextAlign="center" margins="{left=5}"/>
+		<flowLayout height="20" width="200">
+			<label autoSize="true" height="20" horzTextAlign="center" text="$(nome)" width="95"/>
+			<edit field="$(campo)" height="20" horzTextAlign="center" margins="{left=5}" width="100"/>
 		</flowLayout>
 	</template>
-
 	<template name="habilidade">
-		<flowLayout width="200" height="20" >
-			<edit width="100" height="20" field="$(nome)" horzTextAlign="center" margins="{left=5}"/>
-			<edit width="100" height="20" field="$(nome).formula" horzTextAlign="center" margins="{left=5}"/>
-			<edit width="100" height="20" field="$(nome).custo" horzTextAlign="center" margins="{left=5}"/>
+		<flowLayout height="20" width="200">
+			<edit field="$(nome)" height="20" horzTextAlign="center" margins="{left=5}" width="100"/>
+			<edit field="$(nome).formula" height="20" horzTextAlign="center" margins="{left=5}" width="100"/>
+			<edit field="$(nome).custo" height="20" horzTextAlign="center" margins="{left=5}" width="100"/>
 		</flowLayout>
 	</template>
-
+	<template name="avatar">
+		<rectangle color="Transparent" height="$(altura)" margins="{left = 2, right = 2, top = 2, bottom = 2}" strokeColor="black" strokeSize="1" width="$(largura)">
+			<label align="client" horzTextAlign="center" text="$(nome)" vertTextAlign="center"/>
+			<image center="false" editable="true" field="$(campo)" height="$(altura)" style="originalSize" width="$(largura)"/>
+		</rectangle>
+	</template>
 </form>

@@ -96,7 +96,7 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "pac",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -133,23 +133,28 @@
 	],
 	"file_history":
 	[
+		"/C/RRPG/RRPG/projetos/Kitsune/macros.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/masaki.lua",
+		"/C/RRPG/RRPG/projetos/Kitsune/kitsune1.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/avatar.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/templates.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/caracteristicas.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/habilidades.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/pericias.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/module.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/idiomas.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/principal.xml",
 		"/C/RRPG/RRPG/projetos/Kitsune/equipamento.xml",
+		"/C/RRPG/RRPG/projetos/Kitsune/idioma.lfm",
+		"/C/RRPG/RRPG/projetos/Kitsune/armadura.lfm",
 		"/C/RRPG/RRPG/projetos/Kitsune/kitsuneNPC.lfm",
 		"/C/RRPG/RRPG/projetos/Kitsune/arma.lfm",
 		"/E/Cloud/OneDrive/Pessoal/temp/docker-compose.yaml",
 		"/C/RRPG/RRPG/projetos/Kitsune/npc.lfm",
 		"/C/RRPG/RRPG/projetos/Kitsune/atributos.xml",
-		"/C/RRPG/RRPG/projetos/Kitsune/kitsune1.lfm",
 		"/C/RRPG/RRPG/projetos/Kitsune/tools.lua",
 		"/C/RRPG/RRPG/projetos/Kitsune/acoes.lua",
-		"/C/RRPG/RRPG/projetos/Kitsune/masaki.lua",
-		"/C/RRPG/RRPG/projetos/Kitsune/module.xml",
 		"/C/RRPG/RRPG/projetos/Warehouse/tests.lua",
-		"/C/RRPG/RRPG/projetos/Kitsune/macros.lua",
-		"/C/RRPG/RRPG/projetos/Kitsune/principal.xml",
-		"/C/RRPG/RRPG/projetos/Kitsune/armadura.lfm",
-		"/C/RRPG/RRPG/projetos/Kitsune/templates.xml",
-		"/C/RRPG/RRPG/projetos/Kitsune/avatar.xml",
 		"/C/RRPG/RRPG/projetos/.gitignore",
 		"/C/RRPG/RRPG/projetos/Kitsune/kitsuneTests.lfm",
 		"/C/RRPG/RRPG/projetos/Kitsune/KitsuneRRPGPlugin.sublime-project",
@@ -199,13 +204,14 @@
 	],
 	"find":
 	{
-		"height": 60.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
 		"height": 104.0,
 		"where_history":
 		[
+			"*.lua",
 			""
 		]
 	},
@@ -214,6 +220,12 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"\t<",
+			"<personalidade nome=\"Personalidade\" campo=\"personalidades\"/>",
+			"deleteEquip",
+			"\t\t\t<",
+			"comum",
+			"proficiente",
 			"\n\t\t<edit field=\"atributos.ataque\" height=\"20\" width=\"30\" type=\"number\" min=\"1\" max=\"20\" textPrompt=\"1\" horzTextAlign=\"center\" />\n\t\t\t",
 			"\n\t\t",
 			"tab",
@@ -327,7 +339,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 319.0,
+	"side_bar_width": 221.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

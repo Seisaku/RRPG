@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flowLayout width="200" autoHeight="true" align="right">
 
-	<rectangle width="400" height="200" margins="{top = 5}">
-	<label align="client" text="Imagem" horzTextAlign="center"
-					vertTextAlign="center"/>
-	<image field="imagemDoPersonagem" editable="true" style="stretch" 
-	       width="200" height="200" center="false" />
-	</rectangle>
+	<avatar campo="imagemDoPersonagem" nome="Avatar" altura="200" largura="200"/>
 
 	<label  text="Vida"/>
 	<progressBar width="200" height="15" color="Green" field="atributos.vidaAtual" fieldMax="atributos.vidaMax"
