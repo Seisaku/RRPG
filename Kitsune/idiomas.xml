@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout align="client" autoHeight="true">
+<flowLayout align="client" autoHeight="true" maxControlsPerLine="3">
 	
 	<label horzTextAlign="center" text="Idiomas Conhecidos" align="top" margins="{top=15}"/>
 	<flowLineBreak/>

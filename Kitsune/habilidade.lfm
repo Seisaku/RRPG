@@ -2,16 +2,16 @@
 <form name="frmHabilidade" height="20" margins="{top=2}">      
 	<flowLayout align="client" width="300" height="20">
 		
-			<edit 	width="70" height="20" field="nome" 		horzTextAlign="center" margins="{left=2}"/>
-			<edit 	width="30" height="20" field="formulaDado" 	horzTextAlign="center" margins="{left=2}"/>
+			<edit 	width="200" height="20" field="nome" 		horzTextAlign="center" margins="{left=2}"/>
+			<edit 	width="30"  height="20" field="formulaDado" horzTextAlign="center" margins="{left=2}"/>
 			
-			<label  width="40" height="20" text="D100"								   margins="{left=5}"/>
+			<label  width="40"  height="20" text="D100"								   margins="{left=5}"/>
 			
-			<edit 	width="30" height="20" field="formulaMod" 	horzTextAlign="center" margins="{left=2}"/>
-			<edit 	width="30" height="20" field="custo"   		horzTextAlign="center" margins="{left=2}"/>
+			<edit 	width="30"  height="20" field="formulaMod" 	horzTextAlign="center" margins="{left=2}"/>
+			<edit 	width="30"  height="20" field="custo"   	horzTextAlign="center" margins="{left=2}"/>
 
-			<button width="20" height="20" text="*" onClick="usarHabilidade(sheet)" margins="{left=2}"/>
-			<button width="20" height="20" text="X" onClick="deleteHabilidade(sheet)" margins="{left=2}"/>	
+			<button width="20"  height="20" text="*" onClick="usarHabilidade(sheet)" margins="{left=2}"/>
+			<button width="20"  height="20" text="X" onClick="deleteHabilidade(sheet)" margins="{left=2}"/>	
 	</flowLayout>
 
     <dataLink fields="{'formulaMod'}">

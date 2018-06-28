@@ -40,8 +40,8 @@
 		</flowLayout>
 	</template>
 	<template name="habilidade">
-		<flowLayout height="20" width="200">
-			<edit field="$(nome)" height="20" horzTextAlign="center" margins="{left=5}" width="100"/>
+		<flowLayout height="20" width="300">
+			<edit field="$(nome)" height="20" horzTextAlign="center" margins="{left=5}" width="200"/>
 			<edit field="$(nome).formula" height="20" horzTextAlign="center" margins="{left=5}" width="100"/>
 			<edit field="$(nome).custo" height="20" horzTextAlign="center" margins="{left=5}" width="100"/>
 		</flowLayout>
