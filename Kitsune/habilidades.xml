@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flowLayout align="client" autoHeight="true">
-<button width="20" height="20" text="+" onClick="self.frmHabilidade:append();"/>
-<label 	width="310" height="20" text="Habilidades" horzTextAlign="center"/>
-<flowLineBreak/>
-<label 	width="200" height="20" text="Nome" 	horzTextAlign="center" margins="{left=5}"/>
-<label 	width="70"  height="20" text="Dado" horzTextAlign="center" margins="{left=5}"/>
-<label 	width="30"  height="20" text="Mod" horzTextAlign="center" margins="{left=5}"/>
-<label 	width="30"  height="20" text="Custo"   horzTextAlign="center" margins="{left=5}"/>
-<flowLineBreak/>
-<recordList width="500" autoHeight="true" name="frmHabilidade" field="habilidades" templateForm="frmHabilidade"/>
+	<button height="20" onClick="self.frmHabilidade:append();" text="+" width="20"/>
+	<label height="20" horzTextAlign="center" text="Habilidades" width="310"/>
+	<flowLineBreak/>
+	<label height="20" horzTextAlign="center" margins="{left=5}" text="Nome" width="200"/>
+	<label height="20" horzTextAlign="center" margins="{left=5}" text="Dado" width="70"/>
+	<label height="20" horzTextAlign="center" margins="{left=5}" text="Mod" width="30"/>
+	<label height="20" horzTextAlign="center" margins="{left=5}" text="Custo" width="30"/>
+	<flowLineBreak/>
+	<recordList autoHeight="true" field="habilidades" name="frmHabilidade" templateForm="frmHabilidade" width="500"/>
 </flowLayout>

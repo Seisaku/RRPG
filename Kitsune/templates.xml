@@ -30,7 +30,7 @@
 	<template name="textoCurto">
 		<flowLayout height="320" margins="{left=10, top=5}" width="$(tamanho)">
 			<label autoSize="true" height="20" horzTextAlign="center" text="$(nome)" width="$(tamanho)"/>
-			<textEditor field="$(campo)" height="300" margins="{top=5}" width="$(tamanho)"/>
+			<textEditor field="$(campo)" height="300" margins="{left = 2, right = 2, top = 2, bottom = 2}" width="$(tamanho)"/>
 		</flowLayout>
 	</template>
 	<template name="caracteristica">
@@ -49,7 +49,7 @@
 	<template name="avatar">
 		<rectangle color="Transparent" height="$(altura)" margins="{left = 2, right = 2, top = 2, bottom = 2}" strokeColor="black" strokeSize="1" width="$(largura)">
 			<label align="client" horzTextAlign="center" text="$(nome)" vertTextAlign="center"/>
-			<image center="false" editable="true" field="$(campo)" height="$(altura)" style="originalSize" width="$(largura)"/>
+			<image center="false" editable="true" field="$(campo)" height="$(altura)" style="proportional" width="$(largura)"/>
 		</rectangle>
 	</template>
 </form>

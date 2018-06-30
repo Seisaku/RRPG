@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flowLayout align="client" margins="{left=10, top=15}">
-	<avatar campo="imagemDoPersonagemCorpo" nome="Personagem Completo" altura="800" largura="400"/>
 
-	<flowLayout height="800" width="400">
+	<avatar campo="imagemDoPersonagemCorpo" nome="Personagem Completo" altura="600" largura="400"/>
+
+	<flowLayout height="600" width="400">
 		<caracteristica campo="idade" nome="Idade"/>
 		<caracteristica campo="altura" nome="Altura"/>
 		<caracteristica campo="corOlhos" nome="Cor dos Olhos"/>
@@ -10,6 +11,6 @@
 		<caracteristica campo="corCabelos" nome="Cor dos Cabelos"/>
 		<caracteristica campo="peso" nome="Peso"/>
 		<flowLineBreak/>
-		<textoCurto campo="descricao" nome="Descrição" tamanho="400"/>
+		<textoCurto campo="descricao" nome="Descrição" tamanho="390"/>
 	</flowLayout>
 </flowLayout>

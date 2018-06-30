@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmHabilidade" height="20" margins="{top=2}">      
-	<flowLayout align="client" width="300" height="20">
-		
-			<edit 	width="200" height="20" field="nome" 		horzTextAlign="center" margins="{left=2}"/>
-			<edit 	width="30"  height="20" field="formulaDado" horzTextAlign="center" margins="{left=2}"/>
-			
-			<label  width="40"  height="20" text="D100"								   margins="{left=5}"/>
-			
-			<edit 	width="30"  height="20" field="formulaMod" 	horzTextAlign="center" margins="{left=2}"/>
-			<edit 	width="30"  height="20" field="custo"   	horzTextAlign="center" margins="{left=2}"/>
-
-			<button width="20"  height="20" text="*" onClick="usarHabilidade(sheet)" margins="{left=2}"/>
-			<button width="20"  height="20" text="X" onClick="deleteHabilidade(sheet)" margins="{left=2}"/>	
+<form height="20" margins="{top=2}" name="frmHabilidade">
+	<flowLayout align="client" height="20" width="300">
+		<edit field="nome" height="20" horzTextAlign="center" margins="{left=2}" width="200"/>
+		<edit field="formulaDado" height="20" horzTextAlign="center" margins="{left=2}" width="30"/>
+		<label height="20" margins="{left=5}" text="D100" width="40"/>
+		<edit field="formulaMod" height="20" horzTextAlign="center" margins="{left=2}" width="30"/>
+		<edit field="custo" height="20" horzTextAlign="center" margins="{left=2}" width="30"/>
+		<button height="20" margins="{left=2}" onClick="usarHabilidade(sheet)" text="*" width="20"/>
+		<button height="20" margins="{left=2}" onClick="deleteHabilidade(sheet)" text="X" width="20"/>
 	</flowLayout>
-
-    <dataLink fields="{'formulaMod'}">
-        <event name="onChange">
-            updateSkill(sheet);
+	<dataLink fields="{'formulaMod'}">
+		<event name="onChange">updateSkill(sheet);
         </event>
-    </dataLink>
+	</dataLink>
 </form>
