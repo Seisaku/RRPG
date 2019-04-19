@@ -11,19 +11,25 @@
  			<flowLineBreak/>
 
 			<label text="Raça"/>
- 			<comboBox  width="100" field="raca" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros','Nephilim'}"
+			<edit field="raca" width="100" height="20" type="text"/>
+ 			<!-- <comboBox  width="100" field="raca" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros','Nephilim'}"
                   values="{'A', 'D', 'E', 'G', 'Ha','Hu','ME','MO','T','Ne','K','ON','Np'}"/>
-
+ -->
             <flowLineBreak/>
 			<label text="Classe"/>
- 			<comboBox width="100" field="classe" items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
-                  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"/>
+			<edit field="classe" width="100" height="20" type="text"/>
+ 			<!-- <comboBox width="100" field="classe" items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
+                  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"/> -->
 
             <flowLineBreak/>
 
             <label text="Tendencia"/>
- 			<comboBox width="100" field="tendencia" items="{'Bom Leal', 'Bom Neutro', 'Bom Caótico', 'Neutro Leal', 'Neutro','Neutro Caótico','Mal Leal','Mal Neutro','Mal Caótico'}"
-                  values="{'BL', 'BN', 'BC', 'NL', 'N','NC','ML','MN','MC'}"/>
+            <label field="moralidade"/>
+            <edit field="tendencia.moralidade" height="20" width="30" type="number" min="1" max="20" textPrompt="1" horzTextAlign="center" />
+            <label field="lealdade"/>
+            <edit field="tendencia.lealdade" height="20" width="30" type="number" min="1" max="20" textPrompt="1" horzTextAlign="center" />
+ 			<!-- <comboBox width="100" field="tendencia" items="{'Bom Leal', 'Bom Neutro', 'Bom Caótico', 'Neutro Leal', 'Neutro','Neutro Caótico','Mal Leal','Mal Neutro','Mal Caótico'}"
+                  values="{'BL', 'BN', 'BC', 'NL', 'N','NC','ML','MN','MC'}"/> -->
 
             <flowLineBreak/>
             
