@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmAtalhosAcoes()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmAtalhosAcoes()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,14 +31,14 @@ function newfrmAtalhosAcoes()
     obj:setDataType("RRPG.DataTypeUnico.atalhosAcoes");
     obj:setTitle("Atalhos");
 
-    obj.flowLayout1 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj);
     obj.flowLayout1:setAlign("client");
     obj.flowLayout1:setAutoHeight(true);
     obj.flowLayout1:setMaxControlsPerLine(2);
     obj.flowLayout1:setName("flowLayout1");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj.flowLayout1);
     obj.button1:setText("ATQ");
     obj.button1:setWidth(50);
@@ -46,7 +46,7 @@ function newfrmAtalhosAcoes()
     obj.button1:setMargins({left = 5, top = 5});
     obj.button1:setName("button1");
 
-    obj.button2 = gui.fromHandle(_obj_newObject("button"));
+    obj.button2 = GUI.fromHandle(_obj_newObject("button"));
     obj.button2:setParent(obj.flowLayout1);
     obj.button2:setText("DEF");
     obj.button2:setWidth(50);
@@ -54,7 +54,7 @@ function newfrmAtalhosAcoes()
     obj.button2:setMargins({left = 5, top = 5});
     obj.button2:setName("button2");
 
-    obj.button3 = gui.fromHandle(_obj_newObject("button"));
+    obj.button3 = GUI.fromHandle(_obj_newObject("button"));
     obj.button3:setParent(obj.flowLayout1);
     obj.button3:setText("AGI");
     obj.button3:setWidth(50);
@@ -62,7 +62,7 @@ function newfrmAtalhosAcoes()
     obj.button3:setMargins({left = 5, top = 5});
     obj.button3:setName("button3");
 
-    obj.button4 = gui.fromHandle(_obj_newObject("button"));
+    obj.button4 = GUI.fromHandle(_obj_newObject("button"));
     obj.button4:setParent(obj.flowLayout1);
     obj.button4:setText("SOR");
     obj.button4:setWidth(50);
@@ -70,7 +70,7 @@ function newfrmAtalhosAcoes()
     obj.button4:setMargins({left = 5, top = 5});
     obj.button4:setName("button4");
 
-    obj.button5 = gui.fromHandle(_obj_newObject("button"));
+    obj.button5 = GUI.fromHandle(_obj_newObject("button"));
     obj.button5:setParent(obj.flowLayout1);
     obj.button5:setText("MAG");
     obj.button5:setWidth(50);
@@ -78,7 +78,7 @@ function newfrmAtalhosAcoes()
     obj.button5:setMargins({left = 5, top = 5});
     obj.button5:setName("button5");
 
-    obj.button6 = gui.fromHandle(_obj_newObject("button"));
+    obj.button6 = GUI.fromHandle(_obj_newObject("button"));
     obj.button6:setParent(obj.flowLayout1);
     obj.button6:setText("RMAG");
     obj.button6:setWidth(50);
@@ -86,7 +86,7 @@ function newfrmAtalhosAcoes()
     obj.button6:setMargins({left = 5, top = 5});
     obj.button6:setName("button6");
 
-    obj.button7 = gui.fromHandle(_obj_newObject("button"));
+    obj.button7 = GUI.fromHandle(_obj_newObject("button"));
     obj.button7:setParent(obj.flowLayout1);
     obj.button7:setText("VID");
     obj.button7:setWidth(50);
@@ -94,7 +94,7 @@ function newfrmAtalhosAcoes()
     obj.button7:setMargins({left = 5, top = 5});
     obj.button7:setName("button7");
 
-    obj.button8 = gui.fromHandle(_obj_newObject("button"));
+    obj.button8 = GUI.fromHandle(_obj_newObject("button"));
     obj.button8:setParent(obj.flowLayout1);
     obj.button8:setText("INI");
     obj.button8:setWidth(50);
@@ -103,47 +103,47 @@ function newfrmAtalhosAcoes()
     obj.button8:setName("button8");
 
     obj._e_event0 = obj:addEventListener("onNodeReady",
-        function (self)
+        function (_)
             initializeActions(sheet)
         end, obj);
 
     obj._e_event1 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             atalhoAtaque(sheet);
         end, obj);
 
     obj._e_event2 = obj.button2:addEventListener("onClick",
-        function (self)
+        function (_)
             atalhoDefesa(sheet);
         end, obj);
 
     obj._e_event3 = obj.button3:addEventListener("onClick",
-        function (self)
+        function (_)
             atalhoAgilidade(sheet);
         end, obj);
 
     obj._e_event4 = obj.button4:addEventListener("onClick",
-        function (self)
+        function (_)
             atalhoSorte(sheet);
         end, obj);
 
     obj._e_event5 = obj.button5:addEventListener("onClick",
-        function (self)
+        function (_)
             atalhoMagia(sheet);
         end, obj);
 
     obj._e_event6 = obj.button6:addEventListener("onClick",
-        function (self)
+        function (_)
             atalhoRMagia(sheet);
         end, obj);
 
     obj._e_event7 = obj.button7:addEventListener("onClick",
-        function (self)
+        function (_)
             atalhoVida(sheet);
         end, obj);
 
     obj._e_event8 = obj.button8:addEventListener("onClick",
-        function (self)
+        function (_)
             atalhoIniciativa(sheet);
         end, obj);
 
@@ -182,9 +182,23 @@ function newfrmAtalhosAcoes()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmAtalhosAcoes()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmAtalhosAcoes();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmAtalhosAcoes = {
@@ -198,8 +212,8 @@ local _frmAtalhosAcoes = {
     description=""};
 
 frmAtalhosAcoes = _frmAtalhosAcoes;
-rrpg.registrarForm(_frmAtalhosAcoes);
-rrpg.registrarDataType(_frmAtalhosAcoes);
-rrpg.registrarSpecialForm(_frmAtalhosAcoes);
+Firecast.registrarForm(_frmAtalhosAcoes);
+Firecast.registrarDataType(_frmAtalhosAcoes);
+Firecast.registrarSpecialForm(_frmAtalhosAcoes);
 
 return _frmAtalhosAcoes;

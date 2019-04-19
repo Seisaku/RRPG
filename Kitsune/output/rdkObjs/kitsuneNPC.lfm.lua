@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newKitsuneNPC()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_KitsuneNPC()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -31,25 +31,25 @@ function newKitsuneNPC()
     obj:setTitle("Kitsune's System: NPC");
     obj:setName("KitsuneNPC");
 
-    obj.templates = gui.fromHandle(_obj_newObject("form"));
+    obj.templates = GUI.fromHandle(_obj_newObject("form"));
     obj.templates:setParent(obj);
     obj.templates:setName("templates");
 
-    obj.button1 = gui.fromHandle(_obj_newObject("button"));
+    obj.button1 = GUI.fromHandle(_obj_newObject("button"));
     obj.button1:setParent(obj);
     obj.button1:setWidth(20);
     obj.button1:setHeight(20);
     obj.button1:setText("+");
     obj.button1:setName("button1");
 
-    obj.flowLayout1 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj);
     obj.flowLayout1:setAlign("client");
     obj.flowLayout1:setAutoHeight(true);
     obj.flowLayout1:setMaxControlsPerLine(2);
     obj.flowLayout1:setName("flowLayout1");
 
-    obj.rclNPC = gui.fromHandle(_obj_newObject("recordList"));
+    obj.rclNPC = GUI.fromHandle(_obj_newObject("recordList"));
     obj.rclNPC:setParent(obj.flowLayout1);
     obj.rclNPC:setWidth(320);
     obj.rclNPC:setAutoHeight(true);
@@ -57,98 +57,98 @@ function newKitsuneNPC()
     obj.rclNPC:setField("npcs");
     obj.rclNPC:setTemplateForm("frmNPC");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'nivel', 'experienciaAtual','desejo'});
     obj.dataLink1:setName("dataLink1");
 
-    obj.dataLink2 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink2 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink2:setParent(obj);
     obj.dataLink2:setFields({'atributos.ataque', 'atributos.ataqueMod'});
     obj.dataLink2:setName("dataLink2");
 
-    obj.dataLink3 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink3 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink3:setParent(obj);
     obj.dataLink3:setFields({'atributos.defesa', 'atributos.defesaMod'});
     obj.dataLink3:setName("dataLink3");
 
-    obj.dataLink4 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink4 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink4:setParent(obj);
     obj.dataLink4:setFields({'atributos.magia', 'atributos.magiaMod'});
     obj.dataLink4:setName("dataLink4");
 
-    obj.dataLink5 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink5 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink5:setParent(obj);
     obj.dataLink5:setFields({'atributos.resistenciaMagica', 'atributos.resistenciaMagicaMod'});
     obj.dataLink5:setName("dataLink5");
 
-    obj.dataLink6 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink6 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink6:setParent(obj);
     obj.dataLink6:setField("atributos.sorte");
     obj.dataLink6:setName("dataLink6");
 
-    obj.dataLink7 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink7 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink7:setParent(obj);
     obj.dataLink7:setFields({'atributos.agilidade', 'atributos.agilidadeMod'});
     obj.dataLink7:setName("dataLink7");
 
-    obj.dataLink8 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink8 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink8:setParent(obj);
     obj.dataLink8:setField("atributos.vida");
     obj.dataLink8:setName("dataLink8");
 
-    obj.dataLink9 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink9 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink9:setParent(obj);
     obj.dataLink9:setField("atributos.recurso");
     obj.dataLink9:setName("dataLink9");
 
     obj._e_event0 = obj.button1:addEventListener("onClick",
-        function (self)
+        function (_)
             self.rclNPC:append();
         end, obj);
 
     obj._e_event1 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateBase(sheet);
         end, obj);
 
     obj._e_event2 = obj.dataLink2:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateAtaque(sheet);
         end, obj);
 
     obj._e_event3 = obj.dataLink3:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateDefesa(sheet);
         end, obj);
 
     obj._e_event4 = obj.dataLink4:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateMagia(sheet);
         end, obj);
 
     obj._e_event5 = obj.dataLink5:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateResistenciaMagica(sheet);
         end, obj);
 
     obj._e_event6 = obj.dataLink6:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateSorte(sheet);
         end, obj);
 
     obj._e_event7 = obj.dataLink7:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateAgilidade(sheet);
         end, obj);
 
     obj._e_event8 = obj.dataLink8:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateVida(sheet);
         end, obj);
 
     obj._e_event9 = obj.dataLink9:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateRecurso(sheet);
         end, obj);
 
@@ -192,9 +192,23 @@ function newKitsuneNPC()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newKitsuneNPC()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_KitsuneNPC();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _KitsuneNPC = {
@@ -208,7 +222,7 @@ local _KitsuneNPC = {
     description=""};
 
 KitsuneNPC = _KitsuneNPC;
-rrpg.registrarForm(_KitsuneNPC);
-rrpg.registrarDataType(_KitsuneNPC);
+Firecast.registrarForm(_KitsuneNPC);
+Firecast.registrarDataType(_KitsuneNPC);
 
 return _KitsuneNPC;

@@ -1,8 +1,8 @@
 function printAllChildren(node)
-	message = "printAllChildren: " .. ndb.getNodeName(node) .. "\n";
-	listaChilds = ndb.getChildNodes(node);
+	message = "printAllChildren: " .. NDB.getNodeName(node) .. "\n";
+	listaChilds = NDB.getChildNodes(node);
 	for key,child in pairs(listaChilds) do
-		message = message .. "\n" .. key .. "=" .. ndb.getNodeName(child);
+		message = message .. "\n" .. key .. "=" .. NDB.getNodeName(child);
 	end
 	showMessage(message);
 end
@@ -10,7 +10,7 @@ end
 function printAllAttr(node)
 	message = "printAllAttr:\n";
 	
-	listaAttr = ndb.getAttributes(node);
+	listaAttr = NDB.getAttributes(node);
 	for key,Attr in pairs(listaAttr) do
 		message = message .. "\n" .. key .. "=" .. tostring(Attr);
 	end
@@ -18,19 +18,19 @@ function printAllAttr(node)
 end
 
 function printParents(node)
-	nodeName = ndb.getNodeName(node);
-	message = "printParent: " .. ndb.getNodeName(node) .. "\n";
+	nodeName = NDB.getNodeName(node);
+	message = "printParent: " .. NDB.getNodeName(node) .. "\n";
 
-	parent = ndb.getParent(node);
-	message = message .. "\n" .. ndb.getNodeName(parent);
+	parent = NDB.getParent(node);
+	message = message .. "\n" .. NDB.getNodeName(parent);
 
 	showMessage(message);
 end
 
 function getChildNodeByName(node, name)
-	listaChilds = ndb.getChildNodes(node);
+	listaChilds = NDB.getChildNodes(node);
 	for key,child in pairs(listaChilds) do
-		childName = ndb.getNodeName(child)
+		childName = NDB.getNodeName(child)
 		if (childName == name) then
 			return child;
 		end

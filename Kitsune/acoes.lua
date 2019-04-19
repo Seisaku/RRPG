@@ -13,7 +13,7 @@ function setLocalPersonagem( node )
 end
 
 function getMyChar(sheet)
-	local mesa = rrpg.getMesaDe(sheet);
+	local mesa = Firecast.getMesaDe(sheet);
 	local jogador = mesa.meuJogador;
 	local personagem;
 	if(jogador ~= nil) then

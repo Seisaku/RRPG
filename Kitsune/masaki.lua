@@ -2,8 +2,8 @@ require("ndb.lua");
 
 function initialize( sheet )
 	if(sheet.atributos==nil) then
-		local tr1 = ndb.newTransaction(sheet);
-		ndb.createChildNode(sheet, "atributos");
+		local tr1 = NDB.newTransaction(sheet);
+		NDB.createChildNode(sheet, "atributos");
 		sheet.atributos.ataque=1;
 		sheet.atributos.ataqueMod=0;
 		sheet.atributos.defesa=1;
@@ -28,7 +28,7 @@ function initialize( sheet )
 		sheet.PercepcaoPassiva = 50;
 		sheet.Deslocamento  = 9;
 
-		ndb.createChildNode(sheet, "pericias");
+		NDB.createChildNode(sheet, "pericias");
 		sheet.pericias.Atletismo=0;
 		sheet.pericias.Acrobacia=0;
 		sheet.pericias.Arcanismo=0;
@@ -48,11 +48,14 @@ function initialize( sheet )
 		sheet.pericias.Persuasao=0;
 		sheet.pericias.Enganacao=0;
 
-		ndb.createChildNode(sheet, "equipamento");
+		NDB.createChildNode(sheet, "equipamento");
 		sheet.equipamento.ataqueEquipBonus = 0;
 		sheet.equipamento.defesaEquipBonus = 0;
 
-		ndb.pushTransaction(sheet, tr1);
+		sheet.tendencia.moralidade = 0;
+		sheet.tendencia.lealdade = 0;
+
+		NDB.pushTransaction(sheet, tr1);
 	end
 end
 
@@ -60,8 +63,8 @@ end
 
 function getNodeFromPath(path, sheet)
 	
-	if(ndb.isNodeObject(sheet)) then
-		local mesa = rrpg.getMesaDe(sheet);
+	if(NDB.isNodeObject(sheet)) then
+		local mesa = Firecast.getMesaDe(sheet);
 		local campoP = string.gmatch(path ,"[%a,%d]+");
 		countC = 0;
 		listaC = {}
@@ -71,7 +74,7 @@ function getNodeFromPath(path, sheet)
 		end
 		nodeIndex = 1;
 		field = listaC["nodeIndex"];
-		local activeNode = ndb.getRoot(sheet);
+		local activeNode = NDB.getRoot(sheet);
 		while (nodeIndex < countC) do
 			activeNode = nodeContainsField(activeNode, field)
 			if(activeNode == nil) then
@@ -80,7 +83,7 @@ function getNodeFromPath(path, sheet)
 			nodeIndex = nodeIndex+1;
 			field = listaC["nodeIndex"];
 		end
-		atributos = ndb.getAttributes(activeNode)
+		atributos = NDB.getAttributes(activeNode)
 		mesa.activeChat:enviarMensagem(field.."="..atributos["field"]);
 		atributos["field"] = "testFind";
 	else
@@ -89,11 +92,11 @@ function getNodeFromPath(path, sheet)
 end
 
 function nodeContainsField(node, field)
-	if(ndb.isNodeObject(node)) then
-		local mesa = rrpg.getMesaDe(node);
-		childrenNodes = ndb.getChildNodes(node);
+	if(NDB.isNodeObject(node)) then
+		local mesa = Firecast.getMesaDe(node);
+		childrenNodes = NDB.getChildNodes(node);
 		for key, child in pairs(childrenNodes) do
-			if(ndb.getNodeName(child) == field) then
+			if(NDB.getNodeName(child) == field) then
 				return child
 			end			
 		end
@@ -102,7 +105,7 @@ end
 
 function rolarPericia(sheet, pericia)
 	if (sheet.pericias ~= nil) then
-		local mesa = rrpg.getMesaDe(sheet);
+		local mesa = Firecast.getMesaDe(sheet);
 
 		rolagem=0;
 		if string.find(pericia,"Atletismo")~=nil then
@@ -160,35 +163,35 @@ function getProficiencia(sheet)
 end
 
 function rolarAtaque(sheet)
-	local mesa = rrpg.getMesaDe(sheet);	
+	local mesa = Firecast.getMesaDe(sheet);	
 	if (sheet.atributos.ataqueFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.ataqueFormula, sheet.atributos.sorte, "Ataque");
 	end
 end
 
 function rolarDefesa(sheet)
-	local mesa = rrpg.getMesaDe(sheet);	
+	local mesa = Firecast.getMesaDe(sheet);	
 	if (sheet.atributos.defesaFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.defesaFormula, sheet.atributos.sorte, "Defesa");
 	end
 end
 
 function rolarIniciativa(sheet)
-	local mesa = rrpg.getMesaDe(sheet);	
+	local mesa = Firecast.getMesaDe(sheet);	
 	if (sheet.atributos.iniciativaFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.iniciativaFormula, sheet.atributos.sorte, "Iniciativa");
 	end
 end
 
 function rolarAgilidade(sheet)
-	local mesa = rrpg.getMesaDe(sheet);	
+	local mesa = Firecast.getMesaDe(sheet);	
 	if (sheet.atributos.iniciativaFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.iniciativaFormula, sheet.atributos.sorte, "Agilidade");
 	end
 end
 
 function rolarSorte(sheet)
-	local mesa = rrpg.getMesaDe(sheet);	
+	local mesa = Firecast.getMesaDe(sheet);	
 	if (sheet.atributos.iniciativaFormula ~= nil) then
 		sorteFormula =  sheet.atributos.Sorte .. "D100"
 		if(sheet.atributos.sorteMod == nil) then
@@ -204,21 +207,21 @@ function rolarSorte(sheet)
 end
 
 function rolarMagia(sheet)
-	local mesa = rrpg.getMesaDe(sheet);	
+	local mesa = Firecast.getMesaDe(sheet);	
 	if (sheet.atributos.ataqueFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.magiaFormula, sheet.atributos.sorte, "Magia");
 	end
 end
 
 function rolarVida(sheet)
-	local mesa = rrpg.getMesaDe(sheet);	
+	local mesa = Firecast.getMesaDe(sheet);	
 	if (sheet.atributos.ataqueFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.vidaFormula, sheet.atributos.sorte, "Vida");
 	end
 end
 
 function rolarResistenciaMagica(sheet)
-	local mesa = rrpg.getMesaDe(sheet);	
+	local mesa = Firecast.getMesaDe(sheet);	
 	if (sheet.atributos.resistenciaMagicaFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.resistenciaMagicaFormula, sheet.atributos.sorte, "Resistência Mágica");		
 	end
@@ -227,9 +230,9 @@ end
 
 
 function ataqueComArma(arma)
-	armas = ndb.getParent(arma);
-	equipamento = ndb.getParent(armas);
-	personagem = ndb.getParent(equipamento);
+	armas = NDB.getParent(arma);
+	equipamento = NDB.getParent(armas);
+	personagem = NDB.getParent(equipamento);
 	if(personagem.atributos.ataque == nil) then
 		personagem.atributos.ataque = 1;
 	end
@@ -332,7 +335,7 @@ function setVidaPopup(sheet)
 end
 
 function changeBarraVida(sheet)
-	jogador = rrpg.getCurrentUser();
+	jogador = Firecast.getCurrentUser();
 	if(jogador~=nil) then
 		errorMsg = "Operação Barra Vida Inválida (tonumber)";
 		if(string.find(sheet.vidaOp, "+")==1) then
@@ -376,7 +379,7 @@ function setRecursoPopup(sheet)
 end
 
 function changeBarraRecurso(sheet)
-	jogador = rrpg.getCurrentUser();
+	jogador = Firecast.getCurrentUser();
 	if(jogador~=nil) then
 		errorMsg = "Operação Barra Recurso Inválida (tonumber)";
 		if(string.find(sheet.recursoOp, "+")==1) then
@@ -419,7 +422,7 @@ function setDesejoPopup(sheet)
 end
 
 function changeBarraDesejo(sheet)
-	jogador = rrpg.getCurrentUser();
+	jogador = Firecast.getCurrentUser();
 	if(jogador~=nil) then
 		errorMsg = "Operação Barra Desejo Inválida (tonumber)";
 		if(string.find(sheet.desejoOp, "+")==1) then
@@ -458,7 +461,7 @@ function syncDesejo( sheet )
 end
 
 function getJogadorfromSheet( sheet )
-	personagem = rrpg.getBibliotecaItemDe(sheet);
+	personagem = Firecast.getBibliotecaItemDe(sheet);
 	if(personagem~=nil) then
 		jogador = personagem.dono;
 		return jogador, personagem;
@@ -504,13 +507,13 @@ end
 
 function updateBonus(sheet)
 	if(sheet~=nil) then
-		local mesa = rrpg.getMesaDe(sheet);	
+		local mesa = Firecast.getMesaDe(sheet);	
 		
-		armas = ndb.getParent(sheet);
-		equipamento = ndb.getParent(armas);
-		personagem = ndb.getParent(equipamento);
+		armas = NDB.getParent(sheet);
+		equipamento = NDB.getParent(armas);
+		personagem = NDB.getParent(equipamento);
 		
-		listaArmas = ndb.getChildNodes(armas);
+		listaArmas = NDB.getChildNodes(armas);
 		totalBonus = 0;
 		for key, arma in pairs(listaArmas) do		
 			if (arma.equipado) then
@@ -527,7 +530,7 @@ function updateBonus(sheet)
 				end
 			end		
 		end
-		if (ndb.getNodeName(armas) == "armas") then
+		if (NDB.getNodeName(armas) == "armas") then
 			equipamento.ataqueEquipBonus = totalBonus;		
 			updateAtaque(personagem);
 		else
@@ -549,7 +552,7 @@ function updateAtaque(sheet)
 		end
 		bonus = sheet.atributos.ataqueMod;
 		if(sheet.equipamento==nil) then
-			ndb.createChildNode(sheet, "equipamento");
+			NDB.createChildNode(sheet, "equipamento");
 		end
 		if(sheet.equipamento.ataqueEquipBonus==nil) then
 			sheet.equipamento.ataqueEquipBonus = 0;
@@ -579,7 +582,7 @@ function updateDefesa(sheet)
 		end
 		bonus = sheet.atributos.defesaMod;
 		if(sheet.equipamento==nil) then
-			ndb.createChildNode(sheet, "equipamento");
+			NDB.createChildNode(sheet, "equipamento");
 		end
 		if(sheet.equipamento.defesaEquipBonus==nil) then
 			sheet.equipamento.defesaEquipBonus = 0;
@@ -670,17 +673,17 @@ end
 
 
 function deleteEquip(sheet)
-	ndb.deleteNode(sheet);
+	NDB.deleteNode(sheet);
 	updateBonus(sheet);
 end
 
 function deleteIdioma(sheet)
-	ndb.deleteNode(sheet);
+	NDB.deleteNode(sheet);
 	updateBonus(sheet);
 end
 
 function rolarPericia2(pericia)
-	local mesa = rrpg.getMesaDe(pericia);	
+	local mesa = Firecast.getMesaDe(pericia);	
 
 	if(pericia.nome == nil) then
 		pericia.nome = "pericia"
@@ -692,9 +695,9 @@ function rolarPericia2(pericia)
 	end
 	valor = pericia.valor;
 
-	pericias = ndb.getParent(pericia);
-	database = ndb.getParent(pericias);
-	personagem = ndb.getParent(pericias);
+	pericias = NDB.getParent(pericia);
+	database = NDB.getParent(pericias);
+	personagem = NDB.getParent(pericias);
 	atributos = getChildNodeByName(personagem, "atributos");
  
 	proficiencia = getProficiencia(personagem);
@@ -716,7 +719,7 @@ function rolarPericia2(pericia)
 end
 
 function deletePericia(sheet)
-	ndb.deleteNode(sheet);	
+	NDB.deleteNode(sheet);	
 end
 
 function updateSkill(sheet)
@@ -725,8 +728,8 @@ end
 
 function usarHabilidade(habilidade)
 
-habilidades = ndb.getParent(habilidade);
-personagem = ndb.getParent(habilidades);
+habilidades = NDB.getParent(habilidade);
+personagem = NDB.getParent(habilidades);
 
 if (habilidade.nome == nil) then
 	habilidade.nome = "Habilidade";
@@ -769,5 +772,34 @@ end
 end
 
 function deleteHabilidade(sheet)
-	ndb.deleteNode(sheet);
+	NDB.deleteNode(sheet);
+end
+
+
+function updateLealdade(sheet)
+	l = sheet.tendencia.lealdade;
+	if(l<-50) then
+		sheet.lealdade = "Mal";
+	elseif(l>50) then
+		sheet.lealdade = "Bom";
+	else
+		sheet.lealdade = "Neutro";
+	end
+	-- -51 Caotico
+	-- 0 Neutro
+	-- 51+ Leal
+end
+
+function updateMoralidade(sheet)
+	m = sheet.tendencia.moralidade;
+	if(m<-50) then
+		sheet.moralidade = "Mal";
+	elseif(m>50) then
+		sheet.moralidade = "Bom";
+	else
+		sheet.moralidade = "Neutro";
+	end
+	-- -51 Mal
+	-- 0 Neutro
+	-- 51+ Bom
 end

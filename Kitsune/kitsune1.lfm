@@ -140,4 +140,16 @@
 		</event>
 	</dataLink>
 
+	<dataLink field="tendencia.moralidade">
+	<event name="onChange">
+		updateMoralidade(sheet);
+	</event>
+</dataLink>	
+
+<dataLink field="tendencia.lealdade">
+	<event name="onChange">
+		updateLealdade(sheet);
+	</event>
+</dataLink>
+
 </form>

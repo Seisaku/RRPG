@@ -1,6 +1,6 @@
 function rollTeste(sheet, roll, sor, msg)
-        local mesa = rrpg.getMesaDe(sheet);     
-        local rolagem = rrpg.interpretarRolagem(roll); 
+        local mesa = Firecast.getMesaDe(sheet);     
+        local rolagem = Firecast.interpretarRolagem(roll); 
         rolagem:rolarLocalmente();
         resultR = printRolagem(sheet, rolagem, msg, sor);
         local f = 100;
@@ -36,7 +36,7 @@ end
 
 function rollCritical(crit, sorte)
     local f = 100;
-    critroll = rrpg.interpretarRolagem(crit .. "d" .. f);
+    critroll = Firecast.interpretarRolagem(crit .. "d" .. f);
     critroll:rolarLocalmente();    
     return critroll;
 end
@@ -65,7 +65,7 @@ function checkCriticalnFail(rolagem, fa, sorte)
 end
 
 function printRolagem(sheet, rolagem, msg, sor)
-        local mesa = rrpg.getMesaDe(sheet);
+        local mesa = Firecast.getMesaDe(sheet);
         local r = rolagem.resultado;
         local sorte = sor;
         if sorte == nil then

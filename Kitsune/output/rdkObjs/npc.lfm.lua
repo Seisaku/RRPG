@@ -1,14 +1,14 @@
-require("rrpg.lua");
+require("firecast.lua");
 local __o_rrpgObjs = require("rrpgObjs.lua");
 require("rrpgGUI.lua");
 require("rrpgDialogs.lua");
 require("rrpgLFM.lua");
 require("ndb.lua");
+require("locale.lua");
+local __o_Utils = require("utils.lua");
 
-function newfrmNPC()
-    __o_rrpgObjs.beginObjectsLoading();
-
-    local obj = gui.fromHandle(_obj_newObject("form"));
+local function constructNew_frmNPC()
+    local obj = GUI.fromHandle(_obj_newObject("form"));
     local self = obj;
     local sheet = nil;
 
@@ -30,12 +30,12 @@ function newfrmNPC()
     obj:setHeight(20);
     obj:setMargins({top=2});
 
-    obj.flowLayout1 = gui.fromHandle(_obj_newObject("flowLayout"));
+    obj.flowLayout1 = GUI.fromHandle(_obj_newObject("flowLayout"));
     obj.flowLayout1:setParent(obj);
     obj.flowLayout1:setAlign("client");
     obj.flowLayout1:setName("flowLayout1");
 
-    obj.edit1 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit1 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit1:setParent(obj.flowLayout1);
     obj.edit1:setField("nome");
     obj.edit1:setHeight(20);
@@ -47,7 +47,7 @@ function newfrmNPC()
     obj.edit1:setHorzTextAlign("center");
     obj.edit1:setName("edit1");
 
-    obj.edit2 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit2 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit2:setParent(obj.flowLayout1);
     obj.edit2:setField("avatar");
     obj.edit2:setHeight(20);
@@ -59,7 +59,7 @@ function newfrmNPC()
     obj.edit2:setHorzTextAlign("center");
     obj.edit2:setName("edit2");
 
-    obj.edit3 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit3 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit3:setParent(obj.flowLayout1);
     obj.edit3:setField("atributos.ataque");
     obj.edit3:setHeight(20);
@@ -71,7 +71,7 @@ function newfrmNPC()
     obj.edit3:setHorzTextAlign("center");
     obj.edit3:setName("edit3");
 
-    obj.edit4 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit4 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit4:setParent(obj.flowLayout1);
     obj.edit4:setField("atributos.defesa");
     obj.edit4:setHeight(20);
@@ -83,7 +83,7 @@ function newfrmNPC()
     obj.edit4:setHorzTextAlign("center");
     obj.edit4:setName("edit4");
 
-    obj.edit5 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit5 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit5:setParent(obj.flowLayout1);
     obj.edit5:setField("atributos.agilidade");
     obj.edit5:setHeight(20);
@@ -95,7 +95,7 @@ function newfrmNPC()
     obj.edit5:setHorzTextAlign("center");
     obj.edit5:setName("edit5");
 
-    obj.edit6 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit6 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit6:setParent(obj.flowLayout1);
     obj.edit6:setField("atributos.magia");
     obj.edit6:setHeight(20);
@@ -107,7 +107,7 @@ function newfrmNPC()
     obj.edit6:setHorzTextAlign("center");
     obj.edit6:setName("edit6");
 
-    obj.edit7 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit7 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit7:setParent(obj.flowLayout1);
     obj.edit7:setField("atributos.sorte");
     obj.edit7:setHeight(20);
@@ -119,7 +119,7 @@ function newfrmNPC()
     obj.edit7:setHorzTextAlign("center");
     obj.edit7:setName("edit7");
 
-    obj.edit8 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit8 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit8:setParent(obj.flowLayout1);
     obj.edit8:setField("atributos.resistenciaMagica");
     obj.edit8:setHeight(20);
@@ -131,7 +131,7 @@ function newfrmNPC()
     obj.edit8:setHorzTextAlign("center");
     obj.edit8:setName("edit8");
 
-    obj.edit9 = gui.fromHandle(_obj_newObject("edit"));
+    obj.edit9 = GUI.fromHandle(_obj_newObject("edit"));
     obj.edit9:setParent(obj.flowLayout1);
     obj.edit9:setField("atributos.recurso");
     obj.edit9:setHeight(20);
@@ -143,13 +143,13 @@ function newfrmNPC()
     obj.edit9:setHorzTextAlign("center");
     obj.edit9:setName("edit9");
 
-    obj.dataLink1 = gui.fromHandle(_obj_newObject("dataLink"));
+    obj.dataLink1 = GUI.fromHandle(_obj_newObject("dataLink"));
     obj.dataLink1:setParent(obj);
     obj.dataLink1:setFields({'equipado','bonus','proficiente'});
     obj.dataLink1:setName("dataLink1");
 
     obj._e_event0 = obj.dataLink1:addEventListener("onChange",
-        function (self, field, oldValue, newValue)
+        function (_, field, oldValue, newValue)
             updateBonus(sheet);
         end, obj);
 
@@ -182,9 +182,23 @@ function newfrmNPC()
 
     obj:endUpdate();
 
-     __o_rrpgObjs.endObjectsLoading();
-
     return obj;
+end;
+
+function newfrmNPC()
+    local retObj = nil;
+    __o_rrpgObjs.beginObjectsLoading();
+
+    __o_Utils.tryFinally(
+      function()
+        retObj = constructNew_frmNPC();
+      end,
+      function()
+        __o_rrpgObjs.endObjectsLoading();
+      end);
+
+    assert(retObj ~= nil);
+    return retObj;
 end;
 
 local _frmNPC = {
@@ -198,6 +212,6 @@ local _frmNPC = {
     description=""};
 
 frmNPC = _frmNPC;
-rrpg.registrarForm(_frmNPC);
+Firecast.registrarForm(_frmNPC);
 
 return _frmNPC;

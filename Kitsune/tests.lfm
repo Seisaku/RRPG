@@ -54,7 +54,7 @@
 			setInterval(
 				function()
 				if sheet ~= nil then
-				local state = ndb.getState(sheet) ;
+				local state = NDB.getState(sheet) ;
 					if state == "open" then
 						-- showMessage("TEST HERE");	
 					end;
