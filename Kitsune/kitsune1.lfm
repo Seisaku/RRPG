@@ -28,11 +28,17 @@
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="magias"/>
 		</tab>
 		<tab title="Habilidades">
-			<flowLayout align="client">
-			<import file="habilidades.xml"/>
-			<flowLineBreak/>
-			<import file="pericias.xml"/>
-		</flowLayout>
+			<tabControl align="client">
+				<tab title="Habilidades">
+					<import file="habilidades.xml"/>
+				</tab>
+				<tab title="Perícias">
+					<import file="pericias.xml"/>
+				</tab>
+				<tab title="Idiomas">
+					<import file="idiomas.xml"/>
+				</tab>
+			</tabControl>	
 		</tab>
 		<tab title="Profissão">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="profissao"/>

@@ -779,9 +779,9 @@ end
 function updateLealdade(sheet)
 	l = sheet.tendencia.lealdade;
 	if(l<-50) then
-		sheet.lealdade = "Mal";
+		sheet.lealdade = "Caótico";
 	elseif(l>50) then
-		sheet.lealdade = "Bom";
+		sheet.lealdade = "Leal";
 	else
 		sheet.lealdade = "Neutro";
 	end
@@ -793,13 +793,13 @@ end
 function updateMoralidade(sheet)
 	m = sheet.tendencia.moralidade;
 	if(m<-50) then
-		sheet.moralidade = "Mal";
+		sheet.moralidade = "Mau";
 	elseif(m>50) then
 		sheet.moralidade = "Bom";
 	else
 		sheet.moralidade = "Neutro";
 	end
-	-- -51 Mal
+	-- -51 Mau
 	-- 0 Neutro
 	-- 51+ Bom
 end
