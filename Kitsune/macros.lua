@@ -3,7 +3,7 @@ function rollTeste(sheet, roll, sor, msg)
         local rolagem = Firecast.interpretarRolagem(roll); 
         rolagem:rolarLocalmente();
         resultR = printRolagem(sheet, rolagem, msg, sor);
-        local f = 100;
+        -- local f = 100;
         local sorte = sor;
         if sorte == nil then
             sorte = 0;
