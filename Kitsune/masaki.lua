@@ -178,7 +178,7 @@ end
 
 function rolarIniciativa(sheet)
 	local mesa = Firecast.getMesaDe(sheet);	
-	rollTeste(sheet, "1d100", sheet.atributos.sorte, "Iniciativa");
+	rollTeste(sheet, "1d100", 0, "Iniciativa");
 end
 
 function rolarAgilidade(sheet)
