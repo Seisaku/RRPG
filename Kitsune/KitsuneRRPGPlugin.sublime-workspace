@@ -171,15 +171,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "releases/Kitsune_v3-0.rpk",
-			"settings":
-			{
-				"buffer_size": 1263860,
-				"encoding": "Hexadecimal",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -222,10 +213,12 @@
 	"expanded_folders":
 	[
 		"/D/RRPG/Kitsune",
-		"/D/RRPG/Kitsune/output"
+		"/D/RRPG/Kitsune/output",
+		"/D/RRPG/Kitsune/releases"
 	],
 	"file_history":
 	[
+		"/D/RRPG/Kitsune/releases/Kitsune_v3-0.rpk",
 		"/D/RRPG/Kitsune/masaki.lua",
 		"/D/RRPG/Kitsune/changelog.txt",
 		"/D/RRPG/Kitsune/habilidades.xml",
@@ -335,7 +328,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -357,6 +350,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"el",
+			"&",
 			"text",
 			"changeBarraVida",
 			"updateDesejo",
@@ -449,43 +444,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "releases/Kitsune_v3-0.rpk",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1263860,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								879,
-								879
-							]
-						],
-						"settings":
-						{
-							"origPos":
-							[
-								0.0,
-								0.0
-							],
-							"syncScroll": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
