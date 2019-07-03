@@ -1,11 +1,14 @@
-19-04-2019
-
-Version 3.1
+02-07-2019 Version 3.1
 Update mod limit
-
 - Adjusted max limit for mods on weapons, armors, skills
 
-Version 3.0
+02-05-2019 - Verson 3.0.2
+- Removed crit from Initiative roll
+
+02-05-2019 - Verson 3.0.1
+- Updated Initiative to consider new rules
+
+19-04-2019 - Version 3.0
 First version of this file
 
 - Added Loyalty and Morality fields
