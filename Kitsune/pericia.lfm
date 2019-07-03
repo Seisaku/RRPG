@@ -2,7 +2,7 @@
 <form name="frmPericia" height="20" margins="{top=2}">      
 	<flowLayout align="client" width="250">
 		<edit 		width="150" height="20" field="nome"/>
-		<edit 		width="30"  height="20" field="valor" type="number" min="0" max="100" horzTextAlign="center" margins="{left=2}"/>
+		<edit 		width="30"  height="20" field="valor" type="number" min="0" max="999" horzTextAlign="center" margins="{left=2}"/>
 		<button 	width="20"  height="20" text="*" onClick="rolarPericia2(sheet)" margins="{left=2}"/>
 		<button 	width="20"  height="20" text="X" onClick="deletePericia(sheet)" margins="{left=2}"/>	
 	</flowLayout>   

@@ -4,7 +4,7 @@
 		<checkBox 	width="20" field="equipado"/>
 		<edit 		width="150" height="20" field="nome"/>
 		<checkBox 	width="20"  height="20" field="proficiente"/>
-		<edit 		width="30"  height="20" field="bonus" type="number" min="0" max="100" horzTextAlign="center"/>
+		<edit 		width="30"  height="20" field="bonus" type="number" min="0" max="999" horzTextAlign="center"/>
 		<button 	width="60"  height="20" text="Ataque" onClick="ataqueComArma(sheet)" margins="{left=2}"/>
 		<button 	width="20"  height="20" text="X" onClick="deleteEquip(sheet)" margins="{left=2}"/>	
 	</flowLayout>
