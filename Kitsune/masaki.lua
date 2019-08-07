@@ -282,7 +282,7 @@ function updateNivel(sheet)
 end
 
 function updateProficiencia(sheet)
-	sheet.proficiencia = (sheet.nivel * 2) + 10;
+	sheet.proficiencia = sheet.nivel;
 end
 
 function updateDesejo(sheet)
