@@ -1,0 +1,377 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"congi",
+				"configuration"
+			],
+			[
+				"P",
+				"ProductModel"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 490.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"json",
+				"Indent JSON"
+			],
+			[
+				"p",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"i",
+				"Indent XML"
+			],
+			[
+				"pak",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 490.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/RRPG"
+	],
+	"file_history":
+	[
+		"/C/b/repo/build/config-dev/local.properties",
+		"/C/b/repo/misc/local-cluster-test/config/local.properties",
+		"/C/b/repo/misc/local-cluster-test/config/localextensions.adm.xml",
+		"/C/b/hybris/bin/ext-integration/ymkt/sapymktsync/resources/impex/projectdataConfig.impex",
+		"/C/b/repo/build/config-cloud/dev/local.properties",
+		"/C/b/repo/build/config-junit/local.properties",
+		"/C/ProgramData/Docker/config/daemon.json",
+		"/C/b/repo/build/config-cloud/prod/customer.adm.properties",
+		"/C/b/repo/build/config-cloud/prod/customer.app.properties",
+		"/C/b/repo/build/config-cloud/prod/localextensions.app.xml",
+		"/C/a/hybris/config/localextensions.xml",
+		"/C/b/hybris/config/local.properties",
+		"/C/a/hybris/config/tomcat/conf/server.xml",
+		"/C/b/repo/build/config-cloud/stag/customer.adm.properties",
+		"/C/b/repo/build/config-cloud/stag/customer.app.properties",
+		"/C/b/hybris/config/tcServer/conf/server.xml",
+		"/C/b/repo/build/config-dev/tomcat/conf/server.xml",
+		"/C/b/hybris/config/tcServer/conf/web.xml",
+		"/C/b/repo/build/config-dev/solr/instances/default/configsets/backoffice/conf/schema.xml",
+		"/C/b/repo/build/config-dev/solr/instances/default/configsets/backoffice/conf/solrconfig.xml",
+		"/C/Users/rafael.ishikawa/OneDrive/SAP-DESKTOP-HCMS87B/yTools/custom_b2c_acc_recipe/recipes/custom_b2c_acc/build.gradle",
+		"/C/b/hybris/bin/platform/lib/dbdriver/external-dependencies.xml",
+		"/C/b/repo/build/config-cloud/local.properties",
+		"/C/b/repo/build/config-cloud/stag/localextensions.adm.xml",
+		"/C/b/repo/build/config-dev/solr/instances/default/configsets/default/conf/solrconfig.xml",
+		"/C/b/repo/build/config-dev/solr/instances/default/configsets/default/conf/schema.xml",
+		"/C/b/repo/build/config-junit/localextensions.xml",
+		"/C/b/repo/build/config-dev/solr/instances/default/configsets/default/conf/synonyms.txt",
+		"/C/b/repo/build/config-cloud/localextensions.xml",
+		"/C/b/repo/build/config-cloud/dev/localextensions.xml",
+		"/C/b/repo/build/config-cloud/prod/localextensions.adm.xml",
+		"/C/b/repo/build/config-cloud/stag/localextensions.app.xml",
+		"/C/b/repo/build/config-dev/localextensions.xml",
+		"/C/b/hybris/bin/platform/ext/core/external-dependencies.xml",
+		"/C/b/hybris/bin/platform/ext/core/lib/aspectjweaver-1.8.5.jar",
+		"/C/ySolr/server/solr/security.json.example",
+		"/C/b/repo/misc/impex-generator/target/generated-impex/06-LLANT-products-enrichment-type.impex",
+		"/C/Users/rafael.ishikawa/Downloads/wrapper-20190327.log",
+		"/C/Users/rafael.ishikawa/AppData/Local/Temp/7zO0CD80CE3/[Content_Types].xml",
+		"/C/Users/rafael.ishikawa/Desktop/results.xml",
+		"/D/Medias/1808/installer/recipes/b2b_acc/build.gradle"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 226.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 78.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "KeyrusNoteProject.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"server.xml",
+				"build\\config-dev\\tomcat\\conf\\server.xml"
+			],
+			[
+				"solrcon",
+				"build\\config-dev\\solr\\instances\\default\\configsets\\default\\conf\\solrconfig.xml"
+			],
+			[
+				"security",
+				"server\\solr\\security.json.example"
+			],
+			[
+				"bin\\platform\\resources\\ant\\antmacros.xml",
+				"bin\\platform\\resources\\ant\\antmacros.xml"
+			],
+			[
+				"s\\ant\\antmacros.xml",
+				"bin\\platform\\resources\\ant\\antmacros.xml"
+			],
+			[
+				"schema.xml",
+				"backoffice\\conf\\schema.xml"
+			],
+			[
+				"hot-folder-store-price-spring.xml",
+				"src\\alkostocore\\resources\\alkostocore\\integration\\hot-folder-store-price-spring.xml"
+			],
+			[
+				"cronjobservice",
+				"platform\\ext\\processing\\testsrc\\de\\hybris\\platform\\servicelayer\\cronjob\\CronJobServiceTest.java"
+			],
+			[
+				"acc.alk",
+				"bin\\custom\\alkostostorefront\\web\\webroot\\WEB-INF\\_ui-src\\responsive\\lib\\keyrusbase\\js\\acc.alk_checkout.js"
+			],
+			[
+				"alkostocore-i",
+				"bin\\custom\\alkostocore\\resources\\alkostocore-items.xml"
+			],
+			[
+				"local",
+				"config\\local.properties"
+			],
+			[
+				".git",
+				"temp\\hybris\\sassgem\\gems\\chunky_png-1.3.5\\.gitignore"
+			],
+			[
+				"provinceimpex",
+				"bin\\custom\\alkostocore\\resources\\alkostocore\\import\\common\\city_province.impex"
+			],
+			[
+				"checkoutxml",
+				"bin\\custom\\alkostostorefront\\web\\webroot\\WEB-INF\\config\\multi-step-checkout-config.xml"
+			],
+			[
+				"checkoutflow",
+				"bin\\ext-accelerator\\acceleratorfacades\\src\\de\\hybris\\platform\\acceleratorfacades\\flow\\CheckoutFlowFacade.java"
+			],
+			[
+				"process.xml",
+				"bin\\ext-platform-optional\\bpmn\\resources\\test\\order-process.xml"
+			],
+			[
+				"checkout-.xml",
+				"bin\\custom\\alkostostorefront\\web\\webroot\\WEB-INF\\config\\multi-step-checkout-config.xml"
+			],
+			[
+				"checkoutpage",
+				"bin\\custom\\alkostocore\\resources\\alkostocore\\import\\cockpits\\cmscockpit\\structure-view\\structure_multiStepCheckoutSummaryPageTemplate.vm"
+			],
+			[
+				"acc.ch",
+				"bin\\custom\\alkostostorefront\\web\\webroot\\_ui\\responsive\\common\\js\\acc.checkoutsteps.js"
+			],
+			[
+				"acc.check",
+				"bin\\custom\\alkostostorefront\\web\\webroot\\_ui\\responsive\\common\\js\\acc.checkout.js"
+			],
+			[
+				"checkoutste",
+				"bin\\custom\\alkostostorefront\\web\\webroot\\WEB-INF\\tags\\responsive\\checkout\\multi\\checkoutSteps.tag"
+			],
+			[
+				"loca.",
+				"config\\local.properties"
+			],
+			[
+				"serve",
+				"bin\\platform\\tomcat\\conf\\server.xml"
+			],
+			[
+				"server",
+				"config\\tomcat\\conf\\server.xml"
+			],
+			[
+				"server.",
+				"config\\tcServer\\conf\\server.xml"
+			],
+			[
+				"l",
+				"config\\local.properties"
+			],
+			[
+				"newslettersubscribeform",
+				"hybris\\bin\\custom\\alkostostorefront\\web\\src\\co\\com\\alkosto\\storefront\\forms\\NewsletterSubscribeForm.java"
+			],
+			[
+				"loca",
+				"hybris\\config\\local.properties"
+			],
+			[
+				".jsp",
+				"acceleratoraddon\\web\\webroot\\WEB-INF\\views\\responsive\\cms\\wishlistcomponent.jsp"
+			],
+			[
+				"controller",
+				"acceleratoraddon\\web\\src\\br\\com\\sap\\wishlist\\controllers\\cms\\WishlistComponentController.java"
+			],
+			[
+				"wishlistcontroler",
+				"acceleratoraddon\\web\\src\\br\\com\\sap\\wishlist\\controllers\\cms\\AddToWishlistActionController.java"
+			],
+			[
+				"defaultproductser",
+				"platform\\ext\\platformservices\\src\\de\\hybris\\platform\\product\\impl\\DefaultProductService.java"
+			],
+			[
+				"test.java",
+				"testsrc\\br\\com\\sap\\mediaimport\\jalo\\MediaimportTest.java"
+			],
+			[
+				"cms2-i",
+				"hybris\\bin\\ext-content\\cms2\\resources\\cms2-items.xml"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 297.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
