@@ -11,22 +11,30 @@ function rollTeste(sheet, roll, sor, msg)
             sorte = sorte - 1;
         end
         local crit = 0;
-        local fail = 0;
+        local fail = 0;        
   
         crit, fail = checkCriticalnFail(rolagem, fail, sorte);
-
+        local totalCrit = crit + 1;
+        local resultados = "" .. resultR;
+        
         limit = 0;
-        critMsg = "Critico!!!";
+        critMsg = "Critico!!! X" .. limit;
 
         while( crit > 0 and limit < 10)
         do
             limit = limit + 1;
-            critMsg = "Critico!!! " .. limit;
+            critMsg = "Critico!!! x" .. crit;
             critroll = rollCritical(crit, sorte);
             resultC = printRolagem(sheet, critroll, critMsg, sorte);
-            mesa.activeChat:enviarMensagem(" [§K7]" .. resultR .. " + [§K8]" .. resultC .. "[§K1] = [§K12]" .. resultR+resultC);
             crit, fail = checkCriticalnFail(critroll, fail, sorte);
-            resultR=resultR+resultC;
+            resultados = resultados .. " + " .. resultC;
+            if(crit > 0) then                
+                totalCrit = totalCrit + crit;                
+            end
+            if(crit == 0 or limit == 10) then                
+                mesa.activeChat:enviarMensagem("{" .. resultados .. "} = [§K7]" .. (resultR +  resultC) .. "[§K8] x " .. totalCrit .. " = [§K12]" .. (resultR+resultC)*(totalCrit));
+            end            
+            resultR=(resultR+resultC);
         end
 
         if fail > 0 then
