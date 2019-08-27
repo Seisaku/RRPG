@@ -23,7 +23,7 @@
 		  <button text="INI" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoIniciativa(sheet);"/>
 
 
-	<label text="Desejo" margins="{left = 1, top = 5}"/><edit field="desejo.uso"  type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 1, top = 5}"/>
+	<label text="Desejo" margins="{left = 1, top = 5}"/><edit field="desejoUso"  type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 1, top = 5}"/>
 	<label text="Falhas Oponente" margins="{left = 1, top = 5}"/><edit field="falhas.oponente"  type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 1, top = 5}"/>
 	  </flowLayout>
 </form>

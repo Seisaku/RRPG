@@ -55,24 +55,16 @@ function initialize( sheet )
 		sheet.tendencia.moralidade = 0;
 		sheet.tendencia.lealdade = 0;
 
-		NDB.createChildNode(sheet, "desejo");
-		sheet.desejo.uso = 0;
-		sheet.desejo.atual = 0;
-		sheet.desejo.max = 0;
+
+		sheet.desejoUso = 0;
+		sheet.desejoAtual = 0;
+		sheet.desejoMax = 0;
 
 		NDB.createChildNode(sheet, "falhas");
 		falhas.oponente = 0;
 
 		NDB.pushTransaction(sheet, tr1);
 	end
-end
-
-function changeDesejo(sheet)
-	local tr1 = NDB.newTransaction(sheet);
-	NDB.createChildNode(sheet, "desejo");
-	sheet.desejo.uso = 0;
-	sheet.desejo.atual = 0;
-	sheet.desejo.max = 0;	
 end
 
 function getNodeFromPath(path, sheet)
@@ -300,11 +292,11 @@ function updateProficiencia(sheet)
 end
 
 function updateDesejo(sheet)
-	sheet.desejo.max = sheet.nivel;
-	if(sheet.desejo.atual==nil) then
-		sheet.desejo.atual=sheet.desejo.max;
+	sheet.desejoMax = sheet.nivel;
+	if(sheet.desejoAtual==nil) then
+		sheet.desejoAtual=sheet.desejoMax;
 	end	
-	sheet.desejo.msg=sheet.desejo.atual .. "|" .. sheet.desejo.max
+	sheet.desejoMsg=sheet.desejoAtual .. "|" .. sheet.desejoMax
 	syncDesejo(sheet);
 end
 
@@ -430,33 +422,33 @@ function syncRecurso( sheet )
 end
 
 function setDesejoPopup(sheet)
-	sheet.desejo.op =  sheet.desejo.atual;
+	sheet.desejoOp =  sheet.desejoAtual;
 end
 
 function changeBarraDesejo(sheet)
 	jogador = Firecast.getCurrentUser();
 	if(jogador~=nil) then
 		errorMsg = "Operação Barra Desejo Inválida (tonumber)";
-		if(string.find(sheet.desejo.op, "+")==1) then
-			gainedWish = string.gsub(sheet.desejo.op, "%+", "");
+		if(string.find(sheet.desejoOp, "+")==1) then
+			gainedWish = string.gsub(sheet.desejoOp, "%+", "");
 			Wishup = tonumber(gainedWish);
 			if(Wishup ~= nil) then
-				sheet.desejo.atual = sheet.desejo.atual + Wishup;
+				sheet.desejoAtual = sheet.desejoAtual + Wishup;
 			else
 				showMessage(errorMsg);
 			end
-		elseif(string.find(sheet.desejo.op, "-")==1) then
-			lostWish = string.gsub(sheet.desejo.op, "%-", "");
+		elseif(string.find(sheet.desejoOp, "-")==1) then
+			lostWish = string.gsub(sheet.desejoOp, "%-", "");
 			Wishdown = tonumber(lostWish);
 			if(Wishdown ~= nil) then
-				sheet.desejo.atual = sheet.desejo.atual - Wishdown;
+				sheet.desejoAtual = sheet.desejoAtual - Wishdown;
 			else
 				showMessage(errorMsg);
 			end
 		else
-			Wishnew = tonumber(sheet.desejo.op);
+			Wishnew = tonumber(sheet.desejoOp);
 			if(Wishnew ~= nil) then
-				sheet.desejo.atual = Wishnew;
+				sheet.desejoAtual = Wishnew;
 			else
 				showMessage(errorMsg);
 			end
@@ -468,7 +460,7 @@ end
 function syncDesejo( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
-		jogador:requestSetBarValue(3, sheet.desejo.atual, sheet.desejo.max);	
+		jogador:requestSetBarValue(3, sheet.desejoAtual, sheet.desejoMax);	
 	end
 end
 

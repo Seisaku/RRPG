@@ -24,12 +24,12 @@ function rollTeste(sheet, roll, sor, msg)
         critMsg = "Critico!!! X" .. limit;
 
         local msgDesejo = "";
-        if(desejoUso > 0 and sheet.desejo.atual ~= nil and sheet.desejo.atual >= desejoUso) then
+        if(desejoUso > 0 and sheet.desejoAtual ~= nil and sheet.desejoAtual >= desejoUso) then
             msgDesejo = " [§K9] Desejo ".. desejoUso .. " ";
-            sheet.desejo.atual = sheet.desejo.atual - desejoUso;
+            sheet.desejoAtual = sheet.desejoAtual - desejoUso;
             updateDesejo(sheet);
         end
-        sheet.desejo.uso = 0;
+        sheet.desejoUso = 0;
 
         local msgFalhaOp = "";
         local resultF = 0;
@@ -70,16 +70,16 @@ end
 
 function getDesejoEmUso(sheet)
     if(sheet == nil) then
-        sheet.desejo.uso = 0;
+        sheet.desejoUso = 0;
         return 0;
     elseif(sheet.desejo == nil) then
-        sheet.desejo.uso = 0;
+        sheet.desejoUso = 0;
         return 0;
-    elseif(sheet.desejo.uso == nil) then
-        sheet.desejo.uso = 0;
+    elseif(sheet.desejoUso == nil) then
+        sheet.desejoUso = 0;
         return 0;
     else
-       return sheet.desejo.uso;
+       return sheet.desejoUso;
     end
 end
 

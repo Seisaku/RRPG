@@ -41,12 +41,12 @@
 
 	<label  text="Desejo"/>
 	<progressBar width="200" height="15" color="darkorchid" field="desejo" fieldMax="desejoMax"
-			onDblClick="self.setDesejoPopup:setNodeObject(sheet); self.setDesejoPopup:show(); setDesejoPopup(sheet); self.desejoOp:setFocus();" hitTest="true"><label field="desejo.msg" align="client" horzTextAlign="center"/>
+			onDblClick="self.setDesejoPopup:setNodeObject(sheet); self.setDesejoPopup:show(); setDesejoPopup(sheet); self.desejoOp:setFocus();" hitTest="true"><label field="desejoMsg" align="client" horzTextAlign="center"/>
 			<popup name="setDesejoPopup" width="150" height="80" scopeNode="sheet" onClose="changeBarraDesejo(sheet);" >
 				<flowLayout align="client">
     				<label text="Desejo" autoSize="true"/>
     				<flowLineBreak/>             			
-					<edit name="desejoOp" field="desejo.op" horzTextAlign="center" width="100" 
+					<edit name="desejoOp" field="desejoOp" horzTextAlign="center" width="100" 
 						onKeyDown="
 						if(event.keyCode==13) then
 							self.endDesejoOp:setFocus();
@@ -57,7 +57,7 @@
 			</popup>
 	</progressBar>			
 
-	<label text="Desejo"/><edit field="desejo.uso"  type="number" min="0" horzTextAlign="center" height="20" width="30" />
+	<label text="Desejo"/><edit field="desejoUso"  type="number" min="0" horzTextAlign="center" height="20" width="30" />
 	<label text="Falhas Oponente"/><edit field="falhas.oponente"  type="number" min="0" horzTextAlign="center" height="20" width="30" />
 
 	<label text="Dinheiro"/>
