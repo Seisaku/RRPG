@@ -12,6 +12,9 @@ function rollTeste(sheet, roll, sor, msg)
         end
         local crit = 0;
         local fail = 0;        
+        
+        local desejoUso = getDesejoEmUso(sheet);       
+        local falhasOp = getFalhasDoOponente(sheet);
   
         crit, fail = checkCriticalnFail(rolagem, fail, sorte);
         local totalCrit = crit + 1;
@@ -19,6 +22,29 @@ function rollTeste(sheet, roll, sor, msg)
         
         limit = 0;
         critMsg = "Critico!!! X" .. limit;
+
+        local msgDesejo = "";
+        if(desejoUso > 0 and sheet.desejo.atual ~= nil and sheet.desejo.atual >= desejoUso) then
+            msgDesejo = " [§K9] Desejo ".. desejoUso .. " ";
+            sheet.desejo.atual = sheet.desejo.atual - desejoUso;
+            updateDesejo(sheet);
+        end
+        sheet.desejo.uso = 0;
+
+        local msgFalhaOp = "";
+        local resultF = 0;
+
+        if(falhasOp > 0) then
+            opFailRoll = rollCritical(falhasOp, sorte);
+            resultF = printRolagem(sheet, opFailRoll, "Falha Oponente x" .. falhasOp, sorte);
+            msgFalhaOp = " [§K2]Falha Oponente x" .. falhasOp .. " = " .. resultF;
+            resultados = resultados .. " + " .. resultF;
+        end
+        sheet.falhas.oponente = 0;
+
+        if(falhasOp > 0 or desejoUso > 0) then
+            mesa.activeChat:enviarMensagem("{" .. resultados .. "} = [§K7]" .. (resultR +  resultF) .. "[§K8] x1 +" .. msgDesejo .. msgFalhaOp .. " = [§K12]" .. (resultR+resultF)*(desejoUso+falhasOp+1));
+        end
 
         while( crit > 0 and limit < 10)
         do
@@ -31,8 +57,8 @@ function rollTeste(sheet, roll, sor, msg)
             if(crit > 0) then                
                 totalCrit = totalCrit + crit;                
             end
-            if(crit == 0 or limit == 10) then                
-                mesa.activeChat:enviarMensagem("{" .. resultados .. "} = [§K7]" .. (resultR +  resultC) .. "[§K8] x " .. totalCrit .. " = [§K12]" .. (resultR+resultC)*(totalCrit));
+            if(crit == 0 or limit == 10) then
+                mesa.activeChat:enviarMensagem("{" .. resultados .. "} = [§K7]" .. (resultR +  resultC +  resultF) .. "[§K8] x " .. totalCrit .. msgDesejo .. msgFalhaOp .. " = [§K12]" .. (resultR+resultC+resultF)*(totalCrit+desejoUso+falhasOp));
             end            
             resultR=(resultR+resultC);
         end
@@ -40,6 +66,29 @@ function rollTeste(sheet, roll, sor, msg)
         if fail > 0 then
             mesa.activeChat:enviarMensagem("Critical Fail!!! " .. fail);       
         end
+end
+
+function getDesejoEmUso(sheet)
+    if(sheet == nil) then
+        sheet.desejo.uso = 0;
+        return 0;
+    elseif(sheet.desejo == nil) then
+        sheet.desejo.uso = 0;
+        return 0;
+    elseif(sheet.desejo.uso == nil) then
+        sheet.desejo.uso = 0;
+        return 0;
+    else
+       return sheet.desejo.uso;
+    end
+end
+
+function getFalhasDoOponente(sheet)
+    if(sheet == nil or sheet.falhas == nil or sheet.falhas.oponente == nil) then
+        return 0;
+    else
+       return sheet.falhas.oponente;
+    end
 end
 
 function rollCritical(crit, sorte)
