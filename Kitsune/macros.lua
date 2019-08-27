@@ -113,5 +113,3 @@ function printRolagem(sheet, rolagem, msg, sor)
         mesa.activeChat:enviarMensagem(outputRoll);
         return r;
 end
-
-

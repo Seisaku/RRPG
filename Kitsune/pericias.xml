@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout autoHeight="true" width="300">
-	<label horzTextAlign="center" text="Perícias" width="300"/>
+<flowLayout align="client" autoHeight="true" maxControlsPerLine="3">
+	<label horzTextAlign="center" text="Perícias" align="top" margins="{top=15}"/>
 	<flowLineBreak/>
 	<pericia campo="Atletismo" nome="Atletismo"/>
 	<pericia campo="Acrobacia" nome="Acrobacia"/>
@@ -20,15 +20,6 @@
 	<pericia campo="Intimidacao" nome="Intimidação"/>
 	<pericia campo="Persuasao" nome="Persuasão"/>
 	<pericia campo="Enganacao" nome="Enganação"/>
-	<flowLayout autoHeight="true" margins="{top=15}" width="250">
-		<label horzTextAlign="center" text="Perícias adicionais" width="250"/>
-		<flowLineBreak/>
-		<button height="20" onClick="self.frmPericia:append();" text="+" width="20"/>
-		<label horzTextAlign="center" text="Nome" width="130"/>
-		<label horzTextAlign="center" text="Valor" width="30"/>
-		<flowLineBreak/>
-		<recordList autoHeight="true" field="pericias" name="frmPericia" templateForm="frmPericia" width="250"/>
-	</flowLayout>
 	<flowLineBreak/>
 	
 </flowLayout>

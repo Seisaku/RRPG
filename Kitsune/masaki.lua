@@ -495,7 +495,7 @@ function updateRecurso(sheet)
 			sheet.atributos.recursoMod=20;
 		end
 		sheet.atributos.recursoMax=sheet.atributos.recursoMod*sheet.atributos.recurso;
-		if(sheet.atributos.vidaAtual==nil) then
+		if(sheet.atributos.recursoAtual==nil) then
 			sheet.atributos.recursoAtual=sheet.atributos.recursoMax;
 		end
 		sheet.atributos.recursoAtualxTotal=sheet.atributos.recursoAtual .. "|" .. sheet.atributos.recursoMax;
