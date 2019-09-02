@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<form name="frmIdioma" height="20" margins="{top=2}">      
-	<flowLayout align="client" width="200">
-		<edit 		width="150" height="20" field="nome"/>		
-		<button 	width="20"  height="20" text="X" onClick="deleteIdioma(sheet)" margins="{left=2}"/>	
-	</flowLayout>   
-</form>

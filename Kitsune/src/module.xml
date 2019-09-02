@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.5">
+	<id>KITSUNE_SYSTEM_PLUGIN</id>
+	<version>4.0</version>
+	<name>Kitsune's System</name>
+	<description>Plugin adiciona suporte para o sistema desenvolvido por Kitsune</description>
+	<author>Masaki</author>
+	<site>https://github.com/Seisaku/RRPG</site>
+	<contact>rafkawa@gmail.com</contact>
+</module>

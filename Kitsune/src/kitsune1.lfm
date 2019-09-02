@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="br.com.sigma.kitsune.ficha1" formType="sheetTemplate" name="Kitsune" onNodeReady="initialize(sheet)" title="Kitsune's System">
+	<import file="templates.xml"/>
+	<tabControl align="client">
+		<tab title="Principal">
+			<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
+				<import file="principal.xml"/>
+				<import file="avatar.xml"/>
+				<import file="atributos.xml"/>
+				<import file="equipamento.xml"/>
+			</flowLayout>
+		</tab>
+		<tab title="Inventário">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="inventario"/>
+		</tab>
+		<tab title="História">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="historia"/>
+		</tab>
+		<tab title="Anotações">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="anotacoes"/>
+		</tab>
+		<tab title="Magias">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="magias"/>
+		</tab>
+		<tab title="Habilidades">
+			<tabControl align="client">
+				<tab title="Habilidades">
+					<import file="habilidades.xml"/>
+				</tab>
+				<tab title="Perícias">
+					<import file="pericias.xml"/>
+				</tab>
+				<tab title="Idiomas">
+					<import file="idiomas.xml"/>
+				</tab>
+			</tabControl>	
+		</tab>
+		<tab title="Profissão">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="profissao"/>
+		</tab>
+		<tab title="Raça">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="racaTxt"/>
+		</tab>
+		<tab title="Caracteristicas">
+			<import file="caracteristicas.xml"/>
+		</tab>
+		<tab title="Personalidade">
+			<tabControl align="client">
+				<tab title="Antecedente">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="antecedente"/>
+				</tab>
+				<tab title="Personalidade">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="personalidades"/>
+				</tab>
+				<tab title="Ideais">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="ideais"/>
+				</tab>
+				<tab title="Fraquezas">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="fraquezas"/>
+				</tab>
+				<tab title="Vínculos">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="vinculos"/>
+				</tab>
+				<tab title="Divindade">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="divindade"/>
+				</tab>
+			</tabControl>
+		</tab>
+		<tab title="Classe">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="classeTxt"/>
+		</tab>
+	</tabControl>
+	<dataLink fields="{'nivel', 'experienciaAtual','desejo'}">
+		<event name="onChange">updateBase(sheet);
+		</event>
+	</dataLink>
+	<dataLink fields="{'atributos.ataque', 'atributos.ataqueMod'}">
+		<event name="onChange">updateAtaque(sheet);    
+		</event>
+	</dataLink>
+	<dataLink fields="{'atributos.defesa', 'atributos.defesaMod'}">
+		<event name="onChange">updateDefesa(sheet);	
+		</event>
+	</dataLink>
+	<dataLink fields="{'atributos.magia', 'atributos.magiaMod'}">
+		<event name="onChange">updateMagia(sheet);    
+		</event>
+	</dataLink>
+	<dataLink fields="{'atributos.resistenciaMagica', 'atributos.resistenciaMagicaMod'}">
+		<event name="onChange">updateResistenciaMagica(sheet);	
+		</event>
+	</dataLink>
+	<dataLink field="atributos.sorte">
+		<event name="onChange">updateSorte(sheet);	
+		</event>
+	</dataLink>
+	<dataLink fields="{'atributos.agilidade', 'atributos.agilidadeMod'}">
+		<event name="onChange">updateAgilidade(sheet);
+		</event>
+	</dataLink>
+	<dataLink field="atributos.vida">
+		<event name="onChange">updateVida(sheet);
+		</event>
+	</dataLink>
+	<dataLink field="atributos.recurso">
+		<event name="onChange">updateRecurso(sheet);
+		</event>
+	</dataLink>
+
+	<dataLink field="tendencia.moralidade">
+	<event name="onChange">
+		updateMoralidade(sheet);
+	</event>
+</dataLink>	
+
+<dataLink field="tendencia.lealdade">
+	<event name="onChange">
+		updateLealdade(sheet);
+	</event>
+</dataLink>
+
+</form>

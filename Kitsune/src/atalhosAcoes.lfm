@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form dataType="RRPG.DataTypeUnico.atalhosAcoes" formType="tablesDock" name="frmAtalhosAcoes" onNodeReady="initializeActions(sheet)" title="Atalhos">
+	<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoAtaque(sheet);" text="ATQ" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoDefesa(sheet);" text="DEF" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoAgilidade(sheet);" text="AGI" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoSorte(sheet);" text="SOR" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoMagia(sheet);" text="MAG" width="50"/>
+		<button height="20" margins="{left = 5, top = 5" onClick="atalhoRMagia(sheet);" text="RMAG" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoVida(sheet);" text="VID" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoIniciativa(sheet);" text="INI" width="50"/>
+		<label margins="{left = 1, top = 5}" text="Desejo"/>
+		<edit field="atalhos.desejoUso" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30"/>
+		<label margins="{left = 1, top = 5}" text="Falhas Oponente"/>
+		<edit field="atalhos.falhasOponente" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30"/>
+	</flowLayout>
+</form> 
