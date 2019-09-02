@@ -127,9 +127,9 @@
 			"file": "Kitsune/masaki.lua",
 			"settings":
 			{
-				"buffer_size": 21048,
+				"buffer_size": 21051,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -260,7 +260,7 @@
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 22.0
 	},
 	"find_in_files":
 	{
@@ -1161,7 +1161,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21048,
+						"buffer_size": 21051,
 						"regions":
 						{
 						},
@@ -2021,7 +2021,7 @@
 	"project": "RRPG Sublime Project.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 40.0
 	},
 	"save_all_on_build": true,
 	"select_file":
