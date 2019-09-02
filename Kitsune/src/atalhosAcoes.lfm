@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<form name="frmAtalhosAcoes" formType="tablesDock" 
-	 dataType="RRPG.DataTypeUnico.atalhosAcoes"
-	  title="Atalhos"
-	  onNodeReady="initializeActions(sheet)">
-
-	  <flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
-		  <button text="ATQ" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoAtaque(sheet);"/>
-		  
-		  <button text="DEF" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoDefesa(sheet);"/>
-
-		  <button text="AGI" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoAgilidade(sheet);"/>
-		  
-		  <button text="SOR" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoSorte(sheet);"/>
-		  
-		  <button text="MAG" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoMagia(sheet);"/>
-		  
-		  <button text="RMAG" width="50" height="20" margins="{left = 5, top = 5" onClick="atalhoRMagia(sheet);"/>
-		  
-		  <button text="VID" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoVida(sheet);"/>
-
-		  <button text="INI" width="50" height="20" margins="{left = 5, top = 5}" onClick="atalhoIniciativa(sheet);"/>
-
-
-	<label text="Desejo" margins="{left = 1, top = 5}"/><edit field="desejoUso"  type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 1, top = 5}"/>
-	<label text="Falhas Oponente" margins="{left = 1, top = 5}"/><edit field="falhas.oponente"  type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 1, top = 5}"/>
-	  </flowLayout>
-</form>
+<form dataType="RRPG.DataTypeUnico.atalhosAcoes" formType="tablesDock" name="frmAtalhosAcoes" onNodeReady="initializeActions(sheet)" title="Atalhos">
+	<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoAtaque(sheet);" text="ATQ" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoDefesa(sheet);" text="DEF" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoAgilidade(sheet);" text="AGI" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoSorte(sheet);" text="SOR" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoMagia(sheet);" text="MAG" width="50"/>
+		<button height="20" margins="{left = 5, top = 5" onClick="atalhoRMagia(sheet);" text="RMAG" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoVida(sheet);" text="VID" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoIniciativa(sheet);" text="INI" width="50"/>
+		<label margins="{left = 1, top = 5}" text="Desejo"/>
+		<edit field="atalhos.desejoUso" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30"/>
+		<label margins="{left = 1, top = 5}" text="Falhas Oponente"/>
+		<edit field="atalhos.falhasOponente" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30"/>
+	</flowLayout>
+</form> 
