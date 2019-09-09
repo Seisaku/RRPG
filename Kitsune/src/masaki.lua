@@ -354,6 +354,51 @@ function rolarPericia(sheet, pericia)
 			sheet.pericias.Combate.Espadas=0;
 		end			
 		rolagem=tonumber(sheet.pericias.Combate.Espadas);
+	elseif string.find(pericia,"Navegação")~=nil then
+		if sheet.pericias.Ferramentas.navegacao==nil then
+			sheet.pericias.Ferramentas.navegacao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Ferramentas.navegacao);
+	elseif string.find(pericia,"Ladrão")~=nil then
+		if sheet.pericias.Ferramentas.ladrao==nil then
+			sheet.pericias.Ferramentas.ladrao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Ferramentas.ladrao);
+	elseif string.find(pericia,"Instrumentos")~=nil then
+		if sheet.pericias.Ferramentas.Instrumentos==nil then
+			sheet.pericias.Ferramentas.Instrumentos=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Ferramentas.Instrumentos);
+	elseif string.find(pericia,"Disfarce")~=nil then
+		if sheet.pericias.Ferramentas.Disfarce==nil then
+			sheet.pericias.Ferramentas.Disfarce=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Ferramentas.Disfarce);
+	elseif string.find(pericia,"Falsificação")~=nil then
+		if sheet.pericias.Ferramentas.falsificacao==nil then
+			sheet.pericias.Ferramentas.falsificacao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Ferramentas.falsificacao);
+	elseif string.find(pericia,"Jogos")~=nil then
+		if sheet.pericias.Ferramentas.jogos==nil then
+			sheet.pericias.Ferramentas.jogos=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Ferramentas.jogos);
+	elseif string.find(pericia,"Venenos")~=nil then
+		if sheet.pericias.Ferramentas.venenos==nil then
+			sheet.pericias.Ferramentas.venenos=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Ferramentas.venenos);
+	elseif string.find(pericia,"Montarias")~=nil then
+		if sheet.pericias.Ferramentas.Montarias==nil then
+			sheet.pericias.Ferramentas.Montarias=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Ferramentas.Montarias);
+	elseif string.find(pericia,"Tudo")~=nil then
+		if sheet.pericias.Resistencias.Tudo==nil then
+			sheet.pericias.Resistencias.Tudo=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Resistencias.Tudo);
 	end
 
 	proficiencia = getProficiencia(sheet);

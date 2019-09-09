@@ -58,7 +58,7 @@
 			<flowLineBreak/>
 			<pericia campo="Ferramentas.navegacao"				nome="Navegação"/>
 			<pericia campo="Ferramentas.ladrao"					nome="Ladrão"/>
-			<pericia campo="Ferramentas.InstrumentosMusicais"	nome="Instrumentos"/>
+			<pericia campo="Ferramentas.Instrumentos"			nome="Instrumentos"/>
 			<pericia campo="Ferramentas.disfarce"				nome="Disfarce"/>
 			<pericia campo="Ferramentas.falsificacao"			nome="Falsificação"/>
 			<pericia campo="Ferramentas.jogos"					nome="Jogos"/>
