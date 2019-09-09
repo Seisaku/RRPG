@@ -1,89 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout align="client" autoHeight="true" maxControlsPerLine="3">
-	<label horzTextAlign="center" text="Habilidades" align="top" margins="{top=15}"/>
 
-	<flowLineBreak/>
+<tabControl align="client" width="400">	
+	<tab title="Habilidades">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="3">
+			<label horzTextAlign="center" text="Habilidades" align="top" margins="{top=15}"/>
+			<flowLineBreak/>
+			<pericia campo="Atletismo"			nome="Atletismo"/>
+			<pericia campo="Acrobacia"			nome="Acrobacia"/>
+			<pericia campo="Arcanismo"			nome="Arcanismo"/>
+			<pericia campo="Historia"			nome="História"/>
+			<pericia campo="Investigacao"		nome="Investigação"/>
+			<pericia campo="Natureza"			nome="Natureza"/>
+			<pericia campo="Religiao"			nome="Religião"/>
+			<pericia campo="AdestrarAnimais"	nome="Adestrar Animais"/>
+			<pericia campo="Medicina"			nome="Medicina"/>
+			<pericia campo="Atuacao"			nome="Atuação"/>
+			<pericia campo="Sobrevivencia"		nome="Sobrevivência"/>
+			<pericia campo="Percepcao"			nome="Percepção"/>
+			<pericia campo="Furtividade"		nome="Furtividade"/>
+			<pericia campo="Prestidigitacao"	nome="Prestidigitação"/>
+			<pericia campo="Intuicao"			nome="Intuição"/>
+			<pericia campo="Intimidacao" 		nome="Intimidação"/>
+			<pericia campo="Persuasao"			nome="Persuasão"/>
+			<pericia campo="Enganacao"			nome="Enganação"/>
+		</flowLayout>
+	</tab>
+	<tab title="Combate">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="3">
+			<label horzTextAlign="center" text="Combate" align="top" margins="{top=15}"/>		
+			<flowLineBreak/>
+			<pericia campo="Combate.Armaduras"		nome="Armaduras"/>
+			<pericia campo="Combate.Escudos"		nome="Escudos"/>
 
-	<pericia campo="Atletismo" nome="Atletismo"/>
-	<pericia campo="Acrobacia" nome="Acrobacia"/>
-	<pericia campo="Arcanismo" nome="Arcanismo"/>
-	<pericia campo="Historia" nome="História"/>
-	<pericia campo="Investigacao" nome="Investigação"/>
-	<pericia campo="Natureza" nome="Natureza"/>
-	<pericia campo="Religiao" nome="Religião"/>
-	<pericia campo="AdestrarAnimais" nome="Adestrar Animais"/>
-	<pericia campo="Medicina" nome="Medicina"/>
-	<pericia campo="Atuacao" nome="Atuação"/>
-	<pericia campo="Sobrevivencia" nome="Sobrevivência"/>
-	<pericia campo="Percepcao" nome="Percepção"/>
-	<pericia campo="Furtividade" nome="Furtividade"/>
-	<pericia campo="Prestidigitacao" nome="Prestidigitação"/>
-	<pericia campo="Intuicao" nome="Intuição"/>
-	<pericia campo="Intimidacao" nome="Intimidação"/>
-	<pericia campo="Persuasao" nome="Persuasão"/>
-	<pericia campo="Enganacao" nome="Enganação"/>
-
-	<flowLineBreak/>
-
-	<label horzTextAlign="center" text="Equipamentos" align="top" margins="{top=15}"/>
-
-	<flowLineBreak/>	
-
-	<label horzTextAlign="center" text="Armaduras" align="top" margins="{top=15}"/>
-	
-	<flowLineBreak/>	
-
-	<pericia campo="Armaduras.Roupas" nome="Roupas"/>
-	<pericia campo="Armaduras.Couro" nome="Couro"/>
-	<pericia campo="Armaduras.Malha" nome="Malha"/>
-	<pericia campo="Armaduras.Metal" nome="Metal"/>
-	<pericia campo="Armaduras.Escudos" nome="Escudos"/>
-	
-	<flowLineBreak/>
-
-	<label horzTextAlign="center" text="Armas" align="top" margins="{top=15}"/>
-	
-	<flowLineBreak/>
-
-	<pericia campo="Armas.Desarmado"      nome="Desarmado"/>
-	<pericia campo="Armas.Espadas"        nome="Espadas"/>
-	<pericia campo="Armas.Adagas"         nome="Adagas"/>
-	<pericia campo="Armas.Machados"       nome="Machados"/>
-	<pericia campo="Armas.Martelos"       nome="Martelos"/>
-	<pericia campo="Armas.Macas"          nome="Maças"/>
-	<pericia campo="Armas.Compassos"      nome="Compassos"/>
-	<pericia campo="Armas.EspadasGrandes" nome="Espadas Grandes"/>
-	<pericia campo="Armas.Katanas"        nome="Katanas"/>
-	<pericia campo="Armas.EspadasNinja"   nome="Espadas Ninja"/>
-	<pericia campo="Armas.Lanças"         nome="Lanças"/>
-	<pericia campo="Armas.Postes"         nome="Postes"/>
-	<pericia campo="Armas.Cajados"        nome="Cajados"/>
-	<pericia campo="Armas.Bordões"        nome="Bordões"/>
-	<pericia campo="Armas.Arcos"          nome="Arcos"/>
-	<pericia campo="Armas.Bestas"         nome="Bestas"/>
-	<pericia campo="Armas.Rifles"         nome="Rifles"/>
-	<pericia campo="Armas.ExplosivosMao"  nome="Explosivos"/>
-	
-	<flowLineBreak/>
-	
-	<label horzTextAlign="center" text="Ferramentas" align="top" margins="{top=15}"/>
-	
-	<flowLineBreak/>
-
-	<pericia campo="Ferramentas.navegacao" nome="Navegação"/>
-	<pericia campo="Ferramentas.ladrao" nome="Ladrão"/>
-	<pericia campo="Ferramentas.InstrumentosMusicais" nome="Instrumentos"/>
-	<pericia campo="Ferramentas.disfarce" nome="Disfarce"/>
-	<pericia campo="Ferramentas.falsificacao" nome="Falsificação"/>
-	<pericia campo="Ferramentas.jogos" nome="Jogos"/>
-	<pericia campo="Ferramentas.venenos" nome="Venenos"/>
-	<pericia campo="Ferramentas.Montarias" nome="Montarias"/>	
-
-	<flowLineBreak/>
-
-	<label horzTextAlign="center" text="Resistencias" align="top" margins="{top=15}"/>
-
-	<flowLineBreak/>
-	<pericia campo="Resistencias.Tudo" nome="Tudo"/>
-
-</flowLayout>
+			<pericia campo="Combate.Desarmado"		nome="Desarmado"/>
+			<pericia campo="Combate.Espadas"		nome="Espadas"/>
+			<pericia campo="Combate.Adagas"			nome="Adagas"/>
+			<pericia campo="Combate.Machados"		nome="Machados"/>
+			<pericia campo="Combate.Martelos"		nome="Martelos"/>
+			<pericia campo="Combate.Macas"			nome="Maças"/>
+			<pericia campo="Combate.Compassos"		nome="Compassos"/>
+			<pericia campo="Combate.EspadasGrandes"	nome="Espadas Grandes"/>
+			<pericia campo="Combate.Katanas"		nome="Katanas"/>
+			<pericia campo="Combate.EspadasNinja"	nome="Espadas Ninja"/>
+			<pericia campo="Combate.Lancas"			nome="Lanças"/>
+			<pericia campo="Combate.Postes"			nome="Postes"/>
+			<pericia campo="Combate.Cajados"		nome="Cajados"/>
+			<pericia campo="Combate.Bordões"		nome="Bordões"/>
+			<pericia campo="Combate.Arcos"			nome="Arcos"/>
+			<pericia campo="Combate.Bestas"			nome="Bestas"/>
+			<pericia campo="Combate.Rifles"			nome="Rifles"/>
+			<pericia campo="Combate.Explosivos"		nome="Explosivos"/>		
+		</flowLayout>
+	</tab>
+	<tab title="Ferramentas">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="3">
+			<label horzTextAlign="center" text="Ferramentas" align="top" margins="{top=15}"/>
+			<flowLineBreak/>
+			<pericia campo="Ferramentas.navegacao"				nome="Navegação"/>
+			<pericia campo="Ferramentas.ladrao"					nome="Ladrão"/>
+			<pericia campo="Ferramentas.InstrumentosMusicais"	nome="Instrumentos"/>
+			<pericia campo="Ferramentas.disfarce"				nome="Disfarce"/>
+			<pericia campo="Ferramentas.falsificacao"			nome="Falsificação"/>
+			<pericia campo="Ferramentas.jogos"					nome="Jogos"/>
+			<pericia campo="Ferramentas.venenos"				nome="Venenos"/>
+			<pericia campo="Ferramentas.Montarias"				nome="Montarias"/>
+		</flowLayout>
+	</tab>
+	<tab title="Resistencias">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="3">
+			<label horzTextAlign="center" text="Resistencias" align="top" margins="{top=15}"/>
+			<flowLineBreak/>
+			<pericia campo="Resistencias.Tudo" nome="Tudo"/>
+		</flowLayout>
+	</tab>
+</tabControl>

@@ -47,6 +47,42 @@ function initialize( sheet )
 		sheet.pericias.Persuasao=0;
 		sheet.pericias.Enganacao=0;
 
+		NDB.createChildNode(sheet.pericias, "Combate");
+		
+		sheet.pericias.Combate.Armaduras=0;
+		sheet.pericias.Combate.Escudos=0;
+		sheet.pericias.Combate.Desarmado=0;
+		sheet.pericias.Combate.Espadas=0;
+		sheet.pericias.Combate.Adagas=0;
+		sheet.pericias.Combate.Machados=0;
+		sheet.pericias.Combate.Martelos=0;
+		sheet.pericias.Combate.Macas=0;
+		sheet.pericias.Combate.Compassos=0;
+		sheet.pericias.Combate.EspadasGrandes=0;
+		sheet.pericias.Combate.Katanas=0;
+		sheet.pericias.Combate.EspadasNinja=0;
+		sheet.pericias.Combate.Lancas=0;
+		sheet.pericias.Combate.Postes=0;
+		sheet.pericias.Combate.Cajados=0;
+		sheet.pericias.Combate.Bordoes=0;
+		sheet.pericias.Combate.Arcos=0;
+		sheet.pericias.Combate.Bestas=0;
+		sheet.pericias.Combate.Rifles=0;
+		sheet.pericias.Combate.Explosivos=0;
+
+		NDB.createChildNode(sheet.pericias, "Ferramentas");
+		sheet.pericias.Ferramentas.Navegacao=0;
+		sheet.pericias.Ferramentas.Ladrao=0;
+		sheet.pericias.Ferramentas.Instrumentos=0;
+		sheet.pericias.Ferramentas.Disfarce=0;
+		sheet.pericias.Ferramentas.Falsificacao=0;
+		sheet.pericias.Ferramentas.Jogos=0;
+		sheet.pericias.Ferramentas.Venenos=0;
+		sheet.pericias.Ferramentas.Montarias=0;
+
+		NDB.createChildNode(sheet.pericias, "Resistencias");
+		sheet.pericias.Resistencias.Tudo=0;
+
 		NDB.createChildNode(sheet, "equipamento");
 		sheet.equipamento.ataqueEquipBonus = 0;
 		sheet.equipamento.defesaEquipBonus = 0;
@@ -110,57 +146,224 @@ function nodeContainsField(node, field)
 end
 
 function rolarPericia(sheet, pericia)
-	if (sheet.pericias ~= nil) then
-		local mesa = Firecast.getMesaDe(sheet);
-
-		rolagem=0;
-		if string.find(pericia,"Atletismo")~=nil then
-			rolagem=tonumber(sheet.pericias.Atletismo);
-		elseif string.find(pericia,"Acrobacia")~=nil then
-			rolagem=tonumber(sheet.pericias.Acrobacia);
-		elseif string.find(pericia,"Arcanismo")~=nil then
-			rolagem=tonumber(sheet.pericias.Arcanismo);
-		elseif string.find(pericia,"História")~=nil then
-			rolagem=tonumber(sheet.pericias.Historia);
-		elseif string.find(pericia,"Investigação")~=nil then
-			rolagem=tonumber(sheet.pericias.Investigacao);
-		elseif string.find(pericia,"Natureza")~=nil then
-			rolagem=tonumber(sheet.pericias.Natureza);
-		elseif string.find(pericia,"Religião")~=nil then
-			rolagem=tonumber(sheet.pericias.Religiao);
-		elseif string.find(pericia,"Adestrar Animais")~=nil then
-			rolagem=tonumber(sheet.pericias.AdestrarAnimais);
-		elseif string.find(pericia,"Medicina")~=nil then
-			rolagem=tonumber(sheet.pericias.Medicina);
-		elseif string.find(pericia,"Atuação")~=nil then
-			rolagem=tonumber(sheet.pericias.Atuacao);
-		elseif string.find(pericia,"Sobrevivência")~=nil then
-			rolagem=tonumber(sheet.pericias.Sobrevivencia);
-		elseif string.find(pericia,"Percepção")~=nil then
-			rolagem=tonumber(sheet.pericias.Percepcao);
-		elseif string.find(pericia,"Furtividade")~=nil then
-			rolagem=tonumber(sheet.pericias.Furtividade);
-		elseif string.find(pericia,"Prestidigitação")~=nil then
-			rolagem=tonumber(sheet.pericias.Prestidigitacao);
-		elseif string.find(pericia,"Intuição")~=nil then
-			rolagem=tonumber(sheet.pericias.Intuicao);
-		elseif string.find(pericia,"Intimidação")~=nil then
-			rolagem=tonumber(sheet.pericias.Intimidacao);
-		elseif string.find(pericia,"Persuasão")~=nil then
-			rolagem=tonumber(sheet.pericias.Persuasao);
-		elseif string.find(pericia,"Enganação")~=nil then
-			rolagem=tonumber(sheet.pericias.Enganacao);
-		end
-
-		proficiencia = getProficiencia(sheet);
-
-		if(rolagem ~=nil and rolagem > 0 and proficiencia > 0) then
-			jogada = "1D100+" .. (rolagem*proficiencia);
-		else
-			jogada = "1D100";
-		end		
-		rollTeste(sheet, jogada, sheet.atributos.sorte, pericia);
+	if (sheet.pericias == nil) then
+		NDB.createChildNode(sheet, "pericias");		
 	end
+	if (sheet.pericias.Combate == nil) then
+		NDB.createChildNode(sheet.pericias, "Combate");
+	end
+	if (sheet.pericias.Ferramentas == nil) then
+		NDB.createChildNode(sheet.pericias, "Ferramentas");
+	end
+	if (sheet.pericias.Resistencias == nil) then
+		NDB.createChildNode(sheet.pericias, "Resistencias");
+	end
+
+	local mesa = Firecast.getMesaDe(sheet);
+
+	rolagem=0;
+	if string.find(pericia,"Atletismo")~=nil then
+		if sheet.pericias.Atletismo==nil then
+			sheet.pericias.Atletismo=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Atletismo);
+	elseif string.find(pericia,"Acrobacia")~=nil then
+		if sheet.pericias.Acrobacia==nil then
+			sheet.pericias.Acrobacia=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Acrobacia);
+	elseif string.find(pericia,"Arcanismo")~=nil then
+		if sheet.pericias.Arcanismo==nil then
+			sheet.pericias.Arcanismo=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Arcanismo);
+	elseif string.find(pericia,"História")~=nil then
+		if sheet.pericias.Historia==nil then
+			sheet.pericias.Historia=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Historia);
+	elseif string.find(pericia,"Investigação")~=nil then
+		if sheet.pericias.Investigacao==nil then
+			sheet.pericias.Investigacao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Investigacao);
+	elseif string.find(pericia,"Natureza")~=nil then
+		if sheet.pericias.Natureza==nil then
+			sheet.pericias.Natureza=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Natureza);
+	elseif string.find(pericia,"Religião")~=nil then
+		if sheet.pericias.Religiao==nil then
+			sheet.pericias.Religiao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Religiao);
+	elseif string.find(pericia,"Adestrar Animais")~=nil then
+		if sheet.pericias.AdestrarAnimais==nil then
+			sheet.pericias.AdestrarAnimais=0;
+		end			
+		rolagem=tonumber(sheet.pericias.AdestrarAnimais);
+	elseif string.find(pericia,"Medicina")~=nil then
+		if sheet.pericias.Medicina==nil then
+			sheet.pericias.Medicina=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Medicina);
+	elseif string.find(pericia,"Atuação")~=nil then
+		if sheet.pericias.Atuacao==nil then
+			sheet.pericias.Atuacao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Atuacao);
+	elseif string.find(pericia,"Sobrevivência")~=nil then
+		if sheet.pericias.Sobrevivencia==nil then
+			sheet.pericias.Sobrevivencia=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Sobrevivencia);
+	elseif string.find(pericia,"Percepção")~=nil then
+		if sheet.pericias.Percepcao==nil then
+			sheet.pericias.Percepcao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Percepcao);
+	elseif string.find(pericia,"Furtividade")~=nil then
+		if sheet.pericias.Furtividade==nil then
+			sheet.pericias.Furtividade=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Furtividade);
+	elseif string.find(pericia,"Prestidigitação")~=nil then
+		if sheet.pericias.Prestidigitacao==nil then
+			sheet.pericias.Prestidigitacao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Prestidigitacao);
+	elseif string.find(pericia,"Intuição")~=nil then
+		if sheet.pericias.Intuicao==nil then
+			sheet.pericias.Intuicao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Intuicao);
+	elseif string.find(pericia,"Intimidação")~=nil then
+		if sheet.pericias.Intimidacao==nil then
+			sheet.pericias.Intimidacao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Intimidacao);
+	elseif string.find(pericia,"Persuasão")~=nil then
+		if sheet.pericias.Persuasao==nil then
+			sheet.pericias.Persuasao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Persuasao);
+	elseif string.find(pericia,"Enganação")~=nil then
+		if sheet.pericias.Enganacao==nil then
+			sheet.pericias.Enganacao=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Enganacao);
+	elseif string.find(pericia,"Armaduras")~=nil then
+		if sheet.pericias.Combate.Armaduras==nil then
+			sheet.pericias.Combate.Armaduras=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Armaduras);
+	elseif string.find(pericia,"Escudos")~=nil then
+		if sheet.pericias.Combate.Escudos==nil then
+			sheet.pericias.Combate.Escudos=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Escudos);
+	elseif string.find(pericia,"Desarmado")~=nil then
+		if sheet.pericias.Combate.Desarmado==nil then
+			sheet.pericias.Combate.Desarmado=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Desarmado);
+	
+	elseif string.find(pericia,"Adagas")~=nil then
+		if sheet.pericias.Combate.Adagas==nil then
+			sheet.pericias.Combate.Adagas=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Adagas);
+	elseif string.find(pericia,"Machados")~=nil then
+		if sheet.pericias.Combate.Machados==nil then
+			sheet.pericias.Combate.Machados=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Machados);
+	elseif string.find(pericia,"Martelos")~=nil then
+		if sheet.pericias.Combate.Martelos==nil then
+			sheet.pericias.Combate.Martelos=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Martelos);
+	elseif string.find(pericia,"Maças")~=nil then
+		if sheet.pericias.Combate.Macas==nil then
+			sheet.pericias.Combate.Macas=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Macas);
+	elseif string.find(pericia,"Compassos")~=nil then
+		if sheet.pericias.Combate.Compassos==nil then
+			sheet.pericias.Combate.Compassos=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Compassos);
+	elseif string.find(pericia,"Espadas Grandes")~=nil then
+		if sheet.pericias.Combate.EspadasGrandes==nil then
+			sheet.pericias.Combate.EspadasGrandes=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.EspadasGrandes);
+	elseif string.find(pericia,"Katanas")~=nil then
+		if sheet.pericias.Combate.Katanas==nil then
+			sheet.pericias.Combate.Katanas=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Katanas);
+	elseif string.find(pericia,"Espadas Ninja")~=nil then
+		if sheet.pericias.Combate.EspadasNinja==nil then
+			sheet.pericias.Combate.EspadasNinja=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.EspadasNinja);
+	elseif string.find(pericia,"Lanças")~=nil then
+		if sheet.pericias.Combate.Lancas==nil then
+			sheet.pericias.Combate.Lancas=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Lancas);
+	elseif string.find(pericia,"Postes")~=nil then
+		if sheet.pericias.Combate.Postes==nil then
+			sheet.pericias.Combate.Postes=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Postes);
+	elseif string.find(pericia,"Cajados")~=nil then
+		if sheet.pericias.Combate.Cajados==nil then
+			sheet.pericias.Combate.Cajados=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Cajados);
+	elseif string.find(pericia,"Bordões")~=nil then
+		
+		if sheet.pericias.Combate.Bordoes==nil then
+			sheet.pericias.Combate.Bordoes=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Bordoes);
+	elseif string.find(pericia,"Arcos")~=nil then
+		if sheet.pericias.Combate.Arcos==nil then
+			sheet.pericias.Combate.Arcos=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Arcos);
+	elseif string.find(pericia,"Bestas")~=nil then
+		if sheet.pericias.Combate.Bestas==nil then
+			sheet.pericias.Combate.Bestas=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Bestas);
+	elseif string.find(pericia,"Rifles")~=nil then
+		if sheet.pericias.Combate.Rifles==nil then
+			sheet.pericias.Combate.Rifles=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Rifles);
+	elseif string.find(pericia,"Explosivos")~=nil then
+		if sheet.pericias.Combate.Explosivos==nil then
+			sheet.pericias.Combate.Explosivos=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Explosivos);
+	elseif string.find(pericia,"Espadas")~=nil then
+		if sheet.pericias.Combate.Espadas==nil then
+			sheet.pericias.Combate.Espadas=0;
+		end			
+		rolagem=tonumber(sheet.pericias.Combate.Espadas);
+	end
+
+	proficiencia = getProficiencia(sheet);
+
+	if(rolagem ~=nil and rolagem > 0 and proficiencia > 0) then
+		jogada = "1D100+" .. (rolagem*proficiencia);
+	else
+		jogada = "1D100";
+	end		
+	rollTeste(sheet, jogada, sheet.atributos.sorte, pericia);	
 end
 
 function getProficiencia(sheet)
