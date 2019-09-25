@@ -1,6 +1,14 @@
 local meuPersonagem
 
 function initializeActions(sheet)
+	if(sheet.atalhos == nil) then
+		local tr1 = NDB.newTransaction(sheet);
+		NDB.createChildNode(sheet, "atalhos");
+		NDB.pushTransaction(sheet, tr1);
+	end
+end
+
+function loadMyChar(sheet)
 	local personagemItem = getMyChar(sheet);
 	if(personagemItem ~= nil) then
 		personagemItem:loadSheetNDB(setLocalPersonagem)
@@ -25,6 +33,13 @@ function getMyChar(sheet)
 end
 
 function setAtalhoDesejoFalhas(sheet, meuPersonagem)
+
+	if(sheet.atalhos == nil) then
+		local tr1 = NDB.newTransaction(sheet);
+		NDB.createChildNode(sheet, "atalhos");
+		NDB.pushTransaction(sheet, tr1);
+	end
+
 	meuPersonagem.desejoUso = sheet.atalhos.desejoUso;
 	sheet.atalhos.desejoUso = 0;
 	meuPersonagem.falhas.oponente = sheet.atalhos.falhasOponente;
@@ -35,7 +50,7 @@ end
 function atalhoAtaque(sheet)
 	local mesa = Firecast.getMesaDe(sheet);
 	if(meuPersonagem == nil) then
-		initializeActions(sheet);
+		loadMyChar(sheet);
 	else	
 		setAtalhoDesejoFalhas(sheet,meuPersonagem);
 		rolarAtaque(meuPersonagem);
@@ -44,7 +59,7 @@ end
 
 function atalhoDefesa(sheet)
 	if(meuPersonagem == nil) then
-		initializeActions(sheet);
+		loadMyChar(sheet);
 	else	
 		setAtalhoDesejoFalhas(sheet,meuPersonagem);
 		rolarDefesa(meuPersonagem);
@@ -53,7 +68,7 @@ end
 
 function atalhoAgilidade(sheet)
 	if(meuPersonagem == nil) then
-		initializeActions(sheet);
+		loadMyChar(sheet);
 	else	
 		setAtalhoDesejoFalhas(sheet,meuPersonagem);
 		rolarAgilidade(meuPersonagem);
@@ -62,7 +77,7 @@ end
 
 function atalhoSorte(sheet)
 	if(meuPersonagem == nil) then
-		initializeActions(sheet);
+		loadMyChar(sheet);
 	else	
 		setAtalhoDesejoFalhas(sheet,meuPersonagem);
 		rolarSorte(meuPersonagem);
@@ -71,7 +86,7 @@ end
 
 function atalhoMagia(sheet)
 	if(meuPersonagem == nil) then
-		initializeActions(sheet);
+		loadMyChar(sheet);
 	else
 		setAtalhoDesejoFalhas(sheet,meuPersonagem);	
 		rolarMagia(meuPersonagem);
@@ -80,7 +95,7 @@ end
 
 function atalhoRMagia(sheet)
 	if(meuPersonagem == nil) then
-		initializeActions(sheet);
+		loadMyChar(sheet);
 	else	
 		setAtalhoDesejoFalhas(sheet,meuPersonagem);
 		rolarResistenciaMagica(meuPersonagem);
@@ -89,7 +104,7 @@ end
 
 function atalhoVida(sheet)
 	if(meuPersonagem == nil) then
-		initializeActions(sheet);
+		loadMyChar(sheet);
 	else	
 		setAtalhoDesejoFalhas(sheet,meuPersonagem);
 		rolarVida(meuPersonagem);
@@ -98,7 +113,7 @@ end
 
 function atalhoIniciativa(sheet)
 	if(meuPersonagem == nil) then
-		initializeActions(sheet);
+		loadMyChar(sheet);
 	else	
 		setAtalhoDesejoFalhas(sheet,meuPersonagem);
 		rolarIniciativa(meuPersonagem);

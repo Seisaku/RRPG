@@ -97,7 +97,7 @@ function initialize( sheet )
 		sheet.desejoMax = 0;
 
 		NDB.createChildNode(sheet, "falhas");
-		falhas.oponente = 0;
+		sheet.falhas.oponente = 0;
 
 		NDB.pushTransaction(sheet, tr1);
 	end
@@ -935,6 +935,7 @@ function deleteIdioma(sheet)
 end
 
 function rolarPericia2(pericia)
+
 	local mesa = Firecast.getMesaDe(pericia);	
 
 	if(pericia.nome == nil) then
@@ -947,12 +948,16 @@ function rolarPericia2(pericia)
 	end
 	valor = pericia.valor;
 
-	pericias = NDB.getParent(pericia);
-	database = NDB.getParent(pericias);
+	editaveis = NDB.getParent(pericia);
+	pericias = NDB.getParent(editaveis);
 	personagem = NDB.getParent(pericias);
+
 	atributos = getChildNodeByName(personagem, "atributos");
- 
 	proficiencia = getProficiencia(personagem);
+	
+	editaveis = NDB.getParent(pericia);
+	pericias = NDB.getParent(editaveis);
+	personagem = NDB.getParent(pericias);
 
 	if(valor > 0) then
 		jogada = "1D100+" .. (valor*proficiencia);
@@ -965,9 +970,7 @@ function rolarPericia2(pericia)
 	else
 		sorte = 1;
 	end
-
 	rollTeste(personagem, jogada, sorte, nome);
-
 end
 
 function deletePericia(sheet)

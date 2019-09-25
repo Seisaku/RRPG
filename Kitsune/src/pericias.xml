@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<tabControl align="client" width="400">	
+<tabControl align="client" width="400">
+	<tab title="Editavel">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
+		<button width="20" height="20" text="+" onClick="self.rclPericias:append();"/>
+		<label horzTextAlign="center" width="150" text="Nome"/>		
+		<label horzTextAlign="center" width="30"  text="Bônus"/>
+		<flowLineBreak/>
+		<recordList width="320" autoHeight="true" name="rclPericias" field="pericias.editaveis" templateForm="frmPericia"/>
+		</flowLayout>
+	</tab>	
 	<tab title="Habilidades">
 		<flowLayout align="client" autoHeight="true" maxControlsPerLine="3">
 			<label horzTextAlign="center" text="Habilidades" align="top" margins="{top=15}"/>

@@ -1,5 +1,10 @@
 function rollTeste(sheet, roll, sor, msg)
     local mesa = Firecast.getMesaDe(sheet);     
+
+    if(mesa == nil) then
+        mesa = rrpg.getMesas()[1];
+    end
+
     local rolagem = Firecast.interpretarRolagem(roll); 
     rolagem:rolarLocalmente();
     resultR = printRolagem(sheet, rolagem, msg, sor);
@@ -40,6 +45,13 @@ function rollTeste(sheet, roll, sor, msg)
         msgFalhaOp = " [§K2]Falha Oponente x" .. falhasOp .. " = " .. resultF;
         resultados = resultados .. " + " .. resultF;
     end
+
+    if sheet.falhas == nil then
+        local tr1 = NDB.newTransaction(sheet);
+        NDB.createChildNode(sheet, "falhas");
+        NDB.pushTransaction(sheet, tr1);
+    end        
+
     sheet.falhas.oponente = 0;
 
     if(falhasOp > 0 or desejoUso > 0) then
@@ -123,6 +135,12 @@ end
 
 function printRolagem(sheet, rolagem, msg, sor)
         local mesa = Firecast.getMesaDe(sheet);
+
+        
+    if(mesa == nil) then
+        mesa = rrpg.getMesas()[1];
+    end
+
         local r = rolagem.resultado;
         local sorte = sor;
         if sorte == nil then
@@ -158,7 +176,9 @@ function printRolagem(sheet, rolagem, msg, sor)
                         outputRoll = outputRoll .. op.valor;
                 end;                
         end
-        outputRoll = outputRoll .. "[§K1]} = [§K9]" .. r .. "[§K14]<< " .. msg .. " >>";        
+        outputRoll = outputRoll .. "[§K1]} = [§K9]" .. r .. "[§K14]<< " .. msg .. " >>";      
+
         mesa.activeChat:enviarMensagem(outputRoll);
+
         return r;
 end
