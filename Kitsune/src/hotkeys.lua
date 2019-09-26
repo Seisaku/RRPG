@@ -5,8 +5,11 @@ function initializeHotkeys()
 	node.dados = 1;
 	node.mod = 0;
 	node.sorte = 0;
+	node.desejo = 0;
 	node.desejoUso = 0;
 	node.desejoAtual = 999;
+	node.desejoMax = 999;
+	node.nivel = 999;
 	node.vantagem = 0;
 	node.falhasOponente = 0;
 
