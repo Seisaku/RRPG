@@ -21,5 +21,6 @@ end
 
 function customRoll( sheet )
 	rolagem = sheet.dados .. "D100+" .. sheet.mod;
-	rollTeste(sheet, rolagem, sheet.sorte, sheet.nome)
+	mesa = getMesa(sheet);
+	rollTeste2(rolagem, sheet.sorte, sheet.vantagem, sheet.desejo, sheet.falhasOponente, mesa, sheet.nome);	
 end

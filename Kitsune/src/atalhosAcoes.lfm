@@ -10,26 +10,22 @@
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoVida(sheet);" text="VID" width="50"/>
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoIniciativa(sheet);" text="INI" width="50"/>
 		<!-- <label margins="{left = 1, top = 5}" text="Rolagem"/><edit field="atalhos.rolagem" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" type="text" width="100"/><flowLineBreak/><label margins="{left = 1, top = 5}" text="Sorte"/><edit field="atalhos.sorte" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="1" type="number" width="30"/>-->
-		<button height="20" margins="{left = 5, top = 5}" onClick="rollNode=initializeHotkeys()  self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.dados:setFocus();" text="rolagem" width="100"/>
-		<popup height="220" name="customRollPopup" scopeNode="sheet" width="250">
+		<button height="20" margins="{left = 5, top = 25}" onClick="rollNode=initializeHotkeys()  self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.dados:setFocus();" text="Rolagem" width="100"/>
+		<popup height="220" name="customRollPopup" scopeNode="sheet" width="170">
 			<flowLayout align="client">
-				<label autoSize="true" text="Rolagem"/>
-
-				<flowLineBreak/>
-				
-				<label margins="{left = 1, top = 5}" text="Nome"/>
-				<edit field="nome" horzTextAlign="center" name="nome" width="100" height="20" textPrompt="descrição da rolagem"/>
+				<label margins="{left = 5, top = 5}" autoSize="true" text="Rolagem" width="60"/>
+				<edit field="nome" horzTextAlign="center" name="nome" width="80" height="20" textPrompt="descrição da rolagem"/>
 				
 				<flowLineBreak/>
 
-				<edit field="dados" margins="{left = 30, top = 5}" horzTextAlign="center" name="dados" width="30" height="20"/>
-				<label autoSize="true" horzTextAlign="center" vertTextAlign="center" text="d100+" width="50" height="20"/>
-				<edit field="mod" horzTextAlign="center" width="30" height="20"/>
+				<edit field="dados" margins="{left = 30, top = 15}" horzTextAlign="center" name="dados" width="30" height="20"/>
+				<label autoSize="true" horzTextAlign="center" margins="{left = 5, top = 15}" vertTextAlign="center" text="d100+" width="50" height="20"/>
+				<edit field="mod" margins="{left = 5, top = 15}" horzTextAlign="center" width="30" height="20"/>
 
 				<flowLineBreak/>
 				
-				<label margins="{left = 1, top = 5}" text="Sorte"/>		
-				<edit field="sorte" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30" height="20"/>
+				<label margins="{left = 1, top = 15}" text="Sorte"/>		
+				<edit field="sorte" horzTextAlign="center" margins="{left = 1, top = 15}" min="0" type="number" width="30" height="20"/>
 				
 				<flowLineBreak/>
 
@@ -47,9 +43,9 @@
 				<edit field="falhasOponente" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30" height="20" text="0"/>
 
 				<flowLineBreak/>
-				<button margins="{left = 5}" name="rollCustomNow" onClick="customRoll(self.customRollPopup:getNodeObject());" text="Roll" width="100"/>
-				<flowLineBreak/>
-				<button margins="{left = 5}" name="endCustomRoll" onClick="self.customRollPopup:closePopup();" text="X" width="30"/>
+				<button margins="{left = 5, top = 15}" name="rollCustomNow" onClick="customRoll(self.customRollPopup:getNodeObject());" text="Roll" width="100"/>
+				
+				<button margins="{left = 15, top = 15}" name="endCustomRoll" onClick="self.customRollPopup:closePopup();" text="X" width="30"/>
 			</flowLayout>
 		</popup>
 	</flowLayout>

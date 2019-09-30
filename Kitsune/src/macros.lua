@@ -1,3 +1,69 @@
+function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, msg)
+
+    local rolagem = Firecast.interpretarRolagem(roll); 
+    rolagem:rolarLocalmente();
+    resultR = printRolagem2(mesa, rolagem, msg, sorte);
+    local crit = 0;
+    local fail = 0;
+    crit, fail = checkCriticalnFail(rolagem, fail, sorte);
+    local totalCrit = crit + vantagem + 1;
+    local resultados = "" .. resultR;
+    
+    limit = 0;
+    critMsg = "Critico!!! X" .. limit;
+
+    local msgDesejo = "";
+    if(desejo > 0) then
+        msgDesejo = " [§K9] Desejo ".. desejo .. " ";
+    end
+    local msgFalhaOp = "";
+    local resultF = 0;
+    if(falhasOp > 0) then
+        opFailRoll = rollCritical(falhasOp, sorte);
+        resultF = printRolagem2(mesa, opFailRoll, "Falha Oponente x" .. falhasOp, sorte);
+        msgFalhaOp = " [§K2]Falha Oponente x" .. falhasOp .. " = " .. resultF;
+        resultados = resultados .. " + " .. resultF;
+    end
+    local msgVantagem = ""; 
+    if(vantagem > 0) then
+        msgVantagem = " [§K11] Vantagem ".. vantagem .. " ";
+    end
+    if(falhasOp > 0 or desejo > 0 or vantagem > 0) then
+        mesa.activeChat:enviarMensagem("{" .. resultados .. "} = [§K7]" .. (resultR +  resultF) .. "[§K8] x1 +" .. msgDesejo .. msgFalhaOp .. msgVantagem .. " = [§K12]" .. (resultR+resultF)*(desejo+vantagem+falhasOp+1));
+    end
+
+    while( crit > 0 and limit < 10)
+    do
+        limit = limit + 1;
+        critMsg = "Critico!!! x" .. crit;
+        critroll = rollCritical(crit, sorte);
+        resultC = printRolagem2(mesa, critroll, critMsg, sorte);
+        crit, fail = checkCriticalnFail(critroll, fail, sorte);
+        resultados = resultados .. " + " .. resultC;
+        if(crit > 0) then                
+            totalCrit = totalCrit + crit;                
+        end
+        if(crit == 0 or limit == 10) then
+            mesa.activeChat:enviarMensagem("{" .. resultados .. "} = [§K7]" .. (resultR +  resultC +  resultF) .. "[§K8] x " .. totalCrit .. msgDesejo .. msgFalhaOp .. msgVantagem .. " = [§K12]" .. (resultR+resultC+resultF)*(totalCrit+vantagem+desejo+falhasOp));
+        end            
+        resultR=(resultR+resultC);
+    end
+
+    if fail > 0 then
+        mesa.activeChat:enviarMensagem("Critical Fail!!! " .. fail);       
+    end
+end
+
+function getMesa( sheet )
+    local mesa = Firecast.getMesaDe(sheet);     
+
+    if(mesa == nil) then
+        mesa = rrpg.getMesas()[1];
+    end
+
+    return mesa;
+end
+
 function rollTeste(sheet, roll, sor, msg)
     local mesa = Firecast.getMesaDe(sheet);     
 
@@ -133,14 +199,52 @@ function checkCriticalnFail(rolagem, fa, sorte)
     return crit, fail;
 end
 
-function printRolagem(sheet, rolagem, msg, sor)
-        local mesa = Firecast.getMesaDe(sheet);
+function printRolagem2(mesa, rolagem, msg, sor)
+    local r = rolagem.resultado;
+    local sorte = sor;
+    if sorte == nil then
+        sorte = 0;          
+    else
+        sorte = sorte - 1;
+    end
+    outputRoll =  "[§K2]" .. rolagem.asString .. " [§K1] { [§K7] ";
+    for i = 1, #rolagem.ops, 1 do
+        local op = rolagem.ops[i];       
+        if op.tipo == "dado" then
+            f = op.face;
+            outputRoll = outputRoll .. "[ ";
+            for j = 1, #op.resultados, 1 do
+                if j ~= 1 then
+                    outputRoll = outputRoll .. " , ";
+                end;
+                if op.resultados[j] >= f-sorte then
+                    outputRoll = outputRoll .. "[§K8]";
+                elseif op.resultados[j] == 1 then
+                    outputRoll = outputRoll .. "[§K4]";
+                else
+                    outputRoll = outputRoll .. "[§K7]";
+                end
+                outputRoll = outputRoll .. math.floor(op.resultados[j]) .. "[§K7]";
+            end;
+            outputRoll = outputRoll .. " ] ";
+            elseif op.tipo == "soma" then
+                outputRoll = outputRoll .. "+";
+            elseif op.tipo == "subtracao" then
+                outputRoll = outputRoll .. "-";
+            elseif op.tipo == "imediato" then
+                outputRoll = outputRoll .. op.valor;
+            end;                
+    end
+    outputRoll = outputRoll .. "[§K1]} = [§K9]" .. r .. "[§K14]<< " .. msg .. " >>";      
+    mesa.activeChat:enviarMensagem(outputRoll);
+    return r;
+end
 
-        
+function printRolagem(sheet, rolagem, msg, sor)
+    local mesa = Firecast.getMesaDe(sheet);        
     if(mesa == nil) then
         mesa = rrpg.getMesas()[1];
     end
-
         local r = rolagem.resultado;
         local sorte = sor;
         if sorte == nil then
