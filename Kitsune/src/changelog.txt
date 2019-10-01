@@ -15,3 +15,44 @@ First version of this file
 - Readded missing tabs under skills
 - Adjusted Layout
 - Upgraded SDK version to 3.5
+
+01-10-2019 - Version 5.0
+
+Rework Skills
+- Added custom record list for skills
+- Added combo box for known skills
+- Button to roll untrained skill
+- Editable skills
+- Fix status bar random update bugs
+- Added hotkey validations
+
+Hotkeys layout custom roll and macros
+- Updated layout of hotkeys component
+- Added new methods for rolling and print roll
+- Included advantage to custom rolls
+
+Hotkey init updates
+- Added wish, max wish and level
+
+Added skills for Tools and Resistances
+- Added skills for tools
+- Added skills for resistance (only All Resistance for now)
+
+Adjustments to Skills layout and combat skills
+- Changed the layout of skills to be divided by tabs
+- Implemented combat skills
+- Added validation and auto creation of missing attributes for skills
+
+Added new release with current changes
+- Includes Wish bar fix
+- New skills and layout
+- Adjustments to layout on Wish use and Fail panel
+
+Fix wish bar
+- Fixed incorrect field being configured on wish bar was using old name
+
+Update to skills
+- Added a bunch of new skills that were added to the system
+- Divided Skills into different categories in order to organize the layout
+
+
