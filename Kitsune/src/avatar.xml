@@ -5,7 +5,7 @@
 
 	<label  text="Vida"/>
 	<progressBar width="200" height="15" color="Green" field="atributos.vidaAtual" fieldMax="atributos.vidaMax"
-			onDblClick="self.setVidaPopup:setNodeObject(sheet); self.setVidaPopup:show(); setVidaPopup(sheet); self.vidaOp:setFocus();" hitTest="true"><label field="atributos.vidaAtualxTotal" align="client" horzTextAlign="center"/>
+			onDblClick="self.setVidaPopup:setNodeObject(sheet); syncVida(sheet); self.setVidaPopup:show(); setVidaPopup(sheet); self.vidaOp:setFocus();" hitTest="true"><label field="atributos.vidaAtualxTotal" align="client" horzTextAlign="center"/>
 			<popup name="setVidaPopup" width="150" height="80" scopeNode="sheet" onClose="changeBarraVida(sheet);" >
 				<flowLayout align="client">
     				<label text="Vida" autoSize="true"/>
@@ -23,7 +23,7 @@
 
 	<label  text="Recurso" />
 	<progressBar width="200" height="15" color="DodgerBlue" field="atributos.recursoAtual" fieldMax="atributos.recursoMax"
-			onDblClick="self.setRecursoPopup:setNodeObject(sheet); self.setRecursoPopup:show(); setRecursoPopup(sheet); self.recursoOp:setFocus();" hitTest="true"><label field="atributos.recursoAtualxTotal" align="client" horzTextAlign="center"/>
+			onDblClick="self.setRecursoPopup:setNodeObject(sheet); syncRecurso(sheet); self.setRecursoPopup:show(); setRecursoPopup(sheet); self.recursoOp:setFocus();" hitTest="true"><label field="atributos.recursoAtualxTotal" align="client" horzTextAlign="center"/>
 			<popup name="setRecursoPopup" width="150" height="80" scopeNode="sheet" onClose="changeBarraRecurso(sheet);" >
 				<flowLayout align="client">
     				<label text="Recurso" autoSize="true"/>
@@ -41,7 +41,7 @@
 
 	<label  text="Desejo"/>
 	<progressBar width="200" height="15" color="darkorchid" field="desejoAtual" fieldMax="desejoMax"
-			onDblClick="self.setDesejoPopup:setNodeObject(sheet); self.setDesejoPopup:show(); setDesejoPopup(sheet); self.desejoOp:setFocus();" hitTest="true"><label field="desejoMsg" align="client" horzTextAlign="center"/>
+			onDblClick="self.setDesejoPopup:setNodeObject(sheet); syncDesejo(sheet); self.setDesejoPopup:show(); setDesejoPopup(sheet); self.desejoOp:setFocus();" hitTest="true"><label field="desejoMsg" align="client" horzTextAlign="center"/>
 			<popup name="setDesejoPopup" width="150" height="80" scopeNode="sheet" onClose="changeBarraDesejo(sheet);" >
 				<flowLayout align="client">
     				<label text="Desejo" autoSize="true"/>

@@ -539,14 +539,7 @@ function updateProficiencia(sheet)
 	sheet.proficiencia = sheet.nivel;
 end
 
-function updateDesejo(sheet)
-	sheet.desejoMax = sheet.nivel;
-	if(sheet.desejoAtual==nil) then
-		sheet.desejoAtual=sheet.desejoMax;
-	end	
-	sheet.desejoMsg=sheet.desejoAtual .. "|" .. sheet.desejoMax
-	syncDesejo(sheet);
-end
+
 
 function updateExperiencia(sheet)
 	if(sheet.experienciaAtual==nil) then
@@ -619,10 +612,36 @@ function changeBarraVida(sheet)
 	end
 end
 
-function syncVida( sheet )
+function updateVida(sheet)
+	if(sheet.atributos~=nil) then
+		if(sheet.atributos.vida==nil) then
+			sheet.atributos.vida=1;
+		end
+		if(sheet.atributos.vidaMod==nil) then
+			sheet.atributos.vidaMod=200;
+		end
+		sheet.atributos.vidaMax=sheet.atributos.vidaMod*sheet.atributos.vida
+		if(sheet.atributos.vidaAtual==nil) then
+			sheet.atributos.vidaAtual=sheet.atributos.vidaMax;
+		end
+		sheet.atributos.vidaAtualxTotal=sheet.atributos.vidaAtual .. "|" .. sheet.atributos.vidaMax;
+		sheet.atributos.vidaFormula = sheet.atributos.vida .. "D100";
+		syncVidaToBar(sheet);
+	end
+end
+
+function syncVidaToBar( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
 		jogador:requestSetBarValue(1, sheet.atributos.vidaAtual, sheet.atributos.vidaMax);
+	end
+end
+
+function syncVida( sheet )
+	jogador, personagem = getJogadorfromSheet(sheet);
+	if(jogador~=nil) then
+		local atual, maximo, percent = jogador:getBarValue(1);
+		sheet.atributos.vidaAtual = atual;
 	end
 end
 
@@ -662,10 +681,35 @@ function changeBarraRecurso(sheet)
 	end
 end
 
-function syncRecurso( sheet )
+function updateRecurso(sheet)
+	if(sheet.atributos~=nil) then
+		if(sheet.atributos.recurso==nil) then
+			sheet.atributos.recurso=1;
+		end
+		if(sheet.atributos.recursoMod==nil) then
+			sheet.atributos.recursoMod=20;
+		end
+		sheet.atributos.recursoMax=sheet.atributos.recursoMod*sheet.atributos.recurso;
+		if(sheet.atributos.recursoAtual==nil) then
+			sheet.atributos.recursoAtual=sheet.atributos.recursoMax;
+		end
+		sheet.atributos.recursoAtualxTotal=sheet.atributos.recursoAtual .. "|" .. sheet.atributos.recursoMax;
+		syncRecursoToBar(sheet);
+	end
+end
+
+function syncRecursoToBar( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
 		jogador:requestSetBarValue(2, sheet.atributos.recursoAtual, sheet.atributos.recursoMax);
+	end
+end
+
+function syncRecurso( sheet )
+	jogador, personagem = getJogadorfromSheet(sheet);
+	if(jogador~=nil) then
+		local atual, maximo, percent = jogador:getBarValue(2);
+		sheet.atributos.recursoAtual = atual;
 	end
 end
 
@@ -705,7 +749,24 @@ function changeBarraDesejo(sheet)
 	end
 end
 
+function updateDesejo(sheet)
+	sheet.desejoMax = sheet.nivel;
+	if(sheet.desejoAtual==nil) then
+		sheet.desejoAtual=sheet.desejoMax;
+	end	
+	sheet.desejoMsg=sheet.desejoAtual .. "|" .. sheet.desejoMax
+	syncDesejoToBar(sheet);
+end
+
 function syncDesejo( sheet )
+	jogador, personagem = getJogadorfromSheet(sheet);
+	if(jogador~=nil) then
+		local atual, maximo, percent = jogador:getBarValue(3);
+		sheet.desejoAtual = atual;
+	end
+end
+
+function syncDesejoToBar( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
 		jogador:requestSetBarValue(3, sheet.desejoAtual, sheet.desejoMax);	
@@ -722,40 +783,8 @@ function getJogadorfromSheet( sheet )
 	end
 end
 
-function updateVida(sheet)
-	if(sheet.atributos~=nil) then
-		if(sheet.atributos.vida==nil) then
-			sheet.atributos.vida=1;
-		end
-		if(sheet.atributos.vidaMod==nil) then
-			sheet.atributos.vidaMod=200;
-		end
-		sheet.atributos.vidaMax=sheet.atributos.vidaMod*sheet.atributos.vida
-		if(sheet.atributos.vidaAtual==nil) then
-			sheet.atributos.vidaAtual=sheet.atributos.vidaMax;
-		end
-		sheet.atributos.vidaAtualxTotal=sheet.atributos.vidaAtual .. "|" .. sheet.atributos.vidaMax;
-		sheet.atributos.vidaFormula = sheet.atributos.vida .. "D100";
-		syncVida(sheet);
-	end
-end
 
-function updateRecurso(sheet)
-	if(sheet.atributos~=nil) then
-		if(sheet.atributos.recurso==nil) then
-			sheet.atributos.recurso=1;
-		end
-		if(sheet.atributos.recursoMod==nil) then
-			sheet.atributos.recursoMod=20;
-		end
-		sheet.atributos.recursoMax=sheet.atributos.recursoMod*sheet.atributos.recurso;
-		if(sheet.atributos.recursoAtual==nil) then
-			sheet.atributos.recursoAtual=sheet.atributos.recursoMax;
-		end
-		sheet.atributos.recursoAtualxTotal=sheet.atributos.recursoAtual .. "|" .. sheet.atributos.recursoMax;
-		syncRecurso(sheet);
-	end
-end
+
 
 function updateBonus(sheet)
 	if(sheet~=nil) then
