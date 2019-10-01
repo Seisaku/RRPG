@@ -1093,3 +1093,39 @@ function updateMoralidade(sheet)
 	-- 0 Neutro
 	-- 51+ Bom
 end
+
+function getNewSkill( sheet )
+	return sheet.pericias.habilidades.novas;
+end
+
+function getNewCombatSkill( sheet )
+	return sheet.pericias.combate.novas;
+end
+
+function getNewToolSkill( sheet )
+	return sheet.pericias.ferramentas.novas;
+end
+
+function getNewResistSkill( sheet )
+	return sheet.pericias.resistencias.novas;
+end
+
+function updateNovaPericia(novaPericia, nova)
+	novaPericia.nome = nova;
+end
+
+function rolarPericiaSemTreinamento(sheet, nome)
+	local mesa = getMesa(sheet);	
+	if(nome == nil) then
+		nome = "pericia"
+	end
+	atributos = getChildNodeByName(sheet, "atributos");
+	proficiencia = getProficiencia(sheet);
+	jogada = "1D100";
+	if(atributos ~= nil) then
+		sorte = atributos.sorte;
+	else
+		sorte = 1;
+	end
+	rollTeste(sheet, jogada, sorte, nome);
+end
