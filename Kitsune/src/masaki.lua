@@ -576,7 +576,7 @@ function expChange(sheet)
 		end		
 		if(sheet.experienciaAtual >= sheet.proximoNivel) then
 			sheet.nivel=sheet.nivel+1;
-			showMessage("Você subui para o nível "..sheet.nivel);
+			showMessage("Você subui para o nível " .. sheet.nivel);
 			updateBase(sheet);
 		end
 	end	

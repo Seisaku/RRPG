@@ -1,4 +1,29 @@
 function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, msg)
+    -- init
+    if(sorte == nil) then
+        sorte = 1;
+    end
+
+    if(vantagem == nil) then
+        vantagem = 0;
+    end
+
+    if(desejo == nil) then
+        desejo = 0;
+    end
+
+    if(falhasOp == nil) then
+        falhasOp = 0;
+    end
+
+    if(roll == nil) then
+        roll = "1D100";
+    end
+    if(msg == nil) then
+        msg = roll;
+    end
+
+
 
     local rolagem = Firecast.interpretarRolagem(roll); 
     rolagem:rolarLocalmente();
@@ -235,7 +260,7 @@ function printRolagem2(mesa, rolagem, msg, sor)
                 outputRoll = outputRoll .. op.valor;
             end;                
     end
-    outputRoll = outputRoll .. "[§K1]} = [§K9]" .. r .. "[§K14]<< " .. msg .. " >>";      
+    outputRoll = outputRoll .. "[§K1]} = [§K9]" .. r .. "[§K14] << " .. msg .. " >>";      
     mesa.activeChat:enviarMensagem(outputRoll);
     return r;
 end

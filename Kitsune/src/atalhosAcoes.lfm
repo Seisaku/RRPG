@@ -18,9 +18,9 @@
 				
 				<flowLineBreak/>
 
-				<edit field="dados" margins="{left = 30, top = 15}" horzTextAlign="center" name="dados" width="30" height="20"/>
+				<edit field="dados" margins="{left = 30, top = 15}" horzTextAlign="center" type="number" name="dados" width="30" height="20"/>
 				<label autoSize="true" horzTextAlign="center" margins="{left = 5, top = 15}" vertTextAlign="center" text="d100+" width="50" height="20"/>
-				<edit field="mod" margins="{left = 5, top = 15}" horzTextAlign="center" width="30" height="20"/>
+				<edit field="mod" margins="{left = 5, top = 15}" horzTextAlign="center" type="number" width="30" height="20"/>
 
 				<flowLineBreak/>
 				
