@@ -1,8 +1,13 @@
-01-10-2019 - Version 5.0
+02-10-2019 - Version 5.0
+
+Added scroll box
+- Added scroll box components to skills and equipment
 
 Update skills
 - Added new groups and skills according with last version of system
 - Adjustments to layout
+
+01-10-2019 - Version 5.0
 
 Rework Skills
 - Added custom record list for skills
