@@ -1,22 +1,8 @@
-02-07-2019 Version 3.1
-Update mod limit
-- Adjusted max limit for mods on weapons, armors, skills
-
-02-05-2019 - Verson 3.0.2
-- Removed crit from Initiative roll
-
-02-05-2019 - Verson 3.0.1
-- Updated Initiative to consider new rules
-
-19-04-2019 - Version 3.0
-First version of this file
-
-- Added Loyalty and Morality fields
-- Readded missing tabs under skills
-- Adjusted Layout
-- Upgraded SDK version to 3.5
-
 01-10-2019 - Version 5.0
+
+Update skills
+- Added new groups and skills according with last version of system
+- Adjustments to layout
 
 Rework Skills
 - Added custom record list for skills
@@ -55,4 +41,20 @@ Update to skills
 - Added a bunch of new skills that were added to the system
 - Divided Skills into different categories in order to organize the layout
 
+02-07-2019 Version 3.1
+Update mod limit
+- Adjusted max limit for mods on weapons, armors, skills
 
+02-05-2019 - Verson 3.0.2
+- Removed crit from Initiative roll
+
+02-05-2019 - Verson 3.0.1
+- Updated Initiative to consider new rules
+
+19-04-2019 - Version 3.0
+First version of this file
+
+- Added Loyalty and Morality fields
+- Readded missing tabs under skills
+- Adjusted Layout
+- Upgraded SDK version to 3.5

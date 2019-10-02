@@ -1,64 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <tabControl align="client" width="400">
-	<tab title="Habilidades">
+	<tab title="Ação">
 		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
-			<label horzTextAlign="center" text="Habilidades" align="top" margins="{top=15}"/>
-			<comboBox left="20" top="20" field="pericias.habilidades.novas" items="{'Atletismo','Acrobacia','Arcanismo','História','Investigação','Natureza','Religião','Adestrar Animais','Medicina','Atuação','Sobrevivência','Percepção','Furtividade','Prestidigitação','Intuição','Intimidação','Persuasão','Enganação'}"/>
-			<button width="20" height="20" text="+" onClick="nova=getNewSkill(sheet); novaPericia=self.rclPericiasSkill:append(); updateNovaPericia(novaPericia,nova);"/>
-			<button width="20" height="20" text="*" onClick="nova=getNewSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
+			<label horzTextAlign="center" text="Ação" align="top" margins="{top=15}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.acoes.novas" items="{'Acrobacia','Atletismo','Cavalgar','Chamado Animal','Desarmar Armadilhas','Disfarçar-se','Furtividade','Jogos de Azar','Prestidigitação'}"/>
+			<button width="20" height="20" text="+" onClick="nova=getNewActionSkill(sheet); novaPericia=self.rclPericiasSkill:append(); updateNovaPericia(novaPericia,nova);"/>
+			<button width="20" height="20" text="*" onClick="nova=getNewActionSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
 			<flowLineBreak/>
 			<label horzTextAlign="center" width="150" text="Nome"/>		
-			<label horzTextAlign="center" width="30"  text="Bônus"/>
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
 			<flowLineBreak/>
-			<recordList width="320" autoHeight="true" name="rclPericiasSkill" field="pericias.habilidades.editaveis" templateForm="frmPericia"/>
+			<recordList width="320" autoHeight="true" name="rclPericiasSkill" field="pericias.acoes.editaveis" templateForm="frmPericia"/>			
+		</flowLayout>
+	</tab>
+	<tab title="Conhecimento">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
+			<label horzTextAlign="center" text="Conhecimento" align="top" margins="{top=15}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.conhecimento.novas" items="{'Adestrar Animais','Anatomia','Arcanismo','Astrologia','Criptografia','Falsificação','Hipnotismo','História','Investigação','Medicina','Natureza','Navegação','Religião','Sobrevivência','Vidência'}"/>
+			<button width="20" height="20" text="+" onClick="nova=getNewknowledgeSkill(sheet); novaPericia=self.rclPericiasKnowledge:append(); updateNovaPericia(novaPericia,nova);"/>
+			<button width="20" height="20" text="*" onClick="nova=getNewknowledgeSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
 			<flowLineBreak/>
-			<label horzTextAlign="center" text="Habilidades" align="top" margins="{top=15}"/>
+			<label horzTextAlign="center" width="150" text="Nome"/>		
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
 			<flowLineBreak/>
-			<pericia campo="Atletismo"			nome="Atletismo"/>
-			<pericia campo="Acrobacia"			nome="Acrobacia"/>
-			<pericia campo="Arcanismo"			nome="Arcanismo"/>
-			<pericia campo="Historia"			nome="História"/>
-			<pericia campo="Investigacao"		nome="Investigação"/>
-			<pericia campo="Natureza"			nome="Natureza"/>
-			<pericia campo="Religiao"			nome="Religião"/>
-			<pericia campo="AdestrarAnimais"	nome="Adestrar Animais"/>
-			<pericia campo="Medicina"			nome="Medicina"/>
-			<pericia campo="Atuacao"			nome="Atuação"/>
-			<pericia campo="Sobrevivencia"		nome="Sobrevivência"/>
-			<pericia campo="Percepcao"			nome="Percepção"/>
-			<pericia campo="Furtividade"		nome="Furtividade"/>
-			<pericia campo="Prestidigitacao"	nome="Prestidigitação"/>
-			<pericia campo="Intuicao"			nome="Intuição"/>
-			<pericia campo="Intimidacao" 		nome="Intimidação"/>
-			<pericia campo="Persuasao"			nome="Persuasão"/>
-			<pericia campo="Enganacao"			nome="Enganação"/>
+			<recordList width="320" autoHeight="true" name="rclPericiasKnowledge" field="pericias.conhecimento.editaveis" templateForm="frmPericia"/>			
+		</flowLayout>
+	</tab>
+	<tab title="Produção">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
+			<label horzTextAlign="center" text="Produção" align="top" margins="{top=15}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.producao.novas" items="{'Agricultura','Alvenaria','Carpintaria','Cartografia','Cervejaria','Entalhar','Funilaria','Olaria','Pintura','Vidraçaria'}"/>
+			<button width="20" height="20" text="+" onClick="nova=getNewCreationSkill(sheet); novaPericia=self.rclPericiasCreation:append(); updateNovaPericia(novaPericia,nova);"/>
+			<button width="20" height="20" text="*" onClick="nova=getNewCreationSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
+			<flowLineBreak/>
+			<label horzTextAlign="center" width="150" text="Nome"/>		
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
+			<flowLineBreak/>
+			<recordList width="320" autoHeight="true" name="rclPericiasCreation" field="pericias.producao.editaveis" templateForm="frmPericia"/>			
+		</flowLayout>
+	</tab>
+	<tab title="Percepção">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
+			<label horzTextAlign="center" text="Percepção" align="top" margins="{top=15}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.percepcao.novas" items="{'Audição','Olfato','Visão'}"/>
+			<button width="20" height="20" text="+" onClick="nova=getNewPerceptionSkill(sheet); novaPericia=self.rclPericiasPerception:append(); updateNovaPericia(novaPericia,nova);"/>
+			<button width="20" height="20" text="*" onClick="nova=getNewPerceptionSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
+			<flowLineBreak/>
+			<label horzTextAlign="center" width="150" text="Nome"/>		
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
+			<flowLineBreak/>
+			<recordList width="320" autoHeight="true" name="rclPericiasPerception" field="pericias.percepcao.editaveis" templateForm="frmPericia"/>			
+		</flowLayout>
+	</tab>
+	<tab title="Sociais">
+		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
+			<label horzTextAlign="center" text="Sociais" align="top" margins="{top=15}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.sociais.novas" items="{'Apreciar','Atuação','Chantagear','Empatia','Enganação','Interrogação','Intimidação','Intuição','Persuasão','Subornar'}"/>
+			<button width="20" height="20" text="+" onClick="nova=getNewSocialSkill(sheet); novaPericia=self.rclPericiasSocial:append(); updateNovaPericia(novaPericia,nova);"/>
+			<button width="20" height="20" text="*" onClick="nova=getNewSocialSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
+			<flowLineBreak/>
+			<label horzTextAlign="center" width="150" text="Nome"/>		
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
+			<flowLineBreak/>
+			<recordList width="320" autoHeight="true" name="rclPericiasSocial" field="pericias.sociais.editaveis" templateForm="frmPericia"/>			
 		</flowLayout>
 	</tab>
 	<tab title="Combate">
 		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
 			<label horzTextAlign="center" text="Combate" align="top" margins="{top=15}"/>
-			<comboBox left="20" top="20" field="pericias.combate.novas" items="{'Armaduras','Escudos','Desarmado','Espadas','Adagas','Machados','Martelos','Maças','Compassos','Espadas Grandes','Katanas','Espadas Ninja','Lanças','Postes','Cajados','Bordões','Arcos','Bestas','Rifles','Explosivos'}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.combate.novas" items="{'Magia','Armaduras','Desarmado','Espadas','Adagas','Machados','Martelos','Maças','Compassos','Espadas Grandes','Katanas','Espadas Ninja','Lanças','Postes','Cajados','Bordões','Arcos','Bestas','Rifles','Explosivos'}"/>
 			<button width="20" height="20" text="+" onClick="nova=getNewCombatSkill(sheet); novaPericia=self.rclPericiasCombat:append(); updateNovaPericia(novaPericia,nova);"/>
 			<button width="20" height="20" text="*" onClick="nova=getNewCombatSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
 			<flowLineBreak/>
 			<label horzTextAlign="center" width="150" text="Nome"/>		
-			<label horzTextAlign="center" width="30"  text="Bônus"/>
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
 			<flowLineBreak/>
-			<recordList width="320" autoHeight="true" name="rclPericiasCombat" field="pericias.combate.editaveis" templateForm="frmPericia"/>
-			<flowLineBreak/>
-			<label horzTextAlign="center" text="Combate" align="top" margins="{top=15}"/>			
+			<recordList width="320" autoHeight="true" name="rclPericiasCombat" field="pericias.combate.editaveis" templateForm="frmPericia"/>			
 		</flowLayout>
 	</tab>
 	<tab title="Ferramentas">
 		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
 			<label horzTextAlign="center" text="Ferramentas" align="top" margins="{top=15}"/>
-			<comboBox left="20" top="20" field="pericias.ferramentas.novas" items="{'Navegação','Ladrão','Instrumentos','Disfarce','Falsificação','Jogos','Venenos','Montarias'}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.ferramentas.novas" items="{'Ferramentas de Arqueólogo','Ferramentas de Carpinteiro','Ferramentas de Cartógrafo','Ferramentas de Alfaiate','Ferramentas de Coureiro','Ferramentas de Encantador','Ferramentas de Engenheiro','Ferramentas de Entalhador','Ferramentas de Esfolador','Ferramentas de Ferreiro','Ferramentas de Funileiro','Ferramentas de Herbologias','Ferramentas de Joalheiro','Ferramentas de Medicina','Ferramentas de Minerador','Ferramentas de Oleiro','Ferramentas de Pedreiro','Ferramentas de Pescador','Ferramentas de Pintor','Ferramentas de Sapateiro','Ferramentas de Vidreiro ','Ferramentas de Alquimista','Suprimentos de Cervejeiro','Suprimentos de Escriba','Utensílios de Cozinheiro','Ferramentas de navegação','Ferramentas de ladrão','Kit de disfarce','Kit de falsificação','Kit de venenos','Instrumento - Alaúde','Instrumento - Flauta','Instrumento - Flauta de pã','Instrumento - Gaita de foles','Instrumento - Lira','Instrumento - Oboé','Instrumento - Tambor','Instrumento - Trombeta','Instrumento - Violino','Instrumento - Xilofone','Kit de jogo - Baralho de cartas','Kit de jogo - Conjunto de dados','Kit de jogo - Jogo dos três dragões','Kit de jogo - Xadrez do dragão'}"/>
 			<button width="20" height="20" text="+" onClick="nova=getNewToolSkill(sheet); novaPericia=self.rclPericiasTools:append(); updateNovaPericia(novaPericia,nova);"/>
 			<button width="20" height="20" text="*" onClick="nova=getNewToolSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
 			<flowLineBreak/>
 			<label horzTextAlign="center" width="150" text="Nome"/>
-			<label horzTextAlign="center" width="30"  text="Bônus"/>
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
 			<flowLineBreak/>
 			<recordList width="320" autoHeight="true" name="rclPericiasTools" field="pericias.ferramentas.editaveis" templateForm="frmPericia"/>s		
 		</flowLayout>
@@ -66,11 +95,11 @@
 	<tab title="Resistencias">
 		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
 			<label horzTextAlign="center" text="Resistencias" align="top" margins="{top=15}"/>
-			<comboBox left="20" top="20" field="pericias.resistencias.novas" items="{'Tudo'}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.resistencias.novas" items="{'Ataque','Agilidade','Sorte','Magia','Defesa Mágica','Vida'}"/>
 			<button width="20" height="20" text="+" onClick="nova=getNewResistSkill(sheet); novaPericia=self.rclPericiasResist:append(); updateNovaPericia(novaPericia,nova);"/>
 			<button width="20" height="20" text="*" onClick="nova=getNewResistSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
 			<label horzTextAlign="center" width="150" text="Nome"/>		
-			<label horzTextAlign="center" width="30"  text="Bônus"/>
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
 			<flowLineBreak/>
 			<recordList width="320" autoHeight="true" name="rclPericiasResist" field="pericias.resistencias.editaveis" templateForm="frmPericia"/>s		
 		</flowLayout>
@@ -81,7 +110,7 @@
 			<button width="20" height="20" text="+" onClick="self.rclPericiasCustom:append();"/>	
 			<flowLineBreak/>
 			<label horzTextAlign="center" width="150" text="Nome"/>
-			<label horzTextAlign="center" width="30"  text="Bônus"/>
+			<label horzTextAlign="center" width="100"  text="Bônus"/>
 			<flowLineBreak/>
 			<recordList width="320" autoHeight="true" name="rclPericiasCustom" field="pericias.editaveis.editaveis" templateForm="frmPericiaEditavel"/>
 		</flowLayout>

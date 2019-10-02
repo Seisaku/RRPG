@@ -1094,12 +1094,28 @@ function updateMoralidade(sheet)
 	-- 51+ Bom
 end
 
-function getNewSkill( sheet )
-	return sheet.pericias.habilidades.novas;
+function getNewActionSkill( sheet )
+	return sheet.pericias.acoes.novas;
+end
+
+function getNewknowledgeSkill( sheet )
+	return sheet.pericias.conhecimento.novas;
+end
+
+function getNewPerceptionSkill( sheet )
+	return sheet.pericias.percepcao.novas;
 end
 
 function getNewCombatSkill( sheet )
 	return sheet.pericias.combate.novas;
+end
+
+function getNewCreationSkill( sheet )
+	return sheet.pericias.producao.novas;
+end
+
+function getNewSocialSkill( sheet )
+	return sheet.pericias.sociais.novas;
 end
 
 function getNewToolSkill( sheet )
