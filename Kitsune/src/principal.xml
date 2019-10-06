@@ -32,11 +32,7 @@
             <label text="Lealdade"/>
             <label field="lealdade" width="60"/>
             <edit field="tendencia.lealdade" height="20" width="30" type="number" textPrompt="1" horzTextAlign="center" />
- 			<!-- <comboBox width="100" field="tendencia" items="{'Bom Leal', 'Bom Neutro', 'Bom Caótico', 'Neutro Leal', 'Neutro','Neutro Caótico','Mal Leal','Mal Neutro','Mal Caótico'}"
-                  values="{'BL', 'BN', 'BC', 'NL', 'N','NC','ML','MN','MC'}"/> -->
-
-            <flowLineBreak/>
-            
+ 			<flowLineBreak/>
             <label  text="Experiência"/>
 			<progressBar align="client" width="200" height="13" color="Gold " field="experienciaAtual" fieldMax="proximoNivel"
 				onDblClick="self.setExperienciaPopup:setNodeObject(sheet); self.setExperienciaPopup:show(); setExpPopup(sheet); self.experienciaOp:setFocus();" hitTest="true">

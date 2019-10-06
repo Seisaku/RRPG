@@ -8,8 +8,18 @@ function printAllChildren(node)
 end
 
 function printAllAttr(node)
-	message = "printAllAttr:\n";
-	
+	message = "printAllAttr:\n[node=".. NDB.getNodeName(node).."]\n";
+
+	listaAttr = NDB.getAttributes(node);
+	for key,Attr in pairs(listaAttr) do
+		message = message .. "\n" .. key .. "=" .. tostring(Attr);
+	end
+	showMessage(message);
+end
+
+function printAllAttr(node, msg)
+	message = "printAllAttr:\n[".. msg .."=".. NDB.getNodeName(node).."]\n";
+
 	listaAttr = NDB.getAttributes(node);
 	for key,Attr in pairs(listaAttr) do
 		message = message .. "\n" .. key .. "=" .. tostring(Attr);
@@ -36,4 +46,8 @@ function getChildNodeByName(node, name)
 		end
 	end
 	return nil;
+end
+
+function diplayNodeName(node, varname)
+	showMessage("["..varname .."=".. NDB.getNodeName(node).."]");
 end
