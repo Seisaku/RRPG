@@ -151,34 +151,37 @@ function getProficiencia(sheet)
 end
 
 function rolarAtaque(sheet)
-	local mesa = Firecast.getMesaDe(sheet);	
+	local mesa = getMesa(sheet);
 	if (sheet.atributos.ataqueFormula ~= nil) then
-		rollTeste(sheet, sheet.atributos.ataqueFormula, sheet.atributos.sorte, "Ataque");
+		rollTeste2(sheet.atributos.ataqueFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Ataque");
+		resetRollMods(sheet);
 	end
 end
 
 function rolarDefesa(sheet)
-	local mesa = Firecast.getMesaDe(sheet);	
+	local mesa = getMesa(sheet);
 	if (sheet.atributos.defesaFormula ~= nil) then
-		rollTeste(sheet, sheet.atributos.defesaFormula, sheet.atributos.sorte, "Defesa");
+		rollTeste2(sheet.atributos.defesaFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Defesa");
+		resetRollMods(sheet);
 	end
 end
 
 function rolarIniciativa(sheet)
-	local mesa = Firecast.getMesaDe(sheet);	
-	rollTeste(sheet, "1d100", 0, "Iniciativa");
+	local mesa = getMesa(sheet);
+	rollTeste2("1d100", 0, 0, 0, 0, mesa, nil, "Iniciativa");	
 end
 
 function rolarAgilidade(sheet)
-	local mesa = Firecast.getMesaDe(sheet);	
+	local mesa = getMesa(sheet);
 	if (sheet.atributos.iniciativaFormula ~= nil) then
-		rollTeste(sheet, sheet.atributos.iniciativaFormula, sheet.atributos.sorte, "Agilidade");
+		rollTeste2(sheet.atributos.iniciativaFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Agilidade");
+		resetRollMods(sheet);
 	end
 end
 
 function rolarSorte(sheet)
-	local mesa = Firecast.getMesaDe(sheet);	
-	if (sheet.atributos.iniciativaFormula ~= nil) then
+	local mesa = getMesa(sheet);
+	if (sheet.atributos.Sorte ~= nil) then
 		sorteFormula =  sheet.atributos.Sorte .. "D100"
 		if(sheet.atributos.sorteMod == nil) then
 			sheet.atributos.sorteMod = 0
@@ -187,29 +190,32 @@ function rolarSorte(sheet)
 			sorteFormula = sorteFormula .. "+" .. sheet.atributos.sorteMod;
 		elseif(sheet.atributos.sorteMod < 0) then
 			sorteFormula = sorteFormula .. sheet.atributos.sorteMod;
-		end
-		rollTeste(sheet, sorteFormula , sheet.atributos.sorte, "Sorte");
+		end		
+		rollTeste2(sorteFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Sorte");
+		resetRollMods(sheet);
 	end
 end
 
 function rolarMagia(sheet)
-	local mesa = Firecast.getMesaDe(sheet);	
+	local mesa = getMesa(sheet);
 	if (sheet.atributos.ataqueFormula ~= nil) then
-		rollTeste(sheet, sheet.atributos.magiaFormula, sheet.atributos.sorte, "Magia");
+		rollTeste2(sheet.atributos.magiaFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Magia");
+		resetRollMods(sheet);
 	end
 end
 
 function rolarVida(sheet)
-	local mesa = Firecast.getMesaDe(sheet);	
+	local mesa = getMesa(sheet);
 	if (sheet.atributos.ataqueFormula ~= nil) then
 		rollTeste(sheet, sheet.atributos.vidaFormula, sheet.atributos.sorte, "Vida");
 	end
 end
 
 function rolarResistenciaMagica(sheet)
-	local mesa = Firecast.getMesaDe(sheet);	
+	local mesa = getMesa(sheet);
 	if (sheet.atributos.resistenciaMagicaFormula ~= nil) then
-		rollTeste(sheet, sheet.atributos.resistenciaMagicaFormula, sheet.atributos.sorte, "Resistência Mágica");		
+		rollTeste2(sheet.atributos.resistenciaMagicaFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Resistência Mágica");
+		resetRollMods(sheet);		
 	end
 end
 
@@ -244,8 +250,10 @@ function ataqueComArma(arma)
 	if(arma.nome ~= nil) then
 		msg = msg .. ": " .. arma.nome;
 	end
-
-	rollTeste(personagem, formula, personagem.atributos.sorte, msg);
+	
+	local mesa = getMesa(sheet);
+	rollTeste2(formula, personagem.atributos.sorte, personagem.vantagem, personagem.desejoUso, personagem.falhas.oponente, mesa, nil, msg);
+	resetRollMods(personagem);
 end
 
 function expTable(nivel)
@@ -272,8 +280,6 @@ end
 function updateProficiencia(sheet)
 	sheet.proficiencia = sheet.nivel;
 end
-
-
 
 function updateExperiencia(sheet)
 	if(sheet.experienciaAtual==nil) then
@@ -757,6 +763,10 @@ function rolarPericia2(pericia)
 	falhasOp = personagem.falhas.oponente;
 
 	rollTeste2(jogada, sorte, vantagem, desejoUso, falhasOp, mesa, nome);
+	resetRollMods(personagem);
+end
+
+function resetRollMods( personagem )
 	personagem.falhas.oponente = 0;
 	personagem.desejoUso = 0;
 	personagem.vantagem = 0;

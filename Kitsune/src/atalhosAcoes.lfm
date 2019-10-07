@@ -9,9 +9,8 @@
 		<button height="20" margins="{left = 5, top = 5" onClick="atalhoRMagia(sheet);" text="RMAG" width="50"/>
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoVida(sheet);" text="VID" width="50"/>
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoIniciativa(sheet);" text="INI" width="50"/>
-		<!-- <label margins="{left = 1, top = 5}" text="Rolagem"/><edit field="atalhos.rolagem" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" type="text" width="100"/><flowLineBreak/><label margins="{left = 1, top = 5}" text="Sorte"/><edit field="atalhos.sorte" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="1" type="number" width="30"/>-->
 		<button height="20" margins="{left = 5, top = 25}" onClick="rollNode=initializeHotkeys()  self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.dados:setFocus();" text="Rolagem" width="100"/>
-		<popup height="220" name="customRollPopup" scopeNode="sheet" width="170">
+		<popup height="280" name="customRollPopup" scopeNode="sheet" width="170">
 			<flowLayout align="client">
 				<label margins="{left = 5, top = 5}" autoSize="true" text="Rolagem" width="60"/>
 				<edit field="nome" horzTextAlign="center" name="nome" width="80" height="20" textPrompt="descrição da rolagem"/>
@@ -30,7 +29,7 @@
 				<flowLineBreak/>
 
 				<label margins="{left = 1, top = 5}" text="Desejo"/>
-				<edit field="desejoUso" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30" height="20"/>
+				<edit field="desejo" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30" height="20"/>
 				
 				<flowLineBreak/>
 
@@ -41,6 +40,12 @@
 
 				<label margins="{left = 1, top = 5}" text="Falhas Oponente"/>
 				<edit field="falhasOponente" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30" height="20" text="0"/>
+
+				<flowLineBreak/>
+
+				<label margins="{left = 5, top = 15}" width="150" horzTextAlign="center" text="Objetivo"/>
+				<flowLineBreak/>
+				<edit field="objetivo" horzTextAlign="center" margins="{left = 30, top = 5}" min="0" type="number" width="100" height="20" text="0"/>
 
 				<flowLineBreak/>
 				<button margins="{left = 5, top = 15}" name="rollCustomNow" onClick="customRoll(self.customRollPopup:getNodeObject());" text="Roll" width="100"/>

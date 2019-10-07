@@ -24,12 +24,14 @@ function customRoll( sheet )
 	if(modNumber ~= nil)then		
 		if(modNumber > 0)then
 			mod = "+"..sheet.mod;
-		else
+		elseif(modNumber < 0)then
 			mod = sheet.mod;
+		else
+			mod = "";
 		end
 	end
 
 	rolagem = sheet.dados .. "D100" .. mod;
 	mesa = getMesa(sheet);
-	rollTeste2(rolagem, sheet.sorte, sheet.vantagem, sheet.desejo, sheet.falhasOponente, mesa, sheet.nome);	
+	rollTeste2(rolagem, sheet.sorte, sheet.vantagem, sheet.desejo, sheet.falhasOponente, mesa,sheet.objetivo, sheet.nome);	
 end

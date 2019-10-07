@@ -1,4 +1,8 @@
 function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, msg)
+    rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, nil, msg);
+end
+
+function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg)
     -- init
     if(sorte == nil) then
         sorte = 1;
@@ -23,7 +27,14 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, msg)
         msg = roll;
     end
 
-
+    -- Colors 
+    baseColor = "[§K7]";
+    wishColor = "[§K2]";
+    critColor = "[§K8]";
+    advColor = "[§K11]";
+    opFailColor = "[§K6]";
+    failColor = "[§K4]";
+    totalColor = "[§K9]";
 
     local rolagem = Firecast.interpretarRolagem(roll); 
     rolagem:rolarLocalmente();
@@ -31,57 +42,94 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, msg)
     local crit = 0;
     local fail = 0;
     crit, fail = checkCriticalnFail(rolagem, fail, sorte);
-    local totalCrit = crit + vantagem + 1;
-    local resultados = "" .. resultR;
+    local totalCrit = crit;
+    local resultados = "" .. baseColor .. resultR;
     
     limit = 0;
-    critMsg = "Critico!!! X" .. limit;
+    critMsg = critColor .. "Critico! x" .. limit;
 
     local msgDesejo = "";
     if(desejo > 0) then
-        msgDesejo = " [§K9] Desejo ".. desejo .. " ";
+        local rolagemDesejo = Firecast.interpretarRolagem(desejo .. "D100");
+        rolagemDesejo:rolarLocalmente();
+        critD, fail = checkCriticalnFail(rolagemDesejo, fail, sorte);
+        if(critD > 0)then
+            crit = crit + critD;
+            totalCrit = totalCrit + critD;
+        end
+        msgDesejo = wishColor .. " Desejo x".. desejo;
+        resultD = printRolagem2(mesa, rolagemDesejo, msgDesejo, sorte);
+        resultados = resultados .. wishColor .. " + " .. resultD;
     end
     local msgFalhaOp = "";
     local resultF = 0;
     if(falhasOp > 0) then
         opFailRoll = rollCritical(falhasOp, sorte);
-        resultF = printRolagem2(mesa, opFailRoll, "Falha Oponente x" .. falhasOp, sorte);
-        msgFalhaOp = " [§K2]Falha Oponente x" .. falhasOp .. " = " .. resultF;
-        resultados = resultados .. " + " .. resultF;
+        critF, fail = checkCriticalnFail(opFailRoll, fail, sorte);
+        if(critF > 0)then
+            crit = crit + critF;
+            totalCrit = totalCrit + critF;
+        end
+        msgFalhaOp = opFailColor .." Falha Oponente x" .. falhasOp;
+        resultF = printRolagem2(mesa, opFailRoll, msgFalhaOp, sorte);
+        resultados = resultados .. opFailColor .. " + " .. resultF;
     end
     local msgVantagem = ""; 
     if(vantagem > 0) then
-        msgVantagem = " [§K11] Vantagem ".. vantagem .. " ";
-    end
-    if(falhasOp > 0 or desejo > 0 or vantagem > 0) then
-        mesa.activeChat:enviarMensagem("{" .. resultados .. "} = [§K7]" .. (resultR +  resultF) .. "[§K8] x1 +" .. msgDesejo .. msgFalhaOp .. msgVantagem .. " = [§K12]" .. (resultR+resultF)*(desejo+vantagem+falhasOp+1));
+        msgVantagem = advColor .. " Vantagem x" .. vantagem;
     end
 
+    baseSoma = resultR;
+    resultadoFinal = baseSoma;
+    totalMult = 1;    
+
+    if((crit == 0) and (falhasOp > 0 or desejo > 0 or vantagem > 0)) then
+        totalMult = 1+vantagem+desejo+falhasOp;
+        baseSoma = resultR+resultF+resultD;
+        resultadoFinal = baseSoma*totalMult;        
+    end
+
+    local msgCrit = "";
     while( crit > 0 and limit < 10)
     do
         limit = limit + 1;
-        critMsg = "Critico!!! x" .. crit;
+        critMsg = critColor .. "Critico! x" .. crit;
         critroll = rollCritical(crit, sorte);
         resultC = printRolagem2(mesa, critroll, critMsg, sorte);
         crit, fail = checkCriticalnFail(critroll, fail, sorte);
-        resultados = resultados .. " + " .. resultC;
+        resultados = resultados .. critColor .. " + " .. resultC;        
         if(crit > 0) then                
-            totalCrit = totalCrit + crit;                
+            totalCrit = totalCrit + crit;                            
         end
+         
         if(crit == 0 or limit == 10) then
-            mesa.activeChat:enviarMensagem("{" .. resultados .. "} = [§K7]" .. (resultR +  resultC +  resultF) .. "[§K8] x " .. totalCrit .. msgDesejo .. msgFalhaOp .. msgVantagem .. " = [§K12]" .. (resultR+resultC+resultF)*(totalCrit+vantagem+desejo+falhasOp));
+            msgCrit = critColor .. " Critico x" .. totalCrit;
+            totalMult = 1+totalCrit+vantagem+desejo+falhasOp;
+            baseSoma = resultR+resultC+resultF+resultD;
+            resultadoFinal = baseSoma*totalMult;            
+        else        
+            resultR=(resultR+resultC);
         end            
-        resultR=(resultR+resultC);
+    end
+
+    mesa.activeChat:enviarMensagem(baseColor .. "{" .. resultados .. baseColor .. "} x {Base x1" .. msgCrit .. msgDesejo .. msgFalhaOp .. msgVantagem .. baseColor .."} = " .. baseSoma .. " x " .. totalMult .. " = " .. totalColor .. resultadoFinal);
+
+    if(objetivo ~= nil)then
+        local objNumber = tonumber(objetivo);
+        if(objNumber ~= nil and resultadoFinal > objNumber)then
+            mesa.activeChat:enviarMensagem("Sucesso => " .. resultadoFinal .. " - " .. objNumber .. " = " .. (resultadoFinal-objNumber));
+        else
+            mesa.activeChat:enviarMensagem(failColor .. "Falha => " .. resultadoFinal .. " < " .. objNumber);
+        end
     end
 
     if fail > 0 then
-        mesa.activeChat:enviarMensagem("Critical Fail!!! " .. fail);       
+        mesa.activeChat:enviarMensagem(failColor .. "Critical Fail! x" .. fail);       
     end
 end
 
 function getMesa( sheet )
-    local mesa = Firecast.getMesaDe(sheet);     
-
+    local mesa = Firecast.getMesaDe(sheet);
     if(mesa == nil) then
         mesa = rrpg.getMesas()[1];
     end
