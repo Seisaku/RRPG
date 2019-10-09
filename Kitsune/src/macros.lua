@@ -118,7 +118,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
         local objNumber = tonumber(objetivo);
         if(objNumber ~= nil and resultadoFinal > objNumber)then
             mesa.activeChat:enviarMensagem("Sucesso => " .. resultadoFinal .. " - " .. objNumber .. " = " .. (resultadoFinal-objNumber));
-        else
+        elseif(objNumber ~= nil)then
             mesa.activeChat:enviarMensagem(failColor .. "Falha => " .. resultadoFinal .. " < " .. objNumber);
         end
     end

@@ -4,7 +4,7 @@
 	<tab title="Ação">
 		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
 			<label horzTextAlign="center" text="Ação" align="top" margins="{top=15}"/>
-			<comboBox left="20" top="20" width='250' field="pericias.acoes.novas" items="{'Acrobacia','Atletismo','Cavalgar','Chamado Animal','Desarmar Armadilhas','Disfarçar-se','Furtividade','Jogos de Azar','Prestidigitação'}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.acoes.novas" items="{'Acrobacia','Atletismo','Chamado Animal','Desarmar Armadilhas','Furtividade','Prestidigitação'}"/>
 			<button width="20" height="20" text="+" onClick="nova=getNewActionSkill(sheet); novaPericia=self.rclPericiasSkill:append(); updateNovaPericia(novaPericia,nova);"/>
 			<button width="20" height="20" text="*" onClick="nova=getNewActionSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
 			<flowLineBreak/>
@@ -94,7 +94,7 @@
 	<tab title="Ferramentas">
 		<flowLayout align="client" autoHeight="true" maxControlsPerLine="4">
 			<label horzTextAlign="center" text="Ferramentas" align="top" margins="{top=15}"/>
-			<comboBox left="20" top="20" width='250' field="pericias.ferramentas.novas" items="{'Ferramentas de Arqueólogo','Ferramentas de Carpinteiro','Ferramentas de Cartógrafo','Ferramentas de Alfaiate','Ferramentas de Coureiro','Ferramentas de Encantador','Ferramentas de Engenheiro','Ferramentas de Entalhador','Ferramentas de Esfolador','Ferramentas de Ferreiro','Ferramentas de Funileiro','Ferramentas de Herbologias','Ferramentas de Joalheiro','Ferramentas de Medicina','Ferramentas de Minerador','Ferramentas de Oleiro','Ferramentas de Pedreiro','Ferramentas de Pescador','Ferramentas de Pintor','Ferramentas de Sapateiro','Ferramentas de Vidreiro ','Ferramentas de Alquimista','Suprimentos de Cervejeiro','Suprimentos de Escriba','Utensílios de Cozinheiro','Ferramentas de navegação','Ferramentas de ladrão','Kit de disfarce','Kit de falsificação','Kit de venenos','Instrumento - Alaúde','Instrumento - Flauta','Instrumento - Flauta de pã','Instrumento - Gaita de foles','Instrumento - Lira','Instrumento - Oboé','Instrumento - Tambor','Instrumento - Trombeta','Instrumento - Violino','Instrumento - Xilofone','Kit de jogo - Baralho de cartas','Kit de jogo - Conjunto de dados','Kit de jogo - Jogo dos três dragões','Kit de jogo - Xadrez do dragão'}"/>
+			<comboBox left="20" top="20" width='250' field="pericias.ferramentas.novas" items="{'Ferramentas de ladrão','Kit de disfarce','Kit de falsificação','Kit de venenos','Instrumento - Alaúde','Instrumento - Flauta','Instrumento - Flauta de pã','Instrumento - Gaita de foles','Instrumento - Lira','Instrumento - Oboé','Instrumento - Tambor','Instrumento - Trombeta','Instrumento - Violino','Instrumento - Xilofone','Kit de jogo - Baralho de cartas','Kit de jogo - Conjunto de dados','Kit de jogo - Jogo dos três dragões','Kit de jogo - Xadrez do dragão'}"/>
 			<button width="20" height="20" text="+" onClick="nova=getNewToolSkill(sheet); novaPericia=self.rclPericiasTools:append(); updateNovaPericia(novaPericia,nova);"/>
 			<button width="20" height="20" text="*" onClick="nova=getNewToolSkill(sheet); rolarPericiaSemTreinamento(sheet, nova)"/>
 			<flowLineBreak/>

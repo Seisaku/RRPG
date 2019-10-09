@@ -762,7 +762,7 @@ function rolarPericia2(pericia)
 	end
 	falhasOp = personagem.falhas.oponente;
 
-	rollTeste2(jogada, sorte, vantagem, desejoUso, falhasOp, mesa, nome);
+	rollTeste2(jogada, sorte, vantagem, desejoUso, falhasOp, mesa, nil, nome);
 	resetRollMods(personagem);
 end
 
