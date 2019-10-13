@@ -17,7 +17,7 @@
 			<label width="100" field="atributos.ataqueFormula" horzTextAlign="center"/>
 			<label field="equipamento.ataqueProficiencia" visible="false"/>
 			<label field="equipamento.ataqueEquipBonus" visible="false"/>
-			<button text="ATQ" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() atq,mod=updateAtaque(sheet); editActionRoll(rollNode, atq, mod,sheet.atributos.sorte,'Ataque'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarAtaque(sheet); end"/>			
+			<button text="ATQ" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() atq,mod=updateAtaque(sheet); sorte=updateSorte(sheet); editActionRoll(rollNode, atq, mod, sorte,'Ataque'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarAtaque(sheet); end"/>			
 			<flowLineBreak/> 
 
 			<label  text="Defesa" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
@@ -27,7 +27,7 @@
 			<label width="100" field="atributos.defesaFormula" horzTextAlign="center"/>
 			<label field="equipamento.defesaProficiencia" visible="false"/>
 			<label field="equipamento.defesaEquipBonus" visible="false"/>
-			<button text="DEF" width="50" height="20" onClick="rolarDefesa(sheet);"/>
+			<button text="DEF" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() def,mod=updateDefesa(sheet); sorte=updateSorte(sheet); editActionRoll(rollNode, def, mod, sorte,'Defesa'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarDefesa(sheet); end"/>
 			<flowLineBreak/> 
 
 			<label  text="Agilidade" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
@@ -35,7 +35,7 @@
 			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
 			<edit field="atributos.agilidadeMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
 			<label width="100" field="atributos.iniciativaFormula" horzTextAlign="center"/>			
-			<button text="AGI" width="50" height="20" onClick="rolarAgilidade(sheet);"/>
+			<button text="AGI" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() agi,mod=updateAgilidade(sheet); sorte=updateSorte(sheet); editActionRoll(rollNode, agi, mod, sorte,'Agilidade'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarAgilidade(sheet); end"/>
 			<flowLineBreak/> 
 
 			<label  text="Sorte" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
@@ -43,7 +43,7 @@
 			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
 			<edit field="atributos.sorteMod" type="number" min="-20" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
 			<label width="100" field="atributos.critRange" horzTextAlign="center"/>
-			<button text="SOR" width="50" height="20" onClick="rolarSorte(sheet);"/>
+			<button text="SOR" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() sorte=updateSorte(sheet); editActionRoll(rollNode, sorte, 0, sorte,'Sorte'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarSorte(sheet); end"/>
 			<flowLineBreak/>
 
 			<label  text="Magia" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
@@ -51,7 +51,7 @@
 			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
 			<edit field="atributos.MagiaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
 			<label width="100" field="atributos.magiaFormula" horzTextAlign="center"/>
-			<button text="MAG" width="50" height="20" onClick="rolarMagia(sheet);"/>
+			<button text="MAG" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() mag,mod=updateMagia(sheet); sorte=updateSorte(sheet); editActionRoll(rollNode, mag, mod, sorte,'Magia'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarMagia(sheet); end"/>
 			<flowLineBreak/> 
 
 			<label  text="Resistencia Mágica" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
@@ -59,7 +59,7 @@
 			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
 			<edit field="atributos.resistenciaMagicaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
 			<label width="100" field="atributos.resistenciaMagicaFormula" horzTextAlign="center"/>
-			<button text="RMAG" width="50" height="20" onClick="rolarResistenciaMagica(sheet);"/>
+			<button text="RMAG" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() rmag,mod=updateResistenciaMagica(sheet); sorte=updateSorte(sheet); editActionRoll(rollNode, rmag, mod, sorte,'Resistência Mágica'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarResistenciaMagica(sheet); end"/>
 			<flowLineBreak/>
 
 			<label  text="Recurso" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
@@ -76,5 +76,5 @@
 			<edit field="atributos.vidaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
 			<label width="100" field="atributos.vidaMax" horzTextAlign="center"/>
 			<label field="atributos.vidaFormula" visible="false"/>
-			<button text="VID" width="50" height="20" onClick="rolarVida(sheet);"/>
+			<button text="VID" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() vid=updateVida(sheet); sorte=updateSorte(sheet); editActionRoll(rollNode, vid, 0, sorte,'Vida'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarVida(sheet); end"/>
 			</flowLayout>

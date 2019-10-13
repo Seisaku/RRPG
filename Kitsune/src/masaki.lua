@@ -351,10 +351,12 @@ function changeBarraVida(sheet)
 end
 
 function updateVida(sheet)
+	local vida = 1;	
 	if(sheet.atributos~=nil) then
 		if(sheet.atributos.vida==nil) then
 			sheet.atributos.vida=1;
 		end
+		vida = sheet.atributos.vida;
 		if(sheet.atributos.vidaMod==nil) then
 			sheet.atributos.vidaMod=200;
 		end
@@ -366,6 +368,7 @@ function updateVida(sheet)
 		sheet.atributos.vidaFormula = sheet.atributos.vida .. "D100";
 		syncVidaToBar(sheet);
 	end
+	return vida;
 end
 
 function syncVidaToBar( sheet )
@@ -590,8 +593,10 @@ function updateAtaque(sheet)
 end
 
 function updateDefesa(sheet)
+	local defesa = 1;
+	local bonus = 0;
 	if(sheet.atributos ~= nil) then
-		local defesa = tonumber(sheet.atributos.defesa);
+		defesa = tonumber(sheet.atributos.defesa);
 		local defesaBase = "0D100";
 		if (defesa ~= nil) then
 			defesaBase = defesa .. "D100";
@@ -617,23 +622,28 @@ function updateDefesa(sheet)
 			sheet.atributos.defesaFormula = defesaBase;		
 		end
 	end
+	return defesa, bonus;
 end
 
-
-
 function updateSorte(sheet)
+	local sorte = 1;
 	if(sheet.atributos ~= nil) then
-		if (sheet.atributos.sorte<=1) then
+		sorte = sheet.atributos.sorte;
+		if (sorte<=1) then
 			sheet.atributos.critRange="100";
 		else
-			sheet.atributos.critRange=(101-sheet.atributos.sorte) .. " - 100";
+			sheet.atributos.critRange=(101-sorte) .. " - 100";
 		end
 	end
+	return sorte;
 end
 
 function updateAgilidade(sheet)
+	local agilidade = 1;
+	local bonus = 0;
 	if(sheet.atributos ~= nil) then
-		agiFormula = sheet.atributos.agilidade .. "d100";
+		agilidade = sheet.atributos.agilidade;
+		agiFormula = agilidade .. "d100";
 		if(sheet.atributos.agilidadeMod == nil) then
 			sheet.atributos.agilidadeMod = 0;
 		end
@@ -648,17 +658,20 @@ function updateAgilidade(sheet)
 		end
 		sheet.atributos.iniciativaFormula=agiFormula;
 	end
+	return agilidade, bonus;
 end
 
 
 function updateMagia(sheet)
+	local magia = 1;
+	local bonus = 0; 
 	if(sheet.atributos ~= nil) then
+		magia = sheet.atributos.magia
 		magFormula = sheet.atributos.magia .. "d100";
 		if(sheet.atributos.magiaMod == nil) then
 			sheet.atributos.magiaMod = 0;
 		end
 		if (sheet.atributos.magiaMod ~= 0) then
-			local bonus = 0;
 			if (sheet.atributos.magiaMod) > 0 then
 				bonus = " +" .. sheet.atributos.magiaMod;
 			else 
@@ -668,16 +681,19 @@ function updateMagia(sheet)
 		end
 		sheet.atributos.magiaFormula=magFormula;
 	end
+	return magia, bonus
 end
 
 function updateResistenciaMagica(sheet)	
+	local rmag = 1;
+	local bonus = 0;
 	if(sheet.atributos ~= nil) then
-		resistMagFormula = sheet.atributos.resistenciaMagica .. "d100";
+		rmag = sheet.atributos.resistenciaMagica;
+		resistMagFormula = rmag .. "d100";
 		if(sheet.atributos.resistenciaMagicaMod == nil) then
 			sheet.atributos.resistenciaMagicaMod = 0;
 		end
-		if (sheet.atributos.resistenciaMagicaMod ~= 0) then
-			local bonus = 0;
+		if (sheet.atributos.resistenciaMagicaMod ~= 0) then			
 			if (sheet.atributos.resistenciaMagicaMod) > 0 then
 				bonus = " +" .. sheet.atributos.resistenciaMagicaMod;
 			else 
@@ -687,9 +703,8 @@ function updateResistenciaMagica(sheet)
 		end
 		sheet.atributos.resistenciaMagicaFormula=resistMagFormula;
 	end
+	return rmag, bonus;
 end
-
-
 
 function deleteEquip(sheet)
 	NDB.deleteNode(sheet);
