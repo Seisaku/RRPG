@@ -1,3 +1,11 @@
+13-10-2019 - Verssion 6.0 - Custom Roll Upgrade
+- Print roll message format improvements
+- Added custom roll to atk (holding ctrl)
+- Refactor components into their own xmls
+- Added images to the lib available
+- Added return values to update atk
+- Added feature that if ctrl is hold during rolling on of the main action will cause the custom roll to be displayed and be populated with the action roll information
+
 06-10-2019 - Verssion 5.1
 - Fix bugs with skills using wrong databases
 
