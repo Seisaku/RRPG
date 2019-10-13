@@ -219,8 +219,6 @@ function rolarResistenciaMagica(sheet)
 	end
 end
 
-
-
 function ataqueComArma(arma)
 	armas = NDB.getParent(arma);
 	equipamento = NDB.getParent(armas);
@@ -523,9 +521,6 @@ function getJogadorfromSheet( sheet )
 	end
 end
 
-
-
-
 function updateBonus(sheet)
 	if(sheet~=nil) then
 		local mesa = Firecast.getMesaDe(sheet);	
@@ -562,8 +557,10 @@ function updateBonus(sheet)
 end
 
 function updateAtaque(sheet)
+	local ataque = 1;
+	local bonus = 0;
 	if(sheet.atributos ~= nil) then
-		local ataque = tonumber(sheet.atributos.ataque);
+		ataque = tonumber(sheet.atributos.ataque);
 		local ataqueBase = "0D100";
 		if (ataque ~= nil) then
 			ataqueBase = ataque .. "D100";
@@ -589,6 +586,7 @@ function updateAtaque(sheet)
 			sheet.atributos.ataqueFormula = ataqueBase;		
 		end
 	end
+	return ataque, bonus; 
 end
 
 function updateDefesa(sheet)

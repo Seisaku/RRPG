@@ -10,6 +10,13 @@ function initializeHotkeys()
 	return node;
 end
 
+function editActionRoll(node, dados, mod, sorte, msg)
+	node.nome = msg;
+	node.dados = dados;
+	node.mod = mod;
+	node.sorte = sorte;
+end
+
 function customRoll( sheet )
 
 	if(sheet == nil) then
@@ -23,9 +30,9 @@ function customRoll( sheet )
 	local modNumber = tonumber(sheet.mod);
 	if(modNumber ~= nil)then		
 		if(modNumber > 0)then
-			mod = "+"..sheet.mod;
+			mod = "+"..modNumber;
 		elseif(modNumber < 0)then
-			mod = sheet.mod;
+			mod = modNumber;
 		else
 			mod = "";
 		end

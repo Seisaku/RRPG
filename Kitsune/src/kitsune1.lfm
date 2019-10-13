@@ -3,11 +3,13 @@
 	<import file="templates.xml"/>
 	<tabControl align="client">
 		<tab title="Principal">
-			<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">
+			<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">				
 				<import file="principal.xml"/>
 				<import file="avatar.xml"/>
 				<import file="atributos.xml"/>
+				<import file="barrinhas.xml"/>
 				<import file="equipamento.xml"/>
+				<import file="gold.xml"/>
 			</flowLayout>
 		</tab>
 		<tab title="Inventário">

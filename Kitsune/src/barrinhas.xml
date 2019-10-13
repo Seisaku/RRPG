@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout align="right" autoHeight="true" width="200">
+	<label text="Vida"/>
+	<progressBar color="Green" field="atributos.vidaAtual" fieldMax="atributos.vidaMax" height="15" hitTest="true" onDblClick="self.setVidaPopup:setNodeObject(sheet); syncVida(sheet); self.setVidaPopup:show(); setVidaPopup(sheet); self.vidaOp:setFocus();" width="200">
+		<label align="client" field="atributos.vidaAtualxTotal" horzTextAlign="center"/>
+		<popup height="80" name="setVidaPopup" onClose="changeBarraVida(sheet);" scopeNode="sheet" width="150">
+			<flowLayout align="client">
+				<label autoSize="true" text="Vida"/>
+				<flowLineBreak/>
+				<edit field="vidaOp" horzTextAlign="center" name="vidaOp" onKeyDown="       if(event.keyCode==13) then        self.endVidaOp:setFocus();        self.setVidaPopup:closePopup();       end;" width="100"/>
+				<button margins="{left = 5}" name="endVidaOp" onClick="self.setVidaPopup:closePopup();" text="X" width="30"/></flowLayout>
+		</popup>
+	</progressBar>
+	<label text="Recurso"/>
+	<progressBar color="DodgerBlue" field="atributos.recursoAtual" fieldMax="atributos.recursoMax" height="15" hitTest="true" onDblClick="self.setRecursoPopup:setNodeObject(sheet); syncRecurso(sheet); self.setRecursoPopup:show(); setRecursoPopup(sheet); self.recursoOp:setFocus();" width="200">
+		<label align="client" field="atributos.recursoAtualxTotal" horzTextAlign="center"/>
+		<popup height="80" name="setRecursoPopup" onClose="changeBarraRecurso(sheet);" scopeNode="sheet" width="150">
+			<flowLayout align="client">
+				<label autoSize="true" text="Recurso"/>
+				<flowLineBreak/>
+				<edit field="recursoOp" horzTextAlign="center" name="recursoOp" onKeyDown="       if(event.keyCode==13) then        self.endRecursoOp:setFocus();        self.setRecursoPopup:closePopup();       end;" width="100"/>
+				<button margins="{left = 5}" name="endRecursoOp" onClick="self.setRecursoPopup:closePopup();" text="X" width="30"/>
+			</flowLayout>
+		</popup>
+	</progressBar>
+	<label text="Desejo"/>
+	<progressBar color="darkorchid" field="desejoAtual" fieldMax="desejoMax" height="15" hitTest="true" onDblClick="self.setDesejoPopup:setNodeObject(sheet); syncDesejo(sheet); self.setDesejoPopup:show(); setDesejoPopup(sheet); self.desejoOp:setFocus();" width="200">
+		<label align="client" field="desejoMsg" horzTextAlign="center"/>
+		<popup height="80" name="setDesejoPopup" onClose="changeBarraDesejo(sheet);" scopeNode="sheet" width="150">
+			<flowLayout align="client">
+				<label autoSize="true" text="Desejo"/>
+				<flowLineBreak/>
+				<edit field="desejoOp" horzTextAlign="center" name="desejoOp" onKeyDown="       if(event.keyCode==13) then        self.endDesejoOp:setFocus();        self.setDesejoPopup:closePopup();       end;" width="100"/>
+				<button margins="{left = 5}" name="endDesejoOp" onClick="self.setDesejoPopup:closePopup();" text="X" width="30"/>
+			</flowLayout>
+		</popup>
+	</progressBar>
+</flowLayout>

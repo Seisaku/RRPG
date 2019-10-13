@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout autoHeight="true" left="320" width="250">
+	<label horzTextAlign="center" text="Armaduras"/>
+	<label field="equipamento.defesaTotal"/>
+	<flowLineBreak/>
+	<button height="20" onClick="self.rclArmaduras:append();" text="+" width="20"/>
+	<label horzTextAlign="center" text="Nome" width="150"/>
+	<label horzTextAlign="center" text="+" width="30"/>
+	<flowLineBreak/>
+	<scrollBox height="100" width="250">
+		<recordList autoHeight="true" field="equipamento.armaduras" name="rclArmaduras" templateForm="frmArmadura" width="230"/>
+	</scrollBox>
+</flowLayout>

@@ -49,6 +49,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
     critMsg = critColor .. "Critico! x" .. limit;
 
     local msgDesejo = "";
+    local resultD = 0;
     if(desejo > 0) then
         local rolagemDesejo = Firecast.interpretarRolagem(desejo .. "D100");
         rolagemDesejo:rolarLocalmente();
@@ -90,6 +91,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
     end
 
     local msgCrit = "";
+    local resultC = 0;
     while( crit > 0 and limit < 10)
     do
         limit = limit + 1;
@@ -111,8 +113,14 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
             resultR=(resultR+resultC);
         end            
     end
-
-    mesa.activeChat:enviarMensagem(baseColor .. "{" .. resultados .. baseColor .. "} x {Base x1" .. msgCrit .. msgDesejo .. msgFalhaOp .. msgVantagem .. baseColor .."} = " .. baseSoma .. " x " .. totalMult .. " = " .. totalColor .. resultadoFinal);
+    local msgMulti = "";
+    local msgMultiTotal = "";
+    local msgTotal = baseColor .. " = " .. totalColor .. resultadoFinal;
+    if(totalMult>1)then
+        msgMulti = " x {Base x1" .. msgCrit .. msgDesejo .. msgFalhaOp .. msgVantagem .. baseColor .. "}";
+        msgMultiTotal = baseColor .. " = " .. baseSoma .. " x " .. totalMult;
+        mesa.activeChat:enviarMensagem(baseColor .. "{" .. resultados .. baseColor .. "}" .. msgMulti .. msgMultiTotal .. msgTotal);
+    end
 
     if(objetivo ~= nil)then
         local objNumber = tonumber(objetivo);

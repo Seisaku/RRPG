@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout autoHeight="true" width="330">
+	<label horzTextAlign="center" text="Armas"/>
+	<label align="right" field="equipamento.ataqueTotal"/>
+	<flowLineBreak/>
+	<button height="20" onClick="self.rclArmas:append();" text="+" width="20"/>
+	<label horzTextAlign="center" text="Nome" width="150"/>
+	<label horzTextAlign="center" text="P" width="30"/>
+	<label horzTextAlign="center" text="+" width="30"/>
+	<flowLineBreak/>
+	<scrollBox height="100" width="330">
+		<recordList autoHeight="true" field="equipamento.armas" name="rclArmas" templateForm="frmArma" width="300"/>
+	</scrollBox>
+</flowLayout>

@@ -1,33 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout width="400" autoHeight="true">
-	<flowLayout width="330" autoHeight="true">
-	    <label text="Armas" align="client" horzTextAlign="center"/>
-	<flowLineBreak/>
-	    <label text="Ataque Total" align="right"/>
-	    <label field="equipamento.ataqueTotal" align="right"/>
-	<flowLineBreak/> 
-		<button width="20" height="20" text="+" onClick="self.rclArmas:append();"/>
-		<label horzTextAlign="center" width="150" text="Nome"/>
-		<label horzTextAlign="center" width="30"  text="P"/>
-		<label horzTextAlign="center" width="30"  text="Bônus"/>
-	<flowLineBreak/>
-		<scrollBox width="330" height="100">
-			<recordList width="300" autoHeight="true" name="rclArmas" field="equipamento.armas" templateForm="frmArma"/>
-		</scrollBox>
-	</flowLayout>
-	
-	<flowLayout left="320" width="250" autoHeight="true">
-	    <label text="Armaduras" align="client" horzTextAlign="center"/>
-	<flowLineBreak/>    
-	    <label text="Defesa Total" align="right"/>
-	    <label field="equipamento.defesaTotal" align="right"/>
-	<flowLineBreak/> 
-		<button width="20" height="20" text="+" onClick="self.rclArmaduras:append();"/>
-		<label horzTextAlign="center" width="150" text="Nome"/>		
-		<label horzTextAlign="center" width="30"  text="Bônus"/>
-	<flowLineBreak/>
-	<scrollBox width="250" height="100">
-		<recordList width="230" autoHeight="true" name="rclArmaduras" field="equipamento.armaduras" templateForm="frmArmadura"/>
-	</scrollBox>
-	</flowLayout>
+<flowLayout autoHeight="true" width="400">
+	<import file="armas.xml"/>
+	<import file="armaduras.xml"/>
 </flowLayout>

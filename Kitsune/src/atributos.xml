@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8"?>			
 			<flowLayout width="400" autoHeight="true">
+			<import file="customRollPopup.xml"/>
 
 		    <label  text="Atributos" width="300" horzTextAlign="center" margins="{top = 5}"/>
 		    <flowLineBreak/>
@@ -17,7 +17,7 @@
 			<label width="100" field="atributos.ataqueFormula" horzTextAlign="center"/>
 			<label field="equipamento.ataqueProficiencia" visible="false"/>
 			<label field="equipamento.ataqueEquipBonus" visible="false"/>
-			<button text="ATQ" width="50" height="20" onClick="rolarAtaque(sheet);"/>
+			<button text="ATQ" width="50" height="20" onMouseDown="if(event.ctrlKey) then rollNode=initializeHotkeys() atq,mod=updateAtaque(sheet); editActionRoll(rollNode, atq, mod,sheet.atributos.sorte,'Ataque'); self.customRollPopup:setNodeObject(rollNode); self.customRollPopup:show(); self.rollCustomNow:setFocus(); else rolarAtaque(sheet); end"/>			
 			<flowLineBreak/> 
 
 			<label  text="Defesa" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
