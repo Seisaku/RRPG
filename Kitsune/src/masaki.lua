@@ -134,8 +134,7 @@ function getNodeFromPath(path, sheet)
 end
 
 function nodeContainsField(node, field)
-	if(NDB.isNodeObject(node)) then
-		local mesa = Firecast.getMesaDe(node);
+	if(NDB.isNodeObject(node)) then		
 		childrenNodes = NDB.getChildNodes(node);
 		for key, child in pairs(childrenNodes) do
 			if(NDB.getNodeName(child) == field) then
@@ -153,16 +152,14 @@ end
 function rolarAtaque(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.ataqueFormula ~= nil) then
-		rollTeste2(sheet.atributos.ataqueFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Ataque");
-		resetRollMods(sheet);
+		rollTeste2(sheet.atributos.ataqueFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Ataque");
 	end
 end
 
 function rolarDefesa(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.defesaFormula ~= nil) then
-		rollTeste2(sheet.atributos.defesaFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Defesa");
-		resetRollMods(sheet);
+		rollTeste2(sheet.atributos.defesaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Defesa");
 	end
 end
 
@@ -174,8 +171,7 @@ end
 function rolarAgilidade(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.iniciativaFormula ~= nil) then
-		rollTeste2(sheet.atributos.iniciativaFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Agilidade");
-		resetRollMods(sheet);
+		rollTeste2(sheet.atributos.iniciativaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Agilidade");
 	end
 end
 
@@ -191,31 +187,28 @@ function rolarSorte(sheet)
 		elseif(sheet.atributos.sorteMod < 0) then
 			sorteFormula = sorteFormula .. sheet.atributos.sorteMod;
 		end		
-		rollTeste2(sorteFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Sorte");
-		resetRollMods(sheet);
+		rollTeste2(sorteFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Sorte");		
 	end
 end
 
 function rolarMagia(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.ataqueFormula ~= nil) then
-		rollTeste2(sheet.atributos.magiaFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Magia");
-		resetRollMods(sheet);
+		rollTeste2(sheet.atributos.magiaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Magia");
 	end
 end
 
 function rolarVida(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.ataqueFormula ~= nil) then
-		rollTeste(sheet, sheet.atributos.vidaFormula, sheet.atributos.sorte, "Vida");
+		rollTeste2(sheet.atributos.vidaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Vida");
 	end
 end
 
 function rolarResistenciaMagica(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.resistenciaMagicaFormula ~= nil) then
-		rollTeste2(sheet.atributos.resistenciaMagicaFormula, sheet.atributos.sorte, sheet.vantagem, sheet.desejoUso, sheet.falhas.oponente, mesa, nil, "Resistência Mágica");
-		resetRollMods(sheet);		
+		rollTeste2(sheet.atributos.resistenciaMagicaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Resistência Mágica");
 	end
 end
 
@@ -249,9 +242,8 @@ function ataqueComArma(arma)
 		msg = msg .. ": " .. arma.nome;
 	end
 	
-	local mesa = getMesa(sheet);
-	rollTeste2(formula, personagem.atributos.sorte, personagem.vantagem, personagem.desejoUso, personagem.falhas.oponente, mesa, nil, msg);
-	resetRollMods(personagem);
+	local mesa = getMesa(personagem);
+	rollTeste2(formula, personagem.atributos.sorte, personagem.vantagem, personagem.desejoUso, personagem.falhas.oponente, mesa, nil, msg);	
 end
 
 function expTable(nivel)
@@ -381,7 +373,7 @@ end
 function syncVida( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
-		local atual, maximo, percent = jogador:getBarValue(1);
+		local atual, _, _ = jogador:getBarValue(1);
 		sheet.atributos.vidaAtual = atual;
 	end
 end
@@ -449,7 +441,7 @@ end
 function syncRecurso( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
-		local atual, maximo, percent = jogador:getBarValue(2);
+		local atual, _, _ = jogador:getBarValue(2);
 		sheet.atributos.recursoAtual = atual;
 	end
 end
@@ -502,7 +494,7 @@ end
 function syncDesejo( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
-		local atual, maximo, percent = jogador:getBarValue(3);
+		local atual, _, _ = jogador:getBarValue(3);
 		sheet.desejoAtual = atual;
 	end
 end
@@ -526,8 +518,6 @@ end
 
 function updateBonus(sheet)
 	if(sheet~=nil) then
-		local mesa = Firecast.getMesaDe(sheet);	
-		
 		armas = NDB.getParent(sheet);
 		equipamento = NDB.getParent(armas);
 		personagem = NDB.getParent(equipamento);
@@ -583,7 +573,7 @@ function updateAtaque(sheet)
 			if(bonus>=0) then
 				sheet.atributos.ataqueFormula = ataqueBase .. "+" .. bonus;
 			else
-				sheet.atributos.ataqueFormula = ataqueBase .. "-" .. bonus;
+				sheet.atributos.ataqueFormula = ataqueBase .. bonus;
 			end
 		else
 			sheet.atributos.ataqueFormula = ataqueBase;		
@@ -647,8 +637,7 @@ function updateAgilidade(sheet)
 		if(sheet.atributos.agilidadeMod == nil) then
 			sheet.atributos.agilidadeMod = 0;
 		end
-		if (sheet.atributos.agilidadeMod ~= 0) then
-			local bonus = 0;
+		if (sheet.atributos.agilidadeMod ~= 0) then			
 			if (sheet.atributos.agilidadeMod) > 0 then
 				bonus = " +" .. sheet.atributos.agilidadeMod;
 			else 
@@ -717,32 +706,25 @@ function deleteIdioma(sheet)
 end
 
 function rolarPericia2(pericia)
-
 	local mesa = getMesa(pericia);	
-
 	if(pericia.nome == nil) then
 		pericia.nome = "pericia"
 	end
 	nome = pericia.nome;
-	
 	if(pericia.valor == nil) then
 		pericia.valor = 0;
 	end
 	valor = pericia.valor;
-
 	item = NDB.getParent(pericia);
 	editaveis = NDB.getParent(item);
 	pericias = NDB.getParent(editaveis);
 	personagem = NDB.getParent(pericias);
-	
 	atributos = getChildNodeByName(personagem, "atributos");
 	proficiencia = getProficiencia(personagem);
-	
 	item = NDB.getParent(pericia);
 	editaveis = NDB.getParent(item);
 	pericias = NDB.getParent(editaveis);
 	personagem = NDB.getParent(pericias);
-
 	if(valor > 0) then
 		treinamento = (valor*proficiencia);
 		jogada = "1D100+" .. treinamento;
@@ -754,35 +736,13 @@ function rolarPericia2(pericia)
 		sorte = atributos.sorte;
 	else
 		sorte = 1;
-	end
-	if(personagem.vantagem == nil) then
-		personagem.vantagem = 0;
-	end
-	vantagem = personagem.vantagem
-	if(personagem.desejoUso == nil) then
-		personagem.desejoUso = 0;
-	end
-	desejoUso = personagem.desejoUso
-
+	end	
 	if(personagem.falhas.oponente == nil) then
 		local tr1 = NDB.newTransaction(personagem);
 		NDB.createChildNode(personagem, "falhas");
 		NDB.pushTransaction(personagem, tr1);
 	end
-
-	if(personagem.falhas.oponente == nil) then
-		personagem.falhas.oponente = 0;
-	end
-	falhasOp = personagem.falhas.oponente;
-
-	rollTeste2(jogada, sorte, vantagem, desejoUso, falhasOp, mesa, nil, nome);
-	resetRollMods(personagem);
-end
-
-function resetRollMods( personagem )
-	personagem.falhas.oponente = 0;
-	personagem.desejoUso = 0;
-	personagem.vantagem = 0;
+	rollTeste2(jogada, sorte, 0, 0, 0, mesa, nil, nome);
 end
 
 function deletePericia(sheet)
@@ -794,48 +754,46 @@ function updateSkill(sheet)
 end
 
 function usarHabilidade(habilidade)
+	mesa = getMesa(habilidade);
+	habilidades = NDB.getParent(habilidade);
+	personagem = NDB.getParent(habilidades);
 
-habilidades = NDB.getParent(habilidade);
-personagem = NDB.getParent(habilidades);
-
-if (habilidade.nome == nil) then
-	habilidade.nome = "Habilidade";
-end
-nome = habilidade.nome;
-
-if (habilidade.formulaDado == nil) then
-	habilidade.formulaDado = 1;
-end
-dado = habilidade.formulaDado;
-
-if (habilidade.formulaMod == nil) then
-	habilidade.formulaMod = 0;
-end
-mod = tonumber(habilidade.formulaMod);
-formula = dado .. "D100";
-
-if(mod>0) then
-	formula = formula .. "+" .. mod;
-elseif(mod<0) then
-	formula = formula .. "-" .. mod;
-end
-if (habilidade.custo == nil) then
-	habilidade.custo = 0;
-end
-custo = tonumber(habilidade.custo);
-
-if(personagem.atributos.recursoAtual >= custo) then
-	personagem.atributos.recursoAtual = personagem.atributos.recursoAtual - custo;
-	if(personagem.atributos.sorte == nil) then
-		personagem.atributos.sorte = 0;
+	if (habilidade.nome == nil) then
+		habilidade.nome = "Habilidade";
 	end
-	sorte = personagem.atributos.sorte
-	rollTeste(personagem, formula, sorte, nome);
-else
-	showMessage("Recurso insuficiente!");
-end
+	nome = habilidade.nome;
 
+	if (habilidade.formulaDado == nil) then
+		habilidade.formulaDado = 1;
+	end
+	dado = habilidade.formulaDado;
 
+	if (habilidade.formulaMod == nil) then
+		habilidade.formulaMod = 0;
+	end
+	mod = tonumber(habilidade.formulaMod);
+	
+	formula = dado .. "D100";
+	if(mod>0) then
+		formula = formula .. "+" .. mod;
+	elseif(mod<0) then
+		formula = formula .. "-" .. mod;
+	end
+	if (habilidade.custo == nil) then
+		habilidade.custo = 0;
+	end
+	custo = tonumber(habilidade.custo);
+
+	if(personagem.atributos.recursoAtual >= custo) then
+		personagem.atributos.recursoAtual = personagem.atributos.recursoAtual - custo;
+		if(personagem.atributos.sorte == nil) then
+			personagem.atributos.sorte = 0;
+		end
+		sorte = personagem.atributos.sorte;
+		rollTeste2(formula, sorte, 0, 0, 0, mesa, nil, nome);
+	else
+		showMessage("Recurso insuficiente!");
+	end
 end
 
 function deleteHabilidade(sheet)
@@ -925,6 +883,6 @@ function rolarPericiaSemTreinamento(sheet, nome)
 		sorte = atributos.sorte;
 	else
 		sorte = 1;
-	end
-	rollTeste(sheet, jogada, sorte, nome);
+	end	
+	rollTeste2(jogada, sorte, 0, 0, 0, mesa, nil, nome);
 end

@@ -1,4 +1,4 @@
-local meuPersonagem
+local meuPersonagem;
 
 function initializeActions(sheet)
 	if(sheet.atalhos == nil) then
@@ -48,7 +48,6 @@ end
 
 
 function atalhoAtaque(sheet)
-	local mesa = Firecast.getMesaDe(sheet);
 	if(meuPersonagem == nil) then
 		loadMyChar(sheet);
 	else	

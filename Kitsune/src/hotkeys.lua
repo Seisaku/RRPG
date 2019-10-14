@@ -1,5 +1,5 @@
 function initializeHotkeys()
-	node=ndb.newMemNodeDatabase()
+	node=NDB.newMemNodeDatabase()
 	node.nome = "Rolagem";
 	node.dados = 1;
 	node.mod = 0;

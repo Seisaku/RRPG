@@ -39,7 +39,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
     local rolagem = Firecast.interpretarRolagem(roll); 
     rolagem:rolarLocalmente();
     resultR = printRolagem2(mesa, rolagem, msg, sorte);
-    local crit = 0;
+    local crit;
     local fail = 0;
     crit, fail = checkCriticalnFail(rolagem, fail, sorte);
     local totalCrit = crit;
@@ -91,7 +91,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
     end
 
     local msgCrit = "";
-    local resultC = 0;
+    local resultC;
     while( crit > 0 and limit < 10)
     do
         limit = limit + 1;
@@ -113,8 +113,8 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
             resultR=(resultR+resultC);
         end            
     end
-    local msgMulti = "";
-    local msgMultiTotal = "";
+    local msgMulti;
+    local msgMultiTotal;
     local msgTotal = baseColor .. " = " .. totalColor .. resultadoFinal;
     if(totalMult>1)then
         msgMulti = " x {Base x1" .. msgCrit .. msgDesejo .. msgFalhaOp .. msgVantagem .. baseColor .. "}";
@@ -136,12 +136,31 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
     end
 end
 
+function getFormula(dados, mod)
+    local d = tonumber(dados);
+    local formula;
+    if(d~=nil)then
+        formula = d .. "D100";
+    else    
+        formula = "1D100";
+    end
+
+    local m = tonumber(mod);
+    if(m~=nil)then
+        if(mod>0) then
+            formula = formula .. "+" .. mod;
+        elseif(mod<0) then
+            formula = formula .. mod;
+        end
+    end
+    return formula;
+end
+
 function getMesa( sheet )
     local mesa = Firecast.getMesaDe(sheet);
     if(mesa == nil) then
-        mesa = rrpg.getMesas()[1];
+        mesa = Firecast.getMesas()[1];
     end
-
     return mesa;
 end
 
@@ -149,7 +168,7 @@ function rollTeste(sheet, roll, sor, msg)
     local mesa = Firecast.getMesaDe(sheet);     
 
     if(mesa == nil) then
-        mesa = rrpg.getMesas()[1];
+        mesa = Firecast.getMesas()[1];
     end
 
     local rolagem = Firecast.interpretarRolagem(roll); 
@@ -162,7 +181,7 @@ function rollTeste(sheet, roll, sor, msg)
     else
         sorte = sorte - 1;
     end
-    local crit = 0;
+    local crit;
     local fail = 0;        
     
     local desejoUso = getDesejoEmUso(sheet);       
@@ -324,7 +343,7 @@ end
 function printRolagem(sheet, rolagem, msg, sor)
     local mesa = Firecast.getMesaDe(sheet);        
     if(mesa == nil) then
-        mesa = rrpg.getMesas()[1];
+        mesa = Firecast.getMesas()[1];
     end
         local r = rolagem.resultado;
         local sorte = sor;

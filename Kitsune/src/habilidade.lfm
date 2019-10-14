@@ -10,7 +10,8 @@
 		<button height="20" margins="{left=2}" onClick="deleteHabilidade(sheet)" text="X" width="20"/>
 	</flowLayout>
 	<dataLink fields="{'formulaMod'}">
-		<event name="onChange">updateSkill(sheet);
+		<event name="onChange">
+			updateSkill(sheet);
         </event>
 	</dataLink>
 </form>
