@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout autoHeight="true" width="1500">
+	<scrollBox height="500" width="840">
+		<flowLayout height="1100" maxControlsPerLine="1" width="820">
+			<label height="20" text="Personalidade"/>
+			<richEdit backgroundColor="black" defaultFontColor="white" field="personalidades" height="200" width="800"/>
+			<label height="20" text="Ideais"/>
+			<richEdit backgroundColor="black" defaultFontColor="white" field="ideais" height="200" width="800"/>
+			<label height="20" text="Fraquezas"/>
+			<richEdit backgroundColor="black" defaultFontColor="white" field="fraquezas" height="200" width="800"/>
+			<label height="20" text="Vinculos"/>
+			<richEdit backgroundColor="black" defaultFontColor="white" field="vinculos" height="200" width="800"/>
+			<label height="20" text="Divindade"/>
+			<richEdit backgroundColor="black" defaultFontColor="white" field="divindade" height="200" width="800"/>
+		</flowLayout>
+	</scrollBox>
+</flowLayout>

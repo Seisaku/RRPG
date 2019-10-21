@@ -48,26 +48,7 @@
 			<import file="caracteristicas.xml"/>
 		</tab>
 		<tab title="Personalidade">
-			<tabControl align="client">
-				<tab title="Antecedente">
-					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="antecedente"/>
-				</tab>
-				<tab title="Personalidade">
-					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="personalidades"/>
-				</tab>
-				<tab title="Ideais">
-					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="ideais"/>
-				</tab>
-				<tab title="Fraquezas">
-					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="fraquezas"/>
-				</tab>
-				<tab title="Vínculos">
-					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="vinculos"/>
-				</tab>
-				<tab title="Divindade">
-					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="divindade"/>
-				</tab>
-			</tabControl>
+			<import file="personalidade.xml"/>			
 		</tab>
 		<tab title="Classe">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="classeTxt"/>
