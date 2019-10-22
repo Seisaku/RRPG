@@ -529,14 +529,8 @@ function updateBonus(sheet)
 				if(arma.bonus == nil) then
 					arma.bonus = 0;
 				end
-				if(arma.proficiente == nil) then
-					arma.proficiente = false;
-				end
-				if(arma.proficiente) then
-					totalBonus = totalBonus + arma.bonus + personagem.proficiencia;				
-				else
-					totalBonus = totalBonus + arma.bonus;
-				end
+				arma.proficiencia = getProficienceForType(sheet.tipo, personagem);
+				totalBonus = totalBonus + arma.bonus + arma.proficiencia;
 			end		
 		end
 		if (NDB.getNodeName(armas) == "armas") then
@@ -547,6 +541,39 @@ function updateBonus(sheet)
 			updateDefesa(personagem);
 		end
 	end
+end
+
+function getProficienceForType(type, char)
+	if(type~=nil and char~=nil) then
+		pericias = getChildNodeByName(char, "pericias");
+		if(pericias == nil)then
+			showMessage("pericias nil");
+			return 0;
+		end
+		printAllChildren(pericias);
+		combate = getChildNodeByName(pericias, "Combate");
+		if(combate == nil)then
+			showMessage("combate nil")
+			return 0;
+		end
+		editaveis = getChildNodeByName(combate, "editaveis");
+		if(editaveis == nil)then
+			showMessage("editaveis nil")
+			return 0;
+		end
+		listaArmas = NDB.getChildNodes(editaveis);
+		if(listaArmas == nil)then
+			showMessage("listaArmas nil")
+			return 0;
+		end
+		for _, arma in pairs(listaArmas) do
+			if (NDB.getNodeName(arma) == type) then
+				return arma.valor * char.proficiencia;
+			end
+		end
+	showMessage("not found")
+	end	
+	return 0;	
 end
 
 function updateAtaque(sheet)

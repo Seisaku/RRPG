@@ -2,14 +2,15 @@
 <form name="frmArma" height="20" margins="{top=2}">      
 	<flowLayout align="client">
 		<checkBox 	width="20" field="equipado"/>
-		<edit 		width="150" height="20" field="nome"/>
-		<checkBox 	width="20"  height="20" field="proficiente"/>
-		<edit 		width="30"  height="20" field="bonus" type="number" min="0" max="999" horzTextAlign="center"/>
+		<edit 		width="80" height="20" field="nome"/>
+		<comboBox left="20" top="20" width='90' field="tipo" items="{'Desarmado','Espadas','Adagas','Machados','Martelos','Maças','Compassos','Espadas Grandes','Katanas','Espadas Ninja','Lanças','Postes','Cajados','Bordões','Arcos','Bestas','Rifles','Explosivos'}"/>
+		<label 		width="30" height="20" field="proficiencia"/>
+		<edit 		width="30"  height="20" field="bonus" type="text" min="0" max="999" horzTextAlign="center"/>
 		<button 	width="20"  height="20" text="*" onClick="ataqueComArma(sheet)" margins="{left=2}"/>
 		<button 	width="20"  height="20" text="X" onClick="deleteEquip(sheet)" margins="{left=2}"/>	
 	</flowLayout>
 
-    <dataLink fields="{'equipado','bonus','proficiente'}">
+    <dataLink fields="{'equipado','bonus','tipo'}">
         <event name="onChange">
             updateBonus(sheet);
         </event>
