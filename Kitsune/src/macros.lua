@@ -287,7 +287,7 @@ function checkCriticalnFail(rolagem, fa, sorte)
         if op.tipo == "dado" then
             f = op.face;
             for j = 1, #op.resultados, 1 do
-                if op.resultados[j] >= f-sorte then
+                if op.resultados[j] >= (f+1-sorte) then
                     crit = crit + 1;
                 end
                 if op.resultados[j] == 1 then
