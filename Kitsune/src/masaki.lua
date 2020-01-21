@@ -545,12 +545,12 @@ end
 
 function getProficienceForType(type, char)
 	if(type~=nil and char~=nil) then
+		-- showMessage("type=" .. type);
 		pericias = getChildNodeByName(char, "pericias");
 		if(pericias == nil)then
 			showMessage("pericias nil");
 			return 0;
 		end
-		printAllChildren(pericias);
 		combate = getChildNodeByName(pericias, "Combate");
 		if(combate == nil)then
 			showMessage("combate nil")
@@ -561,17 +561,20 @@ function getProficienceForType(type, char)
 			showMessage("editaveis nil")
 			return 0;
 		end
+		
 		listaArmas = NDB.getChildNodes(editaveis);
 		if(listaArmas == nil)then
 			showMessage("listaArmas nil")
 			return 0;
 		end
 		for _, arma in pairs(listaArmas) do
-			if (NDB.getNodeName(arma) == type) then
+			-- printAllAttr(arma, "arma");
+			if (arma ~= nil and arma.nome ~= nil and arma.nome == type) then
+				-- showMessage(type .. " was found! P=" .. arma.valor)
 				return arma.valor * char.proficiencia;
 			end
 		end
-	showMessage("not found")
+	-- showMessage(type .. " not found")
 	end	
 	return 0;	
 end
