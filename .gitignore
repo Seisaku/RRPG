@@ -16,3 +16,5 @@ Kitsune/RRPG_Kitsune_Plugin.sublime-workspace
 *.sublime-workspace
 
 Kitsune/src/output/
+
+*.sublime-project
