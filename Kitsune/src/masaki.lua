@@ -916,3 +916,19 @@ function rolarPericiaSemTreinamento(sheet, nome)
 	end	
 	rollTeste2(jogada, sorte, 0, 0, 0, mesa, nil, nome);
 end
+
+function consumeTurn( sheet )
+	if(sheet ~= nil and sheet.buffs ~= nil) then
+		for buff in sheet.buffs do	
+			if(buff ~= nil and buff.turnos ~= nil) then
+				showMessage("Turnos" .. buff.turnos);
+			end
+		end
+	else
+		showMessage("Erro buff turn validation" .. sheet);
+	end
+end
+
+function deleteBuff( sheet )
+	NDB.deleteNode(sheet);
+end
