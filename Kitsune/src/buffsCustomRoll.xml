@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout autoHeight="true" width="390">
+	<label horzTextAlign="center" text="Buffs"/>
+	<flowLineBreak/>
+
+	<label horzTextAlign="center" text="Nome" width="80"/>
+	<label horzTextAlign="center" text="Formula" width="150"/>
+	<label horzTextAlign="center" text="Turnos" width="50"/>
+	<button height="20" onClick="self.rclBuffsCustomRoll:append();" text="+" width="20"/>
+	<button width="50"  height="20" text="Turno" onClick="consumeTurn(sheet)" margins="{left=2}"/>
+	<flowLineBreak/>
+
+	<scrollBox height="100" width="330">
+		<recordList autoHeight="true" field="buffs" name="rclBuffsCustomRoll" templateForm="frmBuff" width="300"/>
+	</scrollBox>
+</flowLayout>

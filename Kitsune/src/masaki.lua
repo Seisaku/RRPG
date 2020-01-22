@@ -919,13 +919,18 @@ end
 
 function consumeTurn( sheet )
 	if(sheet ~= nil and sheet.buffs ~= nil) then
-		for buff in sheet.buffs do	
-			if(buff ~= nil and buff.turnos ~= nil) then
-				showMessage("Turnos" .. buff.turnos);
+		listaBuffs = NDB.getChildNodes(sheet.buffs);
+		if(listaBuffs ~= nil) then
+			for key, buff in pairs(listaBuffs) do
+				if(buff ~= nil and buff.turnos ~= nil) then
+					local turnNumber = tonumber(buff.turnos);
+					result = turnNumber - 1
+					if(result >= 0)then
+						buff.turnos = result;
+					end
+				end
 			end
 		end
-	else
-		showMessage("Erro buff turn validation" .. sheet);
 	end
 end
 
