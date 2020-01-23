@@ -521,7 +521,8 @@ function updateBonus(sheet)
 		armas = NDB.getParent(sheet);
 		equipamento = NDB.getParent(armas);
 		personagem = NDB.getParent(equipamento);
-		
+		sheet.proficiencia = getProficienceForType(sheet.tipo, personagem);
+
 		listaArmas = NDB.getChildNodes(armas);
 		totalBonus = 0;
 		for key, arma in pairs(listaArmas) do		
@@ -529,7 +530,6 @@ function updateBonus(sheet)
 				if(arma.bonus == nil) then
 					arma.bonus = 0;
 				end
-				arma.proficiencia = getProficienceForType(sheet.tipo, personagem);
 				totalBonus = totalBonus + arma.bonus + arma.proficiencia;
 			end		
 		end
