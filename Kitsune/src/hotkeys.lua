@@ -7,14 +7,16 @@ function initializeHotkeys()
 	node.desejo = 0;
 	node.vantagem = 0;
 	node.falhasOponente = 0;
+	NDB.createChildNode(node, "buffs");
 	return node;
 end
 
-function editActionRoll(node, dados, mod, sorte, msg)
+function editActionRoll(node, dados, mod, sorte, buffs, msg)
 	node.nome = msg;
 	node.dados = dados;
 	node.mod = mod;
 	node.sorte = sorte;
+	node.buffs = buffs;
 end
 
 function customRoll( sheet )
@@ -39,6 +41,20 @@ function customRoll( sheet )
 	end
 
 	rolagem = sheet.dados .. "D100" .. mod;
+
+	if(sheet.buffs ~= nil) then
+		listaBuffs = NDB.getChildNodes(sheet.buffs);
+		if(listaBuffs ~= nil) then
+			for key, buff in pairs(listaBuffs) do
+				if(buff ~= nil and buff.ativo == true) then
+					rolagem = rolagem .. "+" .. buff.formula;					
+				end
+			end
+		end
+	end
+
+	mesaPrintMessage(rolagem)
+
 	mesa = getMesa(sheet);
 	rollTeste2(rolagem, sheet.sorte, sheet.vantagem, sheet.desejo, sheet.falhasOponente, mesa,sheet.objetivo, sheet.nome);	
 end

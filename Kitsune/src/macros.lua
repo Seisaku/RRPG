@@ -300,6 +300,18 @@ function checkCriticalnFail(rolagem, fa, sorte)
 end
 
 function printRolagem2(mesa, rolagem, msg, sor)
+
+    baseColor = "[§K7]";
+    wishColor = "[§K2]";
+    critColor = "[§K8]";
+    advColor = "[§K11]";
+    opFailColor = "[§K6]";
+    failColor = "[§K4]";
+    totalColor = "[§K9]";
+    bracketColor = "[§K1]";
+    msgColor = "[§K14]";
+    rollColor = "[§K2]";
+
     local r = rolagem.resultado;
     local sorte = sor;
     if sorte == nil then
@@ -307,36 +319,36 @@ function printRolagem2(mesa, rolagem, msg, sor)
     else
         sorte = sorte - 1;
     end
-    outputRoll =  "[§K2]" .. rolagem.asString .. " [§K1] { [§K7] ";
+    outputRoll =  rollColor .. rolagem.asString .. bracketColor .." {" .. baseColor;
     for i = 1, #rolagem.ops, 1 do
         local op = rolagem.ops[i];       
         if op.tipo == "dado" then
             f = op.face;
-            outputRoll = outputRoll .. "[ ";
+            outputRoll = outputRoll .. " [ ";
             for j = 1, #op.resultados, 1 do
                 if j ~= 1 then
                     outputRoll = outputRoll .. " , ";
                 end;
                 if op.resultados[j] >= f-sorte then
-                    outputRoll = outputRoll .. "[§K8]";
+                    outputRoll = outputRoll .. critColor;
                 elseif op.resultados[j] == 1 then
-                    outputRoll = outputRoll .. "[§K4]";
+                    outputRoll = outputRoll .. failColor;
                 else
-                    outputRoll = outputRoll .. "[§K7]";
+                    outputRoll = outputRoll .. baseColor;
                 end
-                outputRoll = outputRoll .. math.floor(op.resultados[j]) .. "[§K7]";
+                outputRoll = outputRoll .. math.floor(op.resultados[j]) .. baseColor;
             end;
             outputRoll = outputRoll .. " ] ";
             elseif op.tipo == "soma" then
-                outputRoll = outputRoll .. "+";
+                outputRoll = outputRoll .. "+ ";
             elseif op.tipo == "subtracao" then
-                outputRoll = outputRoll .. "-";
+                outputRoll = outputRoll .. "- ";
             elseif op.tipo == "imediato" then
                 outputRoll = outputRoll .. op.valor;
             end;                
     end
-    outputRoll = outputRoll .. "[§K1]} = [§K9]" .. r .. "[§K14] << " .. msg .. " >>";      
-    mesa.activeChat:enviarMensagem(outputRoll);
+    outputRoll = outputRoll .. bracketColor .. "} = " .. totalColor .. r .. msgColor .. " << " .. msg .. " >>";      
+    mesa.activeChat:enviarMensagem(outputRoll); 
     return r;
 end
 
@@ -385,4 +397,11 @@ function printRolagem(sheet, rolagem, msg, sor)
         mesa.activeChat:enviarMensagem(outputRoll);
 
         return r;
+end
+
+function mesaPrintMessage( msg )
+   mesa = Firecast.getMesas()[1];
+   if(mesa ~= nil) then
+        mesa.activeChat:enviarMensagem(msg);
+   end
 end

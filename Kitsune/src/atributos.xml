@@ -23,7 +23,7 @@
 	                        rollNode=initializeHotkeys();
 	                        atq,mod=updateAtaque(sheet);
 	                        sorte=updateSorte(sheet);
-	                        editActionRoll(rollNode, atq, mod, sorte,'Ataque');
+	                        editActionRoll(rollNode, atq, mod, sorte, sheet.buffs,'Ataque');
 	                        self.customRollPopup:setNodeObject(rollNode);
 	                        self.customRollPopup:show(); 
 	                        self.rollCustomNow:setFocus();
@@ -47,7 +47,7 @@
 						rollNode=initializeHotkeys();
 						def,mod=updateDefesa(sheet);
 						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, def, mod, sorte,'Defesa');
+						editActionRoll(rollNode, def, mod, sorte, sheet.buffs,'Defesa');
 						self.customRollPopup:setNodeObject(rollNode);
 						self.customRollPopup:show();
 						self.rollCustomNow:setFocus();
@@ -69,7 +69,7 @@
 						rollNode=initializeHotkeys();
 						agi,mod=updateAgilidade(sheet); 
 						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, agi, mod, sorte,'Agilidade');
+						editActionRoll(rollNode, agi, mod, sorte, sheet.buffs,'Agilidade');
 						self.customRollPopup:setNodeObject(rollNode);
 						self.customRollPopup:show();
 						self.rollCustomNow:setFocus();
@@ -90,7 +90,7 @@
 					if(event.ctrlKey) then 
 						rollNode=initializeHotkeys();
 						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, sorte, 0, sorte,'Sorte');
+						editActionRoll(rollNode, sorte, 0, sorte, sheet.buffs,'Sorte');
 						self.customRollPopup:setNodeObject(rollNode);
 						self.customRollPopup:show();
 						self.rollCustomNow:setFocus();
@@ -112,7 +112,7 @@
 						 rollNode=initializeHotkeys();
 						 mag,mod=updateMagia(sheet);
 						 sorte=updateSorte(sheet);
-						 editActionRoll(rollNode, mag, mod, sorte,'Magia');
+						 editActionRoll(rollNode, mag, mod, sorte, sheet.buffs,'Magia');
 						 self.customRollPopup:setNodeObject(rollNode);
 						 self.customRollPopup:show();
 						 self.rollCustomNow:setFocus();
@@ -134,7 +134,7 @@
 						 rollNode=initializeHotkeys();
 						 rmag,mod=updateResistenciaMagica(sheet);
 						 sorte=updateSorte(sheet);
-						 editActionRoll(rollNode, rmag, mod, sorte,'Resistência Mágica');
+						 editActionRoll(rollNode, rmag, mod, sorte, sheet.buffs,'Resistência Mágica');
 						 self.customRollPopup:setNodeObject(rollNode);
 						 self.customRollPopup:show();
 						 self.rollCustomNow:setFocus();
@@ -165,7 +165,7 @@
 						rollNode=initializeHotkeys();
 						vid=updateVida(sheet);
 						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, vid, 0, sorte,'Vida');
+						editActionRoll(rollNode, vid, 0, sorte, sheet.buffs,'Vida');
 						self.customRollPopup:setNodeObject(rollNode);
 						self.customRollPopup:show();
 						self.rollCustomNow:setFocus();
