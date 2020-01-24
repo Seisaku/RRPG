@@ -404,7 +404,7 @@ function changeBarraRecurso(sheet)
 			end
 		else
 			MPnew = tonumber(sheet.recursoOp);
-			if(HPnew ~= nil) then
+			if(MPnew ~= nil) then
 				sheet.atributos.recursoAtual = MPnew;
 			else
 				showMessage(errorMsg);
