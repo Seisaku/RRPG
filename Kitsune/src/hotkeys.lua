@@ -63,13 +63,13 @@ function customRoll( sheet )
 end
 
 function isValidRoll( rolagem )
-	local rolagemCheck = rrpg.interpretarRolagem(rolagem);
+	local rolagemCheck = Firecast.interpretarRolagem(rolagem);
 	return #rolagemCheck.ops > 0;
 end
 
 function concatanateRollsToText( rolagem1, rolagem2 )
-	local roll1 = rrpg.interpretarRolagem(rolagem1);
-	local roll2 = rrpg.interpretarRolagem(rolagem2);
+	local roll1 = Firecast.interpretarRolagem(rolagem1);
+	local roll2 = Firecast.interpretarRolagem(rolagem2);
 
 	msg = ""
 	if(#roll1.ops > 0) then
