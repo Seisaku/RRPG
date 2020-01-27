@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout autoHeight="true" width="390">
+<flowLayout autoHeight="true" width="296">
 	<label horzTextAlign="center" text="Buffs"/>
 	<flowLineBreak/>
 
 	<label horzTextAlign="center" text="Nome" width="100"/>
 	<label horzTextAlign="center" text="Formula" width="120"/>
 	<label horzTextAlign="center" text="V" hitTest="true" hint="Vantagem" width="30"/>
-	<button height="20" onClick="self.rclBuffsCustomRoll:append();" text="+" width="20"/>
+	<button height="20" onClick="self.rclBuffsCustomRoll:append();" text="+" margins="{left=2}" width="20"/>
 	<flowLineBreak/>
 
-	<scrollBox height="100" width="330">
-		<recordList autoHeight="true" field="buffs" name="rclBuffsCustomRoll" templateForm="frmBuffC" width="300"/>
+	<scrollBox height="100" width="296">
+		<recordList autoHeight="true" field="buffs" name="rclBuffsCustomRoll" templateForm="frmBuffC" width="280"/>
 	</scrollBox>
 </flowLayout>
