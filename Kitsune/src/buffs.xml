@@ -3,10 +3,10 @@
 	<label horzTextAlign="center" text="Buffs"/>
 	<flowLineBreak/>
 
-	<label horzTextAlign="center" text="Nome" width="80"/>
-	<label horzTextAlign="center" text="Formula" width="150"/>
-	<label horzTextAlign="center" text="Vantagem" width="50"/>
-	<label horzTextAlign="center" text="Turnos" width="50"/>
+	<label horzTextAlign="center" text="Nome" width="100"/>
+	<label horzTextAlign="center" text="Formula" width="120"/>
+	<label horzTextAlign="center" text="V" hitTest="true" hint="Vantagem" width="30"/>
+	<label horzTextAlign="center" text="T" hitTest="true" hint="Turnos" width="30"/>
 	<button height="20" onClick="self.rclBuffs:append();" text="+" width="20"/>
 	<button width="50"  height="20" text="Turno" onClick="consumeTurn(sheet)" margins="{left=2}"/>
 	<flowLineBreak/>

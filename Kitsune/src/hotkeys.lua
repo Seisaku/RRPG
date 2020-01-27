@@ -42,8 +42,6 @@ function customRoll( sheet )
 
 	rolagem = sheet.dados .. "D100" .. mod;
 
-	mesaPrintMessage(rolagem);
-
 	vantagem = sheet.vantagem;
 	if(sheet.buffs ~= nil) then
 		listaBuffs = NDB.getChildNodes(sheet.buffs);
@@ -53,7 +51,7 @@ function customRoll( sheet )
 					if(buff.formula ~= nil) then
 						rolagem = concatanateRollsToText(rolagem, buff.formula)				
 					end
-					if(buff.vantagem > 0) then
+					if(buff.vantagem ~= nil and buff.vantagem > 0) then
 						vantagem = vantagem + buff.vantagem;					
 					end
 				end
