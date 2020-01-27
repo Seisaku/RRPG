@@ -35,6 +35,9 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
     opFailColor = "[§K6]";
     failColor = "[§K4]";
     totalColor = "[§K9]";
+    bracketColor = "[§K1]";
+    msgColor = "[§K14]";
+    rollColor = "[§K2]";
 
     local rolagem = Firecast.interpretarRolagem(roll); 
     rolagem:rolarLocalmente();

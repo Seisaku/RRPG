@@ -42,19 +42,69 @@ function customRoll( sheet )
 
 	rolagem = sheet.dados .. "D100" .. mod;
 
+	mesaPrintMessage(rolagem);
+
+	vantagem = sheet.vantagem;
 	if(sheet.buffs ~= nil) then
 		listaBuffs = NDB.getChildNodes(sheet.buffs);
 		if(listaBuffs ~= nil) then
 			for key, buff in pairs(listaBuffs) do
 				if(buff ~= nil and buff.ativo == true) then
-					rolagem = rolagem .. "+" .. buff.formula;					
+					if(buff.formula ~= nil) then
+						rolagem = concatanateRollsToText(rolagem, buff.formula)				
+					end
+					if(buff.vantagem > 0) then
+						vantagem = vantagem + buff.vantagem;					
+					end
 				end
 			end
 		end
 	end
-
-	mesaPrintMessage(rolagem)
-
 	mesa = getMesa(sheet);
-	rollTeste2(rolagem, sheet.sorte, sheet.vantagem, sheet.desejo, sheet.falhasOponente, mesa,sheet.objetivo, sheet.nome);	
+	rollTeste2(rolagem, sheet.sorte, vantagem, sheet.desejo, sheet.falhasOponente, mesa,sheet.objetivo, sheet.nome);	
+end
+
+function isValidRoll( rolagem )
+	local rolagemCheck = rrpg.interpretarRolagem(rolagem);
+	return #rolagemCheck.ops > 0;
+end
+
+function concatanateRollsToText( rolagem1, rolagem2 )
+	local roll1 = rrpg.interpretarRolagem(rolagem1);
+	local roll2 = rrpg.interpretarRolagem(rolagem2);
+
+	msg = ""
+	if(#roll1.ops > 0) then
+		msg = getRollText(roll1)
+	end
+	if(#roll2.ops > 0) then
+		if (#roll1.ops > 0) then
+			msg = msg .. " ";
+			if (roll2.ops[1].tipo == "dado") then
+				msg = msg .. "+"
+			end
+		end
+		msg = msg .. getRollText(roll2)
+	end
+	return msg;
+end
+
+function getRollText( rolagem )
+	local msg = "";
+	for i = 1, #rolagem.ops, 1 do  
+        local operacao = rolagem.ops[i];      
+        -- Vamos verificar que tipo de operação é esta.      
+        if operacao.tipo == "dado" then        
+            msg = msg .. operacao.quantidade .. "d" .. operacao.face; 
+        elseif operacao.tipo == "imediato" and i == 1 then
+        	msg = msg .. "+" .. operacao.valor;
+        elseif operacao.tipo == "imediato" then
+        	msg = msg .. operacao.valor;
+        elseif operacao.tipo == "subtracao" then
+            msg = msg .. "-";
+         elseif operacao.tipo == "soma" then
+            msg = msg .. "+";
+        end;
+	end; 
+	return msg;
 end
