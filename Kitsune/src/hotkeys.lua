@@ -16,7 +16,21 @@ function editActionRoll(node, dados, mod, sorte, buffs, msg)
 	node.dados = dados;
 	node.mod = mod;
 	node.sorte = sorte;
-	node.buffs = buffs;
+
+	if(buffs ~= nil) then
+		listaBuffs = NDB.getChildNodes(buffs);
+		if(listaBuffs ~= nil) then
+			for _, buff in pairs(listaBuffs) do
+				if(buff ~= nil and buff.ativo == true and (buff.formula ~= nil or buff.vantagem ~= nil) and buff.nome ~= nil) then
+					nBuff = NDB.createChildNode(node.buffs, buff.nome);
+					nBuff.ativo = buff.ativo
+					nBuff.nome = buff.nome
+					nBuff.formula = buff.formula
+					nBuff.vantagem = buff.vantagem				
+				end
+			end
+		end
+	end
 end
 
 function customRoll( sheet )
