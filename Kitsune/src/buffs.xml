@@ -7,11 +7,12 @@
 	<label horzTextAlign="center" text="Formula" width="120"/>
 	<label horzTextAlign="center" text="V" hitTest="true" hint="Vantagem" width="30"/>
 	<label horzTextAlign="center" text="T" hitTest="true" hint="Turnos" width="30"/>
+	<label horzTextAlign="center" text="A" hitTest="true" hint="Ação" width="60"/>
 	<button height="20" onClick="self.rclBuffs:append();" text="+" width="20"/>
 	<button width="50"  height="20" text="Turno" onClick="consumeTurn(sheet)" margins="{left=2}"/>
 	<flowLineBreak/>
 
-	<scrollBox height="100" width="336">
-		<recordList autoHeight="true" field="buffs" name="rclBuffs" templateForm="frmBuff" width="320"/>
+	<scrollBox height="100" width="396">
+		<recordList autoHeight="true" field="buffs" name="rclBuffs" templateForm="frmBuff" width="380"/>
 	</scrollBox>
 </flowLayout>

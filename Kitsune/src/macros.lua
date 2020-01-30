@@ -408,3 +408,88 @@ function mesaPrintMessage( msg )
         mesa.activeChat:enviarMensagem(msg);
    end
 end
+
+function parseFormula(formula, personagem)
+    result = formula
+    for s in formula:gsub('%[[^%]]+%]','\0%0\0'):gsub('%z%z',''):gmatch'%z(.-)%z' do
+        attribute = string.sub(s, 2, string.len(s) - 1)
+        escapedS = "%[" .. attribute .. "%]"
+        attrValueForChat = getAttribute(personagem ,attribute)
+        result = string.gsub(result, escapedS, attrValueForChat) 
+    end
+    return result
+end
+
+function getAttribute(personagem, attribute)
+
+    if (personagem ~= nil and personagem.atributos ~= nil) then
+        if(attribute == "PV" and personagem.atributos.vidaAtual) then
+            return personagem.atributos.vidaAtual;
+        elseif(attribute == "PM" and personagem.atributos.recursoAtual) then
+            return personagem.atributos.recursoAtual;
+        elseif(attribute == "REC" and personagem.atributos.recurso) then
+            return personagem.atributos.recurso;
+        elseif(attribute == "VID" and personagem.atributos.vida) then
+            return personagem.atributos.vida;
+        elseif(attribute == "RMAG" and personagem.atributos.resistenciaMagica) then
+            return personagem.atributos.resistenciaMagica;
+        elseif(attribute == "MAG" and personagem.atributos.magia) then
+            return personagem.atributos.magia;
+        elseif(attribute == "SOR" and personagem.atributos.sorte) then
+            return personagem.atributos.sorte;
+        elseif(attribute == "AGI" and personagem.atributos.agilidade) then
+            return personagem.atributos.agilidade;
+        elseif(attribute == "DEF" and personagem.atributos.defesa) then
+            return personagem.atributos.defesa;
+        elseif(attribute == "ATQ" and personagem.atributos.ataque) then
+            return personagem.atributos.ataque;
+        end
+    
+    end
+    return 0            
+end
+
+function isValidRoll( rolagem )
+    local rolagemCheck = Firecast.interpretarRolagem(rolagem);
+    return #rolagemCheck.ops > 0;
+end
+
+function concatanateRollsToText( rolagem1, rolagem2 )
+    local roll1 = Firecast.interpretarRolagem(rolagem1);
+    local roll2 = Firecast.interpretarRolagem(rolagem2);
+
+    msg = ""
+    if(#roll1.ops > 0) then
+        msg = getRollText(roll1)
+    end
+    if(#roll2.ops > 0) then
+        if (#roll1.ops > 0) then
+            msg = msg .. " ";
+            if (roll2.ops[1].tipo == "dado") then
+                msg = msg .. "+"
+            end
+        end
+        msg = msg .. getRollText(roll2)
+    end
+    return msg;
+end
+
+function getRollText( rolagem )
+    local msg = "";
+    for i = 1, #rolagem.ops, 1 do  
+        local operacao = rolagem.ops[i];      
+        -- Vamos verificar que tipo de operação é esta.      
+        if operacao.tipo == "dado" then        
+            msg = msg .. operacao.quantidade .. "d" .. operacao.face; 
+        elseif operacao.tipo == "imediato" and i == 1 then
+            msg = msg .. "+" .. operacao.valor;
+        elseif operacao.tipo == "imediato" then
+            msg = msg .. operacao.valor;
+        elseif operacao.tipo == "subtracao" then
+            msg = msg .. "-";
+         elseif operacao.tipo == "soma" then
+            msg = msg .. "+";
+        end;
+    end; 
+    return msg;
+end

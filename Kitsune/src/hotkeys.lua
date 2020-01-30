@@ -32,48 +32,6 @@ function editActionRoll(node, dados, mod, sorte, buffs, personagem, msg)
 			end
 		end
 	end
-
-	 parseFormula("1D100 + [Ataque] + [Magia]", personagem);
-end
-
-function parseFormula(formula, personagem)
-	result = formula
-	for s in formula:gsub('%[[^%]]+%]','\0%0\0'):gsub('%z%z',''):gmatch'%z(.-)%z' do
-		attribute = string.sub(s, 2, string.len(s) - 1)
-		escapedS = "%[" .. attribute .. "%]"
-		attrValueForChat = getAttrFromChat(personagem ,attribute)
-		result = string.gsub(result, escapedS, attrValueForChat) 
-	end
-	return result
-end
-
-function getAttrFromChat(personagem, attribute)
-
-	if (personagem ~= nil and personagem.atributos ~= nil) then
-		if(attribute == "PV" and personagem.atributos.vidaAtual) then
-			return personagem.atributos.vidaAtual;
-		elseif(attribute == "PM" and personagem.atributos.recursoAtual) then
-			return personagem.atributos.recursoAtual;
-		elseif(attribute == "recurso" and personagem.atributos.recurso) then
-			return personagem.atributos.recurso;
-		elseif(attribute == "vida" and personagem.atributos.vida) then
-			return personagem.atributos.vida;
-		elseif(attribute == "Resistência Mágica" and personagem.atributos.resistenciaMagica) then
-			return personagem.atributos.resistenciaMagica;
-		elseif(attribute == "Magia" and personagem.atributos.magia) then
-			return personagem.atributos.magia;
-		elseif(attribute == "Sorte" and personagem.atributos.sorte) then
-			return personagem.atributos.sorte;
-		elseif(attribute == "Agilidade" and personagem.atributos.agilidade) then
-			return personagem.atributos.agilidade;
-		elseif(attribute == "Defesa" and personagem.atributos.defesa) then
-			return personagem.atributos.defesa;
-		elseif(attribute == "Ataque" and personagem.atributos.ataque) then
-			return personagem.atributos.ataque;
-		end
-	
-	end
-	return 0			
 end
 
 function customRoll( sheet )
@@ -100,6 +58,7 @@ function customRoll( sheet )
 	rolagem = sheet.dados .. "D100" .. mod;
 
 	vantagem = sheet.vantagem;
+	nome = sheet.nome;
 	if(sheet.buffs ~= nil) then
 		listaBuffs = NDB.getChildNodes(sheet.buffs);
 		if(listaBuffs ~= nil) then
@@ -111,12 +70,15 @@ function customRoll( sheet )
 					if(buff.vantagem ~= nil and buff.vantagem > 0) then
 						vantagem = vantagem + buff.vantagem;					
 					end
+					if(buff.nome ~= nil) then
+						nome = nome .. " + " .. buff.nome
+					end
 				end
 			end
 		end
 	end
 	mesa = getMesa(sheet);
-	rollTeste2(rolagem, sheet.sorte, vantagem, sheet.desejo, sheet.falhasOponente, mesa,sheet.objetivo, sheet.nome);	
+	rollTeste2(rolagem, sheet.sorte, vantagem, sheet.desejo, sheet.falhasOponente, mesa,sheet.objetivo, nome);	
 end
 
 function isValidRoll( rolagem )
