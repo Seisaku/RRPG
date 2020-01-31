@@ -8,6 +8,7 @@ function initializeHotkeys()
 	node.vantagem = 0;
 	node.falhasOponente = 0;
 	NDB.createChildNode(node, "buffs");
+	NDB.createChildNode(node, "personagemroll");
 	return node;
 end
 
@@ -16,7 +17,7 @@ function editActionRoll(node, dados, mod, sorte, buffs, personagem, msg)
 	node.dados = dados;
 	node.mod = mod;
 	node.sorte = sorte;
-
+	NDB.copy(node.personagemroll, personagem)
 	if(buffs ~= nil) then
 		listaBuffs = NDB.getChildNodes(buffs);
 		if(listaBuffs ~= nil) then
@@ -25,9 +26,8 @@ function editActionRoll(node, dados, mod, sorte, buffs, personagem, msg)
 					nBuff = NDB.createChildNode(node.buffs, buff.nome);
 					nBuff.ativo = buff.ativo
 					nBuff.nome = buff.nome
-					parsedF = parseFormula(buff.formula, personagem);
-					nBuff.formula = parsedF
-					nBuff.vantagem = buff.vantagem				
+					nBuff.formula = buff.formula
+					nBuff.vantagem = buff.vantagem	
 				end
 			end
 		end
@@ -78,50 +78,6 @@ function customRoll( sheet )
 		end
 	end
 	mesa = getMesa(sheet);
-	rollTeste2(rolagem, sheet.sorte, vantagem, sheet.desejo, sheet.falhasOponente, mesa,sheet.objetivo, nome);	
+	rollTestePersonagem(rolagem, sheet.sorte, vantagem, sheet.desejo, sheet.falhasOponente, mesa,sheet.objetivo, nome, sheet.personagemroll);	
 end
 
-function isValidRoll( rolagem )
-	local rolagemCheck = Firecast.interpretarRolagem(rolagem);
-	return #rolagemCheck.ops > 0;
-end
-
-function concatanateRollsToText( rolagem1, rolagem2 )
-	local roll1 = Firecast.interpretarRolagem(rolagem1);
-	local roll2 = Firecast.interpretarRolagem(rolagem2);
-
-	msg = ""
-	if(#roll1.ops > 0) then
-		msg = getRollText(roll1)
-	end
-	if(#roll2.ops > 0) then
-		if (#roll1.ops > 0) then
-			msg = msg .. " ";
-			if (roll2.ops[1].tipo == "dado") then
-				msg = msg .. "+"
-			end
-		end
-		msg = msg .. getRollText(roll2)
-	end
-	return msg;
-end
-
-function getRollText( rolagem )
-	local msg = "";
-	for i = 1, #rolagem.ops, 1 do  
-        local operacao = rolagem.ops[i];      
-        -- Vamos verificar que tipo de operação é esta.      
-        if operacao.tipo == "dado" then        
-            msg = msg .. operacao.quantidade .. "d" .. operacao.face; 
-        elseif operacao.tipo == "imediato" and i == 1 then
-        	msg = msg .. "+" .. operacao.valor;
-        elseif operacao.tipo == "imediato" then
-        	msg = msg .. operacao.valor;
-        elseif operacao.tipo == "subtracao" then
-            msg = msg .. "-";
-         elseif operacao.tipo == "soma" then
-            msg = msg .. "+";
-        end;
-	end; 
-	return msg;
-end
