@@ -530,6 +530,9 @@ function updateBonus(sheet)
 				if(arma.bonus == nil) then
 					arma.bonus = 0;
 				end
+				if(arma.proficiencia == nil) then
+					arma.proficiencia = 0;
+				end
 				totalBonus = totalBonus + arma.bonus + arma.proficiencia;
 			end		
 		end
