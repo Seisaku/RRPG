@@ -152,14 +152,18 @@ end
 function rolarAtaque(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.ataqueFormula ~= nil) then
-		rollTeste2(sheet.atributos.ataqueFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Ataque");
+		personagem = getPersonagemWithBuffs(sheet, "ATQ")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.ataqueFormula, 0, "Ataque")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
 	end
 end
 
 function rolarDefesa(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.defesaFormula ~= nil) then
-		rollTeste2(sheet.atributos.defesaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Defesa");
+		personagem = getPersonagemWithBuffs(sheet, "DEF")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.defesaFormula, 0, "Defesa")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
 	end
 end
 
@@ -171,7 +175,9 @@ end
 function rolarAgilidade(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.iniciativaFormula ~= nil) then
-		rollTeste2(sheet.atributos.iniciativaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Agilidade");
+		personagem = getPersonagemWithBuffs(sheet, "AGI")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.iniciativaFormula, 0, "Agilidade")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
 	end
 end
 
@@ -186,29 +192,37 @@ function rolarSorte(sheet)
 			sorteFormula = sorteFormula .. "+" .. sheet.atributos.sorteMod;
 		elseif(sheet.atributos.sorteMod < 0) then
 			sorteFormula = sorteFormula .. sheet.atributos.sorteMod;
-		end		
-		rollTeste2(sorteFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Sorte");		
+		end	
+		personagem = getPersonagemWithBuffs(sheet, "SOR")
+		rolagem, vantagem, nome = applyBuffs(sorteFormula, 0, "Sorte")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
 	end
 end
 
 function rolarMagia(sheet)
 	local mesa = getMesa(sheet);
-	if (sheet.atributos.ataqueFormula ~= nil) then
-		rollTeste2(sheet.atributos.magiaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Magia");
+	if (sheet.atributos.magiaFormula ~= nil) then
+		personagem = getPersonagemWithBuffs(sheet, "MAG")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.magiaFormula, 0, "Magia")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
 	end
 end
 
 function rolarVida(sheet)
 	local mesa = getMesa(sheet);
-	if (sheet.atributos.ataqueFormula ~= nil) then
-		rollTeste2(sheet.atributos.vidaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Vida");
+	if (sheet.atributos.vidaFormula ~= nil) then
+		personagem = getPersonagemWithBuffs(sheet, "VIDA")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.vidaFormula, 0, "Vida")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
 	end
 end
 
 function rolarResistenciaMagica(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.resistenciaMagicaFormula ~= nil) then
-		rollTeste2(sheet.atributos.resistenciaMagicaFormula, sheet.atributos.sorte, 0, 0, 0, mesa, nil, "Resistência Mágica");
+		personagem = getPersonagemWithBuffs(sheet, "RMAG")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.resistenciaMagicaFormula, 0, "Resistência Mágica")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
 	end
 end
 
@@ -241,9 +255,11 @@ function ataqueComArma(arma)
 	if(arma.nome ~= nil) then
 		msg = msg .. ": " .. arma.nome;
 	end
-	
+	showMessage("formula=" .. formula)	
 	local mesa = getMesa(personagem);
-	rollTeste2(formula, personagem.atributos.sorte, personagem.vantagem, personagem.desejoUso, personagem.falhas.oponente, mesa, nil, msg);	
+	personagem = getPersonagemWithBuffs(personagem, "ATQ")
+	rolagem, vantagem, msg = applyBuffs(formula, 0, msg)
+	rollTestePersonagem(rolagem, personagem.atributos.sorte, vantagem, 0, 0, mesa, nil, nome, personagem);
 end
 
 function expTable(nivel)

@@ -707,3 +707,46 @@ function getBuffsForAction(personagem, action)
         end
     end
 end
+
+function getPersonagemWithBuffs( personagem, action )
+    local tempPersonagem = NDB.newMemNodeDatabase()
+    NDB.copy(tempPersonagem, personagem)
+    if(personagem.buffs ~= nil) then
+        NDB.clearNode(tempPersonagem.buffs)
+        listaBuffs = NDB.getChildNodes(personagem.buffs);
+        if(listaBuffs ~= nil) then
+            for _, buff in pairs(listaBuffs) do
+                if(buff ~= nil and buff.ativo == true and buff.acao == action and (buff.formula ~= nil or buff.vantagem ~= nil) and buff.nome ~= nil) then
+                    nBuff = NDB.createChildNode(tempPersonagem.buffs, buff.nome);
+                    nBuff.ativo = buff.ativo
+                    nBuff.nome = buff.nome
+                    nBuff.formula = buff.formula
+                    nBuff.vantagem = buff.vantagem
+                end
+            end
+        end
+    end
+    return tempPersonagem;
+end
+
+function applyBuffs( rolagem, vantagem, nome)
+    if(personagem.buffs ~= nil) then
+        listaBuffs = NDB.getChildNodes(personagem.buffs);
+        if(listaBuffs ~= nil) then
+            for key, buff in pairs(listaBuffs) do
+                if(buff ~= nil) then
+                    if(buff.formula ~= nil) then
+                        rolagem = concatanateRollsToText(rolagem, buff.formula)             
+                    end
+                    if(buff.vantagem ~= nil and buff.vantagem > 0) then
+                        vantagem = vantagem + buff.vantagem;                    
+                    end
+                    if(buff.nome ~= nil) then
+                        nome = nome .. " + " .. buff.nome
+                    end
+                end
+            end
+        end
+    end
+    return rolagem, vantagem, nome;
+end
