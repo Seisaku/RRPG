@@ -238,24 +238,14 @@ function ataqueComArma(arma)
 		personagem.atributos.ataqueMod = 0;
 	end
 	bonus = personagem.atributos.ataqueMod;
-	if(arma.bonus == nil) then
-		arma.bonus = 0;
-	end
-	bonus = bonus + arma.bonus;
-	if(arma.proficiente == nil) then
-		arma.proficiente = false;
-	end
-	if(arma.proficiente) then
-		 bonus = bonus + personagem.proficiencia;					
-	end
+	bonus = bonus + getWeaponTotalBonus(arma, personagem);				
 	if(bonus > 0) then
 		formula = formula .. " +" .. bonus;
 	end
 	msg = "Ataque";
 	if(arma.nome ~= nil) then
 		msg = msg .. ": " .. arma.nome;
-	end
-	showMessage("formula=" .. formula)	
+	end	
 	local mesa = getMesa(personagem);
 	personagem = getPersonagemWithBuffs(personagem, "ATQ")
 	rolagem, vantagem, msg = applyBuffs(formula, 0, msg)
@@ -543,13 +533,8 @@ function updateBonus(sheet)
 		totalBonus = 0;
 		for key, arma in pairs(listaArmas) do		
 			if (arma.equipado) then
-				if(arma.bonus == nil) then
-					arma.bonus = 0;
-				end
-				if(arma.proficiencia == nil) then
-					arma.proficiencia = 0;
-				end
-				totalBonus = totalBonus + arma.bonus + arma.proficiencia;
+				totalArma = getWeaponTotalBonus(arma, personagem);
+				totalBonus = totalBonus + totalArma;
 			end		
 		end
 		if (NDB.getNodeName(armas) == "armas") then
@@ -562,38 +547,47 @@ function updateBonus(sheet)
 	end
 end
 
+function getWeaponTotalBonus( weapon, personagem )
+	if(weapon==nil) then
+		return 0;
+	end
+	proficiencia = 0;
+	if(weapon.tipo~=nil)then
+		proficiencia = getProficienceForType(weapon.tipo, personagem);
+	end
+
+	bonus = 0;
+	if(weapon.bonus~=nil)then
+		bonus = weapon.bonus;
+	end
+	total = math.floor(bonus+proficiencia)
+	return total; 
+end
+
 function getProficienceForType(type, char)
 	if(type~=nil and char~=nil) then
-		-- showMessage("type=" .. type);
 		pericias = getChildNodeByName(char, "pericias");
 		if(pericias == nil)then
-			showMessage("pericias nil");
 			return 0;
 		end
 		combate = getChildNodeByName(pericias, "Combate");
 		if(combate == nil)then
-			showMessage("combate nil")
 			return 0;
 		end
 		editaveis = getChildNodeByName(combate, "editaveis");
 		if(editaveis == nil)then
-			showMessage("editaveis nil")
 			return 0;
 		end
 		
 		listaArmas = NDB.getChildNodes(editaveis);
 		if(listaArmas == nil)then
-			showMessage("listaArmas nil")
 			return 0;
 		end
 		for _, arma in pairs(listaArmas) do
-			-- printAllAttr(arma, "arma");
 			if (arma ~= nil and arma.nome ~= nil and arma.nome == type) then
-				-- showMessage(type .. " was found! P=" .. arma.valor)
 				return arma.valor * char.proficiencia;
 			end
 		end
-	-- showMessage(type .. " not found")
 	end	
 	return 0;	
 end
