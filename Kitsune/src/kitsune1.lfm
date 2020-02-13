@@ -25,6 +25,9 @@
 				<tab title="Idiomas">
 					<import file="idiomas.xml"/>
 				</tab>
+				<tab title="Poder do Sacrifício">
+					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="sacrificio"/>
+				</tab>
 			</tabControl>	
 		</tab>
 		<tab title="Raça">
