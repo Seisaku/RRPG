@@ -33,23 +33,23 @@
 		<tab title="Classe">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="classeTxt"/>
 		</tab>
+		<tab title="Personalidade">
+			<import file="personalidade.xml"/>			
+		</tab>
+		<tab title="Caracteristicas">
+			<import file="caracteristicas.xml"/>
+		</tab>
+		<tab title="Inventário">
+			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="inventario"/>
+		</tab>
 		<tab title="Magias">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="magias"/>
 		</tab>
 		<tab title="Profissão">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="profissao"/>
 		</tab>
-		<tab title="Inventário">
-			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="inventario"/>
-		</tab>
 		<tab title="História">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="historia"/>
-		</tab>
-		<tab title="Personalidade">
-			<import file="personalidade.xml"/>			
-		</tab>
-		<tab title="Caracteristicas">
-			<import file="caracteristicas.xml"/>
 		</tab>
 		<tab title="Anotações">
 			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="anotacoes"/>
