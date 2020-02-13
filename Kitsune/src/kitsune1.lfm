@@ -10,7 +10,7 @@
 				<import file="barrinhas.xml"/>
 				<import file="armas.xml"/>
 				<import file="armaduras.xml"/>
-				<import file="gold.xml"/>
+				
 				<import file="buffs.xml"/>
 			</flowLayout>
 		</tab>
