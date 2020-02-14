@@ -748,6 +748,21 @@ function deleteIdioma(sheet)
 	updateBonus(sheet);
 end
 
+function getRolagemPericia(pericia)
+	if(pericia.valor == nil) then
+		pericia.valor = 0;
+	end
+	return 1 , pericia.valor;
+end
+
+function getPersonagemFromPericia( pericia )
+	item = NDB.getParent(pericia);
+	editaveis = NDB.getParent(item);
+	pericias = NDB.getParent(editaveis);
+	personagem = NDB.getParent(pericias);
+	return personagem;
+end
+
 function rolarPericia2(pericia)
 	local mesa = getMesa(pericia);	
 	if(pericia.nome == nil) then

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form dataType="br.com.sigma.kitsune.ficha1" formType="sheetTemplate" name="Kitsune" onNodeReady="initialize(sheet)" title="Kitsune's System">
 	<import file="templates.xml"/>
+	<import file="customRollPopup.xml"/>
 	<tabControl align="client">
 		<tab title="Principal">
 			<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">				
