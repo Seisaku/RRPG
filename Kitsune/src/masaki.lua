@@ -813,16 +813,14 @@ function updateSkill(sheet)
 
 end
 
-function usarHabilidade(habilidade)
+function getPersonagemFromHabilidade(habilidade)
 	mesa = getMesa(habilidade);
 	habilidades = NDB.getParent(habilidade);
 	personagem = NDB.getParent(habilidades);
+	return personagem;
+end
 
-	if (habilidade.nome == nil) then
-		habilidade.nome = "Habilidade";
-	end
-	nome = habilidade.nome;
-
+function getRollFromHabilidade( habilidade )
 	if (habilidade.formulaDado == nil) then
 		habilidade.formulaDado = 1;
 	end
@@ -839,6 +837,19 @@ function usarHabilidade(habilidade)
 	elseif(mod<0) then
 		formula = formula .. "-" .. mod;
 	end
+	return dado, mod, formula;
+end
+
+function usarHabilidade(habilidade)
+	mesa = getMesa(habilidade);
+	habilidades = NDB.getParent(habilidade);
+	personagem = NDB.getParent(habilidades);
+
+	if (habilidade.nome == nil) then
+		habilidade.nome = "Habilidade";
+	end
+	nome = habilidade.nome;
+	_,_,formula = getRollFromHabilidade(habilidade);
 	if (habilidade.custo == nil) then
 		habilidade.custo = 0;
 	end
