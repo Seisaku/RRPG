@@ -3,7 +3,56 @@
 	<flowLayout align="client" width="250">
 		<edit 		width="150" height="20" field="nome"/>
 		<edit 		width="30"  height="20" field="valor" type="number" min="0" max="999" horzTextAlign="center" margins="{left=2}"/>
-		<button 	width="20"  height="20" text="*" onClick="rolarPericia2(sheet)" margins="{left=2}"/>
+		<button 	width="20"  height="20" margins="{left=2}" text="*">
+			<event name="onMouseDown">
+				if(event.ctrlKey) then
+                    rollNode=initializeHotkeys();
+                    personagem=getPersonagemFromPericia(sheet);
+                    sorte=updateSorte(personagem)
+                    dados, mod = getRolagemPericia(sheet);
+                    editActionRoll(rollNode, dados, mod, sorte, personagem.buffs,personagem,sheet.nome);
+                    self.skillCustomRollPopup:setNodeObject(rollNode);
+                    self.skillCustomRollPopup:show(); 
+                    self.rollCustomNow:setFocus();
+                else
+					rolarPericia2(sheet) 
+				end
+			</event>
+		</button>
 		<button 	width="20"  height="20" text="X" onClick="deletePericia(sheet)" margins="{left=2}"/>	
 	</flowLayout>   
+
+		<!--  -->
+<popup height="400" name="skillCustomRollPopup" scopeNode="sheet" width="336">
+	<flowLayout align="client">
+		<label autoSize="true" margins="{left = 5, top = 5}" text="Rolagem" width="60"/>
+		<edit field="nome" height="20" horzTextAlign="center" name="nome" textPrompt="descrição da rolagem" width="80"/>
+		<flowLineBreak/>
+		<edit field="dados" height="20" horzTextAlign="center" margins="{left = 30, top = 15}" name="dados" type="number" width="30"/>
+		<label autoSize="true" height="20" horzTextAlign="center" margins="{left = 5, top = 15}" text="d100+" vertTextAlign="center" width="50"/>
+		<edit field="mod" height="20" horzTextAlign="center" margins="{left = 5, top = 15}" type="number" width="30"/>
+		<flowLineBreak/>
+		<label margins="{left = 1, top = 15}" text="Sorte"/>
+		<edit field="sorte" height="20" horzTextAlign="center" margins="{left = 1, top = 15}" min="0" type="number" width="30"/>
+		<flowLineBreak/>
+		<label margins="{left = 1, top = 5}" text="Desejo"/>
+		<edit field="desejo" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30"/>
+		<flowLineBreak/>
+		<label margins="{left = 1, top = 5}" text="Vantagem"/>
+		<edit field="vantagem" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30"/>
+		<flowLineBreak/>
+		<label margins="{left = 1, top = 5}" text="Falhas Oponente"/>
+		<edit field="falhasOponente" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" text="0" type="number" width="30"/>
+		<flowLineBreak/>
+		<label horzTextAlign="center" margins="{left = 5, top = 15}" text="Objetivo" width="150"/>
+		<flowLineBreak/>
+		<edit field="objetivo" height="20" horzTextAlign="center" margins="{left = 30, top = 5}" min="0" text="0" type="number" width="100"/>
+		<flowLineBreak/>
+		<button margins="{left = 5, top = 15}" name="rollCustomNow" onClick="customRoll(self.skillCustomRollPopup:getNodeObject());" text="Roll" width="100"/>
+		<button margins="{left = 15, top = 15}" name="endCustomRoll" onClick="self.skillCustomRollPopup:closePopup();" text="X" width="30"/>
+
+		<import file="buffsCustomRoll.xml"/>
+	</flowLayout>
+</popup>
+	<!--  -->  
 </form>
