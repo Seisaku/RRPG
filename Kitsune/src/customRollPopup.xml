@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popup height="400" name="customRollPopup" scopeNode="sheet" width="336">
+<popup height="410" name="customRollPopup" scopeNode="sheet" width="336">
 	<flowLayout align="client">
-		<label autoSize="true" margins="{left = 5, top = 5}" text="Rolagem" width="60"/>
-		<edit field="nome" height="20" horzTextAlign="center" name="nome" textPrompt="descrição da rolagem" width="80"/>
+		<label autoSize="true" margins="{left = 50, top = 5}" text="Rolagem" width="60"/>
+		<edit field="nome" height="20" horzTextAlign="center" name="nome" textPrompt="descrição da rolagem" width="160"/>
 		<flowLineBreak/>
-		<edit field="dados" height="20" horzTextAlign="center" margins="{left = 30, top = 15}" name="dados" type="number" width="30"/>
+		<edit field="dados" height="20" horzTextAlign="center" margins="{left = 100, top = 15}" name="dados" type="number" width="30"/>
 		<label autoSize="true" height="20" horzTextAlign="center" margins="{left = 5, top = 15}" text="d100+" vertTextAlign="center" width="50"/>
 		<edit field="mod" height="20" horzTextAlign="center" margins="{left = 5, top = 15}" type="number" width="30"/>
 		<flowLineBreak/>
-		<label margins="{left = 1, top = 15}" text="Sorte"/>
+		<label margins="{left = 80, top = 15}" text="Sorte"/>
 		<edit field="sorte" height="20" horzTextAlign="center" margins="{left = 1, top = 15}" min="0" type="number" width="30"/>
 		<flowLineBreak/>
-		<label margins="{left = 1, top = 5}" text="Desejo"/>
+		<label margins="{left = 80, top = 5}" text="Desejo"/>
 		<edit field="desejo" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30"/>
 		<flowLineBreak/>
-		<label margins="{left = 1, top = 5}" text="Vantagem"/>
+		<label margins="{left = 80, top = 5}" text="Vantagem"/>
 		<edit field="vantagem" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" type="number" width="30"/>
 		<flowLineBreak/>
-		<label margins="{left = 1, top = 5}" text="Falhas Oponente"/>
+		<label margins="{left = 80, top = 5}" text="Falhas Oponente"/>
 		<edit field="falhasOponente" height="20" horzTextAlign="center" margins="{left = 1, top = 5}" min="0" text="0" type="number" width="30"/>
 		<flowLineBreak/>
-		<label horzTextAlign="center" margins="{left = 5, top = 15}" text="Objetivo" width="150"/>
+		<label horzTextAlign="center" margins="{left = 90, top = 15}" text="Objetivo" width="150"/>
 		<flowLineBreak/>
-		<edit field="objetivo" height="20" horzTextAlign="center" margins="{left = 30, top = 5}" min="0" text="0" type="number" width="100"/>
+		<edit field="objetivo" height="20" horzTextAlign="center" margins="{left = 110, top = 5}" min="0" text="0" type="number" width="100"/>
 		<flowLineBreak/>
-		<button margins="{left = 5, top = 15}" name="rollCustomNow" onClick="customRoll(self.customRollPopup:getNodeObject());" text="Roll" width="100"/>
-		<button margins="{left = 15, top = 15}" name="endCustomRoll" onClick="self.customRollPopup:closePopup();" text="X" width="30"/>
-
 		<import file="buffsCustomRoll.xml"/>
+		<flowLineBreak/>
+		<button margins="{left = 100, top = 5}" name="rollCustomNow" onClick="customRoll(self.customRollPopup:getNodeObject());" text="Roll" width="100"/>
+		<button margins="{left = 15, top = 5}" name="endCustomRoll" onClick="self.customRollPopup:closePopup();" text="X" width="30"/>
+
 	</flowLayout>
 </popup>

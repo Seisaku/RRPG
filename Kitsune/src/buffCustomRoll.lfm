@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form name="frmBuffC" height="20" margins="{top=2}">      
-	<flowLayout align="client">
+<form name="frmBuffC" height="20" margins="{left=20,top=5}">      
+	<flowLayout align="client" >
 		<checkBox 	width="20" field="ativo"/>
 		<edit 		width="80" height="20" field="nome"/>
 		<edit 		width="120"  height="20" field="formula" horzTextAlign="center"/>
