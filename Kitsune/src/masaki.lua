@@ -785,7 +785,9 @@ function rolarPericia2(pericia)
 		NDB.createChildNode(personagem, "falhas");
 		NDB.pushTransaction(personagem, tr1);
 	end
-	rollTeste2(jogada, sorte, 0, 0, 0, mesa, nil, nome);
+	personagem = getPersonagemWithBuffs(personagem, "PERI")
+	rolagem, vantagem, nome = applyBuffs(jogada, 0, nome)
+	rollTestePersonagem(rolagem, sorte, vantagem, 0, 0, mesa, nil, nome, personagem);
 end
 
 function deletePericia(sheet)
@@ -833,7 +835,10 @@ function usarHabilidade(habilidade)
 			personagem.atributos.sorte = 0;
 		end
 		sorte = personagem.atributos.sorte;
-		rollTeste2(formula, sorte, 0, 0, 0, mesa, nil, nome);
+
+		personagem = getPersonagemWithBuffs(personagem, "HABI")
+		rolagem, vantagem, nome = applyBuffs(formula, 0, nome)
+		rollTestePersonagem(rolagem, personagem.atributos.sorte, vantagem, 0, 0, mesa, nil, nome, personagem);
 	else
 		showMessage("Recurso insuficiente!");
 	end

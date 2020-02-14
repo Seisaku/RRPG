@@ -7,8 +7,8 @@
 		<edit 		width="30"  height="20" type="number" min="-10" field="vantagem" horzTextAlign="center"/>
 		<edit 		width="30"  height="20" type="number" min="0" field="turnos" horzTextAlign="center"/>
 		
-<comboBox  width="60" field="acao" items="{'ATQ', 'DEF', 'AGI', 'SOR', 'MAG','RMAG','VIDA'}"
-                  values="{'ATQ', 'DEF', 'AGI', 'SOR', 'MAG','RMAG','VIDA'}"/>
+<comboBox  width="60" field="acao" items="{'ATQ', 'DEF', 'AGI', 'SOR', 'MAG','RMAG','VIDA','PERI','HABI'}"
+                  values="{'ATQ', 'DEF', 'AGI', 'SOR', 'MAG','RMAG','VIDA','PERI','HABI'}"/>
 		<button 	width="20"  height="20" text="X" onClick="deleteBuff(sheet)" margins="{left=2}"/>	
 	</flowLayout>
 </form>
