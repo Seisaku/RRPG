@@ -1060,7 +1060,7 @@ function updateBuff( buff )
 	if(buff ~= nil and buff.formula ~= nil and buff.acao ~= nil and buff.acao == "PV") then
 		buffs = NDB.getParent(buff);
 		personagem = NDB.getParent(buffs);
-		if(buff.aplicado == nil) then
+		if(buff.aplicado == nil or (buff.ativo and buff.aplicado)) then
 			buff.aplicado = false;
 		end
 		updateVida(personagem);

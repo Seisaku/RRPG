@@ -2,7 +2,6 @@
 <form name="frmBuff" height="20" margins="{top=2}">      
 	<flowLayout align="client">
 		<checkBox 	width="20" field="ativo"/>
-		<checkBox 	width="20" field="aplicado"/>
 		<edit 		width="80" height="20" field="nome"/>
 		<edit 		width="120"  height="20" field="formula" horzTextAlign="center"/>
 		<edit 		width="30"  height="20" type="number" min="-10" field="vantagem" horzTextAlign="center"/>
