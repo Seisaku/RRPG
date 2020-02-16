@@ -425,8 +425,10 @@ function updateVida(sheet)
 
 		if(sheet.atributos.vidaTempMax ~= nil and sheet.atributos.vidaTempAtual ~= nil and sheet.atributos.vidaTempMax > 0 and sheet.atributos.vidaTempAtual > 0) then
 			sheet.atributos.vidaAtualxTotal=(sheet.atributos.vidaAtual+sheet.atributos.vidaTempAtual) .. "(" .. sheet.atributos.vidaTempAtual ..")|" .. (sheet.atributos.vidaMax+sheet.atributos.vidaTempMax) .. "(" .. sheet.atributos.vidaTempMax ..")";
+			sheet.atributos.vidaMsg= sheet.atributos.vidaMax .. "+" .. sheet.atributos.vidaTempMax
 		else
 			sheet.atributos.vidaAtualxTotal=sheet.atributos.vidaAtual .. "|" .. sheet.atributos.vidaMax;
+			sheet.atributos.vidaMsg= sheet.atributos.vidaMax
 		end
 		sheet.atributos.vidaFormula = sheet.atributos.vida .. "D100";
 		syncVidaToBar(sheet);
@@ -1057,12 +1059,10 @@ function deleteBuff( sheet )
 end
 
 function updateBuff( buff )
-	if(buff ~= nil and buff.formula ~= nil and buff.acao ~= nil and buff.acao == "PV") then
-		buffs = NDB.getParent(buff);
-		personagem = NDB.getParent(buffs);
-		if(buff.aplicado == nil or (buff.ativo and buff.aplicado)) then
-			buff.aplicado = false;
-		end
-		updateVida(personagem);
+	buffs = NDB.getParent(buff);
+	personagem = NDB.getParent(buffs);
+	if(buff ~= nil and buff.formula ~= nil and buff.acao ~= nil and buff.acao == "PV" and (buff.aplicado == nil or (buff.ativo and buff.aplicado))) then
+		buff.aplicado = false;
 	end
+	updateVida(personagem);
 end
