@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout align="right" autoHeight="true" width="200">
-	<label text="Vida"/>
+<flowLayout align="right" autoHeight="true" width="250">
+	
+	<image url="/images/pv.png" height="30" width="30"  hitTest="true" hint="Vida"/>
 	<progressBar color="Green" field="atributos.vidaAtual" fieldMax="atributos.vidaMax" height="15" hitTest="true" onDblClick="self.setVidaPopup:setNodeObject(sheet); syncVida(sheet); self.setVidaPopup:show(); setVidaPopup(sheet); self.vidaOp:setFocus();" width="200">
 		<label align="client" field="atributos.vidaAtualxTotal" horzTextAlign="center"/>
 		<popup height="80" name="setVidaPopup" onClose="changeBarraVida(sheet);" scopeNode="sheet" width="150">
@@ -11,7 +12,8 @@
 				<button margins="{left = 5}" name="endVidaOp" onClick="self.setVidaPopup:closePopup();" text="X" width="30"/></flowLayout>
 		</popup>
 	</progressBar>
-	<label text="Recurso"/>
+	<flowLineBreak/>
+	<image url="/images/pm.png" height="30" width="30" hitTest="true" hint="Recurso"/>
 	<progressBar color="DodgerBlue" field="atributos.recursoAtual" fieldMax="atributos.recursoMax" height="15" hitTest="true" onDblClick="self.setRecursoPopup:setNodeObject(sheet); syncRecurso(sheet); self.setRecursoPopup:show(); setRecursoPopup(sheet); self.recursoOp:setFocus();" width="200">
 		<label align="client" field="atributos.recursoAtualxTotal" horzTextAlign="center"/>
 		<popup height="80" name="setRecursoPopup" onClose="changeBarraRecurso(sheet);" scopeNode="sheet" width="150">
@@ -23,7 +25,8 @@
 			</flowLayout>
 		</popup>
 	</progressBar>
-	<label text="Desejo"/>
+	<flowLineBreak/>
+	<image url="/images/wish.png" height="30" width="30" hitTest="true" hint="Desejo"/>
 	<progressBar color="darkorchid" field="desejoAtual" fieldMax="desejoMax" height="15" hitTest="true" onDblClick="self.setDesejoPopup:setNodeObject(sheet); syncDesejo(sheet); self.setDesejoPopup:show(); setDesejoPopup(sheet); self.desejoOp:setFocus();" width="200">
 		<label align="client" field="desejoMsg" horzTextAlign="center"/>
 		<popup height="80" name="setDesejoPopup" onClose="changeBarraDesejo(sheet);" scopeNode="sheet" width="150">

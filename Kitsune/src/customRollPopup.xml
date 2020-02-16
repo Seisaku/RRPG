@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<popup height="410" name="customRollPopup" scopeNode="sheet" width="336">
+<popup height="420" name="customRollPopup" scopeNode="sheet" width="336">
 	<flowLayout align="client">
 		<label autoSize="true" margins="{left = 50, top = 5}" text="Rolagem" width="60"/>
 		<edit field="nome" height="20" horzTextAlign="center" name="nome" textPrompt="descrição da rolagem" width="160"/>
@@ -26,7 +26,20 @@
 		<flowLineBreak/>
 		<import file="buffsCustomRoll.xml"/>
 		<flowLineBreak/>
-		<button margins="{left = 100, top = 5}" name="rollCustomNow" onClick="customRoll(self.customRollPopup:getNodeObject());" text="Roll" width="100"/>
+
+		<imageCheckBox	name="rollCustomNow"
+						hitTest="true"
+						hint="rolar dados"
+						margins="{left = 130, top = 5}"
+						checkedImage="/images/diceM.PNG"
+						uncheckedImage="/images/diceM.PNG" 
+						height="30" width="30">
+			<event name="onChange">
+				customRoll(self.customRollPopup:getNodeObject());
+				self.customRollPopup:closePopup();
+			</event>
+		</imageCheckBox>
+
 		<button margins="{left = 15, top = 5}" name="endCustomRoll" onClick="self.customRollPopup:closePopup();" text="X" width="30"/>
 
 	</flowLayout>

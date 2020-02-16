@@ -331,7 +331,19 @@ function changeBarraVida(sheet)
 			lostLife = string.gsub(sheet.vidaOp, "%-", "");
 			HPdown = tonumber(lostLife);
 			if(HPdown ~= nil) then
-				sheet.atributos.vidaAtual = sheet.atributos.vidaAtual - HPdown;
+
+				if(sheet.atributos.vidaTempAtual > 0 and sheet.atributos.vidaTempAtual > HPdown) then
+					-- showMessage("Only temp" .. sheet.atributos.vidaTempAtual .. " " .. HPdown .. "PV" .. sheet.atributos.vidaAtual);
+					sheet.atributos.vidaTempAtual = sheet.atributos.vidaTempAtual - HPdown;
+					HPdown = 0;
+				elseif (sheet.atributos.vidaTempAtual > 0) then
+					-- showMessage("Temp and Normal" .. sheet.atributos.vidaTempAtual .. " " .. HPdown .. "PV" .. sheet.atributos.vidaAtual);
+					HPdown = HPdown - sheet.atributos.vidaTempAtual;
+					sheet.atributos.vidaTempAtual = 0;
+					sheet.atributos.vidaAtual = sheet.atributos.vidaAtual - HPdown;
+				else
+					sheet.atributos.vidaAtual = sheet.atributos.vidaAtual - HPdown;
+				end
 			else
 				showMessage(errorMsg);
 			end
@@ -358,11 +370,64 @@ function updateVida(sheet)
 		if(sheet.atributos.vidaMod==nil) then
 			sheet.atributos.vidaMod=200;
 		end
-		sheet.atributos.vidaMax=sheet.atributos.vidaMod*sheet.atributos.vida
+		
+		tempPVCheck = false;
+		if(sheet.buffs ~= nil) then
+			listaBuffs = NDB.getChildNodes(sheet.buffs);
+			if(listaBuffs ~= nil) then
+				for _, buff in pairs(listaBuffs) do
+					if(buff ~= nil and buff.ativo == true and buff.acao == 'PV' and buff.formula ~= nil) then
+						if(buff.aplicado == nil) then
+							buff.aplicado = false;
+						end
+						pformula = parseFormula(buff.formula, personagem);
+						local rolagem = Firecast.interpretarRolagem(pformula);
+						rolagem:rolarLocalmente();
+						if(not buff.aplicado and sheet.atributos.vidaTempMax ~= nil) then
+							sheet.atributos.vidaTempMax = sheet.atributos.vidaTempMax + rolagem.resultado;
+							-- showMessage("Adding temp" .. sheet.atributos.vidaTempMax .. "<-" .. rolagem.resultado);
+						elseif(not buff.aplicado ~= nil and sheet.atributos.vidaTempMax == nil) then
+							sheet.atributos.vidaTempMax = rolagem.resultado;
+						end
+						if(not buff.aplicado and sheet.atributos.vidaTempAtual == nil) then
+							sheet.atributos.vidaTempAtual = sheet.atributos.vidaTempMax;
+						elseif(not buff.aplicado and sheet.atributos.vidaTempAtual ~= nil) then
+							sheet.atributos.vidaTempAtual = sheet.atributos.vidaTempAtual + rolagem.resultado;
+							-- showMessage("Adding current temp" .. sheet.atributos.vidaTempAtual .. " " .. rolagem.resultado)
+						end
+						-- if(buff.aplicado) then
+						-- 	aplicado = "Aplicado";
+						-- else
+						-- 	aplicado = "Novo";
+						-- end
+						buff.aplicado = true;
+						tempPVCheck = true;
+						-- showMessage(aplicado .. " >>> " .. rolagem.asString .. "=" .. rolagem.resultado .. "=>" .. sheet.atributos.vidaTempAtual .. "/" .. sheet.atributos.vidaTempMax);
+					end
+				end
+			end
+		end
+
+		if(not tempPVCheck) then
+			sheet.atributos.vidaTempMax = 0; 
+			sheet.atributos.vidaTempAtual = 0;
+
+			if(sheet.atributos.vidaAtual > sheet.atributos.vidaMax) then
+				sheet.atributos.vidaAtual = sheet.atributos.vidaMax;
+			end
+		end
+
+		sheet.atributos.vidaMax=sheet.atributos.vidaMod*sheet.atributos.vida;
+		-- showMessage(sheet.atributos.vidaMax .. "=" .. sheet.atributos.vidaMod .. "*" .. sheet.atributos.vida);
 		if(sheet.atributos.vidaAtual==nil) then
 			sheet.atributos.vidaAtual=sheet.atributos.vidaMax;
 		end
-		sheet.atributos.vidaAtualxTotal=sheet.atributos.vidaAtual .. "|" .. sheet.atributos.vidaMax;
+
+		if(sheet.atributos.vidaTempMax ~= nil and sheet.atributos.vidaTempAtual ~= nil and sheet.atributos.vidaTempMax > 0 and sheet.atributos.vidaTempAtual > 0) then
+			sheet.atributos.vidaAtualxTotal=(sheet.atributos.vidaAtual+sheet.atributos.vidaTempAtual) .. "(" .. sheet.atributos.vidaTempAtual ..")|" .. (sheet.atributos.vidaMax+sheet.atributos.vidaTempMax) .. "(" .. sheet.atributos.vidaTempMax ..")";
+		else
+			sheet.atributos.vidaAtualxTotal=sheet.atributos.vidaAtual .. "|" .. sheet.atributos.vidaMax;
+		end
 		sheet.atributos.vidaFormula = sheet.atributos.vida .. "D100";
 		syncVidaToBar(sheet);
 	end
@@ -372,7 +437,13 @@ end
 function syncVidaToBar( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
-		jogador:requestSetBarValue(1, sheet.atributos.vidaAtual, sheet.atributos.vidaMax);
+		if(sheet.atributos.vidaTempMax ~= nil and sheet.atributos.vidaTempAtual ~= nil and sheet.atributos.vidaTempMax > 0 and sheet.atributos.vidaTempAtual > 0) then
+			-- showMessage(sheet.atributos.vidaAtual .. "/" .. sheet.atributos.vidaMax .. "TEMP" .. sheet.atributos.vidaTempAtual .. "/" .. sheet.atributos.vidaTempMax);
+			jogador:requestSetBarValue(1, (sheet.atributos.vidaAtual + sheet.atributos.vidaTempAtual), (sheet.atributos.vidaMax + sheet.atributos.vidaTempMax));
+		else
+			-- showMessage(sheet.atributos.vidaAtual .. "/" .. sheet.atributos.vidaMax);
+			jogador:requestSetBarValue(1, sheet.atributos.vidaAtual, sheet.atributos.vidaMax);
+		end
 	end
 end
 
@@ -380,6 +451,9 @@ function syncVida( sheet )
 	jogador, personagem = getJogadorfromSheet(sheet);
 	if(jogador~=nil) then
 		local atual, _, _ = jogador:getBarValue(1);
+		if(sheet.atributos.vidaTempAtual > 0) then
+			atual = atual - sheet.atributos.vidaTempAtual;
+		end
 		sheet.atributos.vidaAtual = atual;
 	end
 end
@@ -980,4 +1054,15 @@ end
 
 function deleteBuff( sheet )
 	NDB.deleteNode(sheet);
+end
+
+function updateBuff( buff )
+	if(buff ~= nil and buff.formula ~= nil and buff.acao ~= nil and buff.acao == "PV") then
+		buffs = NDB.getParent(buff);
+		personagem = NDB.getParent(buffs);
+		if(buff.aplicado == nil) then
+			buff.aplicado = false;
+		end
+		updateVida(personagem);
+	end
 end
