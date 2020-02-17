@@ -221,7 +221,7 @@ function rolarResistenciaMagica(sheet)
 	local mesa = getMesa(sheet);
 	if (sheet.atributos.resistenciaMagicaFormula ~= nil) then
 		personagem = getPersonagemWithBuffs(sheet, "RMAG")
-		rolagem, vantagem, nome = applyBuffs(sheet.atributos.resistenciaMagicaFormula, 0, "Resistência Mágica")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.resistenciaMagicaFormula, 0, "Defesa Mágica")
 		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
 	end
 end

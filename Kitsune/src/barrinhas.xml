@@ -38,5 +38,5 @@
 			</flowLayout>
 		</popup>
 	</progressBar>
-	<import file="gold.xml"/>
+	
 </flowLayout>

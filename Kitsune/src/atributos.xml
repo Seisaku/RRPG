@@ -1,231 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>			
-			<flowLayout width="400" autoHeight="true">
+<flowLayout width="300" autoHeight="true">
+	<label  text="Atributos" width="300" horzTextAlign="center"/>
+	
+	<flowLineBreak/>
+	<label  text="Valor" width="30" horzTextAlign="center" margins="{top = 15,left = 80}"/>
+	<label  text="+" width="10" horzTextAlign="center" margins="{top = 15,left = 5}"/>
+	<label  text="Mod" width="30" horzTextAlign="center" margins="{top = 15,left = 5}"/>		    
+	<label  text="Fórmula" width="100" horzTextAlign="center" margins="{top = 15,left = 5}"/>
 
-			<label  text="Atributos" width="300" horzTextAlign="center" margins="{top = 5}"/>
-			<flowLineBreak/>
-			<label  text="Valor" width="30" horzTextAlign="center" margins="{left = 70}"/>
-			<label  text="+" width="10" horzTextAlign="center" margins="{left = 5}"/>
-			<label  text="Mod" width="30" horzTextAlign="center" margins="{left = 5}"/>		    
-			<label  text="Fórmula" width="100" horzTextAlign="center"/>
-			
-			<flowLineBreak/> 
-			<label  text="Ataque" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
-			<edit field="atributos.ataque" height="20" width="30" type="number" min="1" max="20" textPrompt="1" horzTextAlign="center" />
-			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
-			<edit field="atributos.ataqueMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
-			<label width="100" field="atributos.ataqueFormula" horzTextAlign="center"/>
-			<label field="equipamento.ataqueProficiencia" visible="false"/>
-			<label field="equipamento.ataqueEquipBonus" visible="false"/>	
-			<imageCheckBox
-						hitTest="true"
-						hint="Rolar Ataque"
-						margins="{left = 5, top = 5}"
-						checkedImage="/images/atq.png"
-						uncheckedImage="/images/atq.png" 
-						height="30" width="30">
-				<event name="onMouseDown">
-					if(event.ctrlKey) then
-						rollNode=initializeHotkeys();
-						atq,mod=updateAtaque(sheet);
-						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, atq, mod, sorte, sheet.buffs,sheet,'Ataque');
-						self.customRollPopup:setNodeObject(rollNode);
-						self.customRollPopup:show(); 
-						self.rollCustomNow:setFocus();
-					else
-						rolarAtaque(sheet); 
-					end
-				</event>
-			</imageCheckBox>
+	<flowLineBreak/> 
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Ataque"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/atq.png"
+				uncheckedImage="/images/atq.png" 
+				height="30" width="30">
+		<event name="onMouseDown">
+			if(event.ctrlKey) then
+				rollNode=initializeHotkeys();
+				atq,mod=updateAtaque(sheet);
+				sorte=updateSorte(sheet);
+				editActionRoll(rollNode, atq, mod, sorte, sheet.buffs,sheet,'Ataque');
+				self.customRollPopup:setNodeObject(rollNode);
+				self.customRollPopup:show(); 
+				self.rollCustomNow:setFocus();
+			else
+				rolarAtaque(sheet); 
+			end
+		</event>
+	</imageCheckBox>
+	<label  text="ATQ" hitTest="true" hint="Ataque"  width="40" horzTextAlign="center" height="20" margins="{top = 5}"/>
+	<edit field="atributos.ataque" height="20" width="30" type="number" min="1" max="20" textPrompt="1" horzTextAlign="center" margins="{left = 5, top = 5}"/>
+	<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
+	<edit field="atributos.ataqueMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
+	<label width="100" field="atributos.ataqueFormula" horzTextAlign="center"/>
+	<label field="equipamento.ataqueProficiencia" visible="false"/>
+	<label field="equipamento.ataqueEquipBonus" visible="false"/>	
 
-			<flowLineBreak/> 
+	<flowLineBreak/> 
 
-			<label  text="Defesa" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
-			<edit field="atributos.defesa" type="number" min="1" max="20" horzTextAlign="center" height="20" width="30"/>
-			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
-			<edit field="atributos.defesaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>			
-			<label width="100" field="atributos.defesaFormula" horzTextAlign="center"/>
-			<label field="equipamento.defesaProficiencia" visible="false"/>
-			<label field="equipamento.defesaEquipBonus" visible="false"/>	
-			<imageCheckBox
-						hitTest="true"
-						hint="Rolar Defesa"
-						margins="{left = 5, top = 5}"
-						checkedImage="/images/def.png"
-						uncheckedImage="/images/def.png" 
-						height="30" width="30">
-				<event name="onMouseDown">
-					if(event.ctrlKey) then
-						rollNode=initializeHotkeys();
-						def,mod=updateDefesa(sheet);
-						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, def, mod, sorte, sheet.buffs,sheet,'Defesa');
-						self.customRollPopup:setNodeObject(rollNode);
-						self.customRollPopup:show();
-						self.rollCustomNow:setFocus();
-					else
-						rolarDefesa(sheet);
-					end
-				</event>
-			</imageCheckBox>
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Defesa"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/def.png"
+				uncheckedImage="/images/def.png" 
+				height="30" width="30">
+		<event name="onMouseDown">
+			if(event.ctrlKey) then
+				rollNode=initializeHotkeys();
+				def,mod=updateDefesa(sheet);
+				sorte=updateSorte(sheet);
+				editActionRoll(rollNode, def, mod, sorte, sheet.buffs,sheet,'Defesa');
+				self.customRollPopup:setNodeObject(rollNode);
+				self.customRollPopup:show();
+				self.rollCustomNow:setFocus();
+			else
+				rolarDefesa(sheet);
+			end
+		</event>
+	</imageCheckBox>
+	<label  text="DEF" hitTest="true" hint="Defesa"  width="40" horzTextAlign="center" height="20" margins="{top = 5}"/>
+	<edit field="atributos.defesa" type="number" min="1" max="20" horzTextAlign="center" height="20" width="30" margins="{left = 5, top = 5}"/>
+	<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
+	<edit field="atributos.defesaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>			
+	<label width="100" field="atributos.defesaFormula" horzTextAlign="center"/>
+	<label field="equipamento.defesaProficiencia" visible="false"/>
+	<label field="equipamento.defesaEquipBonus" visible="false"/>	
 
-			<flowLineBreak/> 
+	<flowLineBreak/> 
 
-			<label  text="Agilidade" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
-			<edit field="atributos.agilidade" type="number" min="1" horzTextAlign="center" height="20" width="30"/>
-			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
-			<edit field="atributos.agilidadeMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
-			<label width="100" field="atributos.iniciativaFormula" horzTextAlign="center"/>			
-			<imageCheckBox
-						hitTest="true"
-						hint="Rolar Agilidade"
-						margins="{left = 5, top = 5}"
-						checkedImage="/images/agi.png"
-						uncheckedImage="/images/agi.png" 
-						height="30" width="30">
-				<event name="onMouseDown">
-					if(event.ctrlKey) then 
-						rollNode=initializeHotkeys();
-						agi,mod=updateAgilidade(sheet); 
-						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, agi, mod, sorte, sheet.buffs,sheet,'Agilidade');
-						self.customRollPopup:setNodeObject(rollNode);
-						self.customRollPopup:show();
-						self.rollCustomNow:setFocus();
-					else
-						rolarAgilidade(sheet);
-					end
-				</event>
-			</imageCheckBox>
-			
-			<flowLineBreak/> 
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Agilidade"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/agi.png"
+				uncheckedImage="/images/agi.png" 
+				height="30" width="30">
+		<event name="onMouseDown">
+			if(event.ctrlKey) then 
+				rollNode=initializeHotkeys();
+				agi,mod=updateAgilidade(sheet); 
+				sorte=updateSorte(sheet);
+				editActionRoll(rollNode, agi, mod, sorte, sheet.buffs,sheet,'Agilidade');
+				self.customRollPopup:setNodeObject(rollNode);
+				self.customRollPopup:show();
+				self.rollCustomNow:setFocus();
+			else
+				rolarAgilidade(sheet);
+			end
+		</event>
+	</imageCheckBox>
+	<label  text="AGI" hitTest="true" hint="Agilidade"  width="40" horzTextAlign="center" height="20" margins="{top = 5}"/>
+	<edit field="atributos.agilidade" type="number" min="1" horzTextAlign="center" height="20" width="30" margins="{left = 5, top = 5}"/>
+	<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
+	<edit field="atributos.agilidadeMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
+	<label width="100" field="atributos.iniciativaFormula" horzTextAlign="center"/>			
 
-			<label  text="Vida" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
-			<edit field="atributos.vida" type="number" min="1" horzTextAlign="center" height="20" width="30"/>
-			<label horzTextAlign="center" vertTextAlign="center" width="10" text="X" margins="{left = 5}"/>
-			<edit field="atributos.vidaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
-			<label width="100" field="atributos.vidaMsg" horzTextAlign="center"/>
-			<imageCheckBox
-						hitTest="true"
-						hint="Rolar Vida"
-						margins="{left = 5, top = 5}"
-						checkedImage="/images/pv.png"
-						uncheckedImage="/images/pv.png" 
-						height="30" width="30">
-				<event name="onMouseDown">
-					 if(event.ctrlKey) then 
-						rollNode=initializeHotkeys();
-						vid=updateVida(sheet);
-						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, vid, 0, sorte, sheet.buffs,sheet,'Vida');
-						self.customRollPopup:setNodeObject(rollNode);
-						self.customRollPopup:show();
-						self.rollCustomNow:setFocus();
-					else 
-						rolarVida(sheet); 
-					end
-				</event>
-			</imageCheckBox>
+	<flowLineBreak/> 
 
-			<flowLineBreak/>
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Vida"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/pv.png"
+				uncheckedImage="/images/pv.png" 
+				height="30" width="30">
+		<event name="onMouseDown">
+			 if(event.ctrlKey) then 
+				rollNode=initializeHotkeys();
+				vid=updateVida(sheet);
+				sorte=updateSorte(sheet);
+				editActionRoll(rollNode, vid, 0, sorte, sheet.buffs,sheet,'Vida');
+				self.customRollPopup:setNodeObject(rollNode);
+				self.customRollPopup:show();
+				self.rollCustomNow:setFocus();
+			else 
+				rolarVida(sheet); 
+			end
+		</event>
+	</imageCheckBox>
+	<label  text="VID" hitTest="true" hint="Vida"  width="40" horzTextAlign="center" height="20" margins="{top = 5}"/>
+	<edit field="atributos.vida" type="number" min="1" horzTextAlign="center" height="20" width="30" margins="{left = 5, top = 5}"/>
+	<label horzTextAlign="center" vertTextAlign="center" width="10" text="X" margins="{left = 5}"/>
+	<edit field="atributos.vidaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
+	<label width="100" field="atributos.vidaMsg" horzTextAlign="center"/>
 
-			<label  text="Magia" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
-			<edit field="atributos.magia" type="number" min="1" horzTextAlign="center" height="20" width="30"/>
-			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
-			<edit field="atributos.MagiaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
-			<label width="100" field="atributos.magiaFormula" horzTextAlign="center"/>
-			<imageCheckBox
-						hitTest="true"
-						hint="Rolar Magia"
-						margins="{left = 5, top = 5}"
-						checkedImage="/images/mag.PNG"
-						uncheckedImage="/images/mag.PNG" 
-						height="30" width="30">
-				<event name="onMouseDown">
-					if(event.ctrlKey) then
-						 rollNode=initializeHotkeys();
-						 mag,mod=updateMagia(sheet);
-						 sorte=updateSorte(sheet);
-						 editActionRoll(rollNode, mag, mod, sorte, sheet.buffs,sheet,'Magia');
-						 self.customRollPopup:setNodeObject(rollNode);
-						 self.customRollPopup:show();
-						 self.rollCustomNow:setFocus();
-					 else
-						rolarMagia(sheet);
-					 end
-				</event>
-			</imageCheckBox>
+	<flowLineBreak/>
 
-			<flowLineBreak/> 
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Magia"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/mag.PNG"
+				uncheckedImage="/images/mag.PNG" 
+				height="30" width="30">
+		<event name="onMouseDown">
+			if(event.ctrlKey) then
+				 rollNode=initializeHotkeys();
+				 mag,mod=updateMagia(sheet);
+				 sorte=updateSorte(sheet);
+				 editActionRoll(rollNode, mag, mod, sorte, sheet.buffs,sheet,'Magia');
+				 self.customRollPopup:setNodeObject(rollNode);
+				 self.customRollPopup:show();
+				 self.rollCustomNow:setFocus();
+			 else
+				rolarMagia(sheet);
+			 end
+		</event>
+	</imageCheckBox>
+	<label  text="MAG" hitTest="true" hint="Magia"  width="40" horzTextAlign="center" height="20" margins="{top = 5}"/>
+	<edit field="atributos.magia" type="number" min="1" horzTextAlign="center" height="20" width="30" margins="{left = 5, top = 5}"/>
+	<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
+	<edit field="atributos.MagiaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
+	<label width="100" field="atributos.magiaFormula" horzTextAlign="center"/>
 
-			<label  text="Resistencia Mágica" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
-			<edit field="atributos.resistenciaMagica" min="1" type="number" horzTextAlign="center" height="20" width="30"/>
-			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
-			<edit field="atributos.resistenciaMagicaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
-			<label width="100" field="atributos.resistenciaMagicaFormula" horzTextAlign="center"/>
-			<imageCheckBox
-						hitTest="true"
-						hint="Rolar Resistência Magica"
-						margins="{left = 5, top = 5}"
-						checkedImage="/images/rmag.png"
-						uncheckedImage="/images/rmag.png" 
-						height="30" width="30">
-				<event name="onMouseDown">
-					 if(event.ctrlKey) then
-						 rollNode=initializeHotkeys();
-						 rmag,mod=updateResistenciaMagica(sheet);
-						 sorte=updateSorte(sheet);
-						 editActionRoll(rollNode, rmag, mod, sorte, sheet.buffs,sheet,'Resistência Mágica');
-						 self.customRollPopup:setNodeObject(rollNode);
-						 self.customRollPopup:show();
-						 self.rollCustomNow:setFocus();
-					 else
-						rolarResistenciaMagica(sheet);
-					 end
-				</event>
-			</imageCheckBox>
-			
-			<flowLineBreak/>
+	<flowLineBreak/> 
 
-			<label  text="Recurso" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
-			<edit field="atributos.recurso" type="number" min="1" horzTextAlign="center" height="20" width="30"/>
-			<label horzTextAlign="center" vertTextAlign="center" width="10" text="X" margins="{left = 5}"/>
-			<edit field="atributos.recursoMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>			
-			<label width="100" field="atributos.recursoMax" horzTextAlign="center"/>
-			<imageCheckBox
-						hitTest="true"
-						hint="Rolar Recurso"
-						margins="{left = 5, top = 5}"
-						checkedImage="/images/pm.png"
-						uncheckedImage="/images/pm.png" 
-						height="30" width="30">
-			</imageCheckBox>
-			<flowLineBreak/> 
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Defesa Mágica"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/rmag.png"
+				uncheckedImage="/images/rmag.png" 
+				height="30" width="30">
+		<event name="onMouseDown">
+			 if(event.ctrlKey) then
+				 rollNode=initializeHotkeys();
+				 rmag,mod=updateResistenciaMagica(sheet);
+				 sorte=updateSorte(sheet);
+				 editActionRoll(rollNode, rmag, mod, sorte, sheet.buffs,sheet,'Defesa Mágica');
+				 self.customRollPopup:setNodeObject(rollNode);
+				 self.customRollPopup:show();
+				 self.rollCustomNow:setFocus();
+			 else
+				rolarResistenciaMagica(sheet);
+			 end
+		</event>
+	</imageCheckBox>
+	<label  text="DMAG" hitTest="true" hint="Defesa Mágica"  width="40" horzTextAlign="center" height="20" margins="{top = 5}"/>
+	<edit field="atributos.resistenciaMagica" min="1" type="number" horzTextAlign="center" height="20" width="30" margins="{left = 5, top = 5}"/>
+	<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
+	<edit field="atributos.resistenciaMagicaMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
+	<label width="100" field="atributos.resistenciaMagicaFormula" horzTextAlign="center"/>
 
-			<label  text="Sorte" width="70" horzTextAlign="center" height="20" margins="{top = 5}"/>
-			<edit field="atributos.sorte" type="number" min="1" horzTextAlign="center" height="20" width="30"/>
-			<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
-			<edit field="atributos.sorteMod" type="number" min="-20" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
-			<label width="100" field="atributos.critRange" horzTextAlign="center"/>
-			<imageCheckBox
-						hitTest="true"
-						hint="Rolar Sorte"
-						margins="{left = 5, top = 5}"
-						checkedImage="/images/sor.png"
-						uncheckedImage="/images/sor.png" 
-						height="30" width="30">
-				<event name="onMouseDown">
-					if(event.ctrlKey) then 
-						rollNode=initializeHotkeys();
-						sorte=updateSorte(sheet);
-						editActionRoll(rollNode, sorte, 0, sorte, sheet.buffs,sheet,'Sorte');
-						self.customRollPopup:setNodeObject(rollNode);
-						self.customRollPopup:show();
-						self.rollCustomNow:setFocus();
-					else
-						rolarSorte(sheet);
-					end
-				</event>
-			</imageCheckBox>
-			
-			</flowLayout>
+	<flowLineBreak/>
+
+
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Sorte"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/sor.png"
+				uncheckedImage="/images/sor.png" 
+				height="30" width="30">
+		<event name="onMouseDown">
+			if(event.ctrlKey) then 
+				rollNode=initializeHotkeys();
+				sorte=updateSorte(sheet);
+				editActionRoll(rollNode, sorte, 0, sorte, sheet.buffs,sheet,'Sorte');
+				self.customRollPopup:setNodeObject(rollNode);
+				self.customRollPopup:show();
+				self.rollCustomNow:setFocus();
+			else
+				rolarSorte(sheet);
+			end
+		</event>
+	</imageCheckBox>
+	<label text="SOR" hitTest="true" hint="Sorte" width="40" horzTextAlign="center" height="20" margins="{top = 5}"/>
+	<edit field="atributos.sorte" type="number" min="1" horzTextAlign="center" height="20" width="30" margins="{left = 5, top = 5}"/>
+	<label horzTextAlign="center" vertTextAlign="center" width="10" text="+" margins="{left = 5}"/>
+	<edit field="atributos.sorteMod" type="number" min="-20" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>
+	<label width="100" field="atributos.critRange" horzTextAlign="center"/>
+
+	<flowLineBreak/> 
+
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Recurso"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/pm.png"
+				uncheckedImage="/images/pm.png" 
+				height="30" width="30">
+	</imageCheckBox>
+	<label  text="REC" hitTest="true" hint="Recurso"  width="40" horzTextAlign="center" height="20" margins="{top = 5}"/>
+	<edit field="atributos.recurso" type="number" min="1" horzTextAlign="center" height="20" width="30" margins="{left = 5, top = 5}"/>
+	<label horzTextAlign="center" vertTextAlign="center" width="10" text="X" margins="{left = 5}"/>
+	<edit field="atributos.recursoMod" type="number" min="0" horzTextAlign="center" height="20" width="30" margins="{left = 5}"/>			
+	<label width="100" field="atributos.recursoMax" horzTextAlign="center"/>
+</flowLayout>

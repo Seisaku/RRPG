@@ -1,76 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<flowLayout width="400" autoHeight="true">
+<flowLayout width="300" autoHeight="true">
 
-			<label text="Nome" height="20"/>
- 			<edit field="nome" width="200" height="20" type="text"/>
- 			<flowLineBreak/>
+			<import file="nome.xml"/>
 
- 			<label text="Jogador" height="20" />
- 			<edit  field="jogador" height="20" type="text"/>
- 			<flowLineBreak/>
+			<flowLineBreak/>
 
-			<label text="Raça"/>
-			<edit field="raca" width="100" height="20" type="text"/>
- 			<!-- <comboBox  width="100" field="raca" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros','Nephilim'}"
-                  values="{'A', 'D', 'E', 'G', 'Ha','Hu','ME','MO','T','Ne','K','ON','Np'}"/>
- -->
-            <flowLineBreak/>
-			<label text="Classe"/>
-			<edit field="classe" width="100" height="20" type="text"/>
- 			<!-- <comboBox width="100" field="classe" items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
-                  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"/> -->
+			<import file="tendencia.xml"/>
 
-            <flowLineBreak/>
-
-            <label text="Tendencia"/>
-            <flowLineBreak/>
-            <label text="Moralidade"/>
-            <label field="moralidade" width="60"/>
-            <edit field="tendencia.moralidade" height="20" width="30" type="number" textPrompt="1" horzTextAlign="center" />
-            <flowLineBreak/>
-            <label text="Lealdade"/>
-            <label field="lealdade" width="60"/>
-            <edit field="tendencia.lealdade" height="20" width="30" type="number" textPrompt="1" horzTextAlign="center" />
- 			<flowLineBreak/>
-            <label  text="Experiência"/>
-			<progressBar align="client" width="200" height="13" color="Gold " field="experienciaAtual" fieldMax="proximoNivel"
-				onDblClick="self.setExperienciaPopup:setNodeObject(sheet); self.setExperienciaPopup:show(); setExpPopup(sheet); self.experienciaOp:setFocus();" hitTest="true">
-				<label field="experienciaAtualxProx" align="client" horzTextAlign="center" fontColor="Black"/>
-        		<popup name="setExperienciaPopup" width="150" height="80" scopeNode="sheet" onClose="expChange(sheet);" >
-    				<flowLayout align="client">
-        				<label text="Experiência" autoSize="true"/>
-        				<flowLineBreak/>             			
-						<edit name="experienciaOp" field="experienciaOp" horzTextAlign="center" width="100" 
-							onKeyDown="
-							if(event.keyCode==13) then
-								self.endExpOp:setFocus();
-								self.setExperienciaPopup:closePopup();
-							end;"/>
-						<button name="endExpOp" text="X" width="30" onClick="self.setExperienciaPopup:closePopup();"  />
-    				</flowLayout>
-    			</popup>
-			</progressBar>
+			<!-- <label text="Tendencia" horzTextAlign="center" width="270" margins="{top=10}"/>
+			
+			<flowLineBreak/>
+			
+			<label text="Moralidade" margins="{top=5}"/>
+			<label field="moralidade" width="60" margins="{top=5}"/>
+			<edit field="tendencia.moralidade" height="20" width="30" type="number" textPrompt="1" horzTextAlign="center" margins="{top=5}"/>
+			<flowLineBreak/>
+			
+			<label text="Lealdade" margins="{top=5}"/>
+			<label field="lealdade" width="60" margins="{top=5}"/>
+			<edit field="tendencia.lealdade" height="20" width="30" type="number" textPrompt="1" horzTextAlign="center"  margins="{top=5}"/> -->
+			
+			<flowLineBreak/>
+			
+			<import file="experiencia.xml"/>
 
 			<flowLineBreak/>
 			
-			<label text="Nível"/>
- 			<edit field="nivel" min="1" max="20" height="20" type="number" horzTextAlign="center"/>
- 			<flowLineBreak/>
+			
 						
-			<label text="Proficiência" />
-			<label field="proficiencia" width="15" horzTextAlign="center"/>
+			<label text="Proficiência"  width="90" margins="{left=5,top=15}"/>
+			<edit field="proficiencia" readOnly="true" enabled="false" height="20" width="25" horzTextAlign="center"  margins="{left=2,top=15}"/>
+
+
+			<label text="Percepção" width="60" margins="{left=40,top=15}"/>
+			<edit field="PercepcaoPassiva" height="20" width="25" horzTextAlign="center"  margins="{left=2,top=15}"/>
 			
 			<flowLineBreak/>
 			
-			<label text="Percepção Passiva"/>
-			<edit field="PercepcaoPassiva" height="20" horzTextAlign="center"/>
+			<label text="Deslocamento" width="90"  margins="{left=5,top=5}"/>
+			<edit  field="Deslocamento" height="20" width="25" horzTextAlign="center"  margins="{left=2,top=5}"/>
 			
-			<flowLineBreak/>
-			
-			<label text="Deslocamento"  />
-			<edit  field="Deslocamento" height="20" horzTextAlign="center"/>
+			<label text="Iniciativa" width="55"  margins="{left=40,top=5}"/>
+			<imageCheckBox
+						hitTest="true"
+						hint="Rolar Iniciativa"
+						margins="{left = 5, top = 5}"
+						checkedImage="/images/agi.png"
+						uncheckedImage="/images/agi.png" 
+						height="30" width="30">
+				<event name="onMouseDown">
+					if(event.ctrlKey) then 
+						rollNode=initializeHotkeys();
+						sorte=updateSorte(sheet);
+						editActionRoll(rollNode, 1, 0, sorte, sheet.buffs,sheet,'Iniciativa');
+						self.customRollPopup:setNodeObject(rollNode);
+						self.customRollPopup:show();
+						self.rollCustomNow:setFocus();
+					else
+						rolarIniciativa(sheet);
+					end
+				</event>
+			</imageCheckBox>
+<!-- 
 			<button text="Iniciativa" height="20"
-        	onClick="rolarIniciativa(sheet);"/>
+			onClick="rolarIniciativa(sheet);"  margins="{left=5,top=5}"/> -->
 </flowLayout>
 

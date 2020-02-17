@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout autoHeight="true" width="340">
+	<label text="Nome" width="50" height="20" margins="{left=5,top=5}"/>
+	<edit field="nome" width="170" height="20" type="text" margins="{top=5}"/>
+	<flowLineBreak/>
+
+	<label text="Jogador" width="50" height="20" margins="{left=5,top=5}"/>
+	<edit  field="jogador" width="170" height="20" type="text" margins="{top=5}"/>
+	<flowLineBreak/>
+
+	<label text="Raça" width="50" margins="{left=5,top=5}"/>
+	<edit field="raca" width="170" height="20" type="text" margins="{top=5}"/>
+	<!-- <comboBox  width="100" field="raca" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros','Nephilim'}"
+		  values="{'A', 'D', 'E', 'G', 'Ha','Hu','ME','MO','T','Ne','K','ON','Np'}"/>
+-->
+	<flowLineBreak/>
+	<label text="Classe" width="50" margins="{left=5,top=5}"/>
+	<edit field="classe" width="170" height="20" type="text" margins="{top=5}"/>
+	<!-- <comboBox width="100" field="classe" items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
+		  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"/> -->
+
+</flowLayout>

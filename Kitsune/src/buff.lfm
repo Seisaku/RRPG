@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmBuff" height="20" margins="{top=2}">      
 	<flowLayout align="client">
-		<checkBox 	width="20" field="ativo"/>
-		<edit 		width="80" height="20" field="nome"/>
-		<edit 		width="120"  height="20" field="formula" horzTextAlign="center"/>
-		<edit 		width="30"  height="20" type="number" min="-10" field="vantagem" horzTextAlign="center"/>
-		<edit 		width="30"  height="20" type="number" min="0" field="turnos" horzTextAlign="center"/>
+		<checkBox 	width="20"  margins="{left=2}" field="ativo"/>
+		<edit 		width="80"  margins="{left=2}" height="20" field="nome"/>
+		<edit 		width="120" margins="{left=2}" height="20" field="formula" horzTextAlign="center"/>
+		<edit 		width="30"  margins="{left=2}" height="20" type="number" min="-10" field="vantagem" horzTextAlign="center"/>
+		<edit 		width="30"  margins="{left=2}" height="20" type="number" min="0" field="turnos" horzTextAlign="center"/>
 		
-	<comboBox  width="60" field="acao" items="{'ATQ', 'DEF', 'AGI', 'SOR', 'MAG','RMAG','VIDA','PERI','HABI','PV'}"
+	<comboBox  width="60" margins="{left=2}" field="acao" items="{'ATQ', 'DEF', 'AGI', 'SOR', 'MAG','RMAG','VIDA','PERI','HABI','PV'}"
 				  values="{'ATQ', 'DEF', 'AGI', 'SOR', 'MAG','RMAG','VIDA','PERI','HABI','PV'}"/>
 		<button 	width="20"  height="20" text="X" onClick="deleteBuff(sheet)" margins="{left=2}"/>	
 	</flowLayout>

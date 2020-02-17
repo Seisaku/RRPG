@@ -7,7 +7,7 @@
 	<label horzTextAlign="center" text="Nome" width="150"/>
 	<label horzTextAlign="center" text="+" width="30"/>
 	<flowLineBreak/>
-	<scrollBox height="100" width="250">
+	<scrollBox height="68" width="250">
 		<recordList autoHeight="true" field="equipamento.armaduras" name="rclArmaduras" templateForm="frmArmadura" width="230"/>
 	</scrollBox>
 </flowLayout>

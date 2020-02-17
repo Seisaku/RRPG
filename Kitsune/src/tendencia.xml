@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout autoHeight="true" width="340">
+	<label text="Tendencia" horzTextAlign="center" width="270" margins="{top=10}"/>
+	<flowLineBreak/>
+	<label text="Moralidade" margins="{top=5}"/>
+	<label field="moralidade" width="60" margins="{top=5}"/>
+	<edit field="tendencia.moralidade" height="20" width="30" type="number" textPrompt="1" horzTextAlign="center" margins="{top=5}"/>
+	<flowLineBreak/>
+	<label text="Lealdade" margins="{top=5}"/>
+	<label field="lealdade" width="60" margins="{top=5}"/>
+	<edit field="tendencia.lealdade" height="20" width="30" type="number" textPrompt="1" horzTextAlign="center"  margins="{top=5}"/>
+</flowLayout>

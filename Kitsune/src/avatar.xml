@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout width="200" autoHeight="true" align="right">
-	<avatar campo="imagemDoPersonagem" nome="Avatar" altura="200" largura="200"/>
+<flowLayout width="250" autoHeight="true" align="right">
+	<avatar campo="imagemDoPersonagem" nome="Avatar" altura="200" largura="200" margins="{top = 5, left = 25}"/>
+
+	<import file="barrinhas.xml"/>
 </flowLayout>

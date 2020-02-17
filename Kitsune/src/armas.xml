@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout autoHeight="true" width="330">
+<flowLayout autoHeight="true" width="340">
 	<label horzTextAlign="center" text="Armas"/>
 	<label align="right" field="equipamento.ataqueTotal"/>
 	<flowLineBreak/>
@@ -8,7 +8,7 @@
 	<label horzTextAlign="center" text="P" width="30"/>
 	<label horzTextAlign="center" text="+" width="30"/>
 	<flowLineBreak/>
-	<scrollBox height="100" width="330">
-		<recordList autoHeight="true" field="equipamento.armas" name="rclArmas" templateForm="frmArma" width="300"/>
+	<scrollBox height="68" width="340">
+		<recordList autoHeight="true" field="equipamento.armas" name="rclArmas" templateForm="frmArma" width="320"/>
 	</scrollBox>
 </flowLayout>

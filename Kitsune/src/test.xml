@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<imageCheckBox	checkedImage="/images/diceM.PNG"
-	uncheckedImage="/images/diceM.PNG" 
-	height="30" width="30">
-	<event name="onChange">
-		showMessage("Olá mundo!");
-	</event>
-</imageCheckBox>
+<flowLayout align="client" width="600" height="330" >
+	
+	<import file="armas.xml"/>
+	
+	<flowLineBreak/>
+
+	<import file="armaduras.xml"/>	
+	
+	<flowLineBreak/>
+
+	<import file="gold.xml"/>
+</flowLayout>

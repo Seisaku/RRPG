@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout autoHeight="true" width="420">
+<flowLayout autoHeight="true" width="433">
 	<label horzTextAlign="center" text="Buffs"/>
 	<flowLineBreak/>
 
-	<label horzTextAlign="center" text="Nome" width="100"/>
-	<label horzTextAlign="center" text="Formula" width="120"/>
-	<label horzTextAlign="center" text="V" hitTest="true" hint="Vantagem" width="30"/>
-	<label horzTextAlign="center" text="T" hitTest="true" hint="Turnos" width="30"/>
-	<label horzTextAlign="center" text="A" hitTest="true" hint="Ação" width="60"/>
-	<button height="20" onClick="self.rclBuffs:append();" text="+" width="20"/>
+	<label horzTextAlign="center" margins="{left=4}" text="Nome" width="100"/>
+	<label horzTextAlign="center" margins="{left=2}" text="Formula" width="120"/>
+	<label horzTextAlign="center" margins="{left=2}" text="V" hitTest="true" hint="Vantagem" width="30"/>
+	<label horzTextAlign="center" margins="{left=2}" text="T" hitTest="true" hint="Turnos" width="30"/>
+	<label horzTextAlign="center" margins="{left=2}" text="Ação" hitTest="true" hint="Ação" width="60"/>
+	<button height="20" 		  margins="{left=2}" onClick="self.rclBuffs:append();" text="+" width="20"/>
 	<button width="50"  height="20" text="Turno" onClick="consumeTurn(sheet)" margins="{left=2}"/>
 	<flowLineBreak/>
 
-	<scrollBox height="100" width="416">
-		<recordList autoHeight="true" field="buffs" name="rclBuffs" templateForm="frmBuff" width="416"/>
+	<scrollBox height="100" width="428">
+		<recordList autoHeight="true" field="buffs" name="rclBuffs" templateForm="frmBuff" width="428"/>
 	</scrollBox>
 </flowLayout>

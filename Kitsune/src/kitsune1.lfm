@@ -8,9 +8,9 @@
 				<import file="principal.xml"/>
 				<import file="avatar.xml"/>
 				<import file="atributos.xml"/>
-				<import file="barrinhas.xml"/>
-				<import file="armas.xml"/>
-				<import file="armaduras.xml"/>
+
+				<import file="test.xml"/>
+				
 				<import file="buffs.xml"/>
 			</flowLayout>
 		</tab>
