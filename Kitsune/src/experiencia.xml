@@ -4,8 +4,8 @@
 	<edit field="nivel" min="1" max="20" height="20" width="25" type="number" horzTextAlign="center"  margins="{left=2,top=15}"/>
 
 	<label  text="Experiência"  horzTextAlign="center" width="65" margins="{left=40,top=15}"/>
-	<progressBar align="client" width="260" height="13" color="Gold " field="experienciaAtual" fieldMax="proximoNivel"
-		onDblClick="self.setExperienciaPopup:setNodeObject(sheet); self.setExperienciaPopup:show(); setExpPopup(sheet); self.experienciaOp:setFocus();" hitTest="true"  margins="{top=5}">
+	<progressBar  align="client" width="260" height="13" color="Gold " field="experienciaAtual" fieldMax="proximoNivel"
+		onDblClick="self.setExperienciaPopup:setNodeObject(sheet); self.setExperienciaPopup:show(); setExpPopup(sheet); self.experienciaOp:setFocus();" hitTest="true"  margins="{left=5, top=5}">
 		<label field="experienciaAtualxProx" align="client" horzTextAlign="center" fontColor="Black"  margins="{top=5}"/>
 		<popup name="setExperienciaPopup" width="150" height="80" scopeNode="sheet" onClose="expChange(sheet);">
 			<flowLayout align="client">
