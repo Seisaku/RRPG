@@ -227,9 +227,24 @@ function rolarResistenciaMagica(sheet)
 end
 
 function ataqueComArma(arma)
-	armas = NDB.getParent(arma);
-	equipamento = NDB.getParent(armas);
-	personagem = NDB.getParent(equipamento);
+	atq, bonus = getAtaqueComArmaFormula(arma);
+	formula = getFormulaFromDiceBonus(atq, bonus);
+
+	msg = "Ataque";
+	if(arma.nome ~= nil) then
+		msg = msg .. ": " .. arma.nome;
+	end	
+
+	personagem = getPersonagemFromArma(arma);
+	local mesa = getMesa(personagem);
+	personagem = getPersonagemWithBuffs(personagem, "ATQ")
+	rolagem, vantagem, msg = applyBuffs(formula, 0, msg)
+	rollTestePersonagem(rolagem, personagem.atributos.sorte, vantagem, 0, 0, mesa, nil, nome, personagem);
+end
+
+function getAtaqueComArmaFormula(arma)
+	personagem = getPersonagemFromArma(arma);
+	
 	if(personagem.atributos.ataque == nil) then
 		personagem.atributos.ataque = 1;
 	end
@@ -238,18 +253,16 @@ function ataqueComArma(arma)
 		personagem.atributos.ataqueMod = 0;
 	end
 	bonus = personagem.atributos.ataqueMod;
-	bonus = bonus + getWeaponTotalBonus(arma, personagem);				
-	if(bonus > 0) then
-		formula = formula .. " +" .. bonus;
-	end
-	msg = "Ataque";
-	if(arma.nome ~= nil) then
-		msg = msg .. ": " .. arma.nome;
-	end	
-	local mesa = getMesa(personagem);
-	personagem = getPersonagemWithBuffs(personagem, "ATQ")
-	rolagem, vantagem, msg = applyBuffs(formula, 0, msg)
-	rollTestePersonagem(rolagem, personagem.atributos.sorte, vantagem, 0, 0, mesa, nil, nome, personagem);
+	bonus = bonus + getWeaponTotalBonus(arma, personagem);
+	return personagem.atributos.ataque, bonus;					
+end
+
+function getPersonagemFromArma(arma)
+	armas = NDB.getParent(arma);
+	equipamento = NDB.getParent(armas);
+	personagem = NDB.getParent(equipamento);
+	printAllAttr(equipamento, "equipamento");
+	return personagem;
 end
 
 function expTable(nivel)
@@ -890,11 +903,12 @@ function updateSkill(sheet)
 end
 
 function getPersonagemFromHabilidade(habilidade)
-	mesa = getMesa(habilidade);
 	habilidades = NDB.getParent(habilidade);
 	personagem = NDB.getParent(habilidades);
 	return personagem;
 end
+
+
 
 function getRollFromHabilidade( habilidade )
 	if (habilidade.formulaDado == nil) then

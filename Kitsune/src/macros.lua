@@ -2,6 +2,16 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, msg)
     rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, nil, msg);
 end
 
+function getFormulaFromDiceBonus( dice, bonus )
+    if(bonus > 0) then
+        return dice .. "D100 +" .. bonus;
+    elseif(bonus < 0) then
+        return dice .. "D100 " .. bonus;
+    else
+        return dice .. "D100";
+    end
+end
+
 -- roll + parse + char
 function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg, personagem)
     -- init

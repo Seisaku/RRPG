@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flowLayout autoHeight="true" left="320" width="250">
-	<label horzTextAlign="center" text="Armaduras"/>
-	<label field="equipamento.defesaTotal"/>
+	<label text="Armaduras" width="70"/>
+	<label text="DEF =" margins="{left=70}" width="40"/>
+	<label field="equipamento.defesaEquipBonus" width="20"/>
 	<flowLineBreak/>
 	<button height="20" onClick="self.rclArmaduras:append();" text="+" width="20"/>
 	<label horzTextAlign="center" text="Nome" width="150"/>

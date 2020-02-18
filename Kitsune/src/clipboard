@@ -1,0 +1,7 @@
+Kitsune_v6-7-AutoBuffs.rpk
+
+function usarHabilidade(habilidade)
+
+personagem = getPersonagemWithBuffs(sheet, "ATQ")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.ataqueFormula, 0, "Ataque")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
