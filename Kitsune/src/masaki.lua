@@ -672,8 +672,13 @@ function getProficienceForType(type, char)
 			return 0;
 		end
 		for _, arma in pairs(listaArmas) do
-			if (arma ~= nil and arma.nome ~= nil and arma.nome == type) then
-				return arma.valor * char.proficiencia;
+			if (arma ~= nil and arma.nome ~= nil and arma.nome == type and arma.valor ~= nil) then
+				valor = tonumber(arma.valor);
+				if(valor == nil) then
+					valor = 0;
+				end
+
+				return valor * char.proficiencia;
 			end
 		end
 	end	
