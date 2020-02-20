@@ -261,7 +261,6 @@ function getPersonagemFromArma(arma)
 	armas = NDB.getParent(arma);
 	equipamento = NDB.getParent(armas);
 	personagem = NDB.getParent(equipamento);
-	printAllAttr(equipamento, "equipamento");
 	return personagem;
 end
 
