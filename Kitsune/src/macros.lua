@@ -53,6 +53,11 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
     rollP = parseFormula(roll, personagem);
     local rolagem = Firecast.interpretarRolagem(rollP); 
     rolagem:rolarLocalmente();
+
+    if(mesa == nil) then
+        mesa = getMesa(personagem);
+    end
+
     resultR = printRolagem3(mesa, rolagem, msg, sorte, roll);
     local crit;
     local fail = 0;
@@ -309,13 +314,6 @@ function getFormula(dados, mod)
     return formula;
 end
 
-function getMesa( sheet )
-    local mesa = Firecast.getMesaDe(sheet);
-    if(mesa == nil) then
-        mesa = Firecast.getMesas()[1];
-    end
-    return mesa;
-end
 
 function rollTeste(sheet, roll, sor, msg)
     local mesa = Firecast.getMesaDe(sheet);     
@@ -501,7 +499,9 @@ function printRolagem3(mesa, rolagem, msg, sor, originalRoll)
             end;                
     end
     outputRoll = outputRoll .. bracketColor .. "} = " .. totalColor .. r .. msgColor .. " << " .. msg .. " >>";      
-    mesa.activeChat:enviarMensagem(outputRoll); 
+    if(mesa ~= nil) then
+        mesa.activeChat:enviarMensagem(outputRoll); 
+    end
     return r;
 end
 
@@ -605,12 +605,7 @@ function printRolagem(sheet, rolagem, msg, sor)
         return r;
 end
 
-function mesaPrintMessage( msg )
-   mesa = Firecast.getMesas()[1];
-   if(mesa ~= nil) then
-        mesa.activeChat:enviarMensagem(msg);
-   end
-end
+
 
 function parseFormula(formula, personagem)
     result = formula
@@ -646,8 +641,11 @@ function getAttribute(personagem, attribute)
             return personagem.atributos.defesa;
         elseif(attribute == "ATQ" and personagem.atributos.ataque) then
             return personagem.atributos.ataque;
+        elseif(attribute == "NV" and personagem.nivel) then
+            return personagem.nivel;
+        elseif(attribute == "PROF" and personagem.proficiencia) then
+            return personagem.proficiencia;
         end
-    
     end
     return 0            
 end

@@ -1,3 +1,4 @@
+
 function initializeHotkeys()
 	node=NDB.newMemNodeDatabase()
 	node.nome = "Rolagem";
@@ -18,6 +19,10 @@ function editActionRoll(node, dados, mod, sorte, buffs, personagem, msg)
 	node.mod = mod;
 	node.sorte = sorte;
 	NDB.copy(node.personagemroll, personagem)
+	localmesa = getMesa(personagem);
+	if(localmesa ~= nil) then
+		globalmesa = localmesa;
+	end
 	if(buffs ~= nil) then
 		listaBuffs = NDB.getChildNodes(buffs);
 		if(listaBuffs ~= nil) then

@@ -2,7 +2,7 @@
 <flowLayout autoHeight="true" width="340" margins="{top=3}">
 		<label text="Armas" width="70"/>
 	<label align="right" text="ATQ =" margins="{left=70}" width="40"/>
-	<label align="right" field="equipamento.ataqueEquipBonus" width="20"/>
+	<label align="right" field="equipamento.ataqueEquipBonus" width="30"/>
 	<flowLineBreak/>
 	<button height="20" onClick="self.rclArmas:append();" text="+" width="20"/>
 	<label margins="{left = 2}" horzTextAlign="center" text="Nome" width="80"/>

@@ -615,7 +615,7 @@ function updateBonus(sheet)
 		armas = NDB.getParent(sheet);
 		equipamento = NDB.getParent(armas);
 		personagem = NDB.getParent(equipamento);
-		sheet.proficiencia = getProficienceForType(sheet.tipo, personagem);
+		-- sheet.proficiencia = getProficienceForType(sheet.tipo, personagem);
 
 		listaArmas = NDB.getChildNodes(armas);
 		totalBonus = 0;
@@ -677,11 +677,14 @@ function getProficienceForType(type, char)
 				if(valor == nil) then
 					valor = 0;
 				end
-
+				-- printMsgChar(char, type .. "=" .. valor .. " proficiencia personagem=" .. char.proficiencia);
 				return valor * char.proficiencia;
 			end
 		end
-	end	
+	end
+	-- if(type~=nil) then
+		-- printMsgChar(char,"pericia " .. type .. " não encontrada");
+	-- end
 	return 0;	
 end
 
