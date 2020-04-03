@@ -424,7 +424,7 @@ function updateVida(sheet)
 			sheet.atributos.vidaTempMax = 0; 
 			sheet.atributos.vidaTempAtual = 0;
 
-			if(sheet.atributos.vidaAtual > sheet.atributos.vidaMax) then
+			if(sheet.atributos.vidaAtual ~= nil and sheet.atributos.vidaMax ~= nil and sheet.atributos.vidaAtual > sheet.atributos.vidaMax) then
 				sheet.atributos.vidaAtual = sheet.atributos.vidaMax;
 			end
 		end
