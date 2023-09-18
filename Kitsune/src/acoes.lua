@@ -32,7 +32,7 @@ function getMyChar(sheet)
 	end;
 end
 
-function setAtalhoDesejoFalhas(sheet, meuPersonagem)
+function setAtalhoDesejoFalhas(sheet, personagem)
 
 	if(sheet.atalhos == nil) then
 		local tr1 = NDB.newTransaction(sheet);
@@ -40,9 +40,9 @@ function setAtalhoDesejoFalhas(sheet, meuPersonagem)
 		NDB.pushTransaction(sheet, tr1);
 	end
 
-	meuPersonagem.desejoUso = sheet.atalhos.desejoUso;
+	personagem.desejoUso = sheet.atalhos.desejoUso;
 	sheet.atalhos.desejoUso = 0;
-	meuPersonagem.falhas.oponente = sheet.atalhos.falhasOponente;
+	personagem.falhas.oponente = sheet.atalhos.falhasOponente;
 	sheet.atalhos.falhasOponente = 0;
 end
 

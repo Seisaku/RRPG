@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flowLayout autoHeight="true" left="320" width="250">
 	<label text="Armaduras" width="70"/>
-	<label text="DEF =" margins="{left=70}" width="40"/>
-	<label field="equipamento.defesaEquipBonus" width="30"/>
+	<label align="right" field="atributos.defesaComArmaduraFormula" width="100"/>
+	<imageCheckBox
+				hitTest="true"
+				hint="Rolar Defesa"
+				margins="{left = 5, top = 5}"
+				checkedImage="/images/def.png"
+				uncheckedImage="/images/def.png" 
+				height="30" width="30">
+		<event name="onMouseDown">
+			if(event.ctrlKey) then
+				rollNode=initializeHotkeys();
+				def,mod=updateDefesaComArmadura(sheet);
+				sorte=updateSorte(sheet);
+				editActionRoll(rollNode, def, mod, sorte, sheet.buffs,sheet,'Defesa');
+				self.customRollPopup:setNodeObject(rollNode);
+				self.customRollPopup:show();
+				self.rollCustomNow:setFocus();
+			else
+				rolarDefesaComArmadura(sheet);
+			end
+		</event>
+	</imageCheckBox>
+
 	<flowLineBreak/>
 	<button height="20" onClick="self.rclArmaduras:append();" text="+" width="20"/>
 	<label horzTextAlign="center" text="Nome" width="150"/>

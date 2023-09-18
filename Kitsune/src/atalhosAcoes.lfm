@@ -6,7 +6,7 @@
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoAgilidade(sheet);" text="AGI" width="50"/>
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoSorte(sheet);" text="SOR" width="50"/>
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoMagia(sheet);" text="MAG" width="50"/>
-		<button height="20" margins="{left = 5, top = 5" onClick="atalhoRMagia(sheet);" text="RMAG" width="50"/>
+		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoRMagia(sheet);" text="RMAG" width="50"/>
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoVida(sheet);" text="VID" width="50"/>
 		<button height="20" margins="{left = 5, top = 5}" onClick="atalhoIniciativa(sheet);" text="INI" width="50"/>
 		<flowLineBreak/>

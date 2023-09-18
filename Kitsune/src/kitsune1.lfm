@@ -2,62 +2,70 @@
 <form dataType="br.com.sigma.kitsune.ficha1" formType="sheetTemplate" name="Kitsune" onNodeReady="initialize(sheet)" title="Kitsune's System">
 	<import file="templates.xml"/>
 	<import file="customRollPopup.xml"/>
-	<tabControl align="client">
-		<tab title="Principal">
-			<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">				
-				<import file="principal.xml"/>
-				<import file="avatar.xml"/>
-				<import file="atributos.xml"/>
+	
+	<scrollBox left="0" top="0" align="client">
 
-				<import file="test.xml"/>
+		<tabControl align="client">
+			<tab title="Principal">
 				
-				<import file="buffs.xml"/>
-			</flowLayout>
-		</tab>
-		<tab title="Habilidades">
-			<tabControl align="client">
-				<tab title="Habilidades">
-					<import file="habilidades.xml"/>
-				</tab>
-				<tab title="Perícias">
-					<import file="pericias.xml"/>
-				</tab>
-				<tab title="Idiomas">
-					<import file="idiomas.xml"/>
-				</tab>
-				<tab title="Poder do Sacrifício">
-					<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="sacrificio"/>
-				</tab>
-			</tabControl>	
-		</tab>
-		<tab title="Raça">
-			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="racaTxt"/>
-		</tab>
-		<tab title="Classe">
-			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="classeTxt"/>
-		</tab>
-		<tab title="Personalidade">
-			<import file="personalidade.xml"/>			
-		</tab>
-		<tab title="Caracteristicas">
-			<import file="caracteristicas.xml"/>
-		</tab>
-		<tab title="Inventário">
-			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="inventario"/>
-		</tab>
-		<tab title="Magias">
-			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="magias"/>
-		</tab>
-		<tab title="Profissão">
-			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="profissao"/>
-		</tab>
-		<tab title="História">
-			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="historia"/>
-		</tab>
-		<tab title="Anotações">
-			<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="anotacoes"/>
-		</tab>
-	</tabControl>
+					<flowLayout align="client" autoHeight="true" maxControlsPerLine="2">				
+						<import file="principal.xml"/>
+						<import file="avatar.xml"/>
+						<import file="atributos.xml"/>
+
+						<import file="test.xml"/>
+						
+						<import file="buffs.xml"/>
+					</flowLayout>
+				
+			</tab>
+			<tab title="Habilidades">
+				<tabControl align="client">
+					<tab title="Habilidades">
+						<import file="habilidades.xml"/>
+					</tab>
+					<tab title="Perícias">
+						<import file="pericias.xml"/>
+					</tab>
+					<tab title="Idiomas">
+						<import file="idiomas.xml"/>
+					</tab>
+					<tab title="Poder do Sacrifício">
+						<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="sacrificio"/>
+					</tab>
+				</tabControl>	
+			</tab>
+			<tab title="Raça">
+				<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="racaTxt"/>
+			</tab>
+			<tab title="Classe">
+				<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="classeTxt"/>
+			</tab>
+			<tab title="Personalidade">
+				<import file="personalidade.xml"/>			
+			</tab>
+			<tab title="Caracteristicas">
+				<import file="caracteristicas.xml"/>
+			</tab>
+			<tab title="Inventário">
+				<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="inventario"/>
+			</tab>
+			<tab title="Magias">
+				<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="magias"/>
+			</tab>
+			<tab title="Profissão">
+				<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="profissao"/>
+			</tab>
+			<tab title="História">
+				<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="historia"/>
+			</tab>
+			<tab title="Anotações">
+				<richEdit align="client" backgroundColor="black" defaultFontColor="white" field="anotacoes"/>
+			</tab>
+		</tabControl>
+
+	</scrollBox>
+
 	<dataLink fields="{'nivel', 'experienciaAtual','desejo'}">
 		<event name="onChange">updateBase(sheet);
 		</event>
@@ -106,5 +114,7 @@
 		updateLealdade(sheet);
 	</event>
 </dataLink>
+
+
 
 </form>

@@ -167,9 +167,36 @@ function rolarDefesa(sheet)
 	end
 end
 
+function rolarAtaqueComArma(sheet)
+	local mesa = getMesa(sheet);
+	if (sheet.atributos.ataqueComArmaFormula ~= nil) then
+		personagem = getPersonagemWithBuffs(sheet, "ATQ")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.ataqueComArmaFormula, 0, "Ataque")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
+	else
+		updateAtaqueComArma(sheet)
+	end
+end
+
+function rolarDefesaComArmadura(sheet)
+	local mesa = getMesa(sheet);
+	if (sheet.atributos.defesaComArmaduraFormula ~= nil) then
+		personagem = getPersonagemWithBuffs(sheet, "DEF")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.defesaComArmaduraFormula, 0, "Defesa")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
+	else
+		updateDefesaComArmadura(sheet)
+	end
+end
+
+
 function rolarIniciativa(sheet)
 	local mesa = getMesa(sheet);
-	rollTeste2("1d100", 0, 0, 0, 0, mesa, nil, "Iniciativa");	
+	if (sheet.atributos.iniciativaFormula ~= nil) then
+		personagem = getPersonagemWithBuffs(sheet, "AGI")
+		rolagem, vantagem, nome = applyBuffs(sheet.atributos.iniciativaFormula, 0, "Iniciativa")
+		rollTestePersonagem(rolagem, sheet.atributos.sorte, 0, 0, 0, mesa, nil, nome, personagem);
+	end	
 end
 
 function rolarAgilidade(sheet)
@@ -627,10 +654,10 @@ function updateBonus(sheet)
 		end
 		if (NDB.getNodeName(armas) == "armas") then
 			equipamento.ataqueEquipBonus = totalBonus;		
-			updateAtaque(personagem);
+			updateAtaqueComArma(personagem);
 		else
 			equipamento.defesaEquipBonus = totalBonus;			
-			updateDefesa(personagem);
+			updateDefesaComArmadura(personagem);
 		end
 	end
 end
@@ -701,13 +728,6 @@ function updateAtaque(sheet)
 			sheet.atributos.ataqueMod = 0;
 		end
 		bonus = sheet.atributos.ataqueMod;
-		if(sheet.equipamento==nil) then
-			NDB.createChildNode(sheet, "equipamento");
-		end
-		if(sheet.equipamento.ataqueEquipBonus==nil) then
-			sheet.equipamento.ataqueEquipBonus = 0;
-		end
-		bonus = bonus + sheet.equipamento.ataqueEquipBonus;
 		if(bonus ~= 0) then
 			if(bonus>=0) then
 				sheet.atributos.ataqueFormula = ataqueBase .. "+" .. bonus;
@@ -721,7 +741,66 @@ function updateAtaque(sheet)
 	return ataque, bonus; 
 end
 
+function updateAtaqueComArma(sheet)
+	local ataque = 1;
+	local bonus = 0;
+	if(sheet.atributos ~= nil) then
+		ataque = tonumber(sheet.atributos.ataque);
+		local ataqueBase = "0D100";
+		if (ataque ~= nil) then
+			ataqueBase = ataque .. "D100";
+		end
+		if(sheet.atributos.ataqueMod == nil) then 
+			sheet.atributos.ataqueMod = 0;
+		end
+		bonus = sheet.atributos.ataqueMod;
+		if(sheet.equipamento==nil) then
+			NDB.createChildNode(sheet, "equipamento");
+		end
+		if(sheet.equipamento.ataqueEquipBonus==nil) then
+			sheet.equipamento.ataqueEquipBonus = 0;
+		end
+		bonus = bonus + sheet.equipamento.ataqueEquipBonus;
+		if(bonus ~= 0) then
+			if(bonus>=0) then
+				sheet.atributos.ataqueComArmaFormula = ataqueBase .. "+" .. bonus;
+			else
+				sheet.atributos.ataqueComArmaFormula = ataqueBase .. bonus;
+			end
+		else
+			sheet.atributos.ataqueComArmaFormula = ataqueBase;		
+		end
+	end
+	return ataque, bonus; 
+end
+
 function updateDefesa(sheet)
+	local defesa = 1;
+	local bonus = 0;
+	if(sheet.atributos ~= nil) then
+		defesa = tonumber(sheet.atributos.defesa);
+		local defesaBase = "0D100";
+		if (defesa ~= nil) then
+			defesaBase = defesa .. "D100";
+		end
+		if(sheet.atributos.defesaMod == nil) then 
+			sheet.atributos.defesaMod = 0;
+		end
+		bonus = sheet.atributos.defesaMod;
+		if(bonus ~= 0) then
+			if(bonus>=0) then
+				sheet.atributos.defesaFormula = defesaBase .. "+" .. bonus;
+			else
+				sheet.atributos.defesaFormula = defesaBase .. "-" .. bonus;
+			end
+		else
+			sheet.atributos.defesaFormula = defesaBase;		
+		end
+	end
+	return defesa, bonus;
+end
+
+function updateDefesaComArmadura(sheet)
 	local defesa = 1;
 	local bonus = 0;
 	if(sheet.atributos ~= nil) then
@@ -743,12 +822,12 @@ function updateDefesa(sheet)
 		bonus = bonus + sheet.equipamento.defesaEquipBonus;
 		if(bonus ~= 0) then
 			if(bonus>=0) then
-				sheet.atributos.defesaFormula = defesaBase .. "+" .. bonus;
+				sheet.atributos.defesaComArmaduraFormula = defesaBase .. "+" .. bonus;
 			else
-				sheet.atributos.defesaFormula = defesaBase .. "-" .. bonus;
+				sheet.atributos.defesaComArmaduraFormula = defesaBase .. "-" .. bonus;
 			end
 		else
-			sheet.atributos.defesaFormula = defesaBase;		
+			sheet.atributos.defesaComArmaduraFormula = defesaBase;		
 		end
 	end
 	return defesa, bonus;

@@ -19,10 +19,6 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
         sorte = 1;
     end
 
-    if(vantagem == nil) then
-        vantagem = 0;
-    end
-
     if(desejo == nil) then
         desejo = 0;
     end
@@ -43,6 +39,7 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
     wishColor = "[§K2]";
     critColor = "[§K8]";
     advColor = "[§K11]";
+    disColor = "[§K4]";
     opFailColor = "[§K6]";
     failColor = "[§K4]";
     totalColor = "[§K9]";
@@ -50,7 +47,22 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
     msgColor = "[§K14]";
     rollColor = "[§K2]";
 
-    rollP = parseFormula(roll, personagem);
+    local msgVantagem = ""; 
+    if(vantagem == nil) then
+        vantagem = 0
+    end  
+    local rollWithAdv = roll;
+    if vantagem > 0 then
+        local adv = (vantagem*25)
+        rollWithAdv = roll .. "+" .. adv
+        msgVantagem = advColor .. "+" .. adv .. " Vantagem x" .. vantagem;
+    elseif vantagem < 0 then
+        local dis = math.abs(vantagem)
+        rollWithAdv = roll .. "-" .. (dis*25)
+        msgVantagem = disColor .. "-" .. (dis*25) .. " Desvantagem x" .. dis;
+    end
+
+    rollP = parseFormula(rollWithAdv, personagem);
     local rolagem = Firecast.interpretarRolagem(rollP); 
     rolagem:rolarLocalmente();
 
@@ -58,7 +70,7 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
         mesa = getMesa(personagem);
     end
 
-    resultR = printRolagem3(mesa, rolagem, msg, sorte, roll);
+    resultR = printRolagem3(mesa, rolagem, msg, sorte, roll, msgVantagem);
     local crit;
     local fail = 0;
     crit, fail = checkCriticalnFail(rolagem, fail, sorte);
@@ -71,7 +83,8 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
     local msgDesejo = "";
     local resultD = 0;
     if(desejo > 0) then
-        local rolagemDesejo = Firecast.interpretarRolagem(desejo .. "D100");
+        local desejoFormula = desejo .. "D100"
+        local rolagemDesejo = Firecast.interpretarRolagem(desejoFormula);
         rolagemDesejo:rolarLocalmente();
         critD, fail = checkCriticalnFail(rolagemDesejo, fail, sorte);
         if(critD > 0)then
@@ -79,7 +92,7 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
             totalCrit = totalCrit + critD;
         end
         msgDesejo = wishColor .. " Desejo x".. desejo;
-        resultD = printRolagem2(mesa, rolagemDesejo, msgDesejo, sorte);
+        resultD = printRolagem3(mesa, rolagemDesejo, msgDesejo, sorte, nil, nil);
         resultados = resultados .. wishColor .. " + " .. resultD;
     end
     local msgFalhaOp = "";
@@ -92,20 +105,16 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
             totalCrit = totalCrit + critF;
         end
         msgFalhaOp = opFailColor .." Falha Oponente x" .. falhasOp;
-        resultF = printRolagem2(mesa, opFailRoll, msgFalhaOp, sorte);
+        resultF = printRolagem3(mesa, opFailRoll, msgFalhaOp, sorte, nil, nil);
         resultados = resultados .. opFailColor .. " + " .. resultF;
-    end
-    local msgVantagem = ""; 
-    if(vantagem > 0) then
-        msgVantagem = advColor .. " Vantagem x" .. vantagem;
     end
 
     baseSoma = resultR;
     resultadoFinal = baseSoma;
     totalMult = 1;    
 
-    if((crit == 0) and (falhasOp > 0 or desejo > 0 or vantagem > 0)) then
-        totalMult = 1+vantagem+desejo+falhasOp;
+    if((crit == 0) and (falhasOp > 0 or desejo > 0)) then
+        totalMult = 1+desejo+falhasOp;
         baseSoma = resultR+resultF+resultD;
         resultadoFinal = baseSoma*totalMult;        
     end
@@ -117,7 +126,7 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
         limit = limit + 1;
         critMsg = critColor .. "Critico! x" .. crit;
         critroll = rollCritical(crit, sorte);
-        resultC = printRolagem2(mesa, critroll, critMsg, sorte);
+        resultC = printRolagem3(mesa, critroll, critMsg, sorte, nil, nil);
         crit, fail = checkCriticalnFail(critroll, fail, sorte);
         resultados = resultados .. critColor .. " + " .. resultC;        
         if(crit > 0) then                
@@ -126,7 +135,7 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
          
         if(crit == 0 or limit == 10) then
             msgCrit = critColor .. " Critico x" .. totalCrit;
-            totalMult = 1+totalCrit+vantagem+desejo+falhasOp;
+            totalMult = 1+totalCrit+desejo+falhasOp;
             baseSoma = resultR+resultC+resultF+resultD;
             resultadoFinal = baseSoma*totalMult;            
         else        
@@ -137,7 +146,7 @@ function rollTestePersonagem(roll, sorte, vantagem, desejo, falhasOp, mesa, obje
     local msgMultiTotal;
     local msgTotal = baseColor .. " = " .. totalColor .. resultadoFinal;
     if(totalMult>1)then
-        msgMulti = " x {Base x1" .. msgCrit .. msgDesejo .. msgFalhaOp .. msgVantagem .. baseColor .. "}";
+        msgMulti = " x {Base x1" .. msgCrit .. msgDesejo .. msgFalhaOp .. baseColor .. "}";
         msgMultiTotal = baseColor .. " = " .. baseSoma .. " x " .. totalMult;
         mesa.activeChat:enviarMensagem(baseColor .. "{" .. resultados .. baseColor .. "}" .. msgMulti .. msgMultiTotal .. msgTotal);
     end
@@ -196,7 +205,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
 
     local rolagem = Firecast.interpretarRolagem(roll); 
     rolagem:rolarLocalmente();
-    resultR = printRolagem2(mesa, rolagem, msg, sorte);
+    resultR = printRolagem3(mesa, rolagem, msg, sorte, nil, nil);
     local crit;
     local fail = 0;
     crit, fail = checkCriticalnFail(rolagem, fail, sorte);
@@ -217,7 +226,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
             totalCrit = totalCrit + critD;
         end
         msgDesejo = wishColor .. " Desejo x".. desejo;
-        resultD = printRolagem2(mesa, rolagemDesejo, msgDesejo, sorte);
+        resultD = printRolagem3(mesa, rolagemDesejo, msgDesejo, sorte, nil, nil);
         resultados = resultados .. wishColor .. " + " .. resultD;
     end
     local msgFalhaOp = "";
@@ -230,7 +239,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
             totalCrit = totalCrit + critF;
         end
         msgFalhaOp = opFailColor .." Falha Oponente x" .. falhasOp;
-        resultF = printRolagem2(mesa, opFailRoll, msgFalhaOp, sorte);
+        resultF = printRolagem3(mesa, opFailRoll, msgFalhaOp, sorte, nil, nil);
         resultados = resultados .. opFailColor .. " + " .. resultF;
     end
     local msgVantagem = ""; 
@@ -243,8 +252,8 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
     totalMult = 1;    
 
     if((crit == 0) and (falhasOp > 0 or desejo > 0 or vantagem > 0)) then
-        totalMult = 1+vantagem+desejo+falhasOp;
-        baseSoma = resultR+resultF+resultD;
+        totalMult = 1+desejo+falhasOp;
+        baseSoma = resultR+resultF+resultD+(vantagem * 25);
         resultadoFinal = baseSoma*totalMult;        
     end
 
@@ -255,7 +264,7 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
         limit = limit + 1;
         critMsg = critColor .. "Critico! x" .. crit;
         critroll = rollCritical(crit, sorte);
-        resultC = printRolagem2(mesa, critroll, critMsg, sorte);
+        resultC = printRolagem3(mesa, critroll, critMsg, sorte, nil, nil);
         crit, fail = checkCriticalnFail(critroll, fail, sorte);
         resultados = resultados .. critColor .. " + " .. resultC;        
         if(crit > 0) then                
@@ -264,8 +273,8 @@ function rollTeste2(roll, sorte, vantagem, desejo, falhasOp, mesa, objetivo, msg
          
         if(crit == 0 or limit == 10) then
             msgCrit = critColor .. " Critico x" .. totalCrit;
-            totalMult = 1+totalCrit+vantagem+desejo+falhasOp;
-            baseSoma = resultR+resultC+resultF+resultD;
+            totalMult = 1+totalCrit+desejo+falhasOp;
+            baseSoma = resultR+resultC+resultF+resultD+(vantagem * 25);
             resultadoFinal = baseSoma*totalMult;            
         else        
             resultR=(resultR+resultC);
@@ -324,7 +333,7 @@ function rollTeste(sheet, roll, sor, msg)
 
     local rolagem = Firecast.interpretarRolagem(roll); 
     rolagem:rolarLocalmente();
-    resultR = printRolagem(sheet, rolagem, msg, sor);
+    resultR = printRolagem3(sheet, rolagem, msg, sor, nil, nil);
     -- local f = 100;
     local sorte = sor;
     if sorte == nil then
@@ -358,7 +367,7 @@ function rollTeste(sheet, roll, sor, msg)
 
     if(falhasOp > 0) then
         opFailRoll = rollCritical(falhasOp, sorte);
-        resultF = printRolagem(sheet, opFailRoll, "Falha Oponente x" .. falhasOp, sorte);
+        resultF = printRolagem3(sheet, opFailRoll, "Falha Oponente x" .. falhasOp, sorte, nil, nil);
         msgFalhaOp = " [§K2]Falha Oponente x" .. falhasOp .. " = " .. resultF;
         resultados = resultados .. " + " .. resultF;
     end
@@ -380,7 +389,7 @@ function rollTeste(sheet, roll, sor, msg)
         limit = limit + 1;
         critMsg = "Critico!!! x" .. crit;
         critroll = rollCritical(crit, sorte);
-        resultC = printRolagem(sheet, critroll, critMsg, sorte);
+        resultC = printRolagem3(sheet, critroll, critMsg, sorte, nil, nil);
         crit, fail = checkCriticalnFail(critroll, fail, sorte);
         resultados = resultados .. " + " .. resultC;
         if(crit > 0) then                
@@ -437,20 +446,23 @@ function checkCriticalnFail(rolagem, fa, sorte)
         local op = rolagem.ops[i];       
         if op.tipo == "dado" then
             f = op.face;
-            for j = 1, #op.resultados, 1 do
-                if op.resultados[j] >= (f+1-sorte) then
-                    crit = crit + 1;
-                end
-                if op.resultados[j] == 1 then
-                    fail = fail + 1;
-                end
+                if f == 100 then
+                for j = 1, #op.resultados, 1 do
+                    if op.resultados[j] >= (f+1-sorte) then
+                        crit = crit + 1;
+                    end
+                    if op.resultados[j] == 1 then
+                        fail = fail + 1;
+                    end
+                end;
             end;
+
         end;
     end;
     return crit, fail;
 end
 
-function printRolagem3(mesa, rolagem, msg, sor, originalRoll)
+function printRolagem3(mesa, rolagem, msg, sor, originalRoll, msgVantagem)
 
     baseColor = "[§K7]";
     wishColor = "[§K2]";
@@ -463,24 +475,38 @@ function printRolagem3(mesa, rolagem, msg, sor, originalRoll)
     msgColor = "[§K14]";
     rollColor = "[§K2]";
 
-    local r = rolagem.resultado;
+    local resultado = rolagem.resultado;
+    if(originalRoll == nil) then
+        originalRoll = rolagem.asString
+    end
+
     local sorte = sor;
     if sorte == nil then
         sorte = 0;          
     else
         sorte = sorte - 1;
     end
-    outputRoll =  rollColor .. originalRoll .. " = ".. rolagem.asString .. bracketColor .." {" .. baseColor;
+    -- rollColor .. originalRoll .. " = "..
+    if(msgVantagem == nil) then
+        msgVantagem = ""
+    end
+    outputRoll = originalRoll .. msgVantagem .. bracketColor .." {" .. baseColor;
     for i = 1, #rolagem.ops, 1 do
         local op = rolagem.ops[i];       
         if op.tipo == "dado" then
             f = op.face;
+            local targetCrit;
+            if f == 100 then
+                targetCrit = 100 - sorte
+            else
+                targetCrit = f
+            end  
             outputRoll = outputRoll .. " [ ";
             for j = 1, #op.resultados, 1 do
                 if j ~= 1 then
                     outputRoll = outputRoll .. " , ";
                 end;
-                if op.resultados[j] >= f-sorte then
+                if op.resultados[j] >= targetCrit then
                     outputRoll = outputRoll .. critColor;
                 elseif op.resultados[j] == 1 then
                     outputRoll = outputRoll .. failColor;
@@ -498,14 +524,14 @@ function printRolagem3(mesa, rolagem, msg, sor, originalRoll)
                 outputRoll = outputRoll .. op.valor;
             end;                
     end
-    outputRoll = outputRoll .. bracketColor .. "} = " .. totalColor .. r .. msgColor .. " << " .. msg .. " >>";      
+    outputRoll = outputRoll .. bracketColor .. "} = " .. totalColor .. resultado .. msgColor .. " << " .. msg .. " >>";      
     if(mesa ~= nil) then
         mesa.activeChat:enviarMensagem(outputRoll); 
     end
-    return r;
+    return resultado;
 end
 
-function printRolagem2(mesa, rolagem, msg, sor)
+--[[function printRolagem2(mesa, rolagem, msg, sor)
 
     baseColor = "[§K7]";
     wishColor = "[§K2]";
@@ -530,12 +556,18 @@ function printRolagem2(mesa, rolagem, msg, sor)
         local op = rolagem.ops[i];       
         if op.tipo == "dado" then
             f = op.face;
+            local targetCrit;
+            if f == 100 then
+                targetCrit = 100 - sorte
+            else
+                targetCrit = f
+            end        
             outputRoll = outputRoll .. " [ ";
             for j = 1, #op.resultados, 1 do
                 if j ~= 1 then
                     outputRoll = outputRoll .. " , ";
                 end;
-                if op.resultados[j] >= f-sorte then
+                if op.resultados[j] >= targetCrit then
                     outputRoll = outputRoll .. critColor;
                 elseif op.resultados[j] == 1 then
                     outputRoll = outputRoll .. failColor;
@@ -571,16 +603,23 @@ function printRolagem(sheet, rolagem, msg, sor)
                 sorte = sorte - 1;
         end
         outputRoll =  "[§K2]" .. rolagem.asString .. " [§K1] { [§K7] ";
+
         for i = 1, #rolagem.ops, 1 do
                 local op = rolagem.ops[i];       
                 if op.tipo == "dado" then
                         f = op.face;
+                        local targetCrit;
+                        if f == 100 then
+                            targetCrit = 100 - sorte
+                        else
+                            targetCrit = f
+                        end
                         outputRoll = outputRoll .. "[ ";
                         for j = 1, #op.resultados, 1 do
                                 if j ~= 1 then
                                         outputRoll = outputRoll .. " , ";
                                 end;
-                                if op.resultados[j] >= f-sorte then
+                                if op.resultados[j] >= targetCrit then
                                         outputRoll = outputRoll .. "[§K8]";
                                 elseif op.resultados[j] == 1 then
                                         outputRoll = outputRoll .. "[§K4]";
@@ -603,7 +642,7 @@ function printRolagem(sheet, rolagem, msg, sor)
         mesa.activeChat:enviarMensagem(outputRoll);
 
         return r;
-end
+end--]]
 
 
 
@@ -746,7 +785,7 @@ function applyBuffs( rolagem, vantagem, nome)
                     if(buff.formula ~= nil) then
                         rolagem = concatanateRollsToText(rolagem, buff.formula)             
                     end
-                    if(buff.vantagem ~= nil and buff.vantagem > 0) then
+                    if(buff.vantagem ~= nil) then
                         vantagem = vantagem + buff.vantagem;                    
                     end
                     if(buff.nome ~= nil) then
