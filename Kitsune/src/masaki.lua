@@ -262,7 +262,7 @@ function ataqueComArma(arma)
 		msg = msg .. ": " .. arma.nome;
 	end	
 
-	personagem = getPersonagemFromArma(arma);
+	local personagem = getPersonagemFromArma(arma);
 	local mesa = getMesa(personagem);
 	personagem = getPersonagemWithBuffs(personagem, "ATQ")
 	rolagem, vantagem, msg = applyBuffs(formula, 0, msg)
@@ -270,7 +270,7 @@ function ataqueComArma(arma)
 end
 
 function getAtaqueComArmaFormula(arma)
-	personagem = getPersonagemFromArma(arma);
+	local personagem = getPersonagemFromArma(arma);
 	
 	if(personagem.atributos.ataque == nil) then
 		personagem.atributos.ataque = 1;

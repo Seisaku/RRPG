@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout autoHeight="true" width="340" margins="{top=3}">
+<flowLayout autoHeight="true" width="300" margins="{top=3}">
 		<label text="Armas" width="70"/>
 	
-	<label align="right" field="atributos.ataqueComArmaFormula" width="100"/>
+	<label align="right" field="atributos.ataqueComArmaFormula" width="80"/>
 
 	<imageCheckBox
 				hitTest="true"
@@ -10,7 +10,7 @@
 				margins="{left = 5, top = 5}"
 				checkedImage="/images/atq.png"
 				uncheckedImage="/images/atq.png" 
-				height="30" width="30">
+				height="20" width="20">
 		<event name="onMouseDown">
 			if(event.ctrlKey) then
 				rollNode=initializeHotkeys();

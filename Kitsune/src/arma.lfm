@@ -15,13 +15,16 @@
 				margins="{left = 2}"
 				checkedImage="/images/atq2.png"
 				uncheckedImage="/images/atq2.png" 
-				height="20" width="20">
+				height="15" width="15">
 		<event name="onMouseDown">
 			if(event.ctrlKey) then 
 				rollNode=initializeHotkeys();
-				atq, bonus = getAtaqueComArmaFormula(arma);
+				atq, bonus = getAtaqueComArmaFormula(sheet);
 				sorte=updateSorte(sheet);
 				editActionRoll(rollNode, atq, bonus, sorte, sheet.buffs,sheet,'Ataque: ' .. sheet.nome);
+				
+				showMessage(ndb.getNodeName(self));
+
 				self.customRollPopup:setNodeObject(rollNode);
 				self.customRollPopup:show();
 				self.rollCustomNow:setFocus();
@@ -37,7 +40,7 @@
 				margins="{left = 2}"
 				checkedImage="/images/x.png"
 				uncheckedImage="/images/x.png" 
-				height="20" width="20">
+				height="15" width="15">
 		<event name="onMouseDown">
 			deleteEquip(sheet);
 		</event>

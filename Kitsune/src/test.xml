@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout align="client" width="600" height="330" >
+<flowLayout align="client" width="300" height="330" >
 	
 	<import file="armas.xml"/>
 	

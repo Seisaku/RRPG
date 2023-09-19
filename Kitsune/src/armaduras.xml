@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout autoHeight="true" left="320" width="250">
+<flowLayout autoHeight="true" left="320" width="300">
 	<label text="Armaduras" width="70"/>
-	<label align="right" field="atributos.defesaComArmaduraFormula" width="100"/>
+	<label align="right" field="atributos.defesaComArmaduraFormula" width="80"/>
 	<imageCheckBox
 				hitTest="true"
 				hint="Rolar Defesa"
 				margins="{left = 5, top = 5}"
 				checkedImage="/images/def.png"
 				uncheckedImage="/images/def.png" 
-				height="30" width="30">
+				height="20" width="20">
 		<event name="onMouseDown">
 			if(event.ctrlKey) then
 				rollNode=initializeHotkeys();
