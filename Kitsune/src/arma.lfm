@@ -23,7 +23,7 @@
 				sorte=updateSorte(sheet);
 				editActionRoll(rollNode, atq, bonus, sorte, sheet.buffs,sheet,'Ataque: ' .. sheet.nome);
 				
-				showMessage(ndb.getNodeName(self));
+				<!-- showMessage(NDB.getNodeName(self)); -->
 
 				self.customRollPopup:setNodeObject(rollNode);
 				self.customRollPopup:show();

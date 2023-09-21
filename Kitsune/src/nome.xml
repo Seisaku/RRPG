@@ -8,15 +8,58 @@
 	<edit  field="jogador" width="170" height="20" type="text" margins="{top=5}"/>
 	<flowLineBreak/>
 
-	<label text="Raça" width="50" margins="{left=5,top=5}"/>
-	<edit field="raca" width="170" height="20" type="text" margins="{top=5}"/>
-	<!-- <comboBox  width="100" field="raca" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros','Nephilim'}"
-		  values="{'A', 'D', 'E', 'G', 'Ha','Hu','ME','MO','T','Ne','K','ON','Np'}"/>
--->
+	
+	<label text="Raça" width="50" margins="{left=5,top=5}"/>	
+	<flowLayout autoHeight="true" width="170">
+		<edit field="raca" name="racaEdit" visible="false" width="150" height="20" type="text" margins="{top=5}"/>
+		<comboBox  width="150"  name="racaCombo" field="racaCombo" items="{'Anão', 'Draconato', 'Elfo', 'Gnomo', 'Halfling','Humano','Meio-Elfo','Meio-Orc','Tiefling','Neko','Kitsune','Olhos Negros','Nephilim'}"
+			  values="{'A', 'D', 'E', 'G', 'Ha','Hu','ME','MO','T','Ne','K','ON','Np'}">
+			  	<event name="onChange">
+			  		sheet.raca=self.racaCombo:getText()
+			  	</event>
+			  </comboBox>
+	  	<imageCheckBox
+					hitTest="true"
+					hint="Editar Raça"
+					margins="{left = 2}" 
+					checkedImage="/images/atq2.png"
+					uncheckedImage="/images/atq2.png" 
+					height="15" width="15">
+			<event name="onMouseDown">
+				self.racaEdit:setVisible(not self.racaEdit:getVisible())
+				self.racaCombo:setVisible(not self.racaCombo:getVisible())
+			</event>
+		</imageCheckBox>
+	</flowLayout>
+
 	<flowLineBreak/>
 	<label text="Classe" width="50" margins="{left=5,top=5}"/>
-	<edit field="classe" width="170" height="20" type="text" margins="{top=5}"/>
-	<!-- <comboBox width="100" field="classe" items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
-		  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"/> -->
+
+	<flowLayout autoHeight="true" width="170">
+		<edit field="classe" name="classeEdit" visible="false" width="150" height="20" type="text" margins="{top=5}"/>
+		<comboBox width="150" name="classeCombo" field="classeCombo" items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
+			  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}">
+			  	<event name="onChange">
+			  		sheet.classe=self.classeCombo:getText()
+			  	</event>
+			  </comboBox>
+		<imageCheckBox
+			hitTest="true"
+			hint="Editar Raça"
+			margins="{left = 2}"
+			checkedImage="/images/atq2.png"
+			uncheckedImage="/images/atq2.png" 
+			height="15" width="15">
+			<event name="onMouseDown">
+				self.classeEdit:setVisible(not self.classeEdit:getVisible())
+				self.classeCombo:setVisible(not self.classeCombo:getVisible())
+			</event>
+		</imageCheckBox>
+	</flowLayout>
+
+	
+
+
+
 
 </flowLayout>
