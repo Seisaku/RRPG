@@ -37,10 +37,28 @@
 
 	<flowLayout autoHeight="true" width="170">
 		<edit field="classe" name="classeEdit" visible="false" width="150" height="20" type="text" margins="{top=5}"/>
-		<comboBox width="150" name="classeCombo" field="classeCombo" items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
-			  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}">
+		<comboBox width="150" name="classeCombo" field="classeCombo">
+			
+			<!-- items="{'Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}"
+			  values="{'Barbaro', 'Bardo', 'Bruxo', 'Clerigo', 'Druida','Feiticeiro','Guerreiro','Ladino','Mago','Monge','Paladino','Patrulheiro'}" >-->
+			  	<event name="onMouseDown">
+			  		items = self.classeCombo:getItems()
+					if(next(items) == nil) then
+						names = getClassNames()
+						self.classeCombo:setItems(names)
+			  			self.classeCombo:setValues(names)	
+					end
+			  	</event>
 			  	<event name="onChange">
 			  		sheet.classe=self.classeCombo:getText()
+			  		
+			  		sheet.atributos.vidaMod=getModVida(sheet.classe)
+			  		sheet.atributos.vidaMax=getVidaTotal(sheet.classe, sheet.atributos.vida)
+			  		sheet.atributos.vidaAtual=sheet.atributos.vidaMax
+			  		
+			  		sheet.atributos.recursoMod=getModRecursos(sheet.classe)
+			  		sheet.atributos.recursoMax=getRecursoTotal(sheet.classe, sheet.atributos.recurso)
+			  		sheet.atributos.recursoAtual=sheet.atributos.recursoMax
 			  	</event>
 			  </comboBox>
 		<imageCheckBox

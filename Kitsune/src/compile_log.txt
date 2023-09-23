@@ -1,0 +1,40 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20230923024104
+Username: RAFA-DESK-AORUS\seisa
+RunAs User: RAFA-DESK-AORUS\seisa
+Configuration Name: 
+Machine: RAFA-DESK-AORUS (Microsoft Windows NT 10.0.22621.0)
+Host Application: powershell.exe -File C:\RRPG\Projetos\RRPG\Kitsune\src\compile.ps1
+Process ID: 138632
+PSVersion: 5.1.22621.1778
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.22621.1778
+BuildVersion: 10.0.22621.1778
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\RRPG\Projetos\RRPG\Kitsune\src\compile_log.txt
+-----------------------------------
+Firecast Development Kit 3.6d
+C:\Users\seisa\AppData\Local\FirecastSDK3\rdk.exe
+-----------------------------------
+
+Compilando "C:\RRPG\Projetos\RRPG\Kitsune\src\"...
+
+Analisando o código fonte de 18 arquivo(s)
+
+Alertas para "/kitsune1.lfm.lua"
+  * linha 2428, coluna 251: 631 - a linha é muito longa (259 > 250)
+  * linha 2509, coluna 251: 631 - a linha é muito longa (504 > 250)
+
+Instalando...
+
+OK. Instalado!
+=)
+**********************
+Windows PowerShell transcript end
+End time: 20230923024107
+**********************
